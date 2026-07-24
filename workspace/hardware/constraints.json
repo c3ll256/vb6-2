@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "status": "review",
+  "source_prd": "product/prd.json",
+  "bom_ready": true,
+  "enclosure_outer_max_mm": {"w": 85.6, "d": 53.98, "h": 18.0},
+  "pcb_bbox_mm": {"w_max": 81.6, "d_max": 49.98, "thickness_target": 1.0},
+  "pcb_component_height_mm": {"top_max_target": 12.5, "bottom_max_target": 2.0},
+  "board_retention": "Use edge rails or low-profile clips after the final fabrication STEP; do not assume mounting holes.",
+  "power": {
+    "input": "USB 5 V bus power through the XIAO ESP32S3 onboard USB-C receptacle",
+    "battery": "not fitted",
+    "logic_rail": "3.3 V from XIAO",
+    "backlight_rail": "USB VBUS through 27 Ohm, 0.25 W series resistor",
+    "usb_functions": ["USB HID keyboard", "USB Audio Class 1.0 mono microphone"]
+  },
+  "mcu_module": {
+    "bom_id": "mcu_xiao_esp32s3",
+    "model": "Seeed Studio XIAO ESP32S3",
+    "body_mm": {"w": 21.0, "d": 17.8},
+    "mounting": "castellated module soldered to carrier PCB",
+    "usb_c": "onboard receptacle aligned to bottom enclosure edge",
+    "verified_cad_model_id": "seeed_xiao_esp32s3_v2",
+    "cad_model_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+  },
+  "ports": [
+    {
+      "id": "usb_c_host",
+      "face": "bottom edge",
+      "owner": "XIAO ESP32S3 onboard connector",
+      "cutout_mm": {"w_target": 10.0, "h_target": 4.0},
+      "clearance_mm": 2.0,
+      "validation": "Measure final cutout, insertion direction and plug envelope from the verified XIAO STEP before enclosure release."
+    },
+    {
+      "id": "microphone_acoustic_port",
+      "face": "top",
+      "owner": "ICS-43434 bottom port through carrier PCB",
+      "pcb_hole_diameter_mm": 0.5,
+      "enclosure_hole_diameter_target_mm": 1.5,
+      "clearance_mm": 2.0,
+      "validation": "Seal the short PCB-to-enclosure acoustic path; keep solder paste out of the sound hole."
+    }
+  ],
+  "interactive_elements": [
+    {
+      "id": "display",
+      "type": "display",
+      "bom_id": "display_lt225c7_c08_03",
+      "face": "top",
+      "module_mm": {"w": 62.5, "h": 17.9, "t": 2.36},
+      "view_area_mm": {"w": 55.2948, "h": 14.7972},
+      "footprint_on_face_mm": {"w": 65.5, "h": 20.9},
+      "orientation": "long axis parallel to 85.6 mm product width",
+      "evidence": "artifacts/pdfs/lt225c7-c08-03.pdf pages 4-8"
+    },
+    {
+      "id": "four_key_array",
+      "type": "mechanical_keys",
+      "face": "top",
+      "count": 4,
+      "arrangement": "single horizontal row below display",
+      "switch_bom_id": "switch_kailh_choc_v2_red",
+      "keycap_bom_id": "keycap_low_profile_1u_mx",
+      "nominal_pitch_mm": 19.0,
+      "per_key_max_envelope_mm": {"w": 18.0, "h": 18.0, "height_above_stem_reference": 5.5},
+      "total_row_envelope_mm": {"w": 75.0, "h": 18.0}
+    }
+  ],
+  "display_interface": {
+    "panel_pin_count": 8,
+    "connector_bom_id": "fpc_fh12_8s_05sh_55",
+    "connector": "Hirose FH12-8S-0.5SH(55), bottom contact, 0.5 mm pitch, 0.3 mm FPC",
+    "signals": ["LEDA", "GND", "RESET_N", "D_C", "SDA_MOSI", "SCL", "VDD_3V3", "CS_N"],
+    "bus": "4-line SPI write-only",
+    "controller": "ST7789P3",
+    "reset": "10 kOhm pull-up to 3.3 V plus 100 nF to ground",
+    "backlight": "VBUS through 27 Ohm 1% 0.25 W; no dimming in revision 1"
+  },
+  "microphone_interface": {
+    "bom_id": "microphone_ics43434",
+    "supply": "3.3 V",
+    "bus": "I2S, three GPIOs: SCK, WS, SD",
+    "channel_select": "strap L/R for one fixed mono channel",
+    "decoupling": "100 nF X7R at VDD with short same-layer traces",
+    "land_pattern": "1:1 to package pads; minimum 0.5 mm PCB acoustic hole; no solder paste over port",
+    "evidence": "references/suppliers/c5656610/c5656610-datasheet.pdf pages 15 and 17"
+  },
+  "gpio_budget": {
+    "display_spi": 4,
+    "microphone_i2s": 3,
+    "keys_direct_gpio": 4,
+    "total": 11,
+    "available_xiao_gpio": 11,
+    "spare": 0,
+    "display_reset": "hardware RC; no GPIO",
+    "backlight_control": "always on; no GPIO"
+  },
+  "firmware_constraints": [
+    "Use Espressif TinyUSB-based USB UAC device support on ESP32-S3 and compose it with HID keyboard functionality.",
+    "Target mono 48 kHz, 16-bit capture unless firmware validation demonstrates a more compatible rate.",
+    "Implement one mechanical key as microphone mute and mirror the effective mute state on the display.",
+    "Do not enable Wi-Fi/BLE in the default firmware unless needed; reduced RF activity lowers current and interference risk."
+  ],
+  "assembly_constraints": [
+    "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
+    "Keep LCD/backlight current paths away from MIC1, its acoustic opening, and I2S traces.",
+    "Place MIC1 directly over the PCB sound hole and use a sealed short path to the enclosure opening.",
+    "Place J1 so the display FPC contacts face the PCB and the cable can be inserted without a sharp fold.",
+    "Use the XIAO onboard USB-C receptacle; do not add a second host USB connector.",
+    "Reserve manual/through-hole assembly access for XIAO, LCD, four Choc V2 switches and keycaps."
+  ],
+  "open_items": [],
+  "risks": [
+    {"severity": "medium", "item": "No spare exposed GPIO", "mitigation": "Hardware-reset LCD and static backlight are fixed requirements; any added control needs an I/O expander or revised MCU module."},
+    {"severity": "medium", "item": "Microphone close to mechanical keys", "mitigation": "Use red linear switches, isolate the acoustic path, place MIC1 away from switch bodies, and validate key-noise pickup on prototype."},
+    {"severity": "low", "item": "Resistor-fed backlight brightness varies with USB and LED voltage", "mitigation": "Current remains below the panel maximum; qualify visual uniformity on prototype before considering a constant-current revision."}
+  ]
+}
