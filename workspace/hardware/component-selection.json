@@ -1,98 +1,491 @@
 {
   "schema_version": 1,
-  "status": "draft",
+  "status": "review",
   "selected_components": [
     {
       "id": "mcu_xiao_esp32s3",
       "role": "mcu_module",
       "name": "Seeed Studio XIAO ESP32S3",
-      "description": "21 x 17.8 mm XIAO-family module with native USB and ESP32-S3 I2S/PDM capability; its onboard USB-C receptacle is the product host port.",
-      "designators": ["U1"],
+      "description": "21 x 17.8 mm native-USB XIAO module; onboard USB-C is the product power/data port.",
+      "designators": [
+        "U1"
+      ],
       "quantity": 1,
-      "supplier": "Seeed Studio / external distributor",
+      "supplier": "Seeed Studio",
       "manufacturer": "Seeed Studio",
       "part_number": "XIAO ESP32S3",
       "mpn": "XIAO ESP32S3",
       "stock": 0,
-      "source": "manufacturer_module",
-      "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
+      "source": "manufacturer",
       "product_url": "https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html",
+      "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/",
       "procurement_status": "external_procurement_required",
-      "package": "XIAO castellated development-board module, 21 x 17.8 mm",
+      "package": "XIAO castellated module, 21 x 17.8 mm",
       "footprint": "Seeed_XIAO_ESP32S3_castellated",
-      "assembly": {"method": "module_mount", "population": "mounted", "side": "top"},
-      "selection_reason": "Exact XIAO-family board with native USB, enough processing headroom for composite HID/UAC firmware, SPI display, and digital microphone; verified vendor STEP exists for CAD handoff.",
-      "cad_model": {"format": "step", "model_id": "seeed_xiao_esp32s3_v2", "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources", "sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"}
+      "assembly": {
+        "method": "module_mount",
+        "population": "mounted",
+        "side": "top"
+      },
+      "required_user_evidence": [
+        "Procurement reminder only: record distributor and order number when purchased."
+      ],
+      "selection_reason": "ESP32-S3 is supported by Espressif's TinyUSB-based USB Audio Class device library and provides ADC capture, the SPI display interface and eleven exposed GPIOs.",
+      "cad_model": {
+        "format": "step",
+        "model_id": "seeed_xiao_esp32s3_v2",
+        "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources",
+        "sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+      }
     },
     {
       "id": "display_lt225c7_c08_03",
       "role": "display_module",
       "name": "LT225C7-C08-03 2.25-inch color LCD",
-      "description": "76RGB x 284 ST7789P3 color LCD, 4-line SPI, 8-pin FPC, 17.9 x 62.5 x 2.36 mm module.",
-      "designators": ["DS1"],
+      "description": "76RGB x 284, ST7789P3, 4-line SPI, 8-pin 0.5 mm FPC, 17.9 x 62.5 x 2.36 mm.",
+      "designators": [
+        "DS1"
+      ],
       "quantity": 1,
-      "supplier": "user-selected external supplier",
+      "supplier": "User-selected external supplier",
       "manufacturer": "ShenZhen GoldenMorning Electronic Co., Ltd",
       "part_number": "LT225C7-C08-03",
       "mpn": "LT225C7-C08-03",
       "stock": 0,
       "source": "user_provided_datasheet",
-      "datasheet_url": "artifacts/pdfs/lt225c7-c08-03.pdf",
       "procurement_status": "external_procurement_required",
-      "package": "17.9 x 62.5 x 2.36 mm LCD module with 8-pin FPC tail",
-      "assembly": {"method": "manual", "population": "mounted", "side": "top"},
-      "required_user_evidence": ["Advisory: preserve the exact seller/order link and panel revision when purchasing."],
-      "selection_reason": "Exact display selected by the user; datasheet page 4 establishes dimensions, active area, SPI interface and ST7789P3 controller, page 6 establishes the 8-pin signal assignment.",
-      "selection_reason": "Exact display dimensions and interface are established by the user-provided datasheet."
+      "package": "17.9 x 62.5 x 2.36 mm LCD module with 8-pin 0.5 mm FPC tail",
+      "pin_count": 8,
+      "assembly": {
+        "method": "manual",
+        "population": "mounted",
+        "side": "top"
+      },
+      "required_user_evidence": [
+        "Procurement reminder only: preserve the exact seller/order link and panel revision."
+      ],
+      "selection_reason": "Exact user-selected panel; supplied datasheet pages 4-8 establish dimensions, active area, pinout, 2.5-3.3 V logic supply and backlight limits."
     },
     {
-      "id": "switch_kailh_choc_v2",
+      "id": "fpc_fh12_8s_05sh_55",
+      "role": "display_fpc_connector",
+      "name": "Hirose FH12-8S-0.5SH(55)",
+      "description": "8-position 0.5 mm pitch horizontal flip-lock bottom-contact FPC connector, 0.3 mm FPC, 2.0 mm board height.",
+      "designators": [
+        "J1"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "Hirose Electric",
+      "part_number": "C597995",
+      "mpn": "FH12-8S-0.5SH(55)",
+      "lcsc_code": "C597995",
+      "jlc_smt_library": "extended",
+      "package": "SMD, 8P, P0.5 mm, horizontal bottom contact",
+      "footprint": "Hirose_FH12-8S-0.5SH_1x08-1MP_P0.5mm_Horizontal",
+      "pin_count": 8,
+      "stock": 4795,
+      "unit_price_cny": 2.43,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/626611.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20200615/C597979_B8D9DC319DDA9CB4DF2E85AE104C9A2E.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230104/4EC6F875A809E3B2FCEDAFC12F541A4F.jpg",
+      "physical_interface": {
+        "kind": "fpc_connector",
+        "pin_count": 8,
+        "pitch_mm": 0.5,
+        "cable_contacts_face_when_mounted_on_top": "toward_pcb",
+        "pin1_position": "left when viewed from the cable insertion side",
+        "evidence_refs": [
+          "references/suppliers/c597995/c597995-datasheet.pdf page 4",
+          "artifacts/pdfs/lt225c7-c08-03.pdf page 5"
+        ]
+      },
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "risk_class": "mechanical_smt",
+        "jlc_smt_library": "extended"
+      },
+      "selection_reason": "Exact 8P/0.5 mm bottom-contact geometry matches the panel tail; Extended is used because no credible Basic-library connector was found."
+    },
+    {
+      "id": "microphone_zts6216",
+      "role": "analog_microphone",
+      "name": "ZILLTEK ZTS6216",
+      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "designators": [
+        "MIC1"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "ZILLTEK",
+      "part_number": "C481302",
+      "mpn": "ZTS6216",
+      "lcsc_code": "C481302",
+      "jlc_smt_library": "extended",
+      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
+      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
+      "pin_count": 4,
+      "stock": 32897,
+      "unit_price_cny": 4.44,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/488750.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20200316/C481302_3CBECE2A7DED4DFD53CEA082844189F4.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230107/C6B72AEE830A76B62ABA4BEC042E45A8.jpg",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "risk_class": "mechanical_smt",
+        "jlc_smt_library": "extended"
+      },
+      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
+    },
+    {
+      "id": "mic_preamp_tlv9061",
+      "role": "microphone_preamplifier",
+      "name": "Texas Instruments TLV9061IDBVR",
+      "description": "10 MHz rail-to-rail single op amp for approximately 101 V/V non-inverting ZTS6216 gain and ADC drive.",
+      "designators": [
+        "U2"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "Texas Instruments",
+      "part_number": "C398358",
+      "mpn": "TLV9061IDBVR",
+      "lcsc_code": "C398358",
+      "jlc_smt_library": "extended",
+      "package": "SOT-23-5",
+      "footprint": "SOT-23-5",
+      "pin_count": 5,
+      "stock": 353404,
+      "unit_price_cny": 0.594,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/380588.html",
+      "datasheet_url": "https://www.ti.com/cn/lit/ds/symlink/tlv9061.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230109/B0A84CFF3F98244D57D0B4C791CAB02B.jpg",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "extended"
+      },
+      "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
+    },
+    {
+      "id": "switch_kailh_choc_v2_red",
       "role": "low_profile_mechanical_switch",
-      "name": "Kailh Choc V2 low-profile mechanical switch",
-      "description": "MX-stem low-profile keyboard switch; exact feel/color is pending user selection.",
-      "designators": ["SW1", "SW2", "SW3", "SW4"],
+      "name": "Kailh Choc V2 Red linear switch",
+      "description": "User-selected quiet linear low-profile MX-stem keyboard switch.",
+      "designators": [
+        "SW1",
+        "SW2",
+        "SW3",
+        "SW4"
+      ],
       "quantity": 4,
       "supplier": "Kailh / external keyboard-parts supplier",
       "manufacturer": "Kailh",
-      "part_number": "Kailh Choc V2 variant pending",
+      "part_number": "CPG135301D05",
+      "mpn": "CPG135301D05",
       "stock": 0,
-      "source": "supplier_search",
+      "source": "manufacturer_family",
       "procurement_status": "external_procurement_required",
-      "package": "Kailh Choc V2 through-hole low-profile keyboard switch",
+      "package": "Kailh Choc V2 through-hole PCB-mount switch",
       "footprint": "Kailh_Choc_V2_PCB_mount",
-      "assembly": {"method": "through_hole", "population": "mounted", "side": "top"},
-      "required_user_evidence": ["Choose red/linear, brown/tactile, or blue/clicky Choc V2 variant."],
-      "supply_risk": "Exact switch variant is design-critical because force, sound, and exact procurement identity differ.",
-      "selection_reason": "User selected the red linear variant to reduce microphone pickup of key noise."
+      "assembly": {
+        "method": "through_hole",
+        "population": "mounted",
+        "side": "top"
+      },
+      "required_user_evidence": [
+        "Procurement reminder only: buy the exact CPG135301D05 red/linear variant."
+      ],
+      "selection_reason": "User selected red/linear; lower click noise reduces mechanical-key contamination of the nearby microphone."
     },
     {
-      "id": "keycap_choc_v2_1u",
+      "id": "keycap_low_profile_1u_mx",
       "role": "keycap",
-      "name": "1u low-profile MX-stem keycap for Kailh Choc V2",
-      "description": "Four 1u low-profile keycaps; blank or custom legend, nominal 18 x 18 mm face envelope.",
-      "designators": ["K1", "K2", "K3", "K4"],
+      "name": "Blank black 1u low-profile MX-stem keycap",
+      "description": "Choc V2-compatible 1u keycap, maximum 18 x 18 mm face and 5.5 mm height above stem reference.",
+      "designators": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
       "quantity": 4,
-      "supplier": "external keyboard-parts supplier",
-      "manufacturer": "TBD",
-      "part_number": "1u Choc V2-compatible MX-stem low-profile keycap",
+      "supplier": "External keyboard-parts supplier",
+      "manufacturer": "Generic",
+      "part_number": "1U-LP-MX-BLACK-18MM",
       "stock": 0,
-      "source": "external_procurement",
+      "source": "mechanical_specification",
       "procurement_status": "external_procurement_required",
-      "assembly": {"method": "not_smt", "population": "mounted", "side": "top"},
-      "required_user_evidence": ["Advisory: exact keycap set/store link before ordering."],
-      "selection_reason": "A bounded low-profile MX-stem 1u keycap specification supports spacing and enclosure clearance."
+      "package": "1u low-profile MX-stem keycap",
+      "assembly": {
+        "method": "not_smt",
+        "population": "mounted",
+        "side": "top"
+      },
+      "required_user_evidence": [
+        "Procurement reminder only: seller must confirm MX stem and maximum 18 x 18 x 5.5 mm envelope."
+      ],
+      "selection_reason": "A bounded generic specification is sufficient for PCB spacing and CAD clearance; legends remain on the display."
+    },
+    {
+      "id": "cap_100nf_0402",
+      "role": "decoupling_and_reset_capacitor",
+      "name": "Samsung CL05B104KO5NNNC 100 nF 16 V X7R 0402",
+      "description": "MIC1 and U2 VDD decoupling, display VDD decoupling and LCD reset RC capacitor.",
+      "designators": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "quantity": 4,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "Samsung Electro-Mechanics",
+      "part_number": "C1525",
+      "mpn": "CL05B104KO5NNNC",
+      "lcsc_code": "C1525",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "C_0402_1005Metric",
+      "stock": 47474801,
+      "unit_price_cny": 0.0324,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/1877.html",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Local microphone/op-amp bypass plus display and reset support; Basic library minimizes assembly cost."
+    },
+    {
+      "id": "cap_1uf_0402_audio",
+      "role": "microphone_coupling_and_bias_capacitor",
+      "name": "Samsung CL05A105KA5NQNC 1 uF 25 V 0402",
+      "description": "ZTS6216 AC coupling and 1.65 V virtual-ground filtering.",
+      "designators": [
+        "C5",
+        "C6"
+      ],
+      "quantity": 2,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "Samsung Electro-Mechanics",
+      "part_number": "C52923",
+      "mpn": "CL05A105KA5NQNC",
+      "lcsc_code": "C52923",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "C_0402_1005Metric",
+      "stock": 14469146,
+      "unit_price_cny": 0.164,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/53938.html",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Defines the low-frequency coupling and stabilizes the half-supply microphone bias node."
+    },
+    {
+      "id": "cap_10nf_0402_audio",
+      "role": "adc_antialias_capacitor",
+      "name": "Samsung CL05B103KB5NNNC 10 nF 50 V 0402",
+      "description": "With R8=1 kOhm forms an approximately 15.9 kHz ADC input low-pass filter.",
+      "designators": [
+        "C7"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "Samsung Electro-Mechanics",
+      "part_number": "C15195",
+      "mpn": "CL05B103KB5NNNC",
+      "lcsc_code": "C15195",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "C_0402_1005Metric",
+      "stock": 10185126,
+      "unit_price_cny": 0.0406,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/15869.html",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Provides first-order voice-band anti-alias filtering before the XIAO ADC."
+    },
+    {
+      "id": "res_100k_0402_audio",
+      "role": "microphone_bias_and_gain_resistor",
+      "name": "UNI-ROYAL 0402WGF1003TCE 100 kOhm 1% 0402",
+      "description": "Virtual-ground divider, AC-input bias and preamp feedback network.",
+      "designators": [
+        "R3",
+        "R4",
+        "R5",
+        "R7"
+      ],
+      "quantity": 4,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "UNI-ROYAL",
+      "part_number": "C25741",
+      "mpn": "0402WGF1003TCE",
+      "lcsc_code": "C25741",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "R_0402_1005Metric",
+      "stock": 34787,
+      "unit_price_cny": 0.0095,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/26484.html",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Creates 1.65 V bias and approximately 101 V/V non-inverting gain with the 1 kOhm gain resistor."
+    },
+    {
+      "id": "res_1k_0402_audio",
+      "role": "microphone_gain_and_adc_filter_resistor",
+      "name": "UNI-ROYAL 0402WGF1001TCE 1 kOhm 1% 0402",
+      "description": "Preamp gain leg and ADC low-pass series resistor.",
+      "designators": [
+        "R6",
+        "R8"
+      ],
+      "quantity": 2,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "UNI-ROYAL",
+      "part_number": "C11702",
+      "mpn": "0402WGF1001TCE",
+      "lcsc_code": "C11702",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "R_0402_1005Metric",
+      "stock": 255651,
+      "unit_price_cny": 0.0103,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/12256.html",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Sets the preamp gain and isolates the op-amp from the ADC filter capacitance."
+    },
+    {
+      "id": "res_10k_0402",
+      "role": "lcd_reset_pullup",
+      "name": "UNI-ROYAL 0402WGF1002TCE 10 kOhm 1% 0402",
+      "description": "Pulls LCD RESET_N to 3.3 V; C3 creates power-on reset delay.",
+      "designators": [
+        "R1"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "UNI-ROYAL",
+      "part_number": "C25744",
+      "mpn": "0402WGF1002TCE",
+      "lcsc_code": "C25744",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "R_0402_1005Metric",
+      "stock": 2438,
+      "unit_price_cny": 0.0119,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/26487.html",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "top",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO."
+    },
+    {
+      "id": "res_27r_1206_backlight",
+      "role": "lcd_backlight_current_limit",
+      "name": "UNI-ROYAL 1206W4F270JT5E 27 Ohm 1% 250 mW 1206",
+      "description": "Feeds LCD LEDA from USB VBUS; calculated current is about 57-91 mA over 4.75-5.25 V USB and 2.8-3.2 V LED range, below the 120 mA panel maximum.",
+      "designators": [
+        "R2"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "UNI-ROYAL",
+      "part_number": "1206W4F270JT5E",
+      "mpn": "1206W4F270JT5E",
+      "jlc_smt_library": "unknown",
+      "procurement_status": "supplier_confirmation_required",
+      "package": "1206",
+      "footprint": "R_1206_3216Metric",
+      "stock": 0,
+      "source": "manufacturer_part_number",
+      "assembly": {
+        "method": "manual",
+        "population": "mounted",
+        "side": "top"
+      },
+      "required_user_evidence": [
+        "Procurement reminder only: confirm an exact 27 Ohm, 1%, at least 0.25 W 1206 resistor before ordering."
+      ],
+      "selection_reason": "Static always-on backlight avoids an unavailable AW9364 while remaining inside the panel's stated current limit; no brightness control is required."
     }
   ],
   "alternatives": [
-    {"role": "mcu_module", "part_number": "Seeed Studio XIAO RP2040", "reason": "Native USB/TinyUSB alternative, but PDM capture and composite audio firmware require more implementation risk."},
-    {"role": "low_profile_mechanical_switch", "part_number": "Kailh Choc V1", "reason": "Thinner mature alternative, but requires Choc V1 keycaps and a different footprint/stem ecosystem."}
+    {
+      "role": "mcu_module",
+      "part_number": "Seeed Studio XIAO RP2040",
+      "reason": "Native USB alternative, but ESP32-S3 already meets the ADC and UAC requirements."
+    },
+    {
+      "role": "microphone_preamplifier",
+      "part_number": "MCP6001T-I/OT / C116490",
+      "reason": "Lower-bandwidth backup op amp; TLV9061 offers lower noise, more gain-bandwidth margin and lower supplier price."
+    },
+    {
+      "role": "display_fpc_connector",
+      "part_number": "AFC01-S08FCA-00 / C262657",
+      "reason": "Lower-cost 8P 0.5 mm bottom-contact alternative requiring separate footprint and contact-orientation qualification."
+    }
   ],
   "supply_risks": [
-    {"severity": "high", "item": "digital_microphone", "mitigation": "Resolve an exact PDM/I2S MEMS microphone with datasheet, JLC identity, acoustic port orientation and land pattern."},
-    {"severity": "high", "item": "display_fpc_connector", "mitigation": "Resolve exact 8-pin connector only after confirming FPC pitch and contact-face geometry from the display drawing."},
-    {"severity": "medium", "item": "xiao_external_procurement", "mitigation": "Buy exact XIAO ESP32S3 from Seeed or authorized distributor; JLC search only found customer-consigned rows."},
-    {"severity": "medium", "item": "keycap_supplier", "mitigation": "Choose a real Choc V2-compatible 1u low-profile keycap set before mechanical release."}
+    {
+      "severity": "medium",
+      "item": "XIAO, display, switches and keycaps are externally procured",
+      "mitigation": "Exact electrical/mechanical identities are fixed; record seller links at ordering time."
+    },
+    {
+      "severity": "medium",
+      "item": "ZTS6216, TLV9061 and Hirose FPC connector are JLC Extended parts",
+      "mitigation": "Accept Extended placement cost; do not substitute Basic lookalikes without footprint and circuit revalidation."
+    },
+    {
+      "severity": "medium",
+      "item": "Analog microphone path uses the ESP32-S3 internal ADC",
+      "mitigation": "Prototype-validate noise floor, clipping and 48 kHz capture; preserve the TLV9061 gain and 15.9 kHz anti-alias filter as the baseline."
+    },
+    {
+      "severity": "low",
+      "item": "Backlight uses a resistor rather than constant-current IC",
+      "mitigation": "The 27 Ohm value bounds current below the 120 mA maximum across stated USB and LED voltage ranges; brightness variation is accepted for this revision."
+    }
   ],
-  "unresolved_items": ["digital_microphone exact MPN", "display FPC connector exact MPN and contact orientation", "Kailh Choc V2 feel/color"],
-  "confidence": "medium"
+  "unresolved_items": [],
+  "confidence": "high"
 }

@@ -35,7 +35,7 @@
     {
       "id": "microphone_acoustic_port",
       "face": "top",
-      "owner": "ICS-43434 bottom port through carrier PCB",
+      "owner": "ZTS6216 bottom port through carrier PCB",
       "pcb_hole_diameter_mm": 0.5,
       "enclosure_hole_diameter_target_mm": 1.5,
       "clearance_mm": 2.0,
@@ -78,21 +78,25 @@
     "backlight": "VBUS through 27 Ohm 1% 0.25 W; no dimming in revision 1"
   },
   "microphone_interface": {
-    "bom_id": "microphone_ics43434",
+    "bom_id": "microphone_zts6216",
     "supply": "3.3 V",
-    "bus": "I2S, three GPIOs: SCK, WS, SD",
-    "channel_select": "strap L/R for one fixed mono channel",
-    "decoupling": "100 nF X7R at VDD with short same-layer traces",
-    "land_pattern": "1:1 to package pads; minimum 0.5 mm PCB acoustic hole; no solder paste over port",
-    "evidence": "references/suppliers/c5656610/c5656610-datasheet.pdf pages 15 and 17"
+    "output": "analog OUT pin, 100 Ohm nominal source impedance, approximately 0.9 V DC output at 1.5 V supply per datasheet",
+    "adc": "one XIAO ESP32S3 ADC-capable GPIO",
+    "preamplifier_bom_id": "mic_preamp_tlv9061",
+    "preamplifier": "AC-coupled non-inverting TLV9061 biased at 1.65 V, nominal gain 101 V/V using 100 kOhm feedback and 1 kOhm gain leg",
+    "antialias_filter": "1 kOhm series plus 10 nF to ground at ADC input, nominal 15.9 kHz pole",
+    "decoupling": "100 nF X7R at ZTS6216 and TLV9061 VDD pins; 1 uF on the 1.65 V virtual-ground node",
+    "land_pattern": "1:1 to 2.75 x 1.85 mm package pads; 0.50 mm bottom acoustic port; no solder paste over port",
+    "pins": ["1 OUT", "2 GND", "3 GND", "4 VDD"],
+    "evidence": "references/suppliers/c481302/c481302-datasheet.pdf pages 2, 3, 6 and 7"
   },
   "gpio_budget": {
     "display_spi": 4,
-    "microphone_i2s": 3,
+    "microphone_adc": 1,
     "keys_direct_gpio": 4,
-    "total": 11,
+    "total": 9,
     "available_xiao_gpio": 11,
-    "spare": 0,
+    "spare": 2,
     "display_reset": "hardware RC; no GPIO",
     "backlight_control": "always on; no GPIO"
   },
@@ -104,7 +108,7 @@
   ],
   "assembly_constraints": [
     "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
-    "Keep LCD/backlight current paths away from MIC1, its acoustic opening, and I2S traces.",
+    "Keep LCD/backlight and USB current paths away from MIC1, U2, the 1.65 V bias node and the analog ADC trace.",
     "Place MIC1 directly over the PCB sound hole and use a sealed short path to the enclosure opening.",
     "Place J1 so the display FPC contacts face the PCB and the cable can be inserted without a sharp fold.",
     "Use the XIAO onboard USB-C receptacle; do not add a second host USB connector.",
@@ -112,7 +116,7 @@
   ],
   "open_items": [],
   "risks": [
-    {"severity": "medium", "item": "No spare exposed GPIO", "mitigation": "Hardware-reset LCD and static backlight are fixed requirements; any added control needs an I/O expander or revised MCU module."},
+    {"severity": "medium", "item": "Analog microphone uses the ESP32-S3 internal ADC", "mitigation": "Prototype-validate noise, gain, clipping and 48 kHz DMA capture; two spare GPIOs remain after the change."},
     {"severity": "medium", "item": "Microphone close to mechanical keys", "mitigation": "Use red linear switches, isolate the acoustic path, place MIC1 away from switch bodies, and validate key-noise pickup on prototype."},
     {"severity": "low", "item": "Resistor-fed backlight brightness varies with USB and LED voltage", "mitigation": "Current remains below the panel maximum; qualify visual uniformity on prototype before considering a constant-current revision."}
   ]
