@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "title": "Credit Card Four-Key USB Macro Pad",
+  "manufacturing": {
+    "name": "ordinary-2layer-fr4-1oz",
+    "layers": 2,
+    "copperThicknessOz": 1,
+    "defaultTraceWidthMm": 0.3,
+    "absoluteMinimumTraceWidthMm": 0.2,
+    "absoluteMinimumCopperClearanceMm": 0.15,
+    "preferredRoutingClearanceMm": 0.25,
+    "copperToBoardEdgeMm": 1,
+    "via": { "diameterMm": 0.6, "drillMm": 0.3 },
+    "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
+  },
+  "netClasses": {
+    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "ground": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "sensitive_analog": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.3, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "clock_high_speed": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 }
+  },
+  "nets": {
+    "GND": { "class": "ground", "rationale": "Two-layer return plane for USB power, display, keys, and analog audio." },
+    "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
+    "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
+    "KEY1": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
+    "KEY2": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
+    "KEY3": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
+    "KEY4": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
+    "LCD_MOSI": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI data trace; no controlled-impedance requirement in this revision." },
+    "LCD_SCK": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI clock; keep away from the microphone block and route over continuous ground." },
+    "LCD_CS_N": { "class": "cpu_io", "rationale": "LCD chip select." },
+    "LCD_D_C": { "class": "cpu_io", "rationale": "LCD data/command select." },
+    "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node." },
+    "LCD_LEDA": { "class": "power", "rationale": "Resistor-limited LCD backlight current is below 120 mA; ordinary 0.5 mm power routing is sufficient for this short run." },
+    "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling." },
+    "MIC_AC": { "class": "sensitive_analog", "rationale": "AC-coupled microphone signal biased at VBIAS." },
+    "VBIAS": { "class": "sensitive_analog", "rationale": "Filtered 1.65 V virtual ground for the preamplifier." },
+    "MIC_FB": { "class": "sensitive_analog", "rationale": "TLV9061 feedback node; minimize loop area." },
+    "MIC_AMP": { "class": "sensitive_analog", "rationale": "Amplified microphone signal before anti-alias resistor." },
+    "MIC_ADC": { "class": "sensitive_analog", "rationale": "Filtered ADC input to XIAO D8." },
+    "SPARE_D9": { "class": "cpu_io", "rationale": "Reserved XIAO GPIO test access." },
+    "SPARE_D10": { "class": "cpu_io", "rationale": "Reserved XIAO GPIO test access." }
+  },
+  "footprintExceptions": [],
+  "copperPours": {
+    "enabled": true,
+    "groundLayers": ["top", "bottom"],
+    "clearanceMm": 0.3,
+    "padMarginMm": 0.3,
+    "traceMarginMm": 0.3,
+    "boardEdgeMarginMm": 1,
+    "cutoutMarginMm": 0.5,
+    "removeIslands": true
+  },
+  "stitchingVias": [],
+  "keepouts": [
+    {
+      "name": "U1_ANTENNA_COPPER_KEEPOUT",
+      "shape": "rect",
+      "xMm": 0,
+      "yMm": -4.0,
+      "widthMm": 19,
+      "heightMm": 6,
+"rotationDeg": 0,
+      "layers": ["top", "bottom"],
+      "purpose": "antenna",
+      "rationale": "Keep carrier copper clear beneath the XIAO ESP32S3 antenna end."
+    }
+  ],
+  "allowedOverlaps": [],
+  "allowedViaInPadComponents": [],
+  "pcbRuleExceptions": [],
+  "componentOrientations": [
+    {
+      "componentRef": "U1",
+      "nativeOpening": "up",
+      "targetOpening": "down",
+      "expectedLayer": "bottom"
+    },
+    {
+      "componentRef": "J1",
+      "nativeOpening": "up",
+      "targetOpening": "up",
+      "expectedLayer": "bottom"
+    }
+  ],
+  "bomBindings": [
+    { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
+    { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false }
+  ]
+}
