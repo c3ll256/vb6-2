@@ -1,0 +1,32 @@
+{
+  "product_class": "usb_desktop_input_device",
+  "form_factor": "landscape ID-1 credit-card footprint with upper display and four-key lower row",
+  "manufacturing_method": "custom PCB with protective enclosure",
+  "details": {
+    "overall_envelope_mm": {
+      "width_max": 85.6,
+      "height_max": 53.98,
+      "body_thickness_target_max": 12
+    },
+    "orientation": "landscape",
+    "controller_family": "Seeed Studio XIAO",
+    "controller_exact_model": "to be selected during hardware phase",
+    "display_target": "LT225C7-C08-03 2.25-inch TFT LCD module",
+    "display_touch_required": false,
+    "key_count": 4,
+    "key_layout": "single horizontal row below display",
+    "usb_connector": "USB-C",
+    "usb_functions": [
+      "USB HID keyboard",
+      "USB Audio Class mono microphone"
+    ],
+    "power": "USB VBUS only; no battery",
+    "microphone_minimum_audio": "mono 16-bit 16 kHz",
+    "microphone_preferred_audio": "mono 16-bit 48 kHz"
+  },
+  "open_questions": [],
+  "notes": "Credit-card size is interpreted as the 85.60 mm x 53.98 mm XY envelope, not credit-card thickness. Landscape, wired-only, no touch, no battery, and four keys in one row are explicit draft assumptions visible in product/prd.md.",
+  "confirmed_by_user": false,
+  "confirmed_at": "",
+  "prd_path": "product/prd.md"
+}
