@@ -178,10 +178,10 @@
       "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
     },
     {
-      "id": "switch_kailh_choc_v2_red",
+      "id": "switch_kailh_choc_v1_red",
       "role": "low_profile_mechanical_switch",
-      "name": "Kailh Choc V2 Red linear switch",
-      "description": "User-selected quiet linear low-profile MX-stem keyboard switch.",
+      "name": "Kailh Choc v1 Red linear switch",
+      "description": "Externally procured Choc v1 low-profile linear switch, removable through the bottom-side hot-swap socket.",
       "designators": [
         "SW1",
         "SW2",
@@ -191,28 +191,63 @@
       "quantity": 4,
       "supplier": "Kailh / external keyboard-parts supplier",
       "manufacturer": "Kailh",
-      "part_number": "CPG135301D05",
-      "mpn": "CPG135301D05",
+      "part_number": "CPG135001D05",
+      "mpn": "CPG135001D05",
       "stock": 0,
       "source": "manufacturer_family",
       "procurement_status": "external_procurement_required",
-      "package": "Kailh Choc V2 through-hole PCB-mount switch",
-      "footprint": "Kailh_Choc_V2_PCB_mount",
+      "package": "Kailh Choc v1 PCB switch",
+      "footprint": "choc_v1_hotswap mechanical holes",
       "assembly": {
-        "method": "through_hole",
+        "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder only: buy the exact CPG135301D05 red/linear variant."
+        "Procurement reminder only: buy the exact CPG135001D05 Choc v1 red/linear variant."
       ],
-      "selection_reason": "User selected red/linear; lower click noise reduces mechanical-key contamination of the nearby microphone."
+      "selection_reason": "Choc v1 is required for the verified CPG135001S30 hot-swap socket geometry; red linear action minimizes microphone contamination."
     },
     {
-      "id": "keycap_low_profile_1u_mx",
+      "id": "socket_kailh_choc_v1_hotswap",
+      "role": "keyboard_hotswap_socket",
+      "name": "Kailh CPG135001S30 Choc v1 hot-swap socket",
+      "description": "Bottom-side SMT hot-swap socket for Kailh Choc v1 switches.",
+      "designators": [
+        "HS_KEY1",
+        "HS_KEY2",
+        "HS_KEY3",
+        "HS_KEY4"
+      ],
+      "quantity": 4,
+      "supplier": "External keyboard-parts supplier",
+      "manufacturer": "Kailh",
+      "part_number": "CPG135001S30",
+      "mpn": "CPG135001S30",
+      "supplier_part_number": "C5333465",
+      "lcsc": "C5333465",
+      "source": "manufacturer_part_number",
+      "procurement_status": "external_procurement_required",
+      "product_url": "https://item.szlcsc.com/6095027.html",
+      "package": "Choc v1 hot-swap socket",
+      "footprint": "choc_v1_hotswap",
+      "footprint_family": "choc_v1_hotswap",
+      "assembly": {
+        "method": "manual",
+        "population": "mounted",
+        "side": "bottom",
+        "risk_class": "mechanical_smt"
+      },
+      "required_user_evidence": [
+        "Procurement reminder: purchase exact Kailh CPG135001S30 Choc v1 hot-swap sockets; do not substitute an MX socket."
+      ],
+      "selection_reason": "Verified project-library Choc v1 hot-swap geometry; socket is placed on the bottom service side."
+    },
+    {
+      "id": "keycap_low_profile_1u_choc_v1",
       "role": "keycap",
-      "name": "Blank black 1u low-profile MX-stem keycap",
-      "description": "Choc V2-compatible 1u keycap, maximum 18 x 18 mm face and 5.5 mm height above stem reference.",
+      "name": "Blank black 1u Kailh Choc v1 keycap",
+      "description": "Choc v1 stem-compatible 1u low-profile keycap, maximum 18 x 18 mm face.",
       "designators": [
         "K1",
         "K2",
@@ -222,18 +257,18 @@
       "quantity": 4,
       "supplier": "External keyboard-parts supplier",
       "manufacturer": "Generic",
-      "part_number": "1U-LP-MX-BLACK-18MM",
+      "part_number": "1U-CHOC-V1-BLACK-18MM",
       "stock": 0,
       "source": "mechanical_specification",
       "procurement_status": "external_procurement_required",
-      "package": "1u low-profile MX-stem keycap",
+      "package": "1u Choc v1 keycap",
       "assembly": {
         "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder only: seller must confirm MX stem and maximum 18 x 18 x 5.5 mm envelope."
+        "Procurement reminder: seller must confirm Kailh Choc v1 stem compatibility and maximum 18 x 18 mm face."
       ],
       "selection_reason": "A bounded generic specification is sufficient for PCB spacing and CAD clearance; legends remain on the display."
     },

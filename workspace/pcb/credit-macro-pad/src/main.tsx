@@ -16,7 +16,7 @@ import {
   netPropsFor,
   pcbRules,
 } from "./lib/replicator-pcb";
-import { XiaoEsp32S3 } from "./lib/footprints/index";
+import { HotSwapKeySwitch, XiaoEsp32S3 } from "./lib/footprints/index";
 
 const smtSide = sides.smtAssembly;
 
@@ -131,21 +131,14 @@ const DisplayEnvelope = () => (
 const KeySwitch = ({ name, index }: { name: string; index: number }) => {
   const p = keyCenters[index];
   return (
-    <chip
+    <HotSwapKeySwitch
       name={name}
-      displayName="Kailh Choc V2 Red"
-      manufacturerPartNumber="CPG135301D05"
-      layer={sides.user}
+      switch="choc_v1"
+      socket="kailh_choc_v1"
+      orientation="south"
       pcbX={p.x}
       pcbY={p.y}
-      // Placement-only proxy: the runtime KiCad cache does not carry the
-      // selected Choc V2 footprint. This known library footprint preserves a
-      // conservative 1u switch envelope for the first visual layout only;
-      // fabrication remains blocked until an exact CPG135301D05 source-owned
-      // footprint abstraction is added.
-      footprint="kicad:Button_Switch_Keyboard/SW_Cherry_MX_1.00u_PCB"
-      pinLabels={{ pin1: "1", pin2: "2" }}
-      connections={{ pin1: `net.KEY${index + 1}`, pin2: "net.GND" }}
+      connections={{ "1": `net.KEY${index + 1}`, "2": "net.GND" }}
     />
   );
 };
@@ -162,7 +155,7 @@ export default () => (
 
     {/* User-facing side: only the external LCD envelope and through-hole keys. */}
     <DisplayEnvelope />
-    {["SW1", "SW2", "SW3", "SW4"].map((name, index) => (
+    {["KEY1", "KEY2", "KEY3", "KEY4"].map((name, index) => (
       <KeySwitch key={name} name={name} index={index} />
     ))}
 
@@ -271,10 +264,10 @@ export default () => (
     <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C2" value="100nF" lcsc="C1525" x={analog.opampDecoupling.x} y={analog.opampDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
-    <C0402 name="C4" value="100nF" lcsc="C1525" x={25.0} y={19.5} a="net.V3V3" b="net.GND" />
+    <C0402 name="C4" value="100nF" lcsc="C1525" x={6.0} y={23.0} a="net.V3V3" b="net.GND" />
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
-    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.biasRow[3].x} y={analog.biasRow[3].y} a="net.MIC_RAW" b="net.MIC_AC" />
-    <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.gainRow[3].x} y={analog.gainRow[3].y} a="net.MIC_ADC" b="net.GND" />
+    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micAcCoupling.x} y={analog.micAcCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" />
+    <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.adcFilterCap.x} y={analog.adcFilterCap.y} a="net.MIC_ADC" b="net.GND" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
     <resistor
@@ -288,7 +281,7 @@ export default () => (
     />
     <R0402 name="R3" value="100k" lcsc="C25741" x={analog.biasRow[0].x} y={analog.biasRow[0].y} a="net.V3V3" b="net.VBIAS" />
     <R0402 name="R4" value="100k" lcsc="C25741" x={analog.biasRow[1].x} y={analog.biasRow[1].y} a="net.VBIAS" b="net.GND" />
-    <R0402 name="R5" value="100k" lcsc="C25741" x={analog.gainRow[0].x} y={analog.gainRow[0].y} a="net.MIC_AC" b="net.VBIAS" />
+    <R0402 name="R5" value="100k" lcsc="C25741" x={analog.micAcBias.x} y={analog.micAcBias.y} a="net.MIC_AC" b="net.VBIAS" />
     <R0402 name="R6" value="1k" lcsc="C11702" x={analog.gainRow[1].x} y={analog.gainRow[1].y} a="net.MIC_FB" b="net.VBIAS" />
     <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
     <R0402 name="R8" value="1k" lcsc="C11702" x={18.8} y={13.9} a="net.MIC_AMP" b="net.MIC_ADC" />
