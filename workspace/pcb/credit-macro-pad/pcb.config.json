@@ -9,12 +9,12 @@
     "absoluteMinimumTraceWidthMm": 0.2,
     "absoluteMinimumCopperClearanceMm": 0.15,
     "preferredRoutingClearanceMm": 0.25,
-    "copperToBoardEdgeMm": 0.5,
+    "copperToBoardEdgeMm": 1,
     "via": { "diameterMm": 0.6, "drillMm": 0.3 },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
   "netClasses": {
-    "signal": { "nominalWidthMm": 0.2, "minimumWidthMm": 0.2, "clearanceMm": 0.15, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
@@ -27,8 +27,6 @@
     "GND": { "class": "ground", "rationale": "Two-layer return plane for USB power, display, keys, and analog audio." },
     "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
     "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
-    "LCD_VDD": { "class": "power", "rationale": "Short local LCD 3.3 V branch after R9; isolates the fine-pitch J1 pin-7 fan-out and includes local C4 decoupling." },
-    "LCD_GND": { "class": "signal", "rationale": "Short local LCD return branch before R10; the signal class uses the declared 0.20 mm/0.15 mm fabrication minima to escape between adjacent 0.5 mm-pitch J1 pads." },
     "KEY1": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY2": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY3": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
@@ -40,20 +38,17 @@
     "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node." },
     "LCD_LEDA": { "class": "power", "rationale": "Resistor-limited LCD backlight current is below 120 mA; ordinary 0.5 mm power routing is sufficient for this short run." },
     "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling." },
-    "MIC_VDD": { "class": "signal", "rationale": "Low-current, short locally decoupled microphone supply branch after R11; 0.3 mm routing provides safe acoustic-cutout clearance." },
-    "MIC_AC_LOCAL": { "class": "sensitive_analog", "rationale": "Short local AC-coupled microphone escape from C6 to R12 before joining the board-wide MIC_AC net." },
-    "MIC_GND": { "class": "sensitive_analog", "rationale": "Local MIC1 and C1 return branch joined to global GND through right-side R13 outside the XIAO PTH rows." },
     "MIC_AC": { "class": "sensitive_analog", "rationale": "AC-coupled microphone signal biased at VBIAS." },
     "VBIAS": { "class": "sensitive_analog", "rationale": "Filtered 1.65 V virtual ground for the preamplifier." },
     "MIC_FB": { "class": "sensitive_analog", "rationale": "TLV9061 feedback node; minimize loop area." },
     "MIC_AMP": { "class": "sensitive_analog", "rationale": "Amplified microphone signal before anti-alias resistor." },
     "MIC_ADC": { "class": "sensitive_analog", "rationale": "Filtered ADC input to XIAO D8." },
-    "SPARE_D1": { "class": "cpu_io", "rationale": "Reserved XIAO GPIO after routing-driven key remap." },
-    "SPARE_D2": { "class": "cpu_io", "rationale": "Reserved XIAO GPIO after routing-driven key remap." }
+    "SPARE_D9": { "class": "cpu_io", "rationale": "Reserved XIAO GPIO test access." },
+    "SPARE_D10": { "class": "cpu_io", "rationale": "Reserved XIAO GPIO test access." }
   },
   "footprintExceptions": [],
   "copperPours": {
-    "enabled": false,
+    "enabled": true,
     "groundLayers": ["top", "bottom"],
     "clearanceMm": 0.3,
     "padMarginMm": 0.3,
@@ -67,7 +62,7 @@
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
       "shape": "rect",
-      "xMm": 20.2,
+      "xMm": 21.0,
       "yMm": 9.0,
       "widthMm": 6,
       "heightMm": 19,
@@ -97,7 +92,7 @@
   "bomBindings": [
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
     { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
-    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_hanelectricity_mx_red", "populate": true },
-    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_cpg151101s11_16_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true }
+    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_kailh_choc_v1_red", "populate": true },
+    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_kailh_choc_v1_hotswap", "footprintFamily": "choc_v1_hotswap", "populate": true }
   ]
 }
