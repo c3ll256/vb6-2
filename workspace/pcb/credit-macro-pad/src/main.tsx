@@ -16,9 +16,63 @@ import {
   netPropsFor,
   pcbRules,
 } from "./lib/replicator-pcb";
-import { HotSwapKeySwitch, XiaoEsp32S3 } from "./lib/footprints/index";
+import { HotSwapKeySwitch } from "./components/HotSwapKeySwitch";
+import { XiaoEsp32S3 } from "./components/XiaoEsp32S3";
 
 const smtSide = sides.smtAssembly;
+
+const passive0402Footprint = (kind: "resistor" | "capacitor") => (
+  <footprint>
+    <smtpad
+      name="1"
+      shape="rect"
+      width="0.54mm"
+      height="0.64mm"
+      pcbX="-0.51mm"
+      pcbY="0mm"
+      layer={smtSide}
+      portHints={["1", "pin1"]}
+    />
+    <smtpad
+      name="2"
+      shape="rect"
+      width="0.54mm"
+      height="0.64mm"
+      pcbX="0.51mm"
+      pcbY="0mm"
+      layer={smtSide}
+      portHints={["2", "pin2"]}
+    />
+    {kind === "capacitor" ? (
+      <silkscreenpath
+        strokeWidth="0.15mm"
+        route={[
+          { x: "0.51mm", y: "0.72mm" },
+          { x: "-0.98mm", y: "0.72mm" },
+          { x: "-0.98mm", y: "-0.72mm" },
+          { x: "0.51mm", y: "-0.72mm" },
+        ]}
+      />
+    ) : (
+      <>
+        <silkscreenline
+          x1="-0.153641mm"
+          y1="0.38mm"
+          x2="0.153641mm"
+          y2="0.38mm"
+          strokeWidth="0.15mm"
+        />
+        <silkscreenline
+          x1="-0.153641mm"
+          y1="-0.38mm"
+          x2="0.153641mm"
+          y2="-0.38mm"
+          strokeWidth="0.15mm"
+        />
+      </>
+    )}
+  </footprint>
+);
 
 const PcbRuleElements = () => (
   <>
@@ -56,7 +110,7 @@ const R0402 = ({
   <resistor
     name={name}
     resistance={value}
-    footprint="0402"
+    footprint={passive0402Footprint("resistor")}
     supplierPartNumbers={{ jlcpcb: [lcsc] }}
     layer={smtSide}
     pcbX={x}
@@ -86,7 +140,7 @@ const C0402 = ({
   <capacitor
     name={name}
     capacitance={value}
-    footprint="0402"
+    footprint={passive0402Footprint("capacitor")}
     supplierPartNumbers={{ jlcpcb: [lcsc] }}
     layer={smtSide}
     pcbX={x}
