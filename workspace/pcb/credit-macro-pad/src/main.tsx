@@ -138,7 +138,6 @@ const KeySwitch = ({ name, index }: { name: string; index: number }) => {
       layer={sides.user}
       pcbX={p.x}
       pcbY={p.y}
-      pcbRotation={0}
       // Placement-only proxy: the runtime KiCad cache does not carry the
       // selected Choc V2 footprint. This known library footprint preserves a
       // conservative 1u switch envelope for the first visual layout only;
