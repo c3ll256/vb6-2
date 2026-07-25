@@ -72,6 +72,7 @@ declare module 'react' {
       courtyardrect: any;
       footprint: any;
       platedhole: any;
+      smtpad: any;
       silkscreenrect: any;
       silkscreencircle: any;
       silkscreentext: any;
@@ -188,27 +189,15 @@ export type XiaoEsp32S3Mounting = 'through_hole_header' | 'direct_castellated_ha
 
 function renderPin(pin: PinRow, x_mm: number, key: string, mounting: XiaoEsp32S3Mounting) {
   if (mounting === 'direct_castellated_hand_solder') {
-    const side = x_mm < 0 ? -1 : 1;
-    const holeOffsetMm =
-      -side * XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.holeOffsetMm;
-    const padCenterX = x_mm - holeOffsetMm;
+    const land = XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.rectPadMm;
     return (
-      <platedhole
+      <smtpad
         key={key}
         name={pin.name}
-        shape="circular_hole_with_rect_pad"
-        holeDiameter={mm(XIAO_ESP32S3_METADATA.holeDiameterMm)}
-        rectPadWidth={mm(
-          XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.rectPadMm.x,
-        )}
-        rectPadHeight={mm(
-          XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.rectPadMm.y,
-        )}
-        rectBorderRadius="0.25mm"
-        holeOffsetX={mm(holeOffsetMm)}
-        holeOffsetY="0mm"
-        solderMaskMargin="0.08mm"
-        pcbX={mm(padCenterX)}
+        shape="rect"
+        width={mm(land.x)}
+        height={mm(land.y)}
+        pcbX={mm(x_mm)}
         pcbY={mm(pin.y_mm)}
         portHints={pin.portHints}
       />

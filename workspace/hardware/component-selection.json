@@ -177,10 +177,10 @@
       "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
     },
     {
-      "id": "switch_kailh_choc_v1_red",
-      "role": "low_profile_mechanical_switch",
-      "name": "Kailh Choc V1 Red linear switch",
-      "description": "Low-profile red linear switch installed without solder into the paired Choc hot-swap socket.",
+      "id": "switch_hanelectricity_mx_red",
+      "role": "mx_mechanical_switch",
+      "name": "HanElectricity CPG151101D05 MX-compatible red linear switch",
+      "description": "MX-compatible 45 gf red linear switch installed without solder into the paired CPG151101S11-16 hot-swap socket.",
       "designators": [
         "SW_KEY1",
         "SW_KEY2",
@@ -188,32 +188,35 @@
         "SW_KEY4"
       ],
       "quantity": 4,
-      "supplier": "LCSC / external keyboard-parts supplier",
-      "manufacturer": "Kailh",
-      "part_number": "C400229",
-      "mpn": "CPG135001D01",
-      "lcsc_code": "C400229",
-      "stock": 0,
+      "supplier": "LCSC",
+      "manufacturer": "HanElectricity(瀚源)",
+      "part_number": "C49234236",
+      "mpn": "CPG151101D05",
+      "lcsc_code": "C49234236",
+      "stock": 1968,
+      "unit_price_cny": 0.691,
       "source": "lcsc",
       "procurement_status": "external_procurement_required",
-      "product_url": "https://item.szlcsc.com/383994.html",
-      "package": "Kailh Choc V1 PCB-mount switch, 2 pin",
-      "footprint": "choc_v1_hotswap_mechanical",
+      "product_url": "https://item.szlcsc.com/51650378.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20250618/8DA998C78FC54A8D0DC3133B0CD0EDE5.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20250630/7568928FE5FB5343D384EAAD13E81D92.jpg",
+      "package": "MX-compatible PCB-mount switch, 2 contact pins plus center/locating posts",
+      "footprint": "mx_hotswap_mechanical",
       "assembly": {
         "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder: C400229 is currently out of stock at LCSC; buy exact CPG135001D01 from a keyboard-parts supplier."
+        "Procurement reminder only: this removable through-hole switch is purchased separately and inserted after PCBA."
       ],
-      "selection_reason": "User requires hot swap. Choc V1 red preserves a low-profile linear feel and has a verified paired hot-swap socket geometry in the PCB component library."
+      "selection_reason": "User requested MX switches and the exact CPG151101S11-16 socket. CPG151101D05 preserves the prior red linear preference; supplier evidence lists 45 gf force, 2 mm actuation and current stock."
     },
     {
-      "id": "socket_kailh_choc_v1_hotswap",
+      "id": "socket_cpg151101s11_16_mx_hotswap",
       "role": "keyboard_hotswap_socket",
-      "name": "Kailh Choc V1 hot-swap socket",
-      "description": "Bottom-side SMD hot-swap socket for CPG135001D01 Choc V1 switches.",
+      "name": "HanElectricity CPG151101S11-16 MX hot-swap socket",
+      "description": "Bottom-side SMD hot-swap socket requested by the user for MX-compatible switches.",
       "designators": [
         "HS_KEY1",
         "HS_KEY2",
@@ -222,32 +225,35 @@
       ],
       "quantity": 4,
       "supplier": "LCSC / JLCPCB",
-      "manufacturer": "Kailh",
-      "part_number": "C5333465",
-      "mpn": "CPG135001S30",
-      "lcsc_code": "C5333465",
+      "manufacturer": "HanElectricity(瀚源)",
+      "part_number": "C41430893",
+      "mpn": "CPG151101S11-16",
+      "lcsc_code": "C41430893",
       "jlc_smt_library": "extended",
-      "stock": 0,
+      "stock": 270702,
+      "unit_price_cny": 0.274,
       "source": "lcsc",
-      "procurement_status": "external_procurement_required",
-      "product_url": "https://item.szlcsc.com/6095027.html",
-      "package": "SMD Choc hot-swap socket",
-      "footprint": "choc_v1_hotswap",
+      "product_url": "https://item.szlcsc.com/43288200.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20250710/738AA30DD4077641C8955F7AF9614924.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20241025/C21A163A6221491E806B1C600A0CD2C3.jpg",
+      "package": "14.5 x 5.9 mm bottom-side SMD MX hot-swap socket",
+      "footprint": "mx_hotswap",
       "assembly": {
-        "method": "manual",
+        "method": "jlc_smt",
         "population": "mounted",
-        "side": "bottom"
+        "side": "bottom",
+        "jlc_smt_library": "extended"
       },
       "required_user_evidence": [
-        "Procurement reminder: C5333465 is currently out of stock and must be sourced externally or manually assembled when available."
+        "Placement reminder: verify the JLC assembly orientation against the bottom-side pin-1 mark before ordering PCBA."
       ],
-      "selection_reason": "Exact CPG135001S30 identity matches the datasheet-backed local Choc V1 hot-swap geometry. Manual bottom-side assembly avoids claiming current JLC stock readiness."
+      "selection_reason": "Exact user-selected CPG151101S11-16 identity. Supplier detail confirms C41430893, JLC Extended-library status and current stock; the reviewed local geometry follows the supplier drawing."
     },
     {
-      "id": "keycap_low_profile_1u_choc_v1",
+      "id": "keycap_1u_mx",
       "role": "keycap",
-      "name": "Blank black 1u low-profile Choc V1 keycap",
-      "description": "Choc V1-stem 1u keycap, maximum 18 x 18 mm face and 5.5 mm height above stem reference.",
+      "name": "Blank black 1u MX keycap",
+      "description": "MX cross-stem 1u keycap with a maximum 18 x 18 mm face envelope.",
       "designators": [
         "K1",
         "K2",
@@ -257,20 +263,20 @@
       "quantity": 4,
       "supplier": "External keyboard-parts supplier",
       "manufacturer": "Generic",
-      "part_number": "1U-LP-CHOC-V1-BLACK-18MM",
+      "part_number": "1U-MX-BLACK-18MM",
       "stock": 0,
       "source": "mechanical_specification",
       "procurement_status": "external_procurement_required",
-      "package": "1u low-profile Choc V1-stem keycap",
+      "package": "1u MX cross-stem keycap",
       "assembly": {
         "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder: seller must confirm Choc V1 stem and maximum 18 x 18 x 5.5 mm envelope."
+        "Procurement reminder: seller must confirm an MX cross stem and maximum 18 x 18 mm face envelope."
       ],
-      "selection_reason": "Required by the verified Choc V1 hot-swap switch/socket system; legends remain on the display."
+      "selection_reason": "Required by the user-selected MX switch/socket system; legends remain on the display."
     },
     {
       "id": "cap_100nf_0402",
@@ -455,6 +461,40 @@
       "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO."
     },
     {
+      "id": "res_0r_0402_lcd_vdd_link",
+      "role": "lcd_vdd_routing_link",
+      "name": "UNI-ROYAL 0402WGF0000TCE 0 Ohm 0402",
+      "description": "Zero-ohm links for locally routed LCD_VDD, LCD_GND, MIC_VDD, MIC_AC and microphone-ground branches.",
+      "designators": [
+        "R9",
+        "R10",
+        "R11",
+        "R12",
+        "R13"
+      ],
+      "quantity": 5,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "UNI-ROYAL(厚声)",
+      "part_number": "C17168",
+      "mpn": "0402WGF0000TCE",
+      "lcsc_code": "C17168",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "R_0402_1005Metric",
+      "stock": 965371,
+      "unit_price_cny": 0.0079,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/17853.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221228/3CC06E6799A37AF90895E883A5EAF794.jpg",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "bottom",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Creates locally routed LCD and microphone branches so constrained pads join board-wide rails only after a short explicit escape trace."
+    },
+    {
       "id": "res_27r_1206_backlight",
       "role": "lcd_backlight_current_limit",
       "name": "UNI-ROYAL 1206W4F270JT5E 27 Ohm 1% 250 mW 1206",
@@ -533,9 +573,9 @@
       "mitigation": "The 27 Ohm value bounds current below the 120 mA maximum across stated USB and LED voltage ranges; brightness variation is accepted for this revision."
     },
     {
-      "severity": "medium",
-      "item": "Choc V1 switch and hot-swap socket are currently out of stock at LCSC",
-      "mitigation": "Exact identities and geometry are fixed; procure CPG135001D01 and CPG135001S30 externally and manually assemble sockets on the bottom side."
+      "severity": "low",
+      "item": "CPG151101S11-16 is a bottom-side JLC Extended hot-swap socket",
+      "mitigation": "Use exact LCSC C41430893 and verify bottom-side placement rotation against the PCB pin-1 mark; install removable CPG151101D05 MX switches only after PCBA."
     }
   ],
   "unresolved_items": [],

@@ -90,13 +90,13 @@
       "face": "top",
       "count": 4,
       "arrangement": "single horizontal row below display",
-      "switch_bom_id": "switch_kailh_choc_v2_red",
-      "keycap_bom_id": "keycap_low_profile_1u_mx",
+      "switch_bom_id": "switch_hanelectricity_mx_red",
+      "socket_bom_id": "socket_cpg151101s11_16_mx_hotswap",
+      "keycap_bom_id": "keycap_1u_mx",
       "nominal_pitch_mm": 19.0,
       "per_key_max_envelope_mm": {
         "w": 18.0,
-        "h": 18.0,
-        "height_above_stem_reference": 5.5
+        "h": 18.0
       },
       "total_row_envelope_mm": {
         "w": 75.0,
@@ -121,11 +121,13 @@
     "bus": "4-line SPI write-only",
     "controller": "ST7789P3",
     "reset": "10 kOhm pull-up to 3.3 V plus 100 nF to ground",
+    "logic_supply": "3.3 V through R9 0 Ohm link to local LCD_VDD, with C4 100 nF at J1 pin 7",
+    "ground_return": "J1 pin 2 and C4 return through local LCD_GND and R10 0 Ohm to the board ground plane",
     "backlight": "VBUS through 27 Ohm 1% 0.25 W; no dimming in revision 1"
   },
   "microphone_interface": {
     "bom_id": "microphone_zts6216",
-    "supply": "3.3 V",
+    "supply": "3.3 V through R11 0 Ohm local link with C1 100 nF at MIC1",
     "output": "analog OUT pin, 100 Ohm nominal source impedance, approximately 0.9 V DC output at 1.5 V supply per datasheet",
     "adc": "one XIAO ESP32S3 ADC-capable GPIO",
     "preamplifier_bom_id": "mic_preamp_tlv9061",
@@ -151,6 +153,20 @@
     "display_reset": "hardware RC; no GPIO",
     "backlight_control": "always on; no GPIO"
   },
+  "gpio_assignment": {
+    "D0": "KEY1",
+    "D1": "SPARE",
+    "D2": "SPARE",
+    "D3": "KEY4",
+    "D4": "LCD_MOSI",
+    "D5": "LCD_SCK",
+    "D6": "LCD_CS_N",
+    "D7": "LCD_D_C",
+    "D8": "MIC_ADC",
+    "D9": "KEY2",
+    "D10": "KEY3",
+    "rationale": "D9/D10 provide cleaner escape routing for the two middle MX sockets while preserving two spare GPIOs on D1/D2."
+  },
   "firmware_constraints": [
     "Use Espressif TinyUSB-based USB UAC device support on ESP32-S3 and compose it with HID keyboard functionality.",
     "Target mono 48 kHz, 16-bit capture unless firmware validation demonstrates a more compatible rate.",
@@ -164,7 +180,7 @@
     "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
     "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
-    "Use four centered 19 mm-pitch Kailh Choc V1 switches with bottom-side CPG135001S30 hot-swap sockets.",
+    "Use four centered 19 mm-pitch MX-compatible switches with bottom-side CPG151101S11-16 (LCSC C41430893) hot-swap sockets.",
     "Keep the hot-swap socket bodies and SMD pads on the bottom/service side and the removable switches/keycaps on the top/user side.",
     "Place the key row low enough to use the lower board area while retaining at least 4 mm nominal keycap-to-board-edge margin."
   ],

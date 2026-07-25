@@ -42,6 +42,7 @@ const R0402 = ({
   y,
   a,
   b,
+  rotation = 0,
 }: {
   name: string;
   value: string;
@@ -50,6 +51,7 @@ const R0402 = ({
   y: number;
   a: string;
   b: string;
+  rotation?: number;
 }) => (
   <resistor
     name={name}
@@ -59,6 +61,7 @@ const R0402 = ({
     layer={smtSide}
     pcbX={x}
     pcbY={y}
+    pcbRotation={rotation}
     connections={{ pin1: a, pin2: b }}
   />
 );
@@ -117,12 +120,6 @@ const DisplayEnvelope = () => (
           strokeWidth="0.15mm"
         />
         <silkscreentext text="LCD / FRONT-CONTACT FPC WRAPS LEFT TO BACK" pcbX={0} pcbY={0} fontSize="0.8mm" />
-        <courtyardrect
-          pcbX={0}
-          pcbY={0}
-          width={`${display.body.widthMm + 3}mm`}
-          height={`${display.body.heightMm + 3}mm`}
-        />
       </footprint>
     }
   />
@@ -133,8 +130,8 @@ const KeySwitch = ({ name, index }: { name: string; index: number }) => {
   return (
     <HotSwapKeySwitch
       name={`KEY${index + 1}`}
-      switch="choc_v1"
-      socket="kailh_choc_v1"
+      switch="mx"
+      socket="c41430893"
       orientation="south"
       pcbX={p.x}
       pcbY={p.y}
@@ -153,7 +150,7 @@ export default () => (
   >
     <PcbRuleElements />
 
-    {/* User-facing side: LCD envelope plus removable Choc hot-swap switches. */}
+    {/* User-facing side: LCD envelope plus removable MX hot-swap switches. */}
     <DisplayEnvelope />
     {["KEY1", "KEY2", "KEY3", "KEY4"].map((name, index) => (
       <KeySwitch key={name} name={name} index={index} />
@@ -169,16 +166,16 @@ export default () => (
       pcbRotation={xiao.rotationDeg}
       connections={{
         D0: "net.KEY1",
-        D1: "net.KEY2",
-        D2: "net.KEY3",
+        D1: "net.SPARE_D1",
+        D2: "net.SPARE_D2",
         D3: "net.KEY4",
         D4: "net.LCD_MOSI",
         D5: "net.LCD_SCK",
         D6: "net.LCD_CS_N",
         D7: "net.LCD_D_C",
         D8: "net.MIC_ADC",
-        D9: "net.SPARE_D9",
-        D10: "net.SPARE_D10",
+        D9: "net.KEY2",
+        D10: "net.KEY3",
         VBUS: "net.VBUS",
         GND: "net.GND",
         V3V3: "net.V3V3",
@@ -207,12 +204,12 @@ export default () => (
       }}
       connections={{
         pin1: "net.LCD_LEDA",
-        pin2: "net.GND",
+        pin2: "net.LCD_GND",
         pin3: "net.LCD_RESET_N",
         pin4: "net.LCD_D_C",
         pin5: "net.LCD_MOSI",
         pin6: "net.LCD_SCK",
-        pin7: "net.V3V3",
+        pin7: "net.LCD_VDD",
         pin8: "net.LCD_CS_N",
       }}
     />
@@ -236,9 +233,9 @@ export default () => (
       pinLabels={{ pin1: "OUT", pin2: "GND1", pin3: "GND2", pin4: "VDD" }}
       connections={{
         pin1: "net.MIC_RAW",
-        pin2: "net.GND",
-        pin3: "net.GND",
-        pin4: "net.V3V3",
+        pin2: "net.MIC_GND",
+        pin3: "net.MIC_GND",
+        pin4: "net.MIC_VDD",
       }}
     />
 
@@ -261,12 +258,12 @@ export default () => (
       }}
     />
 
-    <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.V3V3" b="net.GND" />
+    <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.MIC_VDD" b="net.MIC_GND" />
     <C0402 name="C2" value="100nF" lcsc="C1525" x={analog.opampDecoupling.x} y={analog.opampDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
-    <C0402 name="C4" value="100nF" lcsc="C1525" x={26.0} y={21.0} a="net.V3V3" b="net.GND" />
+    <C0402 name="C4" value="100nF" lcsc="C1525" x={displaySupport.lcdDecoupling.x} y={displaySupport.lcdDecoupling.y} a="net.LCD_VDD" b="net.LCD_GND" />
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
-    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.biasRow[3].x} y={analog.biasRow[3].y} a="net.MIC_RAW" b="net.MIC_AC" />
+    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_AC_LOCAL" b="net.MIC_RAW" />
     <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.gainRow[3].x} y={analog.gainRow[3].y} a="net.MIC_ADC" b="net.GND" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
@@ -284,11 +281,15 @@ export default () => (
     <R0402 name="R5" value="100k" lcsc="C25741" x={analog.gainRow[0].x} y={analog.gainRow[0].y} a="net.MIC_AC" b="net.VBIAS" />
     <R0402 name="R6" value="1k" lcsc="C11702" x={analog.gainRow[1].x} y={analog.gainRow[1].y} a="net.MIC_FB" b="net.VBIAS" />
     <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
-    <R0402 name="R8" value="1k" lcsc="C11702" x={14.8} y={14.8} a="net.MIC_AMP" b="net.MIC_ADC" />
-
+    <R0402 name="R8" value="1k" lcsc="C11702" x={16.0} y={11.5} a="net.MIC_AMP" b="net.MIC_ADC" />
+    <R0402 name="R9" value="0ohm" lcsc="C17168" x={displaySupport.vddLink.x} y={displaySupport.vddLink.y} a="net.V3V3" b="net.LCD_VDD" />
+    <R0402 name="R10" value="0ohm" lcsc="C17168" x={displaySupport.groundLink.x} y={displaySupport.groundLink.y} a="net.GND" b="net.LCD_GND" />
+    <R0402 name="R11" value="0ohm" lcsc="C17168" x={analog.micVddLink.x} y={analog.micVddLink.y} a="net.V3V3" b="net.MIC_VDD" />
+    <R0402 name="R12" value="0ohm" lcsc="C17168" x={analog.micAcLink.x} y={analog.micAcLink.y} a="net.MIC_AC_LOCAL" b="net.MIC_AC" />
+    <R0402 name="R13" value="0ohm" lcsc="C17168" x={analog.micGroundLink.x} y={analog.micGroundLink.y} a="net.MIC_GND" b="net.GND" />
     <testpoint name="TP_VBUS" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
     <testpoint name="TP_3V3" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />
-    <testpoint name="TP_GND" layer={smtSide} pcbX={debug.points[2].x} pcbY={debug.points[2].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.GND" }} />
-    <testpoint name="TP_MIC" layer={smtSide} pcbX={debug.points[3].x} pcbY={debug.points[3].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.MIC_ADC" }} />
+    <testpoint name="TP_GND" layer={smtSide} pcbX={debug.groundPoint.x} pcbY={debug.groundPoint.y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.GND" }} />
+    <testpoint name="TP_MIC" layer={smtSide} pcbX={debug.micPoint.x} pcbY={debug.micPoint.y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.MIC_ADC" }} />
   </board>
 );
