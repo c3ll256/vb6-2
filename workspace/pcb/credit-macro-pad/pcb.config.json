@@ -91,6 +91,8 @@
   ],
   "bomBindings": [
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
-    { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false }
+    { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
+    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_kailh_choc_v1_red", "populate": true },
+    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_kailh_choc_v1_hotswap", "footprintFamily": "choc_v1_hotswap", "populate": true }
   ]
 }

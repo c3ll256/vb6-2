@@ -26,18 +26,10 @@ export const display = {
   },
 };
 
-// Intended mechanical centers: one straight, board-centered 19 mm row.
-export const keyMechanicalCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
-
-// The temporary Cherry MX placement proxy is referenced from an electrical
-// pad rather than the switch shaft center. Compensate its measured native
-// origin offset so the visible/mechanical switch centers land on the intended
-// row. Remove this compensation when the exact Choc V2 footprint replaces it.
-export const keyProxyOriginCompensation = { x: 2.54, y: 2.99 };
-export const keyCenters = keyMechanicalCenters.map((center) => ({
-  x: center.x + keyProxyOriginCompensation.x,
-  y: center.y + keyProxyOriginCompensation.y,
-}));
+// Exact Choc hot-swap component uses the switch shaft as its origin. Set one
+// straight, board-centered 19 mm row low on the board to use the lower area
+// while preserving a nominal 5 mm key-envelope margin at the bottom edge.
+export const keyCenters = row({ x: -28.5, y: -12.5 }, 19, 4);
 
 export const xiao = {
   x: 31.0,
@@ -50,19 +42,21 @@ export const xiao = {
 };
 
 export const microphone = {
-  // Top-right edge, outside the LCD envelope, with a direct acoustic cutout.
+  // Top-right edge, as close as practical to the board edge while retaining
+  // the microphone body and acoustic cutout inside the outline.
   x: 36.5,
-  y: 21.0,
+  y: 22.5,
   side: sides.smtAssembly,
   acousticHoleDiameterMm: 0.5,
 };
 
 export const analog = {
-  opamp: { x: 18.0, y: 19.0 },
-  micDecoupling: { x: 33.0, y: 22.5 },
-  opampDecoupling: { x: 14.5, y: 19.0 },
-  biasRow: row({ x: 10.0, y: 16.2 }, 2.2, 4),
-  gainRow: row({ x: 10.0, y: 13.9 }, 2.2, 4),
+  // Compact, aligned microphone block immediately left of MIC1.
+  opamp: { x: 10.0, y: 20.5 },
+  micDecoupling: { x: 32.5, y: 20.5 },
+  opampDecoupling: { x: 6.5, y: 20.5 },
+  biasRow: row({ x: 6.0, y: 17.5 }, 2.2, 4),
+  gainRow: row({ x: 6.0, y: 14.8 }, 2.2, 4),
 };
 
 export const displaySupport = {
@@ -72,7 +66,7 @@ export const displaySupport = {
 
 export const debug = {
   // Deliberate service region on the back side, clear of the LCD and keys.
-  points: row({ x: -6.0, y: 21.0 }, 3.0, 4),
+  points: row({ x: -6.0, y: 20.5 }, 3.0, 4),
 };
 
 export const OPENING_ROTATION_DEG = {

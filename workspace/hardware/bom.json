@@ -178,41 +178,77 @@
       "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
     },
     {
-      "id": "switch_kailh_choc_v2_red",
+      "id": "switch_kailh_choc_v1_red",
       "role": "low_profile_mechanical_switch",
-      "name": "Kailh Choc V2 Red linear switch",
-      "description": "User-selected quiet linear low-profile MX-stem keyboard switch.",
+      "name": "Kailh Choc V1 Red linear switch",
+      "description": "Low-profile red linear switch installed without solder into the paired Choc hot-swap socket.",
       "designators": [
-        "SW1",
-        "SW2",
-        "SW3",
-        "SW4"
+        "SW_KEY1",
+        "SW_KEY2",
+        "SW_KEY3",
+        "SW_KEY4"
       ],
       "quantity": 4,
-      "supplier": "Kailh / external keyboard-parts supplier",
+      "supplier": "LCSC / external keyboard-parts supplier",
       "manufacturer": "Kailh",
-      "part_number": "CPG135301D05",
-      "mpn": "CPG135301D05",
+      "part_number": "C400229",
+      "mpn": "CPG135001D01",
+      "lcsc_code": "C400229",
       "stock": 0,
-      "source": "manufacturer_family",
+      "source": "lcsc",
       "procurement_status": "external_procurement_required",
-      "package": "Kailh Choc V2 through-hole PCB-mount switch",
-      "footprint": "Kailh_Choc_V2_PCB_mount",
+      "product_url": "https://item.szlcsc.com/383994.html",
+      "package": "Kailh Choc V1 PCB-mount switch, 2 pin",
+      "footprint": "choc_v1_hotswap_mechanical",
       "assembly": {
-        "method": "through_hole",
+        "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder only: buy the exact CPG135301D05 red/linear variant."
+        "Procurement reminder: C400229 is currently out of stock at LCSC; buy exact CPG135001D01 from a keyboard-parts supplier."
       ],
-      "selection_reason": "User selected red/linear; lower click noise reduces mechanical-key contamination of the nearby microphone."
+      "selection_reason": "User requires hot swap. Choc V1 red preserves a low-profile linear feel and has a verified paired hot-swap socket geometry in the PCB component library."
     },
     {
-      "id": "keycap_low_profile_1u_mx",
+      "id": "socket_kailh_choc_v1_hotswap",
+      "role": "keyboard_hotswap_socket",
+      "name": "Kailh Choc V1 hot-swap socket",
+      "description": "Bottom-side SMD hot-swap socket for CPG135001D01 Choc V1 switches.",
+      "designators": [
+        "HS_KEY1",
+        "HS_KEY2",
+        "HS_KEY3",
+        "HS_KEY4"
+      ],
+      "quantity": 4,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "Kailh",
+      "part_number": "C5333465",
+      "mpn": "CPG135001S30",
+      "lcsc_code": "C5333465",
+      "jlc_smt_library": "extended",
+      "stock": 0,
+      "source": "lcsc",
+      "procurement_status": "external_procurement_required",
+      "product_url": "https://item.szlcsc.com/6095027.html",
+      "package": "SMD Choc hot-swap socket",
+      "footprint": "choc_v1_hotswap",
+      "assembly": {
+        "method": "manual",
+        "population": "mounted",
+        "side": "bottom"
+      },
+      "required_user_evidence": [
+        "Procurement reminder: C5333465 is currently out of stock and must be sourced externally or manually assembled when available."
+      ],
+      "selection_reason": "Exact CPG135001S30 identity matches the datasheet-backed local Choc V1 hot-swap geometry. Manual bottom-side assembly avoids claiming current JLC stock readiness."
+    },
+    {
+      "id": "keycap_low_profile_1u_choc_v1",
       "role": "keycap",
-      "name": "Blank black 1u low-profile MX-stem keycap",
-      "description": "Choc V2-compatible 1u keycap, maximum 18 x 18 mm face and 5.5 mm height above stem reference.",
+      "name": "Blank black 1u low-profile Choc V1 keycap",
+      "description": "Choc V1-stem 1u keycap, maximum 18 x 18 mm face and 5.5 mm height above stem reference.",
       "designators": [
         "K1",
         "K2",
@@ -222,20 +258,20 @@
       "quantity": 4,
       "supplier": "External keyboard-parts supplier",
       "manufacturer": "Generic",
-      "part_number": "1U-LP-MX-BLACK-18MM",
+      "part_number": "1U-LP-CHOC-V1-BLACK-18MM",
       "stock": 0,
       "source": "mechanical_specification",
       "procurement_status": "external_procurement_required",
-      "package": "1u low-profile MX-stem keycap",
+      "package": "1u low-profile Choc V1-stem keycap",
       "assembly": {
         "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder only: seller must confirm MX stem and maximum 18 x 18 x 5.5 mm envelope."
+        "Procurement reminder: seller must confirm Choc V1 stem and maximum 18 x 18 x 5.5 mm envelope."
       ],
-      "selection_reason": "A bounded generic specification is sufficient for PCB spacing and CAD clearance; legends remain on the display."
+      "selection_reason": "Required by the verified Choc V1 hot-swap switch/socket system; legends remain on the display."
     },
     {
       "id": "cap_100nf_0402",
@@ -469,6 +505,11 @@
       "role": "display_fpc_connector",
       "part_number": "FH12-8S-0.5SH(55) / C597995",
       "reason": "Rejected for the confirmed front-contact display tail because it is a bottom-contact connector; retain only as an alternative for a different tail contact orientation."
+    },
+    {
+      "role": "low_profile_mechanical_switch",
+      "part_number": "CPG135301D05",
+      "reason": "Previous Choc V2 red selection rejected for this revision because no verified compatible hot-swap socket abstraction was available."
     }
   ],
   "supply_risks": [
@@ -491,6 +532,11 @@
       "severity": "low",
       "item": "Backlight uses a resistor rather than constant-current IC",
       "mitigation": "The 27 Ohm value bounds current below the 120 mA maximum across stated USB and LED voltage ranges; brightness variation is accepted for this revision."
+    },
+    {
+      "severity": "medium",
+      "item": "Choc V1 switch and hot-swap socket are currently out of stock at LCSC",
+      "mitigation": "Exact identities and geometry are fixed; procure CPG135001D01 and CPG135001S30 externally and manually assemble sockets on the bottom side."
     }
   ],
   "unresolved_items": []

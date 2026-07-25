@@ -160,12 +160,13 @@
   "assembly_constraints": [
     "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
     "Keep LCD/backlight and USB current paths away from MIC1, U2, the 1.65 V bias node and the analog ADC trace.",
-    "Reserve manual/through-hole assembly access for XIAO, LCD, four Choc V2 switches and keycaps.",
     "Place J1 on the bottom-left edge with its cable opening facing left; the display tail wraps around the left PCB edge without a sharp fold.",
     "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
     "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
-    "Populate all SMT components on the bottom/service side; the LCD, through-hole switches, and keycaps remain on the top/user side."
+    "Use four centered 19 mm-pitch Kailh Choc V1 switches with bottom-side CPG135001S30 hot-swap sockets.",
+    "Keep the hot-swap socket bodies and SMD pads on the bottom/service side and the removable switches/keycaps on the top/user side.",
+    "Place the key row low enough to use the lower board area while retaining at least 4 mm nominal keycap-to-board-edge margin."
   ],
   "open_items": [],
   "risks": [
