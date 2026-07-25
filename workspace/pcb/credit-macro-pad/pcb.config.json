@@ -57,24 +57,13 @@
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [
-    {
-      "name": "J1_GND_PIN2_STITCH",
-      "net": "GND",
-      "xMm": -36.84996,
-      "yMm": 15.24,
-      "diameterMm": 0.6,
-      "drillMm": 0.3,
-      "layers": ["top", "bottom"],
-      "rationale": "Targeted standard 0.6/0.3 mm via is centered on the long axis of J1 pin 2 at the pad-row outer end. It overlaps the 1.400048 x 0.299999 mm GND land by approximately 0.010 mm, while the diagonal edge clearance to adjacent pin 3 is approximately 0.154 mm, above the 0.15 mm manufacturing floor. This connects the otherwise isolated bottom GND terminal directly to both GND pours without a new component, net, or manual trace."
-    }
-  ],
+  "stitchingVias": [],
   "keepouts": [
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
       "shape": "rect",
       "xMm": 21.0,
-      "yMm": 12.0,
+      "yMm": 9.0,
       "widthMm": 6,
       "heightMm": 19,
 "rotationDeg": 0,
@@ -84,7 +73,7 @@
     }
   ],
   "allowedOverlaps": [],
-  "allowedViaInPadComponents": ["J1"],
+  "allowedViaInPadComponents": [],
   "pcbRuleExceptions": [],
   "componentOrientations": [
     {
@@ -102,8 +91,6 @@
   ],
   "bomBindings": [
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
-    { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
-    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_kailh_choc_v1_hotswap", "footprintFamily": "choc_v1_hotswap", "populate": true },
-    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_kailh_choc_v1_red", "populate": true }
+    { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false }
   ]
 }

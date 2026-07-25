@@ -26,44 +26,43 @@ export const display = {
   },
 };
 
-// Exact switch-center coordinates for the verified Choc v1 hot-swap library.
-export const keyCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
+// Intended mechanical centers: one straight, board-centered 19 mm row.
+export const keyMechanicalCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
+
+// The temporary Cherry MX placement proxy is referenced from an electrical
+// pad rather than the switch shaft center. Compensate its measured native
+// origin offset so the visible/mechanical switch centers land on the intended
+// row. Remove this compensation when the exact Choc V2 footprint replaces it.
+export const keyProxyOriginCompensation = { x: 2.54, y: 2.99 };
+export const keyCenters = keyMechanicalCenters.map((center) => ({
+  x: center.x + keyProxyOriginCompensation.x,
+  y: center.y + keyProxyOriginCompensation.y,
+}));
 
 export const xiao = {
   x: 31.0,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
-  y: 12.0,
+  y: 9.0,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
   rotationDeg: 270,
 };
 
 export const microphone = {
-  // At the top edge, clear of the right-side XIAO and left-side FPC hardware.
-  x: -18.0,
-  y: 22.0,
+  // Top-right edge, outside the LCD envelope, with a direct acoustic cutout.
+  x: 36.5,
+  y: 21.0,
   side: sides.smtAssembly,
   acousticHoleDiameterMm: 0.5,
 };
 
 export const analog = {
-  // Keep U2 left of the XIAO body/courtyard while preserving a compact input
-  // and feedback block.
-  opamp: { x: 16.5, y: 19.0 },
-  micDecoupling: { x: -14.0, y: 22.0 },
-  // Keep the unbuffered microphone output local; only MIC_AC crosses toward
-  // the op-amp block after this coupling capacitor.
-  micAcCoupling: { x: -14.0, y: 19.5 },
-  opampDecoupling: { x: 13.5, y: 19.0 },
+  opamp: { x: 18.0, y: 19.0 },
+  micDecoupling: { x: 33.0, y: 22.5 },
+  opampDecoupling: { x: 14.5, y: 19.0 },
   biasRow: row({ x: 10.0, y: 16.2 }, 2.2, 4),
   gainRow: row({ x: 10.0, y: 13.9 }, 2.2, 4),
-  // R5 must sit beside the AC-coupling capacitor and U2 IN_P; placing it at
-  // the left end of gainRow stranded MIC_AC inside the dense bias/gain grid.
-  micAcBias: { x: 18.8, y: 16.2 },
-  // C7 sits below R8 so it does not fence R7's MIC_AMP pad while remaining
-  // local to the R8/MIC_ADC low-pass node.
-  adcFilterCap: { x: 18.8, y: 11.6 },
 };
 
 export const displaySupport = {
@@ -73,7 +72,7 @@ export const displaySupport = {
 
 export const debug = {
   // Deliberate service region on the back side, clear of the LCD and keys.
-  points: row({ x: -6.0, y: 18.0 }, 3.0, 4),
+  points: row({ x: -6.0, y: 21.0 }, 3.0, 4),
 };
 
 export const OPENING_ROTATION_DEG = {

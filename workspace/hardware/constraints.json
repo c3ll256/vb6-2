@@ -90,8 +90,8 @@
       "face": "top",
       "count": 4,
       "arrangement": "single horizontal row below display",
-      "switch_bom_id": "switch_kailh_choc_v1_red",
-      "keycap_bom_id": "keycap_low_profile_1u_choc_v1",
+      "switch_bom_id": "switch_kailh_choc_v2_red",
+      "keycap_bom_id": "keycap_low_profile_1u_mx",
       "nominal_pitch_mm": 19.0,
       "per_key_max_envelope_mm": {
         "w": 18.0,
@@ -101,9 +101,7 @@
       "total_row_envelope_mm": {
         "w": 75.0,
         "h": 18.0
-      },
-      "hotswap_socket_bom_id": "socket_kailh_choc_v1_hotswap",
-      "hotswap": true
+      }
     }
   ],
   "display_interface": {
@@ -162,7 +160,7 @@
   "assembly_constraints": [
     "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
     "Keep LCD/backlight and USB current paths away from MIC1, U2, the 1.65 V bias node and the analog ADC trace.",
-    "Reserve manual/through-hole assembly access for XIAO, LCD, four Choc v1 switches and four bottom-side hot-swap sockets and keycaps.",
+    "Reserve manual/through-hole assembly access for XIAO, LCD, four Choc V2 switches and keycaps.",
     "Place J1 on the bottom-left edge with its cable opening facing left; the display tail wraps around the left PCB edge without a sharp fold.",
     "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
