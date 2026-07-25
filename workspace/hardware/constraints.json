@@ -90,13 +90,14 @@
       "face": "top",
       "count": 4,
       "arrangement": "single horizontal row below display",
-      "switch_bom_id": "switch_kailh_choc_v2_red",
-      "keycap_bom_id": "keycap_low_profile_1u_mx",
+      "switch_bom_id": "switch_mx_red_cpg151101d05",
+      "socket_bom_id": "socket_mx_hotswap_cpg151101s11_16",
+      "keycap_bom_id": "keycap_1u_mx_black",
       "nominal_pitch_mm": 19.0,
       "per_key_max_envelope_mm": {
         "w": 18.0,
         "h": 18.0,
-        "height_above_stem_reference": 5.5
+        "height_above_stem_reference": 12.0
       },
       "total_row_envelope_mm": {
         "w": 75.0,
@@ -164,7 +165,7 @@
     "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
     "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
-    "Use four centered 19 mm-pitch Kailh Choc V1 switches with bottom-side CPG135001S30 hot-swap sockets.",
+    "Use four centered 19 mm-pitch MX red linear CPG151101D05 switches with bottom-side CPG151101S11-16 hot-swap sockets.",
     "Keep the hot-swap socket bodies and SMD pads on the bottom/service side and the removable switches/keycaps on the top/user side.",
     "Place the key row low enough to use the lower board area while retaining at least 4 mm nominal keycap-to-board-edge margin."
   ],

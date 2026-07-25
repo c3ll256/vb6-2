@@ -26,7 +26,7 @@ export const display = {
   },
 };
 
-// Exact Choc hot-swap component uses the switch shaft as its origin. Set one
+// Exact MX hot-swap component uses the switch shaft as its origin. Set one
 // straight, board-centered 19 mm row low on the board to use the lower area
 // while preserving a nominal 5 mm key-envelope margin at the bottom edge.
 export const keyCenters = row({ x: -28.5, y: -12.5 }, 19, 4);
@@ -51,22 +51,39 @@ export const microphone = {
 };
 
 export const analog = {
-  // Compact, aligned microphone block immediately left of MIC1.
-  opamp: { x: 10.0, y: 20.5 },
-  micDecoupling: { x: 32.5, y: 20.5 },
-  opampDecoupling: { x: 6.5, y: 20.5 },
-  biasRow: row({ x: 6.0, y: 17.5 }, 2.2, 4),
-  gainRow: row({ x: 6.0, y: 14.8 }, 2.2, 4),
+  // Routed signal-flow placement: microphone support at the top-right,
+  // bias/feedback around U2, then ADC filtering toward the XIAO.
+  // A slight upward shift joins U2's GND land to the already-stitched analog
+  // return lobe while preserving the short U2-to-R7 signal path.
+  opamp: { x: 10.0, y: 21.0 },
+  micDecoupling: { x: 39.1, y: 21.5 },
+  micCoupling: { x: 33.9, y: 21.5 },
+  opampDecoupling: { x: 7.0, y: 22.0 },
+  biasDividerRow: row({ x: 2.5, y: 19.0 }, 2.5, 2),
+  biasFilter: { x: 5.0, y: 16.5 },
+  inputAndGainRow: row({ x: 7.5, y: 16.5 }, 2.5, 2),
+  feedback: { x: 14.0, y: 20.5 },
+  adcFilterRow: row({ x: 15.0, y: 16.5 }, 2.5, 2),
+  railDecoupling: { x: 20.0, y: 21.5 },
 };
 
 export const displaySupport = {
-  resetRow: row({ x: -30.0, y: 19.0 }, 2.4, 2),
+  // Keep RESET support below J1 while the backlight resistor remains above it.
+  // This makes adjacent FPC pins 1 and 3 fan out in opposite directions and
+  // leaves a copper corridor from J1 pin 2 into the GND plane.
+  resetRow: row({ x: -30.0, y: 10.0 }, 2.4, 2),
   backlightResistor: { x: -24.0, y: 19.0 },
 };
 
 export const debug = {
-  // Deliberate service region on the back side, clear of the LCD and keys.
-  points: row({ x: -6.0, y: 20.5 }, 3.0, 4),
+  // Deliberate service points on the back side. TP_3V3 sits beside R1/J1 so
+  // it does not create a long branch across the top-edge power corridor.
+  points: [
+    { x: -6.0, y: 9.5 },
+    { x: -30.0, y: 16.5 },
+    { x: 0.0, y: 9.5 },
+    { x: 3.0, y: 9.5 },
+  ],
 };
 
 export const OPENING_ROTATION_DEG = {

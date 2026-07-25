@@ -9,7 +9,7 @@
     "absoluteMinimumTraceWidthMm": 0.2,
     "absoluteMinimumCopperClearanceMm": 0.15,
     "preferredRoutingClearanceMm": 0.25,
-    "copperToBoardEdgeMm": 1,
+    "copperToBoardEdgeMm": 0.2,
     "via": { "diameterMm": 0.6, "drillMm": 0.3 },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
@@ -37,7 +37,7 @@
     "LCD_D_C": { "class": "cpu_io", "rationale": "LCD data/command select." },
     "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node." },
     "LCD_LEDA": { "class": "power", "rationale": "Resistor-limited LCD backlight current is below 120 mA; ordinary 0.5 mm power routing is sufficient for this short run." },
-    "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling." },
+    "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling. The MIC1 footprint owns a same-pin, soldermask-covered copper escape tongue around the mandatory acoustic port; outside the footprint the net retains the sensitive_analog class." },
     "MIC_AC": { "class": "sensitive_analog", "rationale": "AC-coupled microphone signal biased at VBIAS." },
     "VBIAS": { "class": "sensitive_analog", "rationale": "Filtered 1.65 V virtual ground for the preamplifier." },
     "MIC_FB": { "class": "sensitive_analog", "rationale": "TLV9061 feedback node; minimize loop area." },
@@ -57,8 +57,84 @@
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [],
+  "stitchingVias": [
+    {
+      "name": "GND_STITCH_BIAS",
+      "net": "GND",
+      "xMm": 7.0,
+      "yMm": 18.3,
+      "diameterMm": 0.6,
+      "drillMm": 0.3,
+      "rationale": "Bridges the diagnosed bottom GND filled-polygon lobe spanning x=3.993..8.371 mm, y=16.951..20.928 mm to the continuous top GND pour."
+    },
+    {
+      "name": "GND_STITCH_DISPLAY_CENTER",
+      "net": "GND",
+      "xMm": -2.5,
+      "yMm": 14.6,
+      "diameterMm": 0.6,
+      "drillMm": 0.3,
+      "rationale": "Bridges the diagnosed bottom GND filled-polygon lobe spanning x=-21.675..14.883 mm, y=8.874..19.864 mm to the continuous top GND pour."
+    },
+    {
+      "name": "GND_STITCH_MAIN",
+      "net": "GND",
+      "xMm": 0.0,
+      "yMm": 0.0,
+      "diameterMm": 0.6,
+      "drillMm": 0.3,
+      "rationale": "Connects the main bottom GND filled polygon to the main top GND pour at an open, geometry-probed board-center location."
+    }
+  ],
   "keepouts": [
+    {
+      "name": "OUTER_EDGE_COPPER_KEEPOUT_LEFT",
+      "shape": "rect",
+      "xMm": -40.3,
+      "yMm": 0,
+      "widthMm": 1,
+      "heightMm": 49.98,
+      "rotationDeg": 0,
+      "layers": ["top", "bottom"],
+      "purpose": "custom",
+      "rationale": "Preserves the product's 1 mm routed-copper clearance at the external left board edge while the global floor accommodates MIC1's internal acoustic drill."
+    },
+    {
+      "name": "OUTER_EDGE_COPPER_KEEPOUT_RIGHT",
+      "shape": "rect",
+      "xMm": 40.3,
+      "yMm": 0,
+      "widthMm": 1,
+      "heightMm": 49.98,
+      "rotationDeg": 0,
+      "layers": ["top", "bottom"],
+      "purpose": "custom",
+      "rationale": "Preserves the product's 1 mm routed-copper clearance at the external right board edge while the global floor accommodates MIC1's internal acoustic drill."
+    },
+    {
+      "name": "OUTER_EDGE_COPPER_KEEPOUT_TOP",
+      "shape": "rect",
+      "xMm": 0,
+      "yMm": 24.49,
+      "widthMm": 81.6,
+      "heightMm": 1,
+      "rotationDeg": 0,
+      "layers": ["top", "bottom"],
+      "purpose": "custom",
+      "rationale": "Preserves the product's 1 mm routed-copper clearance at the external top board edge while the global floor accommodates MIC1's internal acoustic drill."
+    },
+    {
+      "name": "OUTER_EDGE_COPPER_KEEPOUT_BOTTOM",
+      "shape": "rect",
+      "xMm": 0,
+      "yMm": -24.49,
+      "widthMm": 81.6,
+      "heightMm": 1,
+      "rotationDeg": 0,
+      "layers": ["top", "bottom"],
+      "purpose": "custom",
+      "rationale": "Preserves the product's 1 mm routed-copper clearance at the external bottom board edge while the global floor accommodates MIC1's internal acoustic drill."
+    },
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
       "shape": "rect",
@@ -72,7 +148,16 @@
       "rationale": "Keep carrier copper clear beneath the XIAO ESP32S3 antenna end."
     }
   ],
-  "allowedOverlaps": [],
+  "allowedOverlaps": [
+    {
+      "componentRefs": ["J1", "J1_GND_ESCAPE"],
+      "rationale": "J1_GND_ESCAPE is a soldermask-covered same-net copper tongue intentionally overlapping only J1 pin 2; it is not a second assembled body."
+    },
+    {
+      "componentRefs": ["U2", "U2_GND_ESCAPE"],
+      "rationale": "U2_GND_ESCAPE is soldermask-covered same-net copper and a source-owned GND via overlapping U2 pin 2; it is not a second assembled body."
+    }
+  ],
   "allowedViaInPadComponents": [],
   "pcbRuleExceptions": [],
   "componentOrientations": [
@@ -92,7 +177,7 @@
   "bomBindings": [
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
     { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
-    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_kailh_choc_v1_red", "populate": true },
-    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_kailh_choc_v1_hotswap", "footprintFamily": "choc_v1_hotswap", "populate": true }
+    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_mx_red_cpg151101d05", "populate": true },
+    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_mx_hotswap_cpg151101s11_16", "footprintFamily": "mx_hotswap", "populate": true }
   ]
 }
