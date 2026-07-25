@@ -26,7 +26,9 @@ export const display = {
   },
 };
 
-export const keyCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
+// One straight, board-centred 19 mm row. The lower Y position separates the
+// visible key outlines from the right-side XIAO castellated-pad row.
+export const keyCenters = row({ x: -28.5, y: -11.5 }, 19, 4);
 
 export const xiao = {
   x: 31.0,
