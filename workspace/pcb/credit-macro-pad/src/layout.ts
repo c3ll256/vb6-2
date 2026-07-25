@@ -15,46 +15,53 @@ export const display = {
   body: { widthMm: 62.5, heightMm: 17.9 },
   active: { widthMm: 55.2948, heightMm: 14.7972 },
   side: sides.user,
-  // User-requested back-side-only SMT requires the FPC tail to wrap around the
-  // +Y board edge to the bottom-side connector without a sharp fold.
-  fpc: { x: 0, y: 21.7, side: sides.smtAssembly, cableExits: "up" as const },
+  // The seller confirmed a front-contact tail. It wraps around the left edge
+  // and mates on the back with a top-contact connector whose opening faces -X.
+  fpc: {
+    x: -36.0,
+    y: 13.0,
+    side: sides.smtAssembly,
+    cableExits: "left" as const,
+    rotationDeg: 90,
+  },
 };
 
 export const keyCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
 
 export const xiao = {
-  x: 0,
-  // Slight intentional overhang puts the onboard USB-C shell on the -Y edge
-  // and clears the through-hole key contacts above it.
-  y: -16.3,
+  x: 31.0,
+  // Right-side placement above the key contact holes; the USB shell reaches
+  // the +X edge while the XIAO antenna end points toward board center.
+  y: 6.0,
   side: sides.smtAssembly,
-  usbFaces: "down" as const,
-  rotationDeg: 180,
+  usbFaces: "right" as const,
+  rotationDeg: 270,
 };
 
 export const microphone = {
-  x: -37.0,
-  y: 17.0,
+  // Top-right edge, outside the LCD envelope, with a direct acoustic cutout.
+  x: 36.5,
+  y: 21.0,
   side: sides.smtAssembly,
   acousticHoleDiameterMm: 0.5,
 };
 
 export const analog = {
-  opamp: { x: -31.5, y: 15.0 },
-  micDecoupling: { x: -36.0, y: 11.0 },
-  opampDecoupling: { x: -26.5, y: 11.0 },
-  biasRow: row({ x: -35.0, y: 9.8 }, 2.2, 4),
-  gainRow: row({ x: -35.0, y: 7.5 }, 2.2, 4),
+  opamp: { x: 18.0, y: 19.0 },
+  micDecoupling: { x: 33.0, y: 18.5 },
+  opampDecoupling: { x: 14.5, y: 19.0 },
+  biasRow: row({ x: 10.0, y: 16.2 }, 2.2, 4),
+  gainRow: row({ x: 10.0, y: 13.9 }, 2.2, 4),
 };
 
 export const displaySupport = {
-  resetRow: row({ x: 10.0, y: 19.0 }, 2.4, 2),
-  backlightResistor: { x: 16.0, y: 19.0 },
+  resetRow: row({ x: -30.0, y: 19.0 }, 2.4, 2),
+  backlightResistor: { x: -24.0, y: 19.0 },
 };
 
 export const debug = {
   // Deliberate service region on the back side, clear of the LCD and keys.
-  points: row({ x: 24.0, y: 20.0 }, 3.0, 4),
+  points: row({ x: -6.0, y: 21.0 }, 3.0, 4),
 };
 
 export const OPENING_ROTATION_DEG = {

@@ -62,10 +62,10 @@
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
       "shape": "rect",
-      "xMm": 0,
-      "yMm": -4.0,
-      "widthMm": 19,
-      "heightMm": 6,
+      "xMm": 21.0,
+      "yMm": 6.0,
+      "widthMm": 6,
+      "heightMm": 19,
 "rotationDeg": 0,
       "layers": ["top", "bottom"],
       "purpose": "antenna",
@@ -79,13 +79,13 @@
     {
       "componentRef": "U1",
       "nativeOpening": "up",
-      "targetOpening": "down",
+      "targetOpening": "right",
       "expectedLayer": "bottom"
     },
     {
       "componentRef": "J1",
       "nativeOpening": "up",
-      "targetOpening": "up",
+      "targetOpening": "left",
       "expectedLayer": "bottom"
     }
   ],

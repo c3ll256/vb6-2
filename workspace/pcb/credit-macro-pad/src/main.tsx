@@ -116,7 +116,7 @@ const DisplayEnvelope = () => (
           height={`${display.active.heightMm}mm`}
           strokeWidth="0.15mm"
         />
-        <silkscreentext text="LCD / FPC WRAPS TO BACK AT +Y" pcbX={0} pcbY={0} fontSize="0.8mm" />
+        <silkscreentext text="LCD / FRONT-CONTACT FPC WRAPS LEFT TO BACK" pcbX={0} pcbY={0} fontSize="0.8mm" />
         <courtyardrect
           pcbX={0}
           pcbY={0}
@@ -194,14 +194,14 @@ export default () => (
 
     <chip
       name="J1"
-      displayName="Hirose FH12-8S-0.5SH(55)"
-      manufacturerPartNumber="FH12-8S-0.5SH(55)"
-      supplierPartNumbers={{ jlcpcb: ["C597995"] }}
-      footprint="jlcpcb:C597995"
+      displayName="Amphenol SFV8R-2STE1HLF top-contact FPC"
+      manufacturerPartNumber="SFV8R-2STE1HLF"
+      supplierPartNumbers={{ jlcpcb: ["C2992524"] }}
+      footprint="jlcpcb:C2992524"
       layer={smtSide}
       pcbX={display.fpc.x}
       pcbY={display.fpc.y}
-      pcbRotation={0}
+      pcbRotation={display.fpc.rotationDeg}
       pinLabels={{
         pin1: "LEDA",
         pin2: "GND",
@@ -271,7 +271,7 @@ export default () => (
     <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C2" value="100nF" lcsc="C1525" x={analog.opampDecoupling.x} y={analog.opampDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
-<C0402 name="C4" value="100nF" lcsc="C1525" x={12.0} y={-4.5} a="net.V3V3" b="net.GND" />
+    <C0402 name="C4" value="100nF" lcsc="C1525" x={25.0} y={19.5} a="net.V3V3" b="net.GND" />
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
     <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.biasRow[3].x} y={analog.biasRow[3].y} a="net.MIC_RAW" b="net.MIC_AC" />
     <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.gainRow[3].x} y={analog.gainRow[3].y} a="net.MIC_ADC" b="net.GND" />
@@ -291,7 +291,7 @@ export default () => (
     <R0402 name="R5" value="100k" lcsc="C25741" x={analog.gainRow[0].x} y={analog.gainRow[0].y} a="net.MIC_AC" b="net.VBIAS" />
     <R0402 name="R6" value="1k" lcsc="C11702" x={analog.gainRow[1].x} y={analog.gainRow[1].y} a="net.MIC_FB" b="net.VBIAS" />
     <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
-    <R0402 name="R8" value="1k" lcsc="C11702" x={-26.5} y={7.5} a="net.MIC_AMP" b="net.MIC_ADC" />
+    <R0402 name="R8" value="1k" lcsc="C11702" x={18.8} y={13.9} a="net.MIC_AMP" b="net.MIC_ADC" />
 
     <testpoint name="TP_VBUS" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
     <testpoint name="TP_3V3" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />

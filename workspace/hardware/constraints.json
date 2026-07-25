@@ -3,32 +3,52 @@
   "status": "review",
   "source_prd": "product/prd.json",
   "bom_ready": true,
-  "enclosure_outer_max_mm": {"w": 85.6, "d": 53.98, "h": 18.0},
-  "pcb_bbox_mm": {"w_max": 81.6, "d_max": 49.98, "thickness_target": 1.0},
-  "pcb_component_height_mm": {"top_max_target": 12.5, "bottom_max_target": 2.0},
+  "enclosure_outer_max_mm": {
+    "w": 85.6,
+    "d": 53.98,
+    "h": 18.0
+  },
+  "pcb_bbox_mm": {
+    "w_max": 81.6,
+    "d_max": 49.98,
+    "thickness_target": 1.0
+  },
+  "pcb_component_height_mm": {
+    "top_max_target": 12.5,
+    "bottom_max_target": 4.5
+  },
   "board_retention": "Use edge rails or low-profile clips after the final fabrication STEP; do not assume mounting holes.",
   "power": {
     "input": "USB 5 V bus power through the XIAO ESP32S3 onboard USB-C receptacle",
     "battery": "not fitted",
     "logic_rail": "3.3 V from XIAO",
     "backlight_rail": "USB VBUS through 27 Ohm, 0.25 W series resistor",
-    "usb_functions": ["USB HID keyboard", "USB Audio Class 1.0 mono microphone"]
+    "usb_functions": [
+      "USB HID keyboard",
+      "USB Audio Class 1.0 mono microphone"
+    ]
   },
   "mcu_module": {
     "bom_id": "mcu_xiao_esp32s3",
     "model": "Seeed Studio XIAO ESP32S3",
-    "body_mm": {"w": 21.0, "d": 17.8},
+    "body_mm": {
+      "w": 21.0,
+      "d": 17.8
+    },
     "mounting": "castellated module soldered to carrier PCB",
-    "usb_c": "onboard receptacle aligned to bottom enclosure edge",
+    "usb_c": "onboard receptacle aligned to right enclosure edge",
     "verified_cad_model_id": "seeed_xiao_esp32s3_v2",
     "cad_model_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
   },
   "ports": [
     {
       "id": "usb_c_host",
-      "face": "bottom edge",
+      "face": "right edge",
       "owner": "XIAO ESP32S3 onboard connector",
-      "cutout_mm": {"w_target": 10.0, "h_target": 4.0},
+      "cutout_mm": {
+        "w_target": 10.0,
+        "h_target": 4.0
+      },
       "clearance_mm": 2.0,
       "validation": "Measure final cutout, insertion direction and plug envelope from the verified XIAO STEP before enclosure release."
     },
@@ -48,9 +68,19 @@
       "type": "display",
       "bom_id": "display_lt225c7_c08_03",
       "face": "top",
-      "module_mm": {"w": 62.5, "h": 17.9, "t": 2.36},
-      "view_area_mm": {"w": 55.2948, "h": 14.7972},
-      "footprint_on_face_mm": {"w": 65.5, "h": 20.9},
+      "module_mm": {
+        "w": 62.5,
+        "h": 17.9,
+        "t": 2.36
+      },
+      "view_area_mm": {
+        "w": 55.2948,
+        "h": 14.7972
+      },
+      "footprint_on_face_mm": {
+        "w": 65.5,
+        "h": 20.9
+      },
       "orientation": "long axis parallel to 85.6 mm product width",
       "evidence": "artifacts/pdfs/lt225c7-c08-03.pdf pages 4-8"
     },
@@ -63,15 +93,31 @@
       "switch_bom_id": "switch_kailh_choc_v2_red",
       "keycap_bom_id": "keycap_low_profile_1u_mx",
       "nominal_pitch_mm": 19.0,
-      "per_key_max_envelope_mm": {"w": 18.0, "h": 18.0, "height_above_stem_reference": 5.5},
-      "total_row_envelope_mm": {"w": 75.0, "h": 18.0}
+      "per_key_max_envelope_mm": {
+        "w": 18.0,
+        "h": 18.0,
+        "height_above_stem_reference": 5.5
+      },
+      "total_row_envelope_mm": {
+        "w": 75.0,
+        "h": 18.0
+      }
     }
   ],
   "display_interface": {
     "panel_pin_count": 8,
-    "connector_bom_id": "fpc_fh12_8s_05sh_55",
-    "connector": "Hirose FH12-8S-0.5SH(55), bottom contact, 0.5 mm pitch, 0.3 mm FPC",
-    "signals": ["LEDA", "GND", "RESET_N", "D_C", "SDA_MOSI", "SCL", "VDD_3V3", "CS_N"],
+    "connector_bom_id": "fpc_sfv8r_2ste1hlf",
+    "connector": "Amphenol SFV8R-2STE1HLF / C2992524, top contact, 0.5 mm pitch, 0.3 mm FPC, bottom-side placement at left edge",
+    "signals": [
+      "LEDA",
+      "GND",
+      "RESET_N",
+      "D_C",
+      "SDA_MOSI",
+      "SCL",
+      "VDD_3V3",
+      "CS_N"
+    ],
     "bus": "4-line SPI write-only",
     "controller": "ST7789P3",
     "reset": "10 kOhm pull-up to 3.3 V plus 100 nF to ground",
@@ -87,7 +133,12 @@
     "antialias_filter": "1 kOhm series plus 10 nF to ground at ADC input, nominal 15.9 kHz pole",
     "decoupling": "100 nF X7R at ZTS6216 and TLV9061 VDD pins; 1 uF on the 1.65 V virtual-ground node",
     "land_pattern": "1:1 to 2.75 x 1.85 mm package pads; 0.50 mm bottom acoustic port; no solder paste over port",
-    "pins": ["1 OUT", "2 GND", "3 GND", "4 VDD"],
+    "pins": [
+      "1 OUT",
+      "2 GND",
+      "3 GND",
+      "4 VDD"
+    ],
     "evidence": "references/suppliers/c481302/c481302-datasheet.pdf pages 2, 3, 6 and 7"
   },
   "gpio_budget": {
@@ -109,15 +160,29 @@
   "assembly_constraints": [
     "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
     "Keep LCD/backlight and USB current paths away from MIC1, U2, the 1.65 V bias node and the analog ADC trace.",
-    "Place MIC1 directly over the PCB sound hole and use a sealed short path to the enclosure opening.",
-    "Place J1 so the display FPC contacts face the PCB and the cable can be inserted without a sharp fold.",
-    "Use the XIAO onboard USB-C receptacle; do not add a second host USB connector.",
-    "Reserve manual/through-hole assembly access for XIAO, LCD, four Choc V2 switches and keycaps."
+    "Reserve manual/through-hole assembly access for XIAO, LCD, four Choc V2 switches and keycaps.",
+    "Place J1 on the bottom-left edge with its cable opening facing left; the display tail wraps around the left PCB edge without a sharp fold.",
+    "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
+    "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
+    "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
+    "Populate all SMT components on the bottom/service side; the LCD, through-hole switches, and keycaps remain on the top/user side."
   ],
   "open_items": [],
   "risks": [
-    {"severity": "medium", "item": "Analog microphone uses the ESP32-S3 internal ADC", "mitigation": "Prototype-validate noise, gain, clipping and 48 kHz DMA capture; two spare GPIOs remain after the change."},
-    {"severity": "medium", "item": "Microphone close to mechanical keys", "mitigation": "Use red linear switches, isolate the acoustic path, place MIC1 away from switch bodies, and validate key-noise pickup on prototype."},
-    {"severity": "low", "item": "Resistor-fed backlight brightness varies with USB and LED voltage", "mitigation": "Current remains below the panel maximum; qualify visual uniformity on prototype before considering a constant-current revision."}
+    {
+      "severity": "medium",
+      "item": "Analog microphone uses the ESP32-S3 internal ADC",
+      "mitigation": "Prototype-validate noise, gain, clipping and 48 kHz DMA capture; two spare GPIOs remain after the change."
+    },
+    {
+      "severity": "medium",
+      "item": "Microphone close to mechanical keys",
+      "mitigation": "Use red linear switches, isolate the acoustic path, place MIC1 away from switch bodies, and validate key-noise pickup on prototype."
+    },
+    {
+      "severity": "low",
+      "item": "Resistor-fed backlight brightness varies with USB and LED voltage",
+      "mitigation": "Current remains below the panel maximum; qualify visual uniformity on prototype before considering a constant-current revision."
+    }
   ]
 }

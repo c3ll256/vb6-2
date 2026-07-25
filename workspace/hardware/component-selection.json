@@ -25,7 +25,7 @@
       "assembly": {
         "method": "module_mount",
         "population": "mounted",
-        "side": "top"
+        "side": "bottom"
       },
       "required_user_evidence": [
         "Procurement reminder only: record distributor and order number when purchased."
@@ -67,48 +67,49 @@
       "selection_reason": "Exact user-selected panel; supplied datasheet pages 4-8 establish dimensions, active area, pinout, 2.5-3.3 V logic supply and backlight limits."
     },
     {
-      "id": "fpc_fh12_8s_05sh_55",
+      "id": "fpc_sfv8r_2ste1hlf",
       "role": "display_fpc_connector",
-      "name": "Hirose FH12-8S-0.5SH(55)",
-      "description": "8-position 0.5 mm pitch horizontal flip-lock bottom-contact FPC connector, 0.3 mm FPC, 2.0 mm board height.",
+      "name": "Amphenol SFV8R-2STE1HLF",
+      "description": "8-position 0.5 mm pitch horizontal flip-lock top-contact FPC connector for 0.3 mm FPC, 1.8 mm board height.",
       "designators": [
         "J1"
       ],
       "quantity": 1,
       "supplier": "LCSC / JLCPCB",
-      "manufacturer": "Hirose Electric",
-      "part_number": "C597995",
-      "mpn": "FH12-8S-0.5SH(55)",
-      "lcsc_code": "C597995",
+      "manufacturer": "Amphenol",
+      "part_number": "C2992524",
+      "mpn": "SFV8R-2STE1HLF",
+      "lcsc_code": "C2992524",
       "jlc_smt_library": "extended",
-      "package": "SMD, 8P, P0.5 mm, horizontal bottom contact",
-      "footprint": "Hirose_FH12-8S-0.5SH_1x08-1MP_P0.5mm_Horizontal",
+      "package": "SMD, 8P, P0.5 mm, horizontal top contact",
+      "footprint": "jlcpcb:C2992524",
       "pin_count": 8,
-      "stock": 4795,
-      "unit_price_cny": 2.43,
+      "stock": 3316,
+      "unit_price_cny": 3.21,
       "source": "lcsc",
-      "product_url": "https://item.szlcsc.com/626611.html",
-      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20200615/C597979_B8D9DC319DDA9CB4DF2E85AE104C9A2E.pdf",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230104/4EC6F875A809E3B2FCEDAFC12F541A4F.jpg",
+      "product_url": "https://item.szlcsc.com/3457383.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20220517/0023932E89903C3A71108B012FDBB80B.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230105/22FE91342E375328AAB35586A4CF29AE.jpg",
       "physical_interface": {
         "kind": "fpc_connector",
         "pin_count": 8,
         "pitch_mm": 0.5,
-        "cable_contacts_face_when_mounted_on_top": "toward_pcb",
-        "pin1_position": "left when viewed from the cable insertion side",
+        "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
+        "pin1_position": "verify from the supplier footprint preview after orienting the cable opening toward the left edge",
         "evidence_refs": [
-          "references/suppliers/c597995/c597995-datasheet.pdf page 4",
-          "artifacts/pdfs/lt225c7-c08-03.pdf page 5"
+          "user statement: display tail is front-contact",
+          "references/suppliers/c2992524/c2992524-datasheet.pdf page 3 (upper-contact ordering code 2)",
+          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC"
         ]
       },
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact 8P/0.5 mm bottom-contact geometry matches the panel tail; Extended is used because no credible Basic-library connector was found."
+      "selection_reason": "The display seller confirmed a front-contact tail. Wrapping the tail around the left PCB edge onto the back makes its exposed contacts face away from the carrier PCB, so a bottom-side top-contact connector is required. C2992524 is an exact in-stock 8P/0.5 mm/0.3 mm top-contact match; Extended is used because no credible Basic-library match was found."
     },
     {
       "id": "microphone_zts6216",
@@ -137,7 +138,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
@@ -170,7 +171,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "extended"
       },
       "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
@@ -262,7 +263,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Local microphone/op-amp bypass plus display and reset support; Basic library minimizes assembly cost."
@@ -292,7 +293,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Defines the low-frequency coupling and stabilizes the half-supply microphone bias node."
@@ -321,7 +322,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Provides first-order voice-band anti-alias filtering before the XIAO ADC."
@@ -353,7 +354,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Creates 1.65 V bias and approximately 101 V/V non-inverting gain with the 1 kOhm gain resistor."
@@ -383,7 +384,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Sets the preamp gain and isolates the op-amp from the ADC filter capacitance."
@@ -412,7 +413,7 @@
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
-        "side": "top",
+        "side": "bottom",
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO."
@@ -439,7 +440,7 @@
       "assembly": {
         "method": "manual",
         "population": "mounted",
-        "side": "top"
+        "side": "bottom"
       },
       "required_user_evidence": [
         "Procurement reminder only: confirm an exact 27 Ohm, 1%, at least 0.25 W 1206 resistor before ordering."
@@ -462,6 +463,11 @@
       "role": "display_fpc_connector",
       "part_number": "AFC01-S08FCA-00 / C262657",
       "reason": "Lower-cost 8P 0.5 mm bottom-contact alternative requiring separate footprint and contact-orientation qualification."
+    },
+    {
+      "role": "display_fpc_connector",
+      "part_number": "FH12-8S-0.5SH(55) / C597995",
+      "reason": "Rejected for the confirmed front-contact display tail because it is a bottom-contact connector; retain only as an alternative for a different tail contact orientation."
     }
   ],
   "supply_risks": [
@@ -472,7 +478,7 @@
     },
     {
       "severity": "medium",
-      "item": "ZTS6216, TLV9061 and Hirose FPC connector are JLC Extended parts",
+      "item": "ZTS6216, TLV9061 and Amphenol top-contact FPC connector are JLC Extended parts",
       "mitigation": "Accept Extended placement cost; do not substitute Basic lookalikes without footprint and circuit revalidation."
     },
     {
