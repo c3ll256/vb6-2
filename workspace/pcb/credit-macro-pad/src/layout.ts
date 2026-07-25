@@ -26,13 +26,24 @@ export const display = {
   },
 };
 
-export const keyCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
+// Intended mechanical centers: one straight, board-centered 19 mm row.
+export const keyMechanicalCenters = row({ x: -28.5, y: -5.5 }, 19, 4);
+
+// The temporary Cherry MX placement proxy is referenced from an electrical
+// pad rather than the switch shaft center. Compensate its measured native
+// origin offset so the visible/mechanical switch centers land on the intended
+// row. Remove this compensation when the exact Choc V2 footprint replaces it.
+export const keyProxyOriginCompensation = { x: 2.54, y: 2.99 };
+export const keyCenters = keyMechanicalCenters.map((center) => ({
+  x: center.x + keyProxyOriginCompensation.x,
+  y: center.y + keyProxyOriginCompensation.y,
+}));
 
 export const xiao = {
   x: 31.0,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
-  y: 6.0,
+  y: 9.0,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
   rotationDeg: 270,
@@ -48,7 +59,7 @@ export const microphone = {
 
 export const analog = {
   opamp: { x: 18.0, y: 19.0 },
-  micDecoupling: { x: 33.0, y: 18.5 },
+  micDecoupling: { x: 33.0, y: 22.5 },
   opampDecoupling: { x: 14.5, y: 19.0 },
   biasRow: row({ x: 10.0, y: 16.2 }, 2.2, 4),
   gainRow: row({ x: 10.0, y: 13.9 }, 2.2, 4),
