@@ -51,24 +51,30 @@ export const microphone = {
 };
 
 export const analog = {
-  // Compact, aligned microphone block immediately left of MIC1.
-  opamp: { x: 10.0, y: 20.5 },
-  micDecoupling: { x: 32.5, y: 20.5 },
-  opampDecoupling: { x: 6.5, y: 20.5 },
-  // Keep the bias-divider row below U2 with enough local clearance for an
-  // off-pad ground transition during two-layer routing.
-  biasRow: row({ x: 6.0, y: 17.0 }, 2.2, 4),
-  gainRow: row({ x: 6.0, y: 14.8 }, 2.2, 4),
+  // Airy, functional signal chain across the upper-middle service region.
+  // The microphone-side parts remain at the right, while the bias and gain
+  // networks use two aligned rows with 4 mm pitch instead of a dense cluster.
+  opamp: { x: 20.0, y: 20.5 },
+  micDecoupling: { x: 32.5, y: 21.0 },
+  opampDecoupling: { x: 15.5, y: 22.5 },
+  xiaoDecoupling: { x: 26.0, y: 22.0 },
+  micCoupling: { x: 27.5, y: 18.5 },
+  biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
+  gainRow: row({ x: 3.0, y: 12.5 }, 4.0, 3),
+  outputRow: row({ x: 15.0, y: 12.5 }, 4.0, 2),
 };
 
 export const displaySupport = {
-  resetRow: row({ x: -30.0, y: 19.0 }, 2.4, 2),
-  backlightResistor: { x: -24.0, y: 19.0 },
+  // Left-side display support parts are separated from the FPC body and from
+  // one another so the block reads clearly during assembly.
+  resetRow: row({ x: -30.0, y: 20.0 }, 4.0, 2),
+  backlightResistor: { x: -21.5, y: 20.0 },
 };
 
 export const debug = {
-  // Deliberate service region on the back side, clear of the LCD and keys.
-  points: row({ x: -6.0, y: 20.5 }, 3.0, 4),
+  // Deliberate, widely spaced service row in the otherwise open center-left
+  // region, clear of the FPC connector, analog block, and key sockets.
+  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
 };
 
 export const OPENING_ROTATION_DEG = {

@@ -262,10 +262,10 @@ export default () => (
     <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C2" value="100nF" lcsc="C1525" x={analog.opampDecoupling.x} y={analog.opampDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
-    <C0402 name="C4" value="100nF" lcsc="C1525" x={26.0} y={21.0} a="net.V3V3" b="net.GND" />
+    <C0402 name="C4" value="100nF" lcsc="C1525" x={analog.xiaoDecoupling.x} y={analog.xiaoDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
-    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.biasRow[3].x} y={analog.biasRow[3].y} a="net.MIC_RAW" b="net.MIC_AC" />
-    <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.gainRow[3].x} y={analog.gainRow[3].y} a="net.MIC_ADC" b="net.GND" />
+    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" />
+    <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.outputRow[0].x} y={analog.outputRow[0].y} a="net.MIC_ADC" b="net.GND" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
     <resistor
@@ -282,7 +282,7 @@ export default () => (
     <R0402 name="R5" value="100k" lcsc="C25741" x={analog.gainRow[0].x} y={analog.gainRow[0].y} a="net.MIC_AC" b="net.VBIAS" />
     <R0402 name="R6" value="1k" lcsc="C11702" x={analog.gainRow[1].x} y={analog.gainRow[1].y} a="net.MIC_FB" b="net.VBIAS" />
     <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
-    <R0402 name="R8" value="1k" lcsc="C11702" x={14.8} y={14.8} a="net.MIC_AMP" b="net.MIC_ADC" />
+    <R0402 name="R8" value="1k" lcsc="C11702" x={analog.outputRow[1].x} y={analog.outputRow[1].y} a="net.MIC_AMP" b="net.MIC_ADC" />
 
     <testpoint name="TP_VBUS" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
     <testpoint name="TP_3V3" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />
