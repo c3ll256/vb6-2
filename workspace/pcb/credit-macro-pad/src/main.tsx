@@ -31,27 +31,6 @@ const PcbRuleElements = () => (
     {keepoutPropsFromRules().map((keepout) => (
       <keepout key={keepout.name} {...keepout} />
     ))}
-    {/* Source-owned so Freerouting sees this diagnosed analog-return bridge
-        before routing; a one-pin footprint keeps its net identity explicit. */}
-    <chip
-      name="GND_STITCH_ANALOG_RAIL"
-      displayName="Analog return stitching via"
-      pcbX={17.2}
-      pcbY={19.05}
-      footprint={
-        <footprint>
-          <platedhole
-            portHints={["1"]}
-            pcbX={0}
-            pcbY={0}
-            shape="circle"
-            outerDiameter="0.6mm"
-            holeDiameter="0.3mm"
-          />
-        </footprint>
-      }
-      connections={{ "1": "net.GND" }}
-    />
   </>
 );
 
@@ -138,41 +117,15 @@ const DisplayEnvelope = () => (
           strokeWidth="0.15mm"
         />
         <silkscreentext text="LCD / FRONT-CONTACT FPC WRAPS LEFT TO BACK" pcbX={0} pcbY={0} fontSize="0.8mm" />
-        {/* DS1 is a non-populated top-side mechanical envelope. Its insulating
-            display back intentionally overlaps the bottom-mounted XIAO region,
-            so a KiCad courtyard would incorrectly forbid that cross-side stack. */}
+        <courtyardrect
+          pcbX={0}
+          pcbY={0}
+          width={`${display.body.widthMm + 3}mm`}
+          height={`${display.body.heightMm + 3}mm`}
+        />
       </footprint>
     }
   />
-);
-
-// ZILLTEK ZTS6216 native top-side land pattern, re-derived from datasheet
-// pages 6-7. Body: 1.85 x 2.75 mm. Pads: 0.60 x 0.54 mm with centers
-// x=+/-0.525 mm and y=+/-0.965 mm. The bottom acoustic port is not at the
-// package center: it is 0.75 mm from the top edge, i.e. y=+0.625 mm here.
-// Keep this definition in native top orientation; layer="bottom" owns mirror.
-const MicrophoneFootprint = () => (
-  <footprint>
-    {/* Page 7 shows rounded 0.60 x 0.54 mm customer lands. The rounded
-        corners are electrically important beside the Ø0.50 mm sound hole;
-        sharp rectangles intrude into the acoustic opening at the inner
-        corners even though the nominal centers and dimensions are correct. */}
-    <smtpad name="1" portHints={["pin1"]} shape="rect" width="0.60mm" height="0.54mm" rectBorderRadius="0.10mm" pcbX="-0.525mm" pcbY="0.965mm" />
-    <smtpad name="4" portHints={["pin4"]} shape="rect" width="0.60mm" height="0.54mm" rectBorderRadius="0.10mm" pcbX="0.525mm" pcbY="0.965mm" />
-    <smtpad name="1_ESCAPE" portHints={["pin1"]} shape="rect" width="0.60mm" height="0.25mm" rectBorderRadius="0.08mm" pcbX="-0.95mm" pcbY="1.20mm" coveredWithSolderMask />
-    <smtpad name="2" portHints={["pin2"]} shape="rect" width="0.60mm" height="0.54mm" rectBorderRadius="0.10mm" pcbX="-0.525mm" pcbY="-0.965mm" />
-    <smtpad name="3" portHints={["pin3"]} shape="rect" width="0.60mm" height="0.54mm" rectBorderRadius="0.10mm" pcbX="0.525mm" pcbY="-0.965mm" />
-    <cutout
-      name="ACOUSTIC_PORT"
-      shape="circle"
-      radius={`${microphone.acousticHoleDiameterMm / 2}mm`}
-      pcbX="0mm"
-      pcbY="0.625mm"
-    />
-    <silkscreenrect pcbX="0mm" pcbY="0mm" width="1.85mm" height="2.75mm" strokeWidth="0.12mm" />
-    <silkscreencircle pcbX="-0.76mm" pcbY="1.18mm" radius="0.13mm" fill="red" />
-    <courtyardrect pcbX="0mm" pcbY="0mm" width="2.35mm" height="3.25mm" />
-  </footprint>
 );
 
 const KeySwitch = ({ name, index }: { name: string; index: number }) => {
@@ -180,9 +133,9 @@ const KeySwitch = ({ name, index }: { name: string; index: number }) => {
   return (
     <HotSwapKeySwitch
       name={`KEY${index + 1}`}
-      switch="mx"
-      socket="c41430893"
-      orientation={index === 2 ? "north" : "south"}
+      switch="choc_v1"
+      socket="kailh_choc_v1"
+      orientation="south"
       pcbX={p.x}
       pcbY={p.y}
       connections={{ "1": `net.KEY${index + 1}`, "2": "net.GND" }}
@@ -200,7 +153,7 @@ export default () => (
   >
     <PcbRuleElements />
 
-    {/* User-facing side: LCD envelope plus removable MX hot-swap switches. */}
+    {/* User-facing side: LCD envelope plus removable Choc hot-swap switches. */}
     <DisplayEnvelope />
     {["KEY1", "KEY2", "KEY3", "KEY4"].map((name, index) => (
       <KeySwitch key={name} name={name} index={index} />
@@ -217,9 +170,9 @@ export default () => (
       connections={{
         D0: "net.KEY1",
         D1: "net.KEY2",
-        D4: "net.KEY3",
+        D2: "net.KEY3",
         D3: "net.KEY4",
-        D2: "net.LCD_MOSI",
+        D4: "net.LCD_MOSI",
         D5: "net.LCD_SCK",
         D6: "net.LCD_CS_N",
         D7: "net.LCD_D_C",
@@ -264,50 +217,22 @@ export default () => (
       }}
     />
 
-    {/* J1 uses 0.5 mm pitch and its GND land is trapped between pins 1 and 3.
-        This soldermask-covered, same-net copper tongue overlaps only pin 2 and
-        forces adjacent fanout away until the bottom GND pour can merge into it. */}
-    <chip
-      name="J1_GND_ESCAPE"
-      displayName="J1 pin 2 buried GND escape copper"
-      layer={smtSide}
-      pcbX={-34.1}
-      pcbY={14.250112}
-      footprint={
-        <footprint>
-          <smtpad
-            portHints={["1"]}
-            pcbX={0}
-            pcbY={0}
-            layer="bottom"
-            shape="rect"
-            width="4.8mm"
-            height="0.2mm"
-            coveredWithSolderMask
-          />
-          <platedhole
-            portHints={["1"]}
-            pcbX={-2.6}
-            pcbY={0}
-            shape="circle"
-            outerDiameter="0.6mm"
-            holeDiameter="0.3mm"
-          />
-        </footprint>
-      }
-      connections={{ "1": "net.GND" }}
+    <cutout
+      name="H_MIC_PORT"
+      shape="circle"
+      radius={`${microphone.acousticHoleDiameterMm / 2}mm`}
+      pcbX={microphone.x}
+      pcbY={microphone.y}
     />
-
     <chip
       name="MIC1"
       displayName="ZILLTEK ZTS6216"
       manufacturerPartNumber="ZTS6216"
       supplierPartNumbers={{ jlcpcb: ["C481302"] }}
-      footprint={<MicrophoneFootprint />}
+      footprint="jlcpcb:C481302"
       layer={smtSide}
       pcbX={microphone.x}
       pcbY={microphone.y}
-      pcbRotation={180}
       pinLabels={{ pin1: "OUT", pin2: "GND1", pin3: "GND2", pin4: "VDD" }}
       connections={{
         pin1: "net.MIC_RAW",
@@ -336,46 +261,13 @@ export default () => (
       }}
     />
 
-    {/* Same-net buried escape for U2 pin 2. The source-owned plated via is
-        present before Freerouting, so surrounding analog routes avoid it. */}
-    <chip
-      name="U2_GND_ESCAPE"
-      displayName="U2 pin 2 buried GND escape copper"
-      layer={smtSide}
-      pcbX={10.0}
-      pcbY={19.25}
-      footprint={
-        <footprint>
-          <smtpad
-            portHints={["1"]}
-            pcbX={0}
-            pcbY={0}
-            layer="bottom"
-            shape="rect"
-            width="0.2mm"
-            height="1.9mm"
-            coveredWithSolderMask
-          />
-          <platedhole
-            portHints={["1"]}
-            pcbX={0}
-            pcbY={-0.75}
-            shape="circle"
-            outerDiameter="0.6mm"
-            holeDiameter="0.3mm"
-          />
-        </footprint>
-      }
-      connections={{ "1": "net.GND" }}
-    />
-
-    <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.GND" b="net.V3V3" />
+    <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C2" value="100nF" lcsc="C1525" x={analog.opampDecoupling.x} y={analog.opampDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
-    <C0402 name="C4" value="100nF" lcsc="C1525" x={analog.railDecoupling.x} y={analog.railDecoupling.y} a="net.V3V3" b="net.GND" />
-    <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasFilter.x} y={analog.biasFilter.y} a="net.VBIAS" b="net.GND" />
-    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" />
-    <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.adcFilterRow[1].x} y={analog.adcFilterRow[1].y} a="net.MIC_ADC" b="net.GND" />
+    <C0402 name="C4" value="100nF" lcsc="C1525" x={26.0} y={21.0} a="net.V3V3" b="net.GND" />
+    <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
+    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.biasRow[3].x} y={analog.biasRow[3].y} a="net.MIC_RAW" b="net.MIC_AC" />
+    <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.gainRow[3].x} y={analog.gainRow[3].y} a="net.MIC_ADC" b="net.GND" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
     <resistor
@@ -387,17 +279,16 @@ export default () => (
       pcbY={displaySupport.backlightResistor.y}
       connections={{ pin1: "net.VBUS", pin2: "net.LCD_LEDA" }}
     />
-    <R0402 name="R3" value="100k" lcsc="C25741" x={analog.biasDividerRow[0].x} y={analog.biasDividerRow[0].y} a="net.V3V3" b="net.VBIAS" />
-    <R0402 name="R4" value="100k" lcsc="C25741" x={analog.biasDividerRow[1].x} y={analog.biasDividerRow[1].y} a="net.VBIAS" b="net.GND" />
-    <R0402 name="R5" value="100k" lcsc="C25741" x={analog.inputAndGainRow[0].x} y={analog.inputAndGainRow[0].y} a="net.MIC_AC" b="net.VBIAS" />
-    <R0402 name="R6" value="1k" lcsc="C11702" x={analog.inputAndGainRow[1].x} y={analog.inputAndGainRow[1].y} a="net.MIC_FB" b="net.VBIAS" />
-    <R0402 name="R7" value="100k" lcsc="C25741" x={analog.feedback.x} y={analog.feedback.y} a="net.MIC_AMP" b="net.MIC_FB" />
-    <R0402 name="R8" value="1k" lcsc="C11702" x={analog.adcFilterRow[0].x} y={analog.adcFilterRow[0].y} a="net.MIC_AMP" b="net.MIC_ADC" />
+    <R0402 name="R3" value="100k" lcsc="C25741" x={analog.biasRow[0].x} y={analog.biasRow[0].y} a="net.V3V3" b="net.VBIAS" />
+    <R0402 name="R4" value="100k" lcsc="C25741" x={analog.biasRow[1].x} y={analog.biasRow[1].y} a="net.VBIAS" b="net.GND" />
+    <R0402 name="R5" value="100k" lcsc="C25741" x={analog.gainRow[0].x} y={analog.gainRow[0].y} a="net.MIC_AC" b="net.VBIAS" />
+    <R0402 name="R6" value="1k" lcsc="C11702" x={analog.gainRow[1].x} y={analog.gainRow[1].y} a="net.MIC_FB" b="net.VBIAS" />
+    <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
+    <R0402 name="R8" value="1k" lcsc="C11702" x={14.8} y={14.8} a="net.MIC_AMP" b="net.MIC_ADC" />
 
     <testpoint name="TP_VBUS" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
     <testpoint name="TP_3V3" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />
     <testpoint name="TP_GND" layer={smtSide} pcbX={debug.points[2].x} pcbY={debug.points[2].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.GND" }} />
     <testpoint name="TP_MIC" layer={smtSide} pcbX={debug.points[3].x} pcbY={debug.points[3].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.MIC_ADC" }} />
-
   </board>
 );
