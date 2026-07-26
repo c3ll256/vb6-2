@@ -16,8 +16,7 @@ import {
   netPropsFor,
   pcbRules,
 } from "./lib/replicator-pcb";
-import { HotSwapKeySwitch } from "./lib/footprints/index";
-import { XiaoEsp32S3Reflow } from "./components/XiaoEsp32S3Reflow";
+import { HotSwapKeySwitch, XiaoEsp32S3 } from "./lib/footprints/index";
 
 const smtSide = sides.smtAssembly;
 
@@ -161,8 +160,9 @@ export default () => (
     ))}
 
     {/* Back-side-only SMT assembly policy requested by the user. */}
-    <XiaoEsp32S3Reflow
+    <XiaoEsp32S3
       name="U1"
+      mounting="direct_castellated_hand_solder"
       layer={xiao.side}
       pcbX={xiao.x}
       pcbY={xiao.y}
@@ -217,6 +217,13 @@ export default () => (
       }}
     />
 
+    <cutout
+      name="H_MIC_PORT"
+      shape="circle"
+      radius={`${microphone.acousticHoleDiameterMm / 2}mm`}
+      pcbX={microphone.x}
+      pcbY={microphone.y}
+    />
     <chip
       name="MIC1"
       displayName="ZILLTEK ZTS6216"
@@ -233,14 +240,7 @@ export default () => (
         pin3: "net.GND",
         pin4: "net.V3V3",
       }}
-    >
-      <hole
-        name="H_MIC_PORT"
-        diameter={`${microphone.acousticHoleDiameterMm}mm`}
-        pcbX={0}
-        pcbY={0}
-      />
-    </chip>
+    />
 
     <chip
       name="U2"

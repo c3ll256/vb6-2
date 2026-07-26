@@ -11,9 +11,7 @@ export const sides = {
 };
 
 export const display = {
-  // Shifted left to keep the bottom-mounted XIAO's through-board hand-solder
-  // access holes outside the top-side LCD body/courtyard.
-  center: { x: -7.0, y: 13.0 },
+  center: { x: 0, y: 13.0 },
   body: { widthMm: 62.5, heightMm: 17.9 },
   active: { widthMm: 55.2948, heightMm: 14.7972 },
   side: sides.user,
@@ -34,12 +32,10 @@ export const display = {
 export const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
 
 export const xiao = {
-  // Keep the USB receptacle at the right edge without letting the reflow
-  // carrier body overhang the board outline.
-  x: 29.5,
-  // Right-side placement above the key contact holes; the USB opening remains
-  // accessible at +X while the XIAO antenna end points toward board center.
-  y: 10.0,
+  x: 31.0,
+  // Right-side placement above the key contact holes; the USB shell reaches
+  // the +X edge while the XIAO antenna end points toward board center.
+  y: 9.0,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
   rotationDeg: 270,

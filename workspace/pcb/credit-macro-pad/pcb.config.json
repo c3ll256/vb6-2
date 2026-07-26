@@ -50,93 +50,20 @@
   "copperPours": {
     "enabled": true,
     "groundLayers": ["top", "bottom"],
-    "clearanceMm": 0.15,
+    "clearanceMm": 0.3,
     "padMarginMm": 0.3,
     "traceMarginMm": 0.3,
     "boardEdgeMarginMm": 1,
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [
-    {
-      "name": "GND_STITCH_CENTER",
-      "net": "GND",
-      "xMm": 0,
-      "yMm": 0,
-      "diameterMm": 0.6,
-      "drillMm": 0.3,
-      "rationale": "Connect the continuous top GND plane to the main bottom GND region at a routed-geometry-clear board-center location."
-    },
-    {
-      "name": "GND_STITCH_BOTTOM_REGION_1",
-      "net": "GND",
-      "xMm": -7.1585,
-      "yMm": 15.702,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge diagnosed B.Cu filled region 1 to the continuous top GND plane; polygon interior clearance is 2.91 mm."
-    },
-    {
-      "name": "GND_STITCH_BOTTOM_REGION_2",
-      "net": "GND",
-      "xMm": 12.0106,
-      "yMm": 14.3311,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge diagnosed B.Cu filled region 2 near C7 to the continuous top GND plane; polygon interior clearance is 0.69 mm."
-    },
-    {
-      "name": "GND_STITCH_BOTTOM_REGION_3",
-      "net": "GND",
-      "xMm": 5.8373,
-      "yMm": 19.7041,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge diagnosed B.Cu filled region 3 near C2 to the continuous top GND plane; polygon interior clearance is 0.87 mm."
-    },
-    {
-      "name": "GND_STITCH_J1_ESCAPE",
-      "net": "GND",
-      "xMm": -35.7556,
-      "yMm": 14.25,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge the diagnosed narrow J1 pin-2 B.Cu escape lobe to the continuous top GND plane; 0.4/0.3 mm is required by the 0.40 mm-wide filled corridor."
-    },
-    {
-      "name": "GND_STITCH_BOTTOM_REGION_5",
-      "net": "GND",
-      "xMm": 7.6089,
-      "yMm": 17.3877,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge diagnosed B.Cu filled region 5 near R4 to the continuous top GND plane; polygon interior clearance is 0.68 mm."
-    },
-    {
-      "name": "GND_STITCH_BOTTOM_REGION_6",
-      "net": "GND",
-      "xMm": 9.81,
-      "yMm": 17.52,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge diagnosed B.Cu filled region 6 near C5 to the continuous top GND plane; polygon interior clearance is 0.49 mm."
-    },
-    {
-      "name": "GND_STITCH_BOTTOM_REGION_7",
-      "net": "GND",
-      "xMm": 10.0199,
-      "yMm": 20.4072,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Bridge diagnosed B.Cu filled region 7 near U2 to the continuous top GND plane; polygon interior clearance is 0.69 mm."
-    }
-  ],
+  "stitchingVias": [],
   "keepouts": [
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
       "shape": "rect",
-      "xMm": 20.5,
-      "yMm": 10.0,
+      "xMm": 21.0,
+      "yMm": 9.0,
       "widthMm": 6,
       "heightMm": 19,
 "rotationDeg": 0,
