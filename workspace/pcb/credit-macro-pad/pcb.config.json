@@ -63,7 +63,7 @@
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
       "shape": "rect",
       "xMm": 20.5,
-      "yMm": 7.5,
+      "yMm": 10.0,
       "widthMm": 6,
       "heightMm": 19,
 "rotationDeg": 0,

@@ -35,7 +35,7 @@ export const xiao = {
   x: 30.5,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
-  y: 7.5,
+  y: 10.0,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
   rotationDeg: 270,
@@ -54,14 +54,16 @@ export const analog = {
   // Airy, functional signal chain across the upper-middle service region.
   // The microphone-side parts remain at the right, while the bias and gain
   // networks use two aligned rows with 4 mm pitch instead of a dense cluster.
-  opamp: { x: 20.0, y: 20.5 },
-  micDecoupling: { x: 32.5, y: 21.0 },
-  opampDecoupling: { x: 15.5, y: 22.5 },
+  opamp: { x: 15.0, y: 20.5 },
+  // These two parts sit radially outside the microphone's top-side pads so
+  // their short routes leave the central acoustic cutout rather than crossing it.
+  micDecoupling: { x: 32.5, y: 23.65 },
+  opampDecoupling: { x: 10.5, y: 22.5 },
   xiaoDecoupling: { x: 26.0, y: 22.0 },
-  micCoupling: { x: 27.5, y: 18.5 },
+  micCoupling: { x: 39.0, y: 22.5 },
   biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
   gainRow: row({ x: 3.0, y: 12.5 }, 4.0, 3),
-  outputRow: row({ x: 15.0, y: 12.5 }, 4.0, 2),
+  outputRow: row({ x: 14.0, y: 12.5 }, 3.0, 2),
 };
 
 export const displaySupport = {
@@ -72,9 +74,15 @@ export const displaySupport = {
 };
 
 export const debug = {
-  // Deliberate, widely spaced service row in the otherwise open center-left
-  // region, clear of the FPC connector, analog block, and key sockets.
-  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
+  // Keep VBUS/GND/MIC in the open service row. TP_3V3 is intentionally placed
+  // just left of J1 pin 7 so that its short fanout exits away from the FPC pin
+  // row instead of forming a vertical V3V3 barrier beside J1 pin 2.
+  points: [
+    { x: -15.0, y: 6.0 },
+    { x: -38.0, y: 11.75 },
+    { x: -5.0, y: 6.0 },
+    { x: 0.0, y: 6.0 },
+  ],
 };
 
 export const OPENING_ROTATION_DEG = {
