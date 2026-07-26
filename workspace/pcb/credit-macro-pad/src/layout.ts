@@ -26,10 +26,10 @@ export const display = {
   },
 };
 
-// Exact Choc hot-swap component uses the switch shaft as its origin. Set one
-// straight, board-centered 19 mm row low on the board to use the lower area
-// while preserving a nominal 5 mm key-envelope margin at the bottom edge.
-export const keyCenters = row({ x: -28.5, y: -12.5 }, 19, 4);
+// Exact MX hot-swap component uses the switch shaft as its origin. Keep one
+// straight, board-centered 19 mm row low on the board while preserving a
+// nominal 4 mm keycap-envelope margin at the bottom edge.
+export const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
 
 export const xiao = {
   x: 31.0,

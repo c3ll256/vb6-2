@@ -133,8 +133,8 @@ const KeySwitch = ({ name, index }: { name: string; index: number }) => {
   return (
     <HotSwapKeySwitch
       name={`KEY${index + 1}`}
-      switch="choc_v1"
-      socket="kailh_choc_v1"
+      switch="mx"
+      socket="c41430893"
       orientation="south"
       pcbX={p.x}
       pcbY={p.y}
@@ -153,7 +153,7 @@ export default () => (
   >
     <PcbRuleElements />
 
-    {/* User-facing side: LCD envelope plus removable Choc hot-swap switches. */}
+    {/* User-facing side: LCD envelope plus removable MX hot-swap switches. */}
     <DisplayEnvelope />
     {["KEY1", "KEY2", "KEY3", "KEY4"].map((name, index) => (
       <KeySwitch key={name} name={name} index={index} />

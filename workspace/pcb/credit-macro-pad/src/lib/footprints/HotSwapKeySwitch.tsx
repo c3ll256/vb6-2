@@ -315,7 +315,6 @@ export const hotSwapKeySwitchTemplate = {
       label: 'Kailh CPG135001S30 Choc v1 hot-swap socket',
       footprintFamily: 'choc_v1_hotswap',
       side: 'bottom',
-      supplierPartNumber: 'C5333465',
       compatibleSwitches: ['choc_v1'],
       contactTargets: [
         {
@@ -360,11 +359,11 @@ export const hotSwapKeySwitchTemplate = {
       body_mm: { x: 17.5, y: 6.5 },
       compatibleParts: [
         {
-          lcscCode: 'C5333465',
+          lcscCode: 'C965556',
           manufacturer: 'Kailh / Kaihua',
           mpn: 'CPG135001S30',
           evidenceUrl: 'https://cdn-shop.adafruit.com/product-files/5118/5118-Choc-Socket.pdf',
-          notes: 'Exact CPG135001S30 identity; LCSC C5333465. Primary Kailh Choc v1 hot-swap socket reference geometry.',
+          notes: 'Primary Kailh Choc v1 hot-swap socket reference geometry.',
         },
       ],
       sources: [
@@ -632,22 +631,8 @@ function socketOriginOffset(input: {
 }
 
 function mechanicalFootprint(switchProfile: SwitchProfile, orientation: Orientation) {
-  const pin1 = rotatePoint(switchProfile.contactPins[0]!.at_mm, orientation);
   return (
     <footprint>
-      <silkscreenrect
-        pcbX="0mm"
-        pcbY="0mm"
-        width={mm(switchProfile.courtyard_mm.x)}
-        height={mm(switchProfile.courtyard_mm.y)}
-        strokeWidth="0.15mm"
-      />
-      <silkscreentext
-        text="1"
-        pcbX={mm(pin1.x)}
-        pcbY={mm(pin1.y)}
-        fontSize="0.8mm"
-      />
       {switchProfile.mechanicalHoles.map((hole) =>
         renderHole(
           {
@@ -665,26 +650,8 @@ function socketFootprint(socketProfile: SocketProfile, orientation: Orientation)
   if (socketProfile.supplierFootprint) {
     return socketProfile.supplierFootprint;
   }
-  const pin1 = socketProfile.smdPads.find((pad) => pad.name === '1')!;
-  const pin1Local = toLayerLocalPoint(
-    rotatePoint(pin1.at_mm, orientation),
-    socketProfile.side,
-  );
   return (
     <footprint>
-      <silkscreenrect
-        pcbX="0mm"
-        pcbY="0mm"
-        width={mm(socketProfile.body_mm.x)}
-        height={mm(socketProfile.body_mm.y)}
-        strokeWidth="0.15mm"
-      />
-      <silkscreentext
-        text="1"
-        pcbX={mm(pin1Local.x)}
-        pcbY={mm(pin1Local.y)}
-        fontSize="0.8mm"
-      />
       {socketProfile.smdPads.map((pad) =>
         renderSmdPad(
           {
