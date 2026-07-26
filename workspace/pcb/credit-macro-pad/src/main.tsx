@@ -71,7 +71,6 @@ const C0402 = ({
   y,
   a,
   b,
-  rotation = 0,
 }: {
   name: string;
   value: string;
@@ -80,7 +79,6 @@ const C0402 = ({
   y: number;
   a: string;
   b: string;
-  rotation?: number;
 }) => (
   <capacitor
     name={name}
@@ -90,7 +88,6 @@ const C0402 = ({
     layer={smtSide}
     pcbX={x}
     pcbY={y}
-    pcbRotation={rotation}
     connections={{ pin1: a, pin2: b }}
   />
 );
@@ -267,7 +264,7 @@ export default () => (
     <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
     <C0402 name="C4" value="100nF" lcsc="C1525" x={analog.xiaoDecoupling.x} y={analog.xiaoDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
-    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" rotation={90} />
+    <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" />
     <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.outputRow[0].x} y={analog.outputRow[0].y} a="net.MIC_ADC" b="net.GND" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
