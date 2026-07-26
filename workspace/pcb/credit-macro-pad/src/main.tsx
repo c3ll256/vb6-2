@@ -215,13 +215,6 @@ export default () => (
       }}
     />
 
-    <cutout
-      name="H_MIC_PORT"
-      shape="circle"
-      radius={`${microphone.acousticHoleDiameterMm / 2}mm`}
-      pcbX={microphone.x}
-      pcbY={microphone.y}
-    />
     <chip
       name="MIC1"
       displayName="ZILLTEK ZTS6216"

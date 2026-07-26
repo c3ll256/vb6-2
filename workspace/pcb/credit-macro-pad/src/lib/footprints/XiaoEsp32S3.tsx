@@ -26,11 +26,19 @@
  *   (2.88mm margin at each end). This only affects silkscreen/outline
  *   spacing, not electrical correctness -- confirm visually against the
  *   auto-injected PCB previews if the exact split matters for your design.
- * - Direct hand-solder mounting uses the same 1.0mm registration hole plus a
- *   3.2mm x 1.7mm rectangular pad offset toward the carrier-board exterior.
- *   This leaves about 1.0mm of copper beyond the nominal XIAO body edge for
- *   iron access. It is a hand-solder-specific carrier treatment, not a vendor
- *   reflow land pattern.
+ * - A verified in-use fab.pretty `SeeedStudio_XIAO_ESP32S3.kicad_mod`
+ *   footprint (retrieved 2026-07-26) defines independent mounting pad sets at
+ *   the same 15.24mm-spaced pin centres: 1.60mm circular through-hole pads
+ *   with 0.80mm drills, and 3.00mm x 1.60mm rectangular SMD pads. It never
+ *   combines an SMD land with a plated drill.
+ * - Direct hand-solder mounting is an SMD-only carrier treatment with no
+ *   drill. It retains the existing 3.2mm x 1.7mm rectangular land and shifts
+ *   its centre 0.65mm outward for iron access. The outward copper exposure is
+ *   7.62 + 0.65 + (3.20 / 2) - (17.80 / 2) = 0.97mm.
+ * - Direct reflow mounting uses the verified fab.pretty 3.00mm x 1.60mm SMD
+ *   land at the module pin centre, with no drill. Its outward exposure is
+ *   7.62 + (3.00 / 2) - (17.80 / 2) = 0.22mm. Unlike the hand-solder land it
+ *   has no extra outward extension because an iron does not need edge access.
  *
  * PIN MAP (standard top view, USB at top / +Y; verified against the Seeed
  * pin table on the same wiki page):
@@ -72,6 +80,7 @@ declare module 'react' {
       courtyardrect: any;
       footprint: any;
       platedhole: any;
+      smtpad: any;
       silkscreenrect: any;
       silkscreencircle: any;
       silkscreentext: any;
@@ -108,12 +117,14 @@ export const XIAO_ESP32S3_METADATA = {
       process: 'hand_solder_iron',
       capability: 'hand_solder_access_designed',
       rectPadMm: { x: 3.2, y: 1.7 },
-      holeOffsetMm: 0.65,
+      rectBorderRadiusMm: 0.25,
       nominalExposedCopperMm: 0.97,
     },
     direct_castellated_reflow: {
       process: 'reflow',
-      capability: 'unsupported_without_verified_land_pattern',
+      capability: 'supported',
+      rectPadMm: { x: 3.0, y: 1.6 },
+      nominalExposedCopperMm: 0.22,
     },
   },
   cadModel: {
@@ -129,6 +140,13 @@ export const XIAO_ESP32S3_METADATA = {
       type: 'wiki',
       title: 'Getting Started with Seeed Studio XIAO ESP32-S3 Series',
       url: 'https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/',
+    },
+    {
+      type: 'kicad_footprint',
+      title: 'fab.pretty SeeedStudio_XIAO_ESP32S3.kicad_mod',
+      retrieved: '2026-07-26',
+      notes:
+        '14 circular 1.60mm through-hole pads with 0.80mm drills and an independent set of 14 rectangular 3.00mm x 1.60mm SMD pads at the same pin centres.',
     },
   ],
 } as const;
@@ -184,30 +202,39 @@ function mm(value: number): string {
   return `${value}mm`;
 }
 
-export type XiaoEsp32S3Mounting = 'through_hole_header' | 'direct_castellated_hand_solder';
+export type XiaoEsp32S3Mounting =
+  | 'through_hole_header'
+  | 'direct_castellated_hand_solder'
+  | 'direct_castellated_reflow';
 
-function renderPin(pin: PinRow, x_mm: number, key: string, mounting: XiaoEsp32S3Mounting) {
-  if (mounting === 'direct_castellated_hand_solder') {
+function renderPin(
+  pin: PinRow,
+  x_mm: number,
+  key: string,
+  mounting: XiaoEsp32S3Mounting,
+  layer: Layer,
+) {
+  if (mounting !== 'through_hole_header') {
     const side = x_mm < 0 ? -1 : 1;
-    const holeOffsetMm =
-      -side * XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.holeOffsetMm;
-    const padCenterX = x_mm - holeOffsetMm;
+    const variant = XIAO_ESP32S3_METADATA.mountingVariants[mounting];
+    const padCenterX =
+      mounting === 'direct_castellated_hand_solder'
+        ? side *
+          (BODY_HALF_W_MM + variant.nominalExposedCopperMm - variant.rectPadMm.x / 2)
+        : x_mm;
+    const handSolderPadProps =
+      mounting === 'direct_castellated_hand_solder'
+        ? { cornerRadius: mm(variant.rectBorderRadiusMm) }
+        : {};
     return (
-      <platedhole
+      <smtpad
         key={key}
-        name={pin.name}
-        shape="circular_hole_with_rect_pad"
-        holeDiameter={mm(XIAO_ESP32S3_METADATA.holeDiameterMm)}
-        rectPadWidth={mm(
-          XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.rectPadMm.x,
-        )}
-        rectPadHeight={mm(
-          XIAO_ESP32S3_METADATA.mountingVariants.direct_castellated_hand_solder.rectPadMm.y,
-        )}
-        rectBorderRadius="0.25mm"
-        holeOffsetX={mm(holeOffsetMm)}
-        holeOffsetY="0mm"
+        shape="rect"
+        width={mm(variant.rectPadMm.x)}
+        height={mm(variant.rectPadMm.y)}
+        layer={layer}
         solderMaskMargin="0.08mm"
+        {...handSolderPadProps}
         pcbX={mm(padCenterX)}
         pcbY={mm(pin.y_mm)}
         portHints={pin.portHints}
@@ -228,7 +255,7 @@ function renderPin(pin: PinRow, x_mm: number, key: string, mounting: XiaoEsp32S3
   );
 }
 
-function xiaoEsp32S3Footprint(mounting: XiaoEsp32S3Mounting) {
+function xiaoEsp32S3Footprint(mounting: XiaoEsp32S3Mounting, layer: Layer) {
   const leftPins = leftColumnPins();
   const rightPins = rightColumnPins();
   const topPinY = leftPins[0]?.y_mm ?? PIN_SPAN_HALF_MM;
@@ -236,9 +263,11 @@ function xiaoEsp32S3Footprint(mounting: XiaoEsp32S3Mounting) {
 
   return (
     <footprint>
-      {leftPins.map((pin, index) => renderPin(pin, -ROW_HALF_X_MM, `xiao-left-${index}`, mounting))}
+      {leftPins.map((pin, index) =>
+        renderPin(pin, -ROW_HALF_X_MM, `xiao-left-${index}`, mounting, layer),
+      )}
       {rightPins.map((pin, index) =>
-        renderPin(pin, ROW_HALF_X_MM, `xiao-right-${index}`, mounting),
+        renderPin(pin, ROW_HALF_X_MM, `xiao-right-${index}`, mounting, layer),
       )}
 
       {/* Module body outline, matching the verified 17.8mm x 21.0mm silhouette. */}
@@ -310,7 +339,10 @@ export function XiaoEsp32S3(props: XiaoEsp32S3Props) {
       pcbX={props.pcbX ?? 0}
       pcbY={props.pcbY ?? 0}
       pcbRotation={props.pcbRotation ?? 0}
-      footprint={xiaoEsp32S3Footprint(props.mounting ?? 'through_hole_header')}
+      footprint={xiaoEsp32S3Footprint(
+        props.mounting ?? 'through_hole_header',
+        props.layer ?? 'top',
+      )}
       cadModel={cadModelProps(XIAO_BOARD_MODEL)}
       connections={props.connections ?? {}}
     />
@@ -324,10 +356,11 @@ export function listXiaoFootprintTemplates() {
       component: XIAO_ESP32S3_METADATA.component,
       importPath: XIAO_ESP32S3_METADATA.importPath,
       description:
-        'Seeed Studio XIAO ESP32S3 module footprint: verified 17.8x21.0mm body, official vendor STEP model, and explicit through-hole-header or direct-hand-solder mounting variants.',
+        'Seeed Studio XIAO ESP32S3 module footprint: verified 17.8x21.0mm body, official vendor STEP model, and explicit pin-header, castellated hand-solder, and stencil/reflow SMT mounting variants.',
       examples: [
         '<XiaoEsp32S3 name="U_XIAO" mounting="through_hole_header" layer="top" pcbX={0} pcbY={0} pcbRotation={0} connections={{ VBUS: "net.VBUS", GND: "net.GND", V3V3: "net.V3V3", D0: "net.KEY1" }} />',
         '<XiaoEsp32S3 name="U_XIAO" mounting="direct_castellated_hand_solder" layer="top" pcbX={0} pcbY={0} pcbRotation={0} connections={{ VBUS: "net.VBUS", GND: "net.GND", V3V3: "net.V3V3", D0: "net.KEY1" }} />',
+        '<XiaoEsp32S3 name="U_XIAO" mounting="direct_castellated_reflow" layer="top" pcbX={0} pcbY={0} pcbRotation={0} connections={{ VBUS: "net.VBUS", GND: "net.GND", V3V3: "net.V3V3", D0: "net.KEY1" }} />',
       ],
     },
   ];

@@ -10,7 +10,11 @@
     "absoluteMinimumCopperClearanceMm": 0.15,
     "preferredRoutingClearanceMm": 0.25,
     "copperToBoardEdgeMm": 1,
-    "via": { "diameterMm": 0.6, "drillMm": 0.3 },
+    "via": {
+      "diameterMm": 0.4,
+      "drillMm": 0.3,
+      "rationale": "Manufacturing floor for the single J1 GND dogbone via at a 0.5 mm-pitch connector; all autorouted net classes retain the ordinary 0.6/0.3 mm via geometry."
+    },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
   "netClasses": {
@@ -24,7 +28,17 @@
     "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 }
   },
   "nets": {
-    "GND": { "class": "ground", "rationale": "Two-layer return plane for USB power, display, keys, and analog audio." },
+    "GND": {
+      "class": "ground",
+      "rationale": "Two-layer return plane for USB power, display, keys, and analog audio.",
+      "escape": {
+        "widthMm": 0.25,
+        "clearanceMm": 0.15,
+        "maxLengthMm": 1.0,
+        "componentRefs": ["J1"],
+        "rationale": "J1 is a 0.5 mm-pitch FPC connector. Pin 2 needs a short dogbone escape at the declared 0.15 mm manufacturing clearance before it reaches the GND planes."
+      }
+    },
     "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
     "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
     "KEY1": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
@@ -57,7 +71,17 @@
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [],
+  "stitchingVias": [
+    {
+      "name": "J1_GND_ESCAPE_VIA",
+      "net": "GND",
+      "xMm": -35.0,
+      "yMm": 14.25,
+      "diameterMm": 0.4,
+      "drillMm": 0.3,
+      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via at the inner end of J1 pin 2. Its annulus overlaps the GND pad and reaches continuous top-side GND copper; the 0.15 mm local escape clearance is required by the connector's 0.5 mm pitch."
+    }
+  ],
   "keepouts": [
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",

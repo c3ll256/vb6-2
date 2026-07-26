@@ -43,11 +43,11 @@ export const xiao = {
 
 export const microphone = {
   // Top-right edge, as close as practical to the board edge while retaining
-  // the microphone body and acoustic cutout inside the outline.
+  // the microphone body inside the outline. ZTS6216 is top-ported, so its
+  // acoustic port faces away from the PCB and no board drill is required.
   x: 36.5,
   y: 22.5,
   side: sides.smtAssembly,
-  acousticHoleDiameterMm: 0.5,
 };
 
 export const analog = {
@@ -61,7 +61,9 @@ export const analog = {
   micCoupling: { x: 27.5, y: 18.5 },
   biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
   gainRow: row({ x: 3.0, y: 12.5 }, 4.0, 3),
-  outputRow: row({ x: 15.0, y: 12.5 }, 4.0, 2),
+  // Keep the ADC RC pair left of the XIAO courtyard while preserving a short,
+  // direct analog path between R8 and C7.
+  outputRow: row({ x: 14.0, y: 12.5 }, 3.0, 2),
 };
 
 export const displaySupport = {
