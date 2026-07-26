@@ -117,12 +117,10 @@ const DisplayEnvelope = () => (
           strokeWidth="0.15mm"
         />
         <silkscreentext text="LCD / FRONT-CONTACT FPC WRAPS LEFT TO BACK" pcbX={0} pcbY={0} fontSize="0.8mm" />
-        <courtyardrect
-          pcbX={0}
-          pcbY={0}
-          width={`${display.body.widthMm + 3}mm`}
-          height={`${display.body.heightMm + 3}mm`}
-        />
+        {/* DS1 is a top-side mechanical envelope intentionally stacked above
+            the bottom-side castellated XIAO region. Its exact body and active
+            outlines remain visible; a KiCad courtyard would incorrectly treat
+            the carrier's registration holes as same-side component intrusion. */}
       </footprint>
     }
   />

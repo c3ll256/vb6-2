@@ -18,7 +18,7 @@ export const display = {
   // The seller confirmed a front-contact tail. It wraps around the left edge
   // and mates on the back with a top-contact connector whose opening faces -X.
   fpc: {
-    x: -36.0,
+    x: -35.0,
     y: 13.0,
     side: sides.smtAssembly,
     cableExits: "left" as const,
@@ -32,10 +32,10 @@ export const display = {
 export const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
 
 export const xiao = {
-  x: 31.0,
+  x: 30.5,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
-  y: 9.0,
+  y: 7.5,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
   rotationDeg: 270,
@@ -55,7 +55,9 @@ export const analog = {
   opamp: { x: 10.0, y: 20.5 },
   micDecoupling: { x: 32.5, y: 20.5 },
   opampDecoupling: { x: 6.5, y: 20.5 },
-  biasRow: row({ x: 6.0, y: 17.5 }, 2.2, 4),
+  // Keep the bias-divider row below U2 with enough local clearance for an
+  // off-pad ground transition during two-layer routing.
+  biasRow: row({ x: 6.0, y: 17.0 }, 2.2, 4),
   gainRow: row({ x: 6.0, y: 14.8 }, 2.2, 4),
 };
 
