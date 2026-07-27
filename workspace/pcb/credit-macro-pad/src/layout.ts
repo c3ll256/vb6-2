@@ -1,8 +1,11 @@
 export const board = {
-  widthMm: 81.6,
-  heightMm: 49.98,
-  width: "81.6mm",
-  height: "49.98mm",
+  // Nominal routing profile is 0.20 mm inside each side of the product's
+  // 81.6 x 49.98 mm maximum PCB envelope. This reserves ordinary routed-edge
+  // tolerance instead of putting the nominal Edge.Cuts exactly at the maximum.
+  widthMm: 81.2,
+  heightMm: 49.58,
+  width: "81.2mm",
+  height: "49.58mm",
 };
 
 export const sides = {
@@ -41,6 +44,16 @@ export const xiao = {
   rotationDeg: 270,
 };
 
+export const xiaoAntennaRelief = {
+  // Interior slot below the XIAO's antenna end. It remains clear of the two
+  // end-pad rows and the routed signal escape corridor while removing carrier
+  // copper and FR-4 below the radiating center section.
+  x: 20.5,
+  y: 7.5,
+  widthMm: 6.0,
+  heightMm: 10.0,
+};
+
 export const microphone = {
   // Top-right edge, as close as practical to the board edge while retaining
   // the microphone body inside the outline. ZTS6216 is top-ported, so its
@@ -55,15 +68,17 @@ export const analog = {
   // The microphone-side parts remain at the right, while the bias and gain
   // networks use two aligned rows with 4 mm pitch instead of a dense cluster.
   opamp: { x: 20.0, y: 20.5 },
-  micDecoupling: { x: 32.5, y: 21.0 },
+  micDecoupling: { x: 33.0, y: 20.0 },
   opampDecoupling: { x: 15.5, y: 22.5 },
   xiaoDecoupling: { x: 26.0, y: 22.0 },
-  micCoupling: { x: 27.5, y: 18.5 },
+  // Rotate C6 to the right of MIC1. Its MIC_RAW pad approaches microphone pin
+  // 1 from the board-edge side without crossing either microphone ground pad.
+  micCoupling: { x: 39.3, y: 22.5 },
   biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
-  gainRow: row({ x: 3.0, y: 12.5 }, 4.0, 3),
+  gainRow: [{ x: 3.0, y: 12.5 }, { x: 7.0, y: 12.5 }, { x: 13.0, y: 17.0 }],
   // Keep the ADC RC pair left of the XIAO courtyard while preserving a short,
   // direct analog path between R8 and C7.
-  outputRow: row({ x: 14.0, y: 12.5 }, 3.0, 2),
+  outputRow: [{ x: 14.0, y: 12.5 }, { x: 17.0, y: 17.0 }],
 };
 
 export const displaySupport = {
