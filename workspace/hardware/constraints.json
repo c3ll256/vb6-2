@@ -14,7 +14,7 @@
     "thickness_target": 1.0
   },
   "pcb_component_height_mm": {
-    "top_max_target": 20.0,
+    "top_max_target": 23.0,
     "bottom_max_target": 4.5
   },
   "board_retention": "Use edge rails or low-profile clips after the final fabrication STEP; do not assume mounting holes.",
@@ -38,7 +38,8 @@
     "mounting": "castellated module soldered to carrier PCB",
     "usb_c": "onboard receptacle aligned to right enclosure edge",
     "verified_cad_model_id": "seeed_xiao_esp32s3_v2",
-    "cad_model_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+    "vendor_source_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
+    "pcb_normalized_sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d"
   },
   "ports": [
     {
@@ -54,12 +55,12 @@
     },
     {
       "id": "microphone_acoustic_port",
-      "face": "top",
-      "owner": "ZTS6216 bottom port through carrier PCB",
-      "pcb_hole_diameter_mm": 0.5,
+      "face": "top edge",
+      "owner": "ZTS6216 top port facing the bottom service cavity",
+      "pcb_hole_diameter_mm": 0.0,
       "enclosure_hole_diameter_target_mm": 1.5,
       "clearance_mm": 2.0,
-      "validation": "Seal the short PCB-to-enclosure acoustic path; keep solder paste out of the sound hole."
+      "validation": "No PCB acoustic drill: ZTS6216 is top-ported. Seal a short duct from the exposed package-top port in the bottom service cavity to the top-edge enclosure opening; keep the duct clear of the XIAO and service fasteners."
     }
   ],
   "interactive_elements": [
@@ -95,13 +96,13 @@
       "keycap_bom_id": "keycap_1u_mx_black",
       "nominal_pitch_mm": 19.0,
       "per_key_max_envelope_mm": {
-        "w": 18.0,
-        "h": 18.0,
-        "height_above_stem_reference": 7.5
+        "w": 16.5,
+        "h": 16.5,
+        "height_above_stem_reference": 5.0
       },
       "total_row_envelope_mm": {
-        "w": 75.0,
-        "h": 18.0
+        "w": 73.5,
+        "h": 16.5
       }
     }
   ],
@@ -123,6 +124,14 @@
     "controller": "ST7789P3",
     "reset": "10 kOhm pull-up to 3.3 V plus 100 nF to ground",
     "backlight": "VBUS through 27 Ohm 1% 0.25 W; no dimming in revision 1"
+    ,"mating_orientation": {
+      "connector_opening": "left edge (-X)",
+      "connector_side": "bottom",
+      "contact_style": "top contact / contacts away from carrier PCB on bottom mounting",
+      "pin1_board_location_mm": { "x": -35.84996, "y": 14.749984 },
+      "pin_order": "1 to 8 descends toward -Y at 0.5 mm pitch; the front-contact tail wraps around the left edge without twist, so panel pins 1..8 mate directly to J1 pads 1..8",
+      "net_map": ["1 LEDA", "2 GND", "3 RESET_N", "4 D_C", "5 SDA_MOSI", "6 SCL", "7 VDD_3V3", "8 CS_N"]
+    }
   },
   "microphone_interface": {
     "bom_id": "microphone_zts6216",
@@ -133,7 +142,7 @@
     "preamplifier": "AC-coupled non-inverting TLV9061 biased at 1.65 V, nominal gain 101 V/V using 100 kOhm feedback and 1 kOhm gain leg",
     "antialias_filter": "1 kOhm series plus 10 nF to ground at ADC input, nominal 15.9 kHz pole",
     "decoupling": "100 nF X7R at ZTS6216 and TLV9061 VDD pins; 1 uF on the 1.65 V virtual-ground node",
-    "land_pattern": "1:1 to 2.75 x 1.85 mm package pads; 0.50 mm bottom acoustic port; no solder paste over port",
+    "land_pattern": "1:1 to 2.75 x 1.85 mm supplier package pads; top acoustic port is in the package lid, so no carrier-PCB aperture or paste exclusion at footprint center is required",
     "pins": [
       "1 OUT",
       "2 GND",
@@ -159,15 +168,15 @@
     "Do not enable Wi-Fi/BLE in the default firmware unless needed; reduced RF activity lowers current and interference risk."
   ],
   "assembly_constraints": [
-    "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
+    "Keep the interior 6 x 14 mm antenna projection beneath the XIAO antenna end free of carrier-PCB copper and keep enclosure metal at least 5 mm away; the reduced keepout height deliberately excludes the two castellated landing-pad rows required to mount the module.",
     "Keep LCD/backlight and USB current paths away from MIC1, U2, the 1.65 V bias node and the analog ADC trace.",
     "Place J1 on the bottom-left edge with its cable opening facing left; the display tail wraps around the left PCB edge without a sharp fold.",
     "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
-    "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
+    "Place MIC1 at the top-right edge with its package-top port exposed into the bottom service cavity; use a sealed short duct to the top-edge enclosure opening and do not drill the carrier PCB under MIC1.",
     "Use four centered 19 mm-pitch MX-compatible CPG151101D05 red switches with bottom-side CPG151101S11-16 / C41430893 hot-swap sockets.",
     "Keep the hot-swap socket bodies and SMD pads on the bottom/service side and the removable switches/keycaps on the top/user side.",
-    "Place the key row low enough to use the lower board area while retaining at least 4 mm nominal keycap-to-board-edge margin."
+    "Use exact Tai-Hao MT165-MX 16.5 mm keycaps. At the centered 19 mm-pitch row they provide 4.05 mm minimum keycap-to-PCB-edge margin and 6.05 mm minimum keycap-to-finished-enclosure-edge margin."
   ],
   "open_items": [],
   "risks": [

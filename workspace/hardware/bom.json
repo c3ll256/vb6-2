@@ -36,7 +36,9 @@
         "format": "step",
         "model_id": "seeed_xiao_esp32s3_v2",
         "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources",
-        "sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+        "vendor_source_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
+        "pcb_normalized_sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d",
+        "normalization": "Replicator verified PCB-normalized derivative of the exact Seeed vendor v2 STEP; millimetre units, board origin and +Z normal are normalized without changing identity or dimensions."
       }
     },
     {
@@ -96,11 +98,22 @@
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
-        "pin1_position": "verify from the supplier footprint preview after orienting the cable opening toward the left edge",
+        "pin1_position": "With J1 on the bottom and its opening facing the left edge, pad 1 is the +Y/top end of the vertical signal-pad row at board coordinate (-35.84996, 14.749984) mm; pad numbers descend toward -Y at 0.5 mm pitch.",
+        "mating_map": [
+          "panel pin 1 LEDA -> J1 pad 1 LCD_LEDA",
+          "panel pin 2 GND -> J1 pad 2 GND",
+          "panel pin 3 RESET_N -> J1 pad 3 LCD_RESET_N",
+          "panel pin 4 D_C -> J1 pad 4 LCD_D_C",
+          "panel pin 5 SDA/MOSI -> J1 pad 5 LCD_MOSI",
+          "panel pin 6 SCL -> J1 pad 6 LCD_SCK",
+          "panel pin 7 VDD -> J1 pad 7 V3V3",
+          "panel pin 8 CS_N -> J1 pad 8 LCD_CS_N"
+        ],
         "evidence_refs": [
           "user statement: display tail is front-contact",
           "references/suppliers/c2992524/c2992524-datasheet.pdf page 3 (upper-contact ordering code 2)",
-          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC"
+          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC",
+          "current routed Circuit JSON J1 pad coordinates and net map; front-contact tail wraps without a twist, so cross-tail pin order is not reversed"
         ]
       },
       "assembly": {
@@ -116,7 +129,7 @@
       "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
-      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "description": "User-specified top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
       "designators": [
         "MIC1"
       ],
@@ -127,8 +140,8 @@
       "mpn": "ZTS6216",
       "lcsc_code": "C481302",
       "jlc_smt_library": "extended",
-      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
-      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
+      "package": "SMD-4P, 2.75 x 1.85 mm, top acoustic port",
+      "footprint": "jlcpcb:C481302 / ZTS6216 top-port land pattern",
       "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
@@ -143,7 +156,7 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
+      "selection_reason": "Exact microphone mandated by the user. ZillTek datasheet DS-1.4 page 1 explicitly states 'Top Port' and 'Top-ported'; pages 1-2 confirm analog output, 65 dBA SNR and pins OUT/GND/GND/VDD. The bottom assembly-side placement exposes the top port into a sealed enclosure duct; no carrier-PCB sound hole is used."
     },
     {
       "id": "mic_preamp_tlv9061",
@@ -246,8 +259,8 @@
     {
       "id": "keycap_1u_mx_black",
       "role": "keycap",
-      "name": "Blank black 1u MX-stem keycap",
-      "description": "MX cruciform-stem 1u keycap, maximum 18 x 18 mm face; use the lowest practical profile compatible with the selected MX switch.",
+      "name": "Tai-Hao MT165-MX low-profile blank black keycap",
+      "description": "Exact Tai-Hao MT165-MX low-profile blank keycap with MX cruciform stem and 16.5 x 16.5 mm face.",
       "designators": [
         "K1",
         "K2",
@@ -255,22 +268,25 @@
         "K4"
       ],
       "quantity": 4,
-      "supplier": "External keyboard-parts supplier",
-      "manufacturer": "Generic",
-      "part_number": "1U-MX-BLACK-18MM-LOW-PROFILE",
+      "supplier": "BeeKeeb / external keyboard-parts supplier",
+      "manufacturer": "Tai-Hao",
+      "part_number": "MT165-MX-BLACK",
+      "mpn": "MT165-MX",
       "stock": 0,
-      "source": "mechanical_specification",
+      "source": "manufacturer_named_external_part",
       "procurement_status": "external_procurement_required",
-      "package": "1u MX-stem keycap",
+      "product_url": "https://shop.beekeeb.com/product/mt165-mx/",
+      "package": "16.5 x 16.5 mm low-profile 1u MX-stem keycap",
+      "mechanical_envelope_mm": { "w": 16.5, "d": 16.5, "installed_height_conservative": 5.0 },
       "assembly": {
         "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
       "required_user_evidence": [
-        "Procurement reminder: seller must confirm MX cruciform stem, maximum 18 x 18 mm face, and the installed height used by enclosure CAD."
+        "Procurement reminder only: preserve seller lot and color selection for MT165-MX."
       ],
-      "selection_reason": "Required by the user-selected MX switch system; legends remain on the display, so blank caps are acceptable."
+      "selection_reason": "The named 16.5 mm Tai-Hao part satisfies the MX-stem choice and gives 4.05 mm keycap-to-PCB-edge margin at the 19 mm row pitch; a 5.0 mm installed cap envelope is reserved conservatively for enclosure collision checks."
     },
     {
       "id": "cap_100nf_0402",

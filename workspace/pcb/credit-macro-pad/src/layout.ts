@@ -43,8 +43,10 @@ export const xiao = {
 
 export const microphone = {
   // Top-right edge, as close as practical to the board edge while retaining
-  // the microphone body inside the outline. ZTS6216 is top-ported, so its
-  // acoustic port faces away from the PCB and no board drill is required.
+  // the microphone body inside the outline. The ZTS6216 datasheet explicitly
+  // identifies a TOP port. On the bottom assembly side the port therefore
+  // faces the service cavity; a sealed short duct runs to the top enclosure
+  // edge. No carrier-PCB acoustic drill is permitted or required.
   x: 36.5,
   y: 22.5,
   side: sides.smtAssembly,
@@ -57,7 +59,9 @@ export const analog = {
   opamp: { x: 20.0, y: 20.5 },
   micDecoupling: { x: 32.5, y: 21.0 },
   opampDecoupling: { x: 15.5, y: 22.5 },
-  xiaoDecoupling: { x: 26.0, y: 22.0 },
+  // Small source-owned shift forces a fresh route after changing the board-wide
+  // via profile and opens extra clearance beside the XIAO courtyard.
+  xiaoDecoupling: { x: 25.6, y: 22.0 },
   micCoupling: { x: 27.5, y: 18.5 },
   biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
   gainRow: row({ x: 3.0, y: 12.5 }, 4.0, 3),

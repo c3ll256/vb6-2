@@ -33,6 +33,7 @@ export function boardPropsFromRules() {
   const absoluteClearance = manufacturing.absoluteMinimumCopperClearanceMm;
   return {
     routingDisabled: true,
+    thickness: mm(manufacturing.finishedBoardThicknessMm),
     defaultTraceWidth: mm(manufacturing.defaultTraceWidthMm),
     nominalTraceWidth: mm(manufacturing.defaultTraceWidthMm),
     minTraceWidth: mm(
