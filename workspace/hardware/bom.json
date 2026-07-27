@@ -116,7 +116,7 @@
       "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
-      "description": "User-specified top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
       "designators": [
         "MIC1"
       ],
@@ -127,8 +127,8 @@
       "mpn": "ZTS6216",
       "lcsc_code": "C481302",
       "jlc_smt_library": "extended",
-      "package": "SMD-4P, 2.75 x 1.85 mm, top acoustic port",
-      "footprint": "jlcpcb:C481302",
+      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
+      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
       "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
@@ -143,7 +143,7 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact microphone mandated by the user. The ZTS6216 datasheet page 1 explicitly identifies a top-ported analog microphone; page 6 locates the 0.50 mm acoustic port on the package top. Therefore no carrier-PCB acoustic drill is used. Page 7's copied ZTS6117 sentence about a PCB sound hole is inconsistent with the part title and mechanical drawing; the supplier C481302 footprint/paste geometry remains authoritative for assembly."
+      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
     },
     {
       "id": "mic_preamp_tlv9061",
