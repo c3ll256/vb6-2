@@ -36,9 +36,7 @@
         "format": "step",
         "model_id": "seeed_xiao_esp32s3_v2",
         "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources",
-        "sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d",
-        "source_asset_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
-        "derivation": "PCB-datum-normalized derivative of the verified Seeed vendor v2 STEP; the normalized asset is the exact file bound to U1 and exported in the PCB assembly STEP."
+        "sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
       }
     },
     {
@@ -98,13 +96,11 @@
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
-        "pin1_position": "verified: with J1 bottom-mounted and its opening facing the left edge, pad 1 is the upper end of the vertical 8-pad row when viewed from the PCB top; final board coordinate is x=-35.84996 mm, y=+14.749984 mm",
-        "assembled_tail_orientation": "LT225C7-C08-03 front-contact tail wraps around the left PCB edge without a half twist; panel pin 1 (LEDA) mates to J1 pad 1 at the upper end of the row",
+        "pin1_position": "verify from the supplier footprint preview after orienting the cable opening toward the left edge",
         "evidence_refs": [
           "user statement: display tail is front-contact",
           "references/suppliers/c2992524/c2992524-datasheet.pdf page 3 (upper-contact ordering code 2)",
-          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC",
-          "pcb/credit-macro-pad/build/circuit.json J1 pad geometry and pcb.query J1 physical-coordinate readback"
+          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC"
         ]
       },
       "assembly": {
@@ -120,7 +116,7 @@
       "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
-      "description": "User-specified top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
       "designators": [
         "MIC1"
       ],
@@ -131,8 +127,8 @@
       "mpn": "ZTS6216",
       "lcsc_code": "C481302",
       "jlc_smt_library": "extended",
-      "package": "SMD-4P, 2.75 x 1.85 mm, top acoustic port",
-      "footprint": "jlcpcb:C481302",
+      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
+      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
       "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
@@ -147,7 +143,7 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact microphone mandated by the user. ZILLTEK datasheet DS-1.4 page 1 explicitly identifies ZTS6216 as top-ported; page 6 dimensions the 0.50 mm aperture in the microphone lid. Because the port faces away from the PCB, the carrier requires no acoustic drill or paste opening."
+      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
     },
     {
       "id": "mic_preamp_tlv9061",

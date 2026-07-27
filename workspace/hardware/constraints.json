@@ -38,9 +38,7 @@
     "mounting": "castellated module soldered to carrier PCB",
     "usb_c": "onboard receptacle aligned to right enclosure edge",
     "verified_cad_model_id": "seeed_xiao_esp32s3_v2",
-    "cad_model_sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d",
-    "source_cad_model_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
-    "cad_model_derivation": "The U1 footprint binds the PCB-datum-normalized STEP derivative; its source is the verified Seeed vendor v2 STEP identified by source_cad_model_sha256."
+    "cad_model_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
   },
   "ports": [
     {
@@ -57,11 +55,11 @@
     {
       "id": "microphone_acoustic_port",
       "face": "top",
-      "owner": "ZTS6216 top port facing away from the bottom-mounted carrier PCB; enclosure duct exits at the top edge",
-      "pcb_hole_diameter_mm": 0.0,
+      "owner": "ZTS6216 bottom port through carrier PCB",
+      "pcb_hole_diameter_mm": 0.5,
       "enclosure_hole_diameter_target_mm": 1.5,
       "clearance_mm": 2.0,
-      "validation": "Use a short sealed enclosure duct from the downward-facing microphone lid port to the unobstructed top edge. Do not add a carrier-PCB drill or stencil opening: ZILLTEK DS-1.4 identifies this exact ZTS6216 as top-ported."
+      "validation": "Seal the short PCB-to-enclosure acoustic path; keep solder paste out of the sound hole."
     }
   ],
   "interactive_elements": [
