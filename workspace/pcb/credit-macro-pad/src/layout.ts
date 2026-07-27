@@ -32,7 +32,7 @@ export const display = {
 export const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
 
 export const xiao = {
-  x: 30.5,
+  x: 29.7,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
   y: 7.5,
@@ -57,7 +57,7 @@ export const analog = {
   opamp: { x: 20.0, y: 20.5 },
   micDecoupling: { x: 32.5, y: 21.0 },
   opampDecoupling: { x: 15.5, y: 22.5 },
-  xiaoDecoupling: { x: 26.0, y: 22.0 },
+  displayDecoupling: { x: -29.5, y: 11.75 },
   micCoupling: { x: 27.5, y: 18.5 },
   biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
   gainRow: row({ x: 3.0, y: 12.5 }, 4.0, 3),

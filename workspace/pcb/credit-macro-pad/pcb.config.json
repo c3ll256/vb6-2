@@ -10,11 +10,7 @@
     "absoluteMinimumCopperClearanceMm": 0.15,
     "preferredRoutingClearanceMm": 0.25,
     "copperToBoardEdgeMm": 1,
-    "via": {
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Manufacturing floor for the single J1 GND dogbone via at a 0.5 mm-pitch connector; all autorouted net classes retain the ordinary 0.6/0.3 mm via geometry."
-    },
+    "via": { "diameterMm": 0.6, "drillMm": 0.3 },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
   "netClasses": {
@@ -30,14 +26,7 @@
   "nets": {
     "GND": {
       "class": "ground",
-      "rationale": "Two-layer return plane for USB power, display, keys, and analog audio.",
-      "escape": {
-        "widthMm": 0.25,
-        "clearanceMm": 0.15,
-        "maxLengthMm": 1.0,
-        "componentRefs": ["J1"],
-        "rationale": "J1 is a 0.5 mm-pitch FPC connector. Pin 2 needs a short dogbone escape at the declared 0.15 mm manufacturing clearance before it reaches the GND planes."
-      }
+      "rationale": "Topology-complete routed ground network for USB power, display, keys, and analog audio. Freerouting may use the manufacturing-floor width at J1's 0.5 mm-pitch endpoint while retaining ordinary 0.6/0.3 mm vias."
     },
     "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
     "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
@@ -62,7 +51,7 @@
   },
   "footprintExceptions": [],
   "copperPours": {
-    "enabled": true,
+    "enabled": false,
     "groundLayers": ["top", "bottom"],
     "clearanceMm": 0.3,
     "padMarginMm": 0.3,
@@ -71,17 +60,7 @@
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [
-    {
-      "name": "J1_GND_ESCAPE_VIA",
-      "net": "GND",
-      "xMm": -35.0,
-      "yMm": 14.25,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via at the inner end of J1 pin 2. Its annulus overlaps the GND pad and reaches continuous top-side GND copper; the 0.15 mm local escape clearance is required by the connector's 0.5 mm pitch."
-    }
-  ],
+  "stitchingVias": [],
   "keepouts": [
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
@@ -114,9 +93,19 @@
     }
   ],
   "bomBindings": [
-    { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
+    { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": false },
     { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
-    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_hanelectricity_mx_red", "populate": true },
-    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true }
+    { "designators": ["J1"], "bomItemId": "fpc_sfv8r_2ste1hlf", "populate": true },
+    { "designators": ["MIC1"], "bomItemId": "microphone_zts6216", "populate": true },
+    { "designators": ["U2"], "bomItemId": "mic_preamp_tlv9061", "populate": true },
+    { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_hanelectricity_mx_red", "populate": false },
+    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true },
+    { "designators": ["C1", "C2", "C3", "C4"], "bomItemId": "cap_100nf_0402", "populate": true },
+    { "designators": ["C5", "C6"], "bomItemId": "cap_1uf_0402_audio", "populate": true },
+    { "designators": ["C7"], "bomItemId": "cap_10nf_0402_audio", "populate": true },
+    { "designators": ["R3", "R4", "R5", "R7"], "bomItemId": "res_100k_0402_audio", "populate": true },
+    { "designators": ["R6", "R8"], "bomItemId": "res_1k_0402_audio", "populate": true },
+    { "designators": ["R1"], "bomItemId": "res_10k_0402", "populate": true },
+    { "designators": ["R2"], "bomItemId": "res_27r_1206_backlight", "populate": false }
   ]
 }
