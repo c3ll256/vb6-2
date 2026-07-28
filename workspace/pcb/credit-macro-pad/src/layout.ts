@@ -26,10 +26,25 @@ export const display = {
   },
 };
 
-// Exact MX hot-swap component uses the switch shaft as its origin. Keep one
-// straight, board-centered 19 mm row low on the board while preserving a
-// nominal 4 mm keycap-envelope margin at the bottom edge.
-export const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
+// Exact MX hot-swap components use the switch shaft as their origin. The
+// user-facing 1u keycap envelopes remain on a straight 19 mm row with 3.3 mm
+// side and 4 mm bottom margins. The socket bodies are rotated toward the board
+// center so their pads escape into the open service-side routing channel rather
+// than toward the bottom edge.
+const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
+
+export const keyBank = {
+  side: sides.user,
+  pitchMm: 19,
+  keycap: { widthMm: 18, heightMm: 18 },
+  socketOrientation: "north" as const,
+  keys: keyCenters.map((center, index) => ({
+    id: `KEY${index + 1}`,
+    net: `net.KEY${index + 1}`,
+    legend: index === 0 ? "K1 MUTE" : `K${index + 1}`,
+    center,
+  })),
+};
 
 export const xiao = {
   x: 30.5,
@@ -67,9 +82,10 @@ export const analog = {
 };
 
 export const displaySupport = {
-  // Left-side display support parts are separated from the FPC body and from
-  // one another so the block reads clearly during assembly.
-  resetRow: row({ x: -30.0, y: 20.0 }, 4.0, 2),
+  // Keep the RESET pull-up and capacitor directly inside the FPC connector's
+  // board-facing side. This gives J1 pins 7 (V3V3) and 3 (RESET_N) short,
+  // uncrossed escapes before the display nets join the wider board routes.
+  resetRow: row({ x: -29.0, y: 13.75 }, 4.0, 2),
   backlightResistor: { x: -21.5, y: 20.0 },
 };
 

@@ -4,7 +4,7 @@ import {
   debug,
   display,
   displaySupport,
-  keyCenters,
+  keyBank,
   microphone,
   sides,
   xiao,
@@ -126,20 +126,46 @@ const DisplayEnvelope = () => (
   />
 );
 
-const KeySwitch = ({ name, index }: { name: string; index: number }) => {
-  const p = keyCenters[index];
+const KeySwitch = ({ index }: { index: number }) => {
+  const key = keyBank.keys[index];
   return (
     <HotSwapKeySwitch
-      name={`KEY${index + 1}`}
+      name={key.id}
       switch="mx"
       socket="c41430893"
-      orientation="south"
-      pcbX={p.x}
-      pcbY={p.y}
-      connections={{ "1": `net.KEY${index + 1}`, "2": "net.GND" }}
+      orientation={keyBank.socketOrientation}
+      pcbX={key.center.x}
+      pcbY={key.center.y}
+      connections={{ "1": key.net, "2": "net.GND" }}
     />
   );
 };
+
+// Front-side assembly marks make the rebuilt key bank reviewable without
+// changing the verified switch/socket footprint. The 18 mm rectangles are the
+// maximum keycap envelopes from the BOM; K1 is identified as factory-default
+// microphone mute while all four keys remain firmware-programmable.
+const KeyFrontMarkings = () => (
+  <>
+    {keyBank.keys.flatMap((key) => [
+      <silkscreenrect
+        key={`${key.id}-cap-envelope`}
+        pcbX={key.center.x}
+        pcbY={key.center.y}
+        width={`${keyBank.keycap.widthMm}mm`}
+        height={`${keyBank.keycap.heightMm}mm`}
+        strokeWidth="0.12mm"
+      />,
+      <silkscreentext
+        key={`${key.id}-legend`}
+        text={key.legend}
+        pcbX={key.center.x}
+        pcbY={key.center.y + 7.2}
+        fontSize="0.75mm"
+      />,
+    ])}
+  </>
+);
 
 export default () => (
   <board
@@ -151,10 +177,11 @@ export default () => (
   >
     <PcbRuleElements />
 
-    {/* User-facing side: LCD envelope plus removable MX hot-swap switches. */}
+    {/* User-facing side: LCD envelope plus rebuilt removable MX key bank. */}
     <DisplayEnvelope />
-    {["KEY1", "KEY2", "KEY3", "KEY4"].map((name, index) => (
-      <KeySwitch key={name} name={name} index={index} />
+    <KeyFrontMarkings />
+    {keyBank.keys.map((key, index) => (
+      <KeySwitch key={key.id} index={index} />
     ))}
 
     {/* Back-side-only SMT assembly policy requested by the user. */}
