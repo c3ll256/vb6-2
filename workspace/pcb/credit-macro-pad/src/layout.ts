@@ -43,9 +43,8 @@ export const xiao = {
 
 export const microphone = {
   // Top-right edge, as close as practical to the board edge while retaining
-  // the microphone body inside the outline. The exact C481302/ZTS6216
-  // datasheet identifies a top acoustic port. With MIC1 assembled on the
-  // bottom side, that port faces away from the carrier and needs no PCB drill.
+  // the microphone body inside the outline. ZTS6216 is top-ported, so its
+  // acoustic port faces away from the PCB and no board drill is required.
   x: 36.5,
   y: 22.5,
   side: sides.smtAssembly,
@@ -70,11 +69,14 @@ export const analog = {
 export const displaySupport = {
   // Left-side display support parts are separated from the FPC body and from
   // one another so the block reads clearly during assembly.
-  // Keep the reset pull-up and capacitor below J1's horizontal escape fanout.
-  // This leaves all eight 0.5 mm-pitch lanes unobstructed while still keeping
-  // the V3V3 and LCD_RESET_N stubs local to the connector.
-  resetRow: row({ x: -33.0, y: 6.0 }, 4.0, 2),
+  resetRow: row({ x: -30.0, y: 20.0 }, 4.0, 2),
   backlightResistor: { x: -21.5, y: 20.0 },
+};
+
+export const debug = {
+  // Deliberate, widely spaced service row in the otherwise open center-left
+  // region, clear of the FPC connector, analog block, and key sockets.
+  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
 };
 
 export const OPENING_ROTATION_DEG = {

@@ -11,9 +11,9 @@
     "preferredRoutingClearanceMm": 0.25,
     "copperToBoardEdgeMm": 1,
     "via": {
-      "diameterMm": 0.6,
+      "diameterMm": 0.4,
       "drillMm": 0.3,
-      "rationale": "Commodity two-layer through-via geometry used board-wide; 0.15 mm annular ring meets the selected ordinary JLCPCB profile without a via-in-pad process."
+      "rationale": "Manufacturing floor for the single J1 GND dogbone via at a 0.5 mm-pitch connector; all autorouted net classes retain the ordinary 0.6/0.3 mm via geometry."
     },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
@@ -30,36 +30,27 @@
   "nets": {
     "GND": {
       "class": "ground",
-      "nominalWidthMm": 0.3,
-      "minimumWidthMm": 0.3,
-      "clearanceMm": 0.15,
-      "rationale": "Dual-layer GND fills for the controller, connector, microphone, analog block, and hot-swap sockets. Automatic rescue vias must bond any bottom fill fragments through the opposing top fill. The 0.15 mm clearance supports J1 pin 2 without a via in its solder land."
+      "rationale": "Two-layer return plane for USB power, display, keys, and analog audio.",
+      "escape": {
+        "widthMm": 0.25,
+        "clearanceMm": 0.15,
+        "maxLengthMm": 1.0,
+        "componentRefs": ["J1"],
+        "rationale": "J1 is a 0.5 mm-pitch FPC connector. Pin 2 needs a short dogbone escape at the declared 0.15 mm manufacturing clearance before it reaches the GND planes."
+      }
     },
     "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
-    "V3V3": {
-      "class": "power",
-      "nominalWidthMm": 0.3,
-      "minimumWidthMm": 0.25,
-      "clearanceMm": 0.15,
-      "rationale": "XIAO-regulated 3.3 V logic and microphone rail. The load is below 250 mA; use 0.30 mm distribution with only a qualified 0.25 mm, 2 mm maximum fine-pitch escape at J1 pin 7.",
-      "escape": { "widthMm": 0.25, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Explicit fine-pitch escape at J1 pin 7; widen to 0.30 mm immediately outside the connector land." }
-    },
+    "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
     "KEY1": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY2": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY3": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY4": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
-    "LCD_MOSI": { "class": "signal", "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI data trace; no controlled-impedance requirement. Use a qualified 0.20 mm route at J1 pin 5 to preserve the 0.15 mm manufacturing clearance between adjacent 0.5 mm-pitch escapes.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Explicit 0.20 mm fine-pitch escape at J1 pin 5; widen to 0.25 mm outside the connector fanout where the router permits." } },
-    "LCD_SCK": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI clock; keep away from the microphone block and route over continuous ground.", "escape": { "widthMm": 0.25, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Explicit fine-pitch escape at J1 pin 6." } },
-    "LCD_CS_N": { "class": "cpu_io", "nominalWidthMm": 0.3, "minimumWidthMm": 0.2, "rationale": "LCD chip select; a 0.20 mm route is permitted only for the fine-pitch J1 escape.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Explicit 0.20 mm fine-pitch escape at outer J1 pin 8; widen to 0.30 mm outside the connector fanout where the router permits." } },
-    "LCD_D_C": { "class": "cpu_io", "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "rationale": "LCD data/command select.", "escape": { "widthMm": 0.25, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Explicit fine-pitch escape at J1 pin 4." } },
-    "LCD_RESET_N": { "class": "signal", "clearanceMm": 0.15, "rationale": "Hardware RC reset node; explicit 0.15 mm clearance is required only at J1 pin 3 beside the qualified GND escape via.", "escape": { "widthMm": 0.25, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Explicit fine-pitch escape at J1 pin 3." } },
-    "LCD_LEDA": {
-      "class": "power",
-      "nominalWidthMm": 0.3,
-      "minimumWidthMm": 0.3,
-      "clearanceMm": 0.15,
-      "rationale": "Resistor-limited LCD backlight current is below 120 mA; 0.30 mm external 1 oz copper is adequate for this short run and fits J1 pin 1 without an automatic width override."
-    },
+    "LCD_MOSI": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI data trace; no controlled-impedance requirement in this revision." },
+    "LCD_SCK": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI clock; keep away from the microphone block and route over continuous ground." },
+    "LCD_CS_N": { "class": "cpu_io", "rationale": "LCD chip select." },
+    "LCD_D_C": { "class": "cpu_io", "rationale": "LCD data/command select." },
+    "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node." },
+    "LCD_LEDA": { "class": "power", "rationale": "Resistor-limited LCD backlight current is below 120 mA; ordinary 0.5 mm power routing is sufficient for this short run." },
     "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling." },
     "MIC_AC": { "class": "sensitive_analog", "rationale": "AC-coupled microphone signal biased at VBIAS." },
     "VBIAS": { "class": "sensitive_analog", "rationale": "Filtered 1.65 V virtual ground for the preamplifier." },
@@ -73,14 +64,24 @@
   "copperPours": {
     "enabled": true,
     "groundLayers": ["top", "bottom"],
-    "clearanceMm": 0.15,
-    "padMarginMm": 0.01,
-    "traceMarginMm": 0.15,
+    "clearanceMm": 0.3,
+    "padMarginMm": 0.3,
+    "traceMarginMm": 0.3,
     "boardEdgeMarginMm": 1,
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [],
+  "stitchingVias": [
+    {
+      "name": "J1_GND_ESCAPE_VIA",
+      "net": "GND",
+      "xMm": -35.0,
+      "yMm": 14.25,
+      "diameterMm": 0.4,
+      "drillMm": 0.3,
+      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via at the inner end of J1 pin 2. Its annulus overlaps the GND pad and reaches continuous top-side GND copper; the 0.15 mm local escape clearance is required by the connector's 0.5 mm pitch."
+    }
+  ],
   "keepouts": [
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
@@ -116,16 +117,6 @@
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
     { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
     { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_hanelectricity_mx_red", "populate": true },
-    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true },
-    { "designators": ["J1"], "bomItemId": "fpc_sfv8r_2ste1hlf", "populate": true },
-    { "designators": ["MIC1"], "bomItemId": "microphone_zts6216", "populate": true },
-    { "designators": ["U2"], "bomItemId": "mic_preamp_tlv9061", "populate": true },
-    { "designators": ["C1", "C2", "C3", "C4"], "bomItemId": "cap_100nf_0402", "populate": true },
-    { "designators": ["C5", "C6"], "bomItemId": "cap_1uf_0402_audio", "populate": true },
-    { "designators": ["C7"], "bomItemId": "cap_10nf_0402_audio", "populate": true },
-    { "designators": ["R1"], "bomItemId": "res_10k_0402", "populate": true },
-    { "designators": ["R3", "R4", "R5", "R7"], "bomItemId": "res_100k_0402_audio", "populate": true },
-    { "designators": ["R6", "R8"], "bomItemId": "res_1k_0402_audio", "populate": true },
-    { "designators": ["R2"], "bomItemId": "res_27r_1206_backlight", "populate": false }
+    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true }
   ]
 }

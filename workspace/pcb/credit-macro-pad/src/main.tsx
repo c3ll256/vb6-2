@@ -1,6 +1,7 @@
 import {
   analog,
   board,
+  debug,
   display,
   displaySupport,
   keyCenters,
@@ -15,8 +16,7 @@ import {
   netPropsFor,
   pcbRules,
 } from "./lib/replicator-pcb";
-import { XiaoEsp32S3 } from "./lib/footprints/index";
-import { HotSwapKeySwitch } from "./components/HotSwapKeySwitchFixed";
+import { HotSwapKeySwitch, XiaoEsp32S3 } from "./lib/footprints/index";
 
 const smtSide = sides.smtAssembly;
 
@@ -277,5 +277,9 @@ export default () => (
     <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
     <R0402 name="R8" value="1k" lcsc="C11702" x={analog.outputRow[1].x} y={analog.outputRow[1].y} a="net.MIC_AMP" b="net.MIC_ADC" />
 
+    <testpoint name="TP_VBUS" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
+    <testpoint name="TP_3V3" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />
+    <testpoint name="TP_GND" layer={smtSide} pcbX={debug.points[2].x} pcbY={debug.points[2].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.GND" }} />
+    <testpoint name="TP_MIC" layer={smtSide} pcbX={debug.points[3].x} pcbY={debug.points[3].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.MIC_ADC" }} />
   </board>
 );

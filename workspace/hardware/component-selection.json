@@ -106,6 +106,7 @@
         "method": "jlc_smt",
         "population": "mounted",
         "side": "bottom",
+        "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
       "selection_reason": "The display seller confirmed a front-contact tail. Wrapping the tail around the left PCB edge onto the back makes its exposed contacts face away from the carrier PCB, so a bottom-side top-contact connector is required. C2992524 is an exact in-stock 8P/0.5 mm/0.3 mm top-contact match; Extended is used because no credible Basic-library match was found."
@@ -114,7 +115,7 @@
       "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
-      "description": "User-specified top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
       "designators": [
         "MIC1"
       ],
@@ -125,8 +126,8 @@
       "mpn": "ZTS6216",
       "lcsc_code": "C481302",
       "jlc_smt_library": "extended",
-      "package": "SMD-4P, 2.75 x 1.85 mm, top acoustic port",
-      "footprint": "jlcpcb:C481302 supplier-qualified top-port land pattern",
+      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
+      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
       "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
@@ -138,9 +139,10 @@
         "method": "jlc_smt",
         "population": "mounted",
         "side": "bottom",
+        "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact microphone mandated by the user; the exact supplier datasheet identifies ZTS6216 as top-ported and confirms analog output, 65 dBA SNR and pins OUT/GND/GND/VDD. MIC1 is mounted on the carrier bottom so the package port faces away from the PCB and requires no carrier drill."
+      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
     },
     {
       "id": "mic_preamp_tlv9061",
@@ -286,7 +288,6 @@
       "part_number": "C1525",
       "mpn": "CL05B104KO5NNNC",
       "lcsc_code": "C1525",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230108/B4A1CE86CD148C62E2653F1874E32404.jpg",
       "jlc_smt_library": "basic",
       "package": "0402",
       "footprint": "C_0402_1005Metric",
@@ -317,7 +318,6 @@
       "part_number": "C52923",
       "mpn": "CL05A105KA5NQNC",
       "lcsc_code": "C52923",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221230/78D423A3A77A5009914DCF22671D578C.jpg",
       "jlc_smt_library": "basic",
       "package": "0402",
       "footprint": "C_0402_1005Metric",
@@ -347,7 +347,6 @@
       "part_number": "C15195",
       "mpn": "CL05B103KB5NNNC",
       "lcsc_code": "C15195",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221228/E8C2494DF41F48EBF806EB67A50F191D.jpg",
       "jlc_smt_library": "basic",
       "package": "0402",
       "footprint": "C_0402_1005Metric",
@@ -380,7 +379,6 @@
       "part_number": "C25741",
       "mpn": "0402WGF1003TCE",
       "lcsc_code": "C25741",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221229/9E82C4F20C30848FCE01127E4F7910BB.jpg",
       "jlc_smt_library": "basic",
       "package": "0402",
       "footprint": "R_0402_1005Metric",
@@ -411,7 +409,6 @@
       "part_number": "C11702",
       "mpn": "0402WGF1001TCE",
       "lcsc_code": "C11702",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20251111/F2B721DDFAACBD4156D64C3BCAAD4E63.jpg",
       "jlc_smt_library": "basic",
       "package": "0402",
       "footprint": "R_0402_1005Metric",
@@ -441,7 +438,6 @@
       "part_number": "C25744",
       "mpn": "0402WGF1002TCE",
       "lcsc_code": "C25744",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221229/F655EE93B7344E02729BBCC311F0C0BD.jpg",
       "jlc_smt_library": "basic",
       "package": "0402",
       "footprint": "R_0402_1005Metric",
