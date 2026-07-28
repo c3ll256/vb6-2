@@ -54,12 +54,12 @@
     },
     {
       "id": "microphone_acoustic_port",
-      "face": "top",
-      "owner": "ZTS6216 bottom port through carrier PCB",
-      "pcb_hole_diameter_mm": 0.5,
+      "face": "bottom/service side near top edge",
+      "owner": "ZTS6216 top port exposed away from the bottom-side carrier assembly",
+      "pcb_hole_required": false,
       "enclosure_hole_diameter_target_mm": 1.5,
       "clearance_mm": 2.0,
-      "validation": "Seal the short PCB-to-enclosure acoustic path; keep solder paste out of the sound hole."
+      "validation": "Keep the microphone top port unobstructed and align or seal the short enclosure acoustic path to the exposed port; no carrier-PCB sound hole is required."
     }
   ],
   "interactive_elements": [
@@ -133,7 +133,7 @@
     "preamplifier": "AC-coupled non-inverting TLV9061 biased at 1.65 V, nominal gain 101 V/V using 100 kOhm feedback and 1 kOhm gain leg",
     "antialias_filter": "1 kOhm series plus 10 nF to ground at ADC input, nominal 15.9 kHz pole",
     "decoupling": "100 nF X7R at ZTS6216 and TLV9061 VDD pins; 1 uF on the 1.65 V virtual-ground node",
-    "land_pattern": "1:1 to 2.75 x 1.85 mm package pads; 0.50 mm bottom acoustic port; no solder paste over port",
+    "land_pattern": "Supplier-qualified C481302 land pattern for the 2.75 x 1.85 mm package; the 0.50 mm acoustic port is on the package top and requires no carrier-PCB drill",
     "pins": [
       "1 OUT",
       "2 GND",
@@ -164,7 +164,8 @@
     "Place J1 on the bottom-left edge with its cable opening facing left; the display tail wraps around the left PCB edge without a sharp fold.",
     "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
-    "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
+    "Place bottom-side MIC1 at the top edge with its package top port facing away from the carrier; no carrier-PCB sound cutout is required, and the enclosure path must remain unobstructed.",
+    "Connect J1 pin 2 directly to the GND fill using qualified 0.15 mm fine-pitch copper clearance; keep vias out of the FPC solder lands. Use 0.20 mm copper only for the J1 pin 5 MOSI and pin 8 CS escapes, with 0.15 mm clearance and a 2 mm maximum fine-pitch segment; widen elsewhere. Bond any fill fragments between the top and bottom layers with through-board rescue vias and require final KiCad connectivity proof.",
     "Use four centered 19 mm-pitch MX-compatible CPG151101D05 red switches with bottom-side CPG151101S11-16 / C41430893 hot-swap sockets.",
     "Keep the hot-swap socket bodies and SMD pads on the bottom/service side and the removable switches/keycaps on the top/user side.",
     "Place the key row low enough to use the lower board area while retaining at least 4 mm nominal keycap-to-board-edge margin."
