@@ -1,8 +1,10 @@
 export const board = {
-  widthMm: 81.6,
-  heightMm: 49.98,
-  width: "81.6mm",
-  height: "49.98mm",
+  // Nominal outline is inset by 0.20 mm in each dimension from the mechanical
+  // maximum, providing ±0.10 mm routing tolerance without exceeding it.
+  widthMm: 81.4,
+  heightMm: 49.78,
+  width: "81.4mm",
+  height: "49.78mm",
 };
 
 export const sides = {
@@ -18,7 +20,10 @@ export const display = {
   // The seller confirmed a front-contact tail. It wraps around the left edge
   // and mates on the back with a top-contact connector whose opening faces -X.
   fpc: {
-    x: -35.0,
+    // Inset 8.8 mm from the left board edge so all eight 0.5 mm-pitch pads
+    // have a manufacturable fan-out corridor while the latch still opens
+    // toward the wrapped display tail at the left edge.
+    x: -32.0,
     y: 13.0,
     side: sides.smtAssembly,
     cableExits: "left" as const,
@@ -28,13 +33,16 @@ export const display = {
 
 // Exact MX hot-swap component uses the switch shaft as its origin. Keep one
 // straight, board-centered 19 mm row low on the board while preserving a
-// nominal 4 mm keycap-envelope margin at the bottom edge.
+// nominal 3 mm minimum keycap-envelope margin. With the qualified 18 mm cap
+// envelope this layout provides 3.20 mm nominally at both side edges and
+// 3.89 mm nominally below (3.10/3.79 mm worst case after 0.10 mm routing tolerance).
 export const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
 
 export const xiao = {
   x: 30.5,
   // Right-side placement above the key contact holes; the USB shell reaches
-  // the +X edge while the XIAO antenna end points toward board center.
+  // the +X edge. This XIAO revision uses its onboard U.FL interface for an
+  // external antenna, so the carrier does not need a PCB-antenna tail keepout.
   y: 7.5,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
@@ -43,8 +51,9 @@ export const xiao = {
 
 export const microphone = {
   // Top-right edge, as close as practical to the board edge while retaining
-  // the microphone body inside the outline. ZTS6216 is top-ported, so its
-  // acoustic port faces away from the PCB and no board drill is required.
+  // the microphone body inside the outline. The exact C481302/ZTS6216
+  // datasheet identifies a top port, so its aperture faces away from the PCB
+  // on the bottom assembly side and no carrier-board drill is required.
   x: 36.5,
   y: 22.5,
   side: sides.smtAssembly,
@@ -56,7 +65,10 @@ export const analog = {
   // networks use two aligned rows with 4 mm pitch instead of a dense cluster.
   opamp: { x: 20.0, y: 20.5 },
   micDecoupling: { x: 32.5, y: 21.0 },
-  opampDecoupling: { x: 15.5, y: 22.5 },
+  // Place the 100 nF bypass directly above U2 pin 5. This leaves a short local
+  // supply connection and opens one unobstructed top-edge corridor back to the
+  // left-side VDD3V3 branch (R3/R9/TP_3V3).
+  opampDecoupling: { x: 19.5, y: 23.0 },
   xiaoDecoupling: { x: 26.0, y: 22.0 },
   micCoupling: { x: 27.5, y: 18.5 },
   biasRow: row({ x: 3.0, y: 18.0 }, 4.0, 3),
@@ -70,13 +82,22 @@ export const displaySupport = {
   // Left-side display support parts are separated from the FPC body and from
   // one another so the block reads clearly during assembly.
   resetRow: row({ x: -30.0, y: 20.0 }, 4.0, 2),
+  // C4 is the dedicated LCD_VDD bypass.  Its left land sits beside J1 pin 7,
+  // beyond the connector courtyard and below the latch/ground-escape region.
+  vddDecoupling: { x: -26.5, y: 17.0 },
   backlightResistor: { x: -21.5, y: 20.0 },
 };
 
 export const debug = {
-  // Deliberate, widely spaced service row in the otherwise open center-left
-  // region, clear of the FPC connector, analog block, and key sockets.
-  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
+  // Deliberate service points in the open center-left region. TP_GND is raised
+  // to y=18 mm so its PTH annulus lands directly on the source-routed top-layer
+  // ground trunk; the other three points remain in the original service row.
+  points: [
+    { x: -15.0, y: 6.0 },
+    { x: -10.0, y: 6.0 },
+    { x: -5.0, y: 18.0 },
+    { x: 0.0, y: 6.0 },
+  ],
 };
 
 export const OPENING_ROTATION_DEG = {

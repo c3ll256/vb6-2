@@ -36,7 +36,9 @@
         "format": "step",
         "model_id": "seeed_xiao_esp32s3_v2",
         "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources",
-        "sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+        "sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d",
+        "source_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd",
+        "normalization": "PCB-local normalized export of the verified Seeed vendor v2 STEP; geometry and USB-C body are preserved while the model datum is aligned to the footprint."
       }
     },
     {
@@ -96,19 +98,21 @@
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
-        "pin1_position": "verify from the supplier footprint preview after orienting the cable opening toward the left edge",
+        "pin1_position": "Verified on the released bottom-side footprint: with the cable opening toward the left/-X edge, pad 1 is at the +Y end of the 8-pad row and pad 8 is at the -Y end.",
         "evidence_refs": [
           "user statement: display tail is front-contact",
           "references/suppliers/c2992524/c2992524-datasheet.pdf page 3 (upper-contact ordering code 2)",
-          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC"
+          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC",
+          "pcb/credit-macro-pad build/circuit.json supplier-footprint readback: pin 1 at local +Y after bottom-side mirroring and 90 degree placement"
         ]
       },
       "assembly": {
-        "method": "jlc_smt",
+        "method": "manual",
         "population": "mounted",
         "side": "bottom",
         "risk_class": "mechanical_smt",
-        "jlc_smt_library": "extended"
+        "jlc_smt_library": "extended",
+        "note": "Hand-solder/consign J1 after PCBA. This exact electromechanical connector is intentionally excluded from the JLC SMT placement upload because the assembler mechanical-part qualification is not available in the managed exporter."
       },
       "selection_reason": "The display seller confirmed a front-contact tail. Wrapping the tail around the left PCB edge onto the back makes its exposed contacts face away from the carrier PCB, so a bottom-side top-contact connector is required. C2992524 is an exact in-stock 8P/0.5 mm/0.3 mm top-contact match; Extended is used because no credible Basic-library match was found."
     },
@@ -116,7 +120,7 @@
       "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
-      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "description": "Exact C481302/ZTS6216 top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
       "designators": [
         "MIC1"
       ],
@@ -127,8 +131,8 @@
       "mpn": "ZTS6216",
       "lcsc_code": "C481302",
       "jlc_smt_library": "extended",
-      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
-      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
+      "package": "SMD-4P, 2.75 x 1.85 mm, top acoustic port",
+      "footprint": "jlcpcb:C481302",
       "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
@@ -137,13 +141,14 @@
       "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20200316/C481302_3CBECE2A7DED4DFD53CEA082844189F4.pdf",
       "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230107/C6B72AEE830A76B62ABA4BEC042E45A8.jpg",
       "assembly": {
-        "method": "jlc_smt",
+        "method": "manual",
         "population": "mounted",
         "side": "bottom",
         "risk_class": "mechanical_smt",
-        "jlc_smt_library": "extended"
+        "jlc_smt_library": "extended",
+        "note": "Hand-solder/consign MIC1 after PCBA. The acoustic-port package is intentionally excluded from the managed JLC SMT upload because the exporter cannot qualify this electromechanical/acoustic part class."
       },
-      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
+      "selection_reason": "Exact supplier identity C481302. ZTS6216 datasheet DS-1.4 pages 1, 2 and 6 confirm top-port analog construction, pins OUT/GND/GND/VDD, all ground pins tied to GND, and no carrier-PCB acoustic aperture."
     },
     {
       "id": "mic_preamp_tlv9061",
@@ -202,12 +207,22 @@
       "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20250630/7568928FE5FB5343D384EAAD13E81D92.jpg",
       "package": "MX-compatible PCB-mount switch, 2 electrical pins plus center and locator posts",
       "footprint": "mx_hotswap_mechanical",
+      "mechanical_qualification": {
+        "paired_socket_mpn": "CPG151101S11-16",
+        "finished_pcb_nominal_mm": 1.5,
+        "finished_pcb_tolerance_mm": 0.1,
+        "manufacturer_mounting_drawing": "references/suppliers/c49234236/c49234236-datasheet.pdf page 6, Mounting Option",
+        "manufacturer_mounting_drawing_sha256": "e3ca6c5222395b7c51f3bcdd1dfa66ac952c3f0c36aa10e634454509282379f",
+        "drawing_dimension_mm": 1.5,
+        "drawing_general_tolerance_mm": 0.15,
+        "qualification_basis": "The exact CPG151101D05 drawing dimensions the carrier PCB at 1.50 mm. The title-block tolerance for X.XX dimensions is +/-0.15 mm, so the released 1.40-1.60 mm fabrication range is inside the manufacturer 1.35-1.65 mm interval."
+      },
       "assembly": {
         "method": "not_smt",
         "population": "mounted",
         "side": "top"
       },
-      "selection_reason": "User explicitly changed the removable switches to MX. This in-stock 45 gf red linear MX candidate preserves the previously selected red-linear feel and matches the verified MX mechanical-hole pattern."
+      "selection_reason": "User explicitly changed the removable switches to MX. This in-stock 45 gf red linear MX candidate preserves the previously selected red-linear feel, matches the verified MX mechanical-hole pattern, and its exact manufacturer Mounting Option qualifies the released 1.50 +/-0.10 mm PCB thickness."
     },
     {
       "id": "socket_hanelectricity_mx_hotswap",
@@ -235,13 +250,23 @@
       "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20241025/C21A163A6221491E806B1C600A0CD2C3.jpg",
       "package": "SMD MX hot-swap socket, 14.5 x 5.9 mm nominal body",
       "footprint": "mx_hotswap",
+      "stack_qualification": {
+        "paired_switch_mpn": "CPG151101D05",
+        "finished_pcb_nominal_mm": 1.5,
+        "finished_pcb_tolerance_mm": 0.1,
+        "switch_mounting_evidence": "references/suppliers/c49234236/c49234236-datasheet.pdf page 6, Mounting Option",
+        "switch_mounting_evidence_sha256": "e3ca6c5222395b7c51f3bcdd1dfa66ac952c3f0c36aa10e634454509282379f",
+        "socket_drawing_evidence": "references/suppliers/c41430893/c41430893-datasheet.pdf page 1, exact CPG151101S11-16 body/contact drawing",
+        "socket_drawing_evidence_sha256": "4f82ef07666b27f8f05682715856245fffe8ee2b4b31f40a053557e6aa970173",
+        "qualification_basis": "The exact paired CPG151101D05 manufacturer Mounting Option specifies a 1.50 mm PCB; its X.XX general tolerance is +/-0.15 mm. The released 1.40-1.60 mm range stays inside 1.35-1.65 mm, while the exact CPG151101S11-16 drawing fixes the paired socket contact/body geometry."
+      },
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
         "side": "bottom",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact user-selected CPG151101S11-16 identity. The supplier datasheet and reviewed local component bind its SMD pads, MX contact clearances, bottom-side placement, compatible-part evidence, and supplier 3D model."
+      "selection_reason": "Exact user-selected CPG151101S11-16 identity. The supplier datasheet and reviewed local component bind its native top-side SMD geometry, MX contact clearances, bottom-side placement, compatible-part evidence, and supplier 3D model. The paired exact CPG151101D05 Mounting Option qualifies the released 1.50 +/-0.10 mm PCB thickness."
     },
     {
       "id": "keycap_1u_mx_black",
@@ -296,6 +321,7 @@
       "unit_price_cny": 0.0324,
       "source": "lcsc",
       "product_url": "https://item.szlcsc.com/1877.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230108/B4A1CE86CD148C62E2653F1874E32404.jpg",
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
@@ -326,6 +352,7 @@
       "unit_price_cny": 0.164,
       "source": "lcsc",
       "product_url": "https://item.szlcsc.com/53938.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221230/78D423A3A77A5009914DCF22671D578C.jpg",
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
@@ -355,6 +382,7 @@
       "unit_price_cny": 0.0406,
       "source": "lcsc",
       "product_url": "https://item.szlcsc.com/15869.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221228/E8C2494DF41F48EBF806EB67A50F191D.jpg",
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
@@ -387,6 +415,7 @@
       "unit_price_cny": 0.0095,
       "source": "lcsc",
       "product_url": "https://item.szlcsc.com/26484.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221229/9E82C4F20C30848FCE01127E4F7910BB.jpg",
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
@@ -417,6 +446,7 @@
       "unit_price_cny": 0.0103,
       "source": "lcsc",
       "product_url": "https://item.szlcsc.com/12256.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20251111/F2B721DDFAACBD4156D64C3BCAAD4E63.jpg",
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
@@ -446,6 +476,7 @@
       "unit_price_cny": 0.0119,
       "source": "lcsc",
       "product_url": "https://item.szlcsc.com/26487.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221229/F655EE93B7344E02729BBCC311F0C0BD.jpg",
       "assembly": {
         "method": "jlc_smt",
         "population": "mounted",
@@ -453,6 +484,36 @@
         "jlc_smt_library": "basic"
       },
       "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO."
+    },
+    {
+      "id": "res_0r_0402_lcd_link",
+      "role": "lcd_supply_routing_link",
+      "name": "UNI-ROYAL 0402WGF0000TCE 0 Ohm 0402",
+      "description": "Populated 0-ohm link from V3V3 to the local LCD_VDD rail for ordinary off-land routing of the fine-pitch display supply branch.",
+      "designators": [
+        "R9"
+      ],
+      "quantity": 1,
+      "supplier": "LCSC / JLCPCB",
+      "manufacturer": "UNI-ROYAL",
+      "part_number": "C17168",
+      "mpn": "0402WGF0000TCE",
+      "lcsc_code": "C17168",
+      "jlc_smt_library": "basic",
+      "package": "0402",
+      "footprint": "R_0402_1005Metric",
+      "stock": 821717,
+      "unit_price_cny": 0.0079,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/17853.html",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20221228/3CC06E6799A37AF90895E883A5EAF794.jpg",
+      "assembly": {
+        "method": "jlc_smt",
+        "population": "mounted",
+        "side": "bottom",
+        "jlc_smt_library": "basic"
+      },
+      "selection_reason": "Basic-library populated link preserves the 3.3 V electrical rail while giving the router a local display-supply segment without via-in-pad."
     },
     {
       "id": "res_27r_1206_backlight",
@@ -465,23 +526,25 @@
       "quantity": 1,
       "supplier": "LCSC / JLCPCB",
       "manufacturer": "UNI-ROYAL",
-      "part_number": "1206W4F270JT5E",
+      "part_number": "C17946",
       "mpn": "1206W4F270JT5E",
-      "jlc_smt_library": "unknown",
-      "procurement_status": "supplier_confirmation_required",
+      "lcsc_code": "C17946",
+      "jlc_smt_library": "extended",
       "package": "1206",
       "footprint": "R_1206_3216Metric",
-      "stock": 0,
-      "source": "manufacturer_part_number",
+      "stock": 117293,
+      "unit_price_cny": 0.0476,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/18634.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20250812/A65FC74AD0A0C3BC9C1D158249FC24C2.jpg",
       "assembly": {
-        "method": "manual",
+        "method": "jlc_smt",
         "population": "mounted",
-        "side": "bottom"
+        "side": "bottom",
+        "jlc_smt_library": "extended"
       },
-      "required_user_evidence": [
-        "Procurement reminder only: confirm an exact 27 Ohm, 1%, at least 0.25 W 1206 resistor before ordering."
-      ],
-      "selection_reason": "Static always-on backlight avoids an unavailable AW9364 while remaining inside the panel's stated current limit; no brightness control is required."
+      "selection_reason": "Exact in-stock C17946 supplier row: 27 Ohm, 1%, 250 mW, 1206. Static always-on backlight avoids an unavailable AW9364 while remaining inside the panel's 120 mA maximum; Extended placement is used because this exact quarter-watt 1206 identity is now bound to the PCB."
     }
   ],
   "alternatives": [
@@ -524,7 +587,7 @@
     },
     {
       "severity": "medium",
-      "item": "ZTS6216, TLV9061, Amphenol top-contact FPC connector and C41430893 MX sockets are JLC Extended parts",
+      "item": "ZTS6216, TLV9061, Amphenol top-contact FPC connector, C41430893 MX sockets and R2 C17946 are JLC Extended parts",
       "mitigation": "Accept Extended placement cost; do not substitute Basic lookalikes without footprint, pinout and mechanical revalidation."
     },
     {

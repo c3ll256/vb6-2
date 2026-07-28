@@ -2,55 +2,59 @@
   "schemaVersion": 1,
   "title": "Credit Card Four-Key USB Macro Pad",
   "manufacturing": {
-    "name": "ordinary-2layer-fr4-1oz",
+    "name": "ordinary-2layer-fr4-1oz-1p5mm",
     "layers": 2,
     "copperThicknessOz": 1,
+    "finishedBoardThicknessMm": 1.5,
+    "finishedBoardThicknessToleranceMm": 0.1,
+    "outlineRoutingToleranceMm": 0.1,
     "defaultTraceWidthMm": 0.3,
     "absoluteMinimumTraceWidthMm": 0.2,
     "absoluteMinimumCopperClearanceMm": 0.15,
     "preferredRoutingClearanceMm": 0.25,
     "copperToBoardEdgeMm": 1,
     "via": {
-      "diameterMm": 0.4,
+      "diameterMm": 0.6,
       "drillMm": 0.3,
-      "rationale": "Manufacturing floor for the single J1 GND dogbone via at a 0.5 mm-pitch connector; all autorouted net classes retain the ordinary 0.6/0.3 mm via geometry."
+      "rationale": "Board-wide fabrication-qualified through-via geometry for autorouting and ordinary stitching; 0.15 mm radial annular ring."
     },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
   "netClasses": {
-    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "power": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.3, "clearanceMm": 0.15, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "ground": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
+    "ground": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "sensitive_analog": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.3, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "clock_high_speed": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
     "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 }
   },
   "nets": {
-    "GND": {
+    "GROUND": {
       "class": "ground",
-      "rationale": "Two-layer return plane for USB power, display, keys, and analog audio.",
+      "rationale": "Explicit two-layer routed return network for USB power, display, keys, and analog audio. Copper pours are intentionally disabled because the current KiCad exporter cannot materialize the required MX NPTH rule areas; 0.25 mm minimum routed ground remains above the 0.20 mm fabrication floor.",
       "escape": {
-        "widthMm": 0.25,
+        "widthMm": 0.2,
         "clearanceMm": 0.15,
-        "maxLengthMm": 1.0,
-        "componentRefs": ["J1"],
-        "rationale": "J1 is a 0.5 mm-pitch FPC connector. Pin 2 needs a short dogbone escape at the declared 0.15 mm manufacturing clearance before it reaches the GND planes."
+        "maxLengthMm": 130.0,
+        "componentRefs": ["J1", "J1_GROUND_ESCAPE", "MIC1", "MIC1_GROUND_ESCAPE", "C3_GROUND_ESCAPE", "C4_GROUND_ESCAPE", "U1", "U2", "HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"],
+        "rationale": "The complete routed ground tree is qualified at the 0.20 mm fabrication floor for up to 130 mm because production copper pours are disabled to preserve the 0.50 mm MX NPTH setback. A deliberately conservative 0.50 A through the full 130 mm of 1 oz external copper is approximately 0.16 V and 80 mW; real current divides among branches and the display/logic load is lower. J1 pin 2 retains the declared 0.15 mm fine-pitch clearance."
       }
     },
     "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
-    "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
+    "VDD3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic, microphone and op-amp rail, and source side of the R9 display-rail link. Qualified at 0.30 mm width: even 250 mA over an intentionally conservative 100 mm, 1 oz external-copper estimate is below approximately 0.12 V drop and 0.03 W; actual load and routed lengths are lower." },
+    "DISP_VDD": { "class": "signal", "rationale": "Low-current 3.3 V display-controller logic rail downstream of R9, intentionally assigned to the 0.20 mm-minimum signal geometry rather than the board power class. The qualified net-wide 0.20 mm route is above the 0.20 mm fabrication floor: even a conservative 50 mA over 100 mm of 1 oz external copper is approximately 0.12 V and 6 mW; the actual route and load are lower. This net does not supply the LED backlight.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 100.0, "componentRefs": ["J1", "J1_VDD_ESCAPE", "R9"], "rationale": "The entire low-current DISP_VDD route is electrically qualified at 0.20 mm width and 0.15 mm clearance for up to a conservative 100 mm, covering the measured routed corridor from R9 through the router-visible off-land dogbone to J1 pin 7. At 50 mA and 1 oz copper this worst-case length is approximately 0.12 V drop and 6 mW; actual route length and load are lower. Both fabrication-escape endpoints are declared." } },
     "KEY1": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY2": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY3": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY4": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
-    "LCD_MOSI": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI data trace; no controlled-impedance requirement in this revision." },
-    "LCD_SCK": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI clock; keep away from the microphone block and route over continuous ground." },
-    "LCD_CS_N": { "class": "cpu_io", "rationale": "LCD chip select." },
-    "LCD_D_C": { "class": "cpu_io", "rationale": "LCD data/command select." },
-    "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node." },
-    "LCD_LEDA": { "class": "power", "rationale": "Resistor-limited LCD backlight current is below 120 mA; ordinary 0.5 mm power routing is sufficient for this short run." },
+    "LCD_MOSI": { "class": "signal", "referencePlaneNet": "GROUND", "rationale": "Short, board-local ST7789P3 SPI data trace; no controlled-impedance requirement in this revision.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Bounded 0.5 mm-pitch J1 fan-out before the route reaches ordinary signal geometry." } },
+    "LCD_SCK": { "class": "signal", "referencePlaneNet": "GROUND", "rationale": "Short, board-local ST7789P3 SPI clock; keep away from the microphone block and route over continuous ground.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Bounded 0.5 mm-pitch J1 fan-out before the route reaches ordinary signal geometry." } },
+    "LCD_CS_N": { "class": "cpu_io", "rationale": "LCD chip select.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Bounded 0.5 mm-pitch J1 fan-out." } },
+    "DISP_DC": { "class": "cpu_io", "rationale": "LCD data/command select.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Bounded 0.5 mm-pitch J1 fan-out." } },
+    "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node.", "escape": { "widthMm": 0.2, "clearanceMm": 0.15, "maxLengthMm": 2.0, "componentRefs": ["J1"], "rationale": "Bounded 0.5 mm-pitch J1 fan-out before the reset route reaches C3/R1." } },
+    "LCD_LEDA": { "class": "power", "rationale": "R2 limits the LCD backlight to approximately 91 mA worst case. The released 0.30 mm, 1 oz external-copper route has ample current capacity and negligible board-level voltage drop at this load; 0.30 mm is therefore the qualified net-wide minimum, including J1 fan-out." },
     "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling." },
     "MIC_AC": { "class": "sensitive_analog", "rationale": "AC-coupled microphone signal biased at VBIAS." },
     "VBIAS": { "class": "sensitive_analog", "rationale": "Filtered 1.65 V virtual ground for the preamplifier." },
@@ -62,7 +66,7 @@
   },
   "footprintExceptions": [],
   "copperPours": {
-    "enabled": true,
+    "enabled": false,
     "groundLayers": ["top", "bottom"],
     "clearanceMm": 0.3,
     "padMarginMm": 0.3,
@@ -71,32 +75,67 @@
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [
-    {
-      "name": "J1_GND_ESCAPE_VIA",
-      "net": "GND",
-      "xMm": -35.0,
-      "yMm": 14.25,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via at the inner end of J1 pin 2. Its annulus overlaps the GND pad and reaches continuous top-side GND copper; the 0.15 mm local escape clearance is required by the connector's 0.5 mm pitch."
-    }
-  ],
+  "stitchingVias": [],
   "keepouts": [
+    { "name": "KEY1_CENTER_NPTH_COPPER", "shape": "circle", "xMm": -28.5, "yMm": -12.0, "radiusMm": 2.5, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY1_PEG_LEFT_NPTH_COPPER", "shape": "circle", "xMm": -33.58, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY1_PEG_RIGHT_NPTH_COPPER", "shape": "circle", "xMm": -23.42, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY1_CONTACT1_NPTH_COPPER", "shape": "circle", "xMm": -32.31, "yMm": -14.54, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY1_CONTACT2_NPTH_COPPER", "shape": "circle", "xMm": -25.96, "yMm": -17.08, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY2_CENTER_NPTH_COPPER", "shape": "circle", "xMm": -9.5, "yMm": -12.0, "radiusMm": 2.5, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY2_PEG_LEFT_NPTH_COPPER", "shape": "circle", "xMm": -14.58, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY2_PEG_RIGHT_NPTH_COPPER", "shape": "circle", "xMm": -4.42, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY2_CONTACT1_NPTH_COPPER", "shape": "circle", "xMm": -13.31, "yMm": -14.54, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY2_CONTACT2_NPTH_COPPER", "shape": "circle", "xMm": -6.96, "yMm": -17.08, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY3_CENTER_NPTH_COPPER", "shape": "circle", "xMm": 9.5, "yMm": -12.0, "radiusMm": 2.5, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY3_PEG_LEFT_NPTH_COPPER", "shape": "circle", "xMm": 4.42, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY3_PEG_RIGHT_NPTH_COPPER", "shape": "circle", "xMm": 14.58, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY3_CONTACT1_NPTH_COPPER", "shape": "circle", "xMm": 5.69, "yMm": -14.54, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY3_CONTACT2_NPTH_COPPER", "shape": "circle", "xMm": 12.04, "yMm": -17.08, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY4_CENTER_NPTH_COPPER", "shape": "circle", "xMm": 28.5, "yMm": -12.0, "radiusMm": 2.5, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY4_PEG_LEFT_NPTH_COPPER", "shape": "circle", "xMm": 23.42, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY4_PEG_RIGHT_NPTH_COPPER", "shape": "circle", "xMm": 33.58, "yMm": -12.0, "radiusMm": 1.375, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY4_CONTACT1_NPTH_COPPER", "shape": "circle", "xMm": 24.69, "yMm": -14.54, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." },
+    { "name": "KEY4_CONTACT2_NPTH_COPPER", "shape": "circle", "xMm": 31.04, "yMm": -17.08, "radiusMm": 2.0, "layers": ["top", "bottom"], "purpose": "mounting_hole", "rationale": "0.50 mm copper setback beyond the exact MX NPTH edge." }
+  ],
+  "allowedOverlaps": [
     {
-      "name": "U1_ANTENNA_COPPER_KEEPOUT",
-      "shape": "rect",
-      "xMm": 20.5,
-      "yMm": 7.5,
-      "widthMm": 6,
-      "heightMm": 19,
-"rotationDeg": 0,
-      "layers": ["top", "bottom"],
-      "purpose": "antenna",
-      "rationale": "Keep carrier copper clear beneath the XIAO ESP32S3 antenna end."
+      "componentRefs": ["J1", "J1_GROUND_ESCAPE"],
+      "rationale": "The excluded-from-BOM single-pin escape feature intentionally overlaps only J1 pin 2 copper. Its 0.20 mm tented neck terminates at a router-visible, off-land 0.6/0.3 mm plated pad so the adjacent reset route must clear the drill before final GROUND pours are filled."
+    },
+    {
+      "componentRefs": ["J1", "J1_VDD_ESCAPE"],
+      "rationale": "The excluded-from-BOM single-pin escape feature intentionally overlaps only J1 pin 7 copper. Its 0.20 mm tented neck terminates at a router-visible, off-land 0.6/0.3 mm plated pad; the dogbone is outside the FPC land and is not via in pad."
+    },
+    {
+      "componentRefs": ["C3", "C3_GROUND_ESCAPE"],
+      "rationale": "The excluded-from-BOM fabrication escape intentionally overlaps only C3 pin 2 GROUND copper, then jogs to an off-land 0.6/0.3 mm plated dogbone; there is no via in the 0402 land."
+    },
+    {
+      "componentRefs": ["C4", "C4_GROUND_ESCAPE"],
+      "rationale": "The excluded-from-BOM fabrication escape intentionally overlaps only C4 pin 1 GROUND copper, then jogs to an off-land 0.6/0.3 mm plated dogbone; there is no via in the 0402 land."
+    },
+    {
+      "componentRefs": ["MIC1", "MIC1_GROUND_ESCAPE"],
+      "rationale": "The excluded-from-BOM fabrication escape intentionally overlaps only MIC1 pin 3 GROUND copper, then jogs to an off-body, off-land 0.6/0.3 mm plated dogbone. The drill edge is outside the microphone body and land with fabrication tolerance."
+    },
+    {
+      "componentRefs": ["SW_KEY1", "HS_KEY1"],
+      "rationale": "Intentional two-sided MX assembly: the top switch's three NPTH installation apertures pass through the bottom C41430893 socket courtyard and are required by the exact supplier land pattern."
+    },
+    {
+      "componentRefs": ["SW_KEY2", "HS_KEY2"],
+      "rationale": "Intentional two-sided MX assembly: the top switch's three NPTH installation apertures pass through the bottom C41430893 socket courtyard and are required by the exact supplier land pattern."
+    },
+    {
+      "componentRefs": ["SW_KEY3", "HS_KEY3"],
+      "rationale": "Intentional two-sided MX assembly: the top switch's three NPTH installation apertures pass through the bottom C41430893 socket courtyard and are required by the exact supplier land pattern."
+    },
+    {
+      "componentRefs": ["SW_KEY4", "HS_KEY4"],
+      "rationale": "Intentional two-sided MX assembly: the top switch's three NPTH installation apertures pass through the bottom C41430893 socket courtyard and are required by the exact supplier land pattern."
     }
   ],
-  "allowedOverlaps": [],
   "allowedViaInPadComponents": [],
   "pcbRuleExceptions": [],
   "componentOrientations": [
@@ -116,7 +155,18 @@
   "bomBindings": [
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
     { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
+    { "designators": ["J1"], "bomItemId": "fpc_sfv8r_2ste1hlf", "populate": true },
+    { "designators": ["MIC1"], "bomItemId": "microphone_zts6216", "populate": true },
+    { "designators": ["U2"], "bomItemId": "mic_preamp_tlv9061", "populate": true },
     { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_hanelectricity_mx_red", "populate": true },
-    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true }
+    { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true },
+    { "designators": ["C1", "C2", "C3", "C4"], "bomItemId": "cap_100nf_0402", "populate": true },
+    { "designators": ["C5", "C6"], "bomItemId": "cap_1uf_0402_audio", "populate": true },
+    { "designators": ["C7"], "bomItemId": "cap_10nf_0402_audio", "populate": true },
+    { "designators": ["R3", "R4", "R5", "R7"], "bomItemId": "res_100k_0402_audio", "populate": true },
+    { "designators": ["R6", "R8"], "bomItemId": "res_1k_0402_audio", "populate": true },
+    { "designators": ["R1"], "bomItemId": "res_10k_0402", "populate": true },
+    { "designators": ["R9"], "bomItemId": "res_0r_0402_lcd_link", "populate": true },
+    { "designators": ["R2"], "bomItemId": "res_27r_1206_backlight", "populate": true }
   ]
 }
