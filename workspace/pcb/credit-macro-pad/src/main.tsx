@@ -215,21 +215,6 @@ export default () => (
       }}
     />
 
-    {/* Route J1 pin 2 to a non-assembled top-layer GND landing. Because the
-        endpoints are on opposite layers, this trace owns a real 0.5/0.3 mm
-        via and the top landing connects directly to the main GND plane. */}
-    <testpoint
-      name="TP_GND_J1_ESCAPE"
-      layer="top"
-      pcbX={-34.6}
-      pcbY={14.25}
-      footprintVariant="pad"
-      padShape="circle"
-      padDiameter="0.5mm"
-      connections={{ pin1: "net.GND" }}
-    />
-    <trace from=".J1 > .pin2" to=".TP_GND_J1_ESCAPE > .pin1" width="0.3mm" />
-
     <chip
       name="MIC1"
       displayName="ZILLTEK ZTS6216"
@@ -274,33 +259,6 @@ export default () => (
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
     <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" />
     <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.outputRow[0].x} y={analog.outputRow[0].y} a="net.MIC_ADC" b="net.GND" />
-
-    {/* C3.2 and C5.2 sit in narrow bottom-layer GND pockets bounded by signal
-        routes. Each is routed to a non-assembled top-layer GND landing; the
-        cross-layer trace owns the production 0.5/0.3 mm via and the landing is
-        then absorbed by the continuous top GND plane. */}
-    <testpoint
-      name="TP_GND_C3_STITCH"
-      layer="top"
-      pcbX={-27.2}
-      pcbY={20}
-      footprintVariant="pad"
-      padShape="circle"
-      padDiameter="0.5mm"
-      connections={{ pin1: "net.GND" }}
-    />
-    <testpoint
-      name="TP_GND_C5_STITCH"
-      layer="top"
-      pcbX={9.8}
-      pcbY={18}
-      footprintVariant="pad"
-      padShape="circle"
-      padDiameter="0.5mm"
-      connections={{ pin1: "net.GND" }}
-    />
-    <trace from=".C3 > .pin2" to=".TP_GND_C3_STITCH > .pin1" width="0.3mm" />
-    <trace from=".C5 > .pin2" to=".TP_GND_C5_STITCH > .pin1" width="0.3mm" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
     <resistor
