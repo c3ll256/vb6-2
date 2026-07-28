@@ -95,11 +95,12 @@
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
-        "pin1_position": "verify from the supplier footprint preview after orienting the cable opening toward the left edge",
+        "pin1_position": "Final board mapping: J1 pin 1 is the +Y/uppermost signal pad after 90 degree bottom-side placement, at approximately (-35.85, 14.75) mm, and connects to display LEDA. The front-contact tail folds around the left edge without twisting, so pins 1-8 remain LEDA, GND, RESET_N, D_C, SDA_MOSI, SCL, VDD_3V3, CS_N with no reversal.",
         "evidence_refs": [
           "user statement: display tail is front-contact",
           "references/suppliers/c2992524/c2992524-datasheet.pdf page 3 (upper-contact ordering code 2)",
-          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC"
+          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC",
+          "pcb.query J1 final occurrence: pin 1 is the uppermost +Y signal pad and pin 8 is the lowermost"
         ]
       },
       "assembly": {
@@ -115,7 +116,7 @@
       "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
-      "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
+      "description": "User-specified top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
       "designators": [
         "MIC1"
       ],
@@ -126,8 +127,8 @@
       "mpn": "ZTS6216",
       "lcsc_code": "C481302",
       "jlc_smt_library": "extended",
-      "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
-      "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
+      "package": "SMD-4P, 2.75 x 1.85 mm, top acoustic port",
+      "footprint": "jlcpcb:C481302",
       "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
@@ -142,7 +143,7 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
+      "selection_reason": "Exact microphone mandated by the user; C481302/ZTS6216 datasheet pages 1, 6 and 7 identify a top-ported analog microphone, confirm pins OUT/GND/GND/VDD, and show that the 0.50 mm acoustic port is on the package top. No carrier-PCB acoustic drill is required."
     },
     {
       "id": "mic_preamp_tlv9061",

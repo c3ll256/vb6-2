@@ -38,7 +38,8 @@
     "mounting": "castellated module soldered to carrier PCB",
     "usb_c": "onboard receptacle aligned to right enclosure edge",
     "verified_cad_model_id": "seeed_xiao_esp32s3_v2",
-    "cad_model_sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
+    "cad_model_sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d",
+    "cad_model_qualification": "Exact mounted U1 occurrence used by the PCB footprint and fabrication STEP; reconciled against the seeed_xiao_esp32s3_v2 footprint resource."
   },
   "ports": [
     {
@@ -54,12 +55,11 @@
     },
     {
       "id": "microphone_acoustic_port",
-      "face": "top",
-      "owner": "ZTS6216 bottom port through carrier PCB",
-      "pcb_hole_diameter_mm": 0.5,
+      "face": "bottom",
+      "owner": "ZTS6216 top port facing away from the bottom-mounted carrier PCB",
       "enclosure_hole_diameter_target_mm": 1.5,
       "clearance_mm": 2.0,
-      "validation": "Seal the short PCB-to-enclosure acoustic path; keep solder paste out of the sound hole."
+      "validation": "Use the top-port acoustic opening on the package face; no carrier-PCB drill is required. Keep the enclosure opening and gasket clear of the package port. Evidence: C481302/ZTS6216 datasheet pages 1, 6 and 7."
     }
   ],
   "interactive_elements": [
@@ -109,6 +109,7 @@
     "panel_pin_count": 8,
     "connector_bom_id": "fpc_sfv8r_2ste1hlf",
     "connector": "Amphenol SFV8R-2STE1HLF / C2992524, top contact, 0.5 mm pitch, 0.3 mm FPC, bottom-side placement at left edge",
+    "pin1_mapping_qualification": "The front-contact LT225C7-C08-03 tail folds around the left edge without twisting and enters the bottom-mounted top-contact SFV8R connector. J1 pin 1 is the +Y/uppermost signal pad in final board coordinates and maps to display LEDA; pins 2-8 then descend in order to CS_N. This is the final no-reversal assembly mapping.",
     "signals": [
       "LEDA",
       "GND",

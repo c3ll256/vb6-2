@@ -74,9 +74,9 @@ export const displaySupport = {
 };
 
 export const debug = {
-  // Deliberate, widely spaced service row in the otherwise open center-left
-  // region, clear of the FPC connector, analog block, and key sockets.
-  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
+  // Deliberate service row with enough pitch for non-overlapping TP reference
+  // text in the bottom silkscreen, clear of the FPC and analog blocks.
+  points: row({ x: -18.0, y: 6.0 }, 9.5, 4),
 };
 
 export const OPENING_ROTATION_DEG = {

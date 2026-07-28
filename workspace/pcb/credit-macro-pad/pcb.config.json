@@ -5,52 +5,65 @@
     "name": "ordinary-2layer-fr4-1oz",
     "layers": 2,
     "copperThicknessOz": 1,
+    "thicknessMm": 1.0,
     "defaultTraceWidthMm": 0.3,
     "absoluteMinimumTraceWidthMm": 0.2,
     "absoluteMinimumCopperClearanceMm": 0.15,
     "preferredRoutingClearanceMm": 0.25,
     "copperToBoardEdgeMm": 1,
     "via": {
-      "diameterMm": 0.4,
+      "diameterMm": 0.5,
       "drillMm": 0.3,
-      "rationale": "Manufacturing floor for the single J1 GND dogbone via at a 0.5 mm-pitch connector; all autorouted net classes retain the ordinary 0.6/0.3 mm via geometry."
+      "rationale": "Whole-board density-driven 0.50/0.30 mm through-via geometry for this compact 0.5 mm-pitch design. The 0.10 mm annular ring meets the selected two-layer JLC capability and is used consistently by every autorouted via and net class."
     },
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
   "netClasses": {
-    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "ground": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "sensitive_analog": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.3, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "clock_high_speed": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 }
+    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "ground": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "sensitive_analog": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.3, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "clock_high_speed": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 },
+    "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.5, "viaDrillMm": 0.3 }
   },
   "nets": {
     "GND": {
       "class": "ground",
       "rationale": "Two-layer return plane for USB power, display, keys, and analog audio.",
       "escape": {
-        "widthMm": 0.25,
+        "widthMm": 0.3,
         "clearanceMm": 0.15,
-        "maxLengthMm": 1.0,
-        "componentRefs": ["J1"],
-        "rationale": "J1 is a 0.5 mm-pitch FPC connector. Pin 2 needs a short dogbone escape at the declared 0.15 mm manufacturing clearance before it reaches the GND planes."
+        "maxLengthMm": 2.0,
+        "componentRefs": ["J1", "C3", "C5", "TP_GND_C3_STITCH", "TP_GND_C5_STITCH"],
+        "rationale": "J1 is a 0.5 mm-pitch FPC connector and C3/C5 have GND pads inside narrow routed channels. These endpoints use short 0.30 mm-wide cross-layer GND escapes at the declared 0.15 mm manufacturing clearance to top-layer landing pads, with production 0.5/0.3 mm vias owned by the traces."
       }
     },
     "VBUS": { "class": "power", "rationale": "USB 5 V from the XIAO module and LCD backlight supply." },
-    "V3V3": { "class": "power", "rationale": "XIAO-regulated 3.3 V logic and microphone rail." },
+    "V3V3": {
+      "class": "power",
+      "nominalWidthMm": 0.3,
+      "minimumWidthMm": 0.3,
+      "clearanceMm": 0.15,
+      "rationale": "The router is net-wide and J1 pin 7 is only 0.30 mm wide, so V3V3 is deliberately qualified at 0.30 mm with 0.15 mm clearance. The complete rail carries less than 200 mA on 1 oz copper over approximately 70 mm, which is acceptable for this 3.3 V low-power load."
+    },
     "KEY1": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY2": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY3": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
     "KEY4": { "class": "cpu_io", "rationale": "Direct mechanical key GPIO." },
-    "LCD_MOSI": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI data trace; no controlled-impedance requirement in this revision." },
-    "LCD_SCK": { "class": "signal", "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI clock; keep away from the microphone block and route over continuous ground." },
+    "LCD_MOSI": { "class": "signal", "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.15, "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI data trace. The 0.25/0.15 mm rule is a deliberate 0.5 mm-pitch J1 escape rule, with no controlled-impedance requirement." },
+    "LCD_SCK": { "class": "signal", "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.15, "referencePlaneNet": "GND", "rationale": "Short, board-local ST7789P3 SPI clock. The 0.25/0.15 mm rule is required at 0.5 mm-pitch J1; keep it away from the microphone block and over continuous ground." },
     "LCD_CS_N": { "class": "cpu_io", "rationale": "LCD chip select." },
     "LCD_D_C": { "class": "cpu_io", "rationale": "LCD data/command select." },
-    "LCD_RESET_N": { "class": "signal", "rationale": "Hardware RC reset node." },
-    "LCD_LEDA": { "class": "power", "rationale": "Resistor-limited LCD backlight current is below 120 mA; ordinary 0.5 mm power routing is sufficient for this short run." },
+    "LCD_RESET_N": { "class": "signal", "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.15, "rationale": "Hardware RC reset node; 0.25/0.15 mm is deliberately used for the 0.5 mm-pitch J1 escape." },
+    "LCD_LEDA": {
+      "class": "power",
+      "nominalWidthMm": 0.3,
+      "minimumWidthMm": 0.3,
+      "clearanceMm": 0.15,
+      "rationale": "The router is net-wide and J1 pin 1 is only 0.30 mm wide. LCD_LEDA is therefore deliberately qualified at 0.30 mm with 0.15 mm clearance; its 27 ohm resistor limits current below 120 mA over the approximately 16 mm 1 oz route."
+    },
     "MIC_RAW": { "class": "sensitive_analog", "rationale": "ZTS6216 analog output before AC coupling." },
     "MIC_AC": { "class": "sensitive_analog", "rationale": "AC-coupled microphone signal biased at VBIAS." },
     "VBIAS": { "class": "sensitive_analog", "rationale": "Filtered 1.65 V virtual ground for the preamplifier." },
@@ -71,17 +84,7 @@
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
-  "stitchingVias": [
-    {
-      "name": "J1_GND_ESCAPE_VIA",
-      "net": "GND",
-      "xMm": -35.0,
-      "yMm": 14.25,
-      "diameterMm": 0.4,
-      "drillMm": 0.3,
-      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via at the inner end of J1 pin 2. Its annulus overlaps the GND pad and reaches continuous top-side GND copper; the 0.15 mm local escape clearance is required by the connector's 0.5 mm pitch."
-    }
-  ],
+  "stitchingVias": [],
   "keepouts": [
     {
       "name": "U1_ANTENNA_COPPER_KEEPOUT",
@@ -96,8 +99,13 @@
       "rationale": "Keep carrier copper clear beneath the XIAO ESP32S3 antenna end."
     }
   ],
-  "allowedOverlaps": [],
-  "allowedViaInPadComponents": [],
+  "allowedOverlaps": [
+    {
+      "componentRefs": ["J1", "TP_GND_J1_ESCAPE"],
+      "rationale": "TP_GND_J1_ESCAPE is a non-assembled top-layer GND landing for the reviewed cross-layer escape from J1 pin 2; any body-envelope overlap is intentional and does not overlap same-layer supplier pads."
+    }
+  ],
+  "allowedViaInPadComponents": ["TP_GND_J1_ESCAPE", "TP_GND_C3_STITCH", "TP_GND_C5_STITCH"],
   "pcbRuleExceptions": [],
   "componentOrientations": [
     {
