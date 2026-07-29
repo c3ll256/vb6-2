@@ -18,14 +18,14 @@
     "waveSolderVia": { "diameterMm": 0.8, "drillMm": 0.4 }
   },
   "netClasses": {
-    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "ground": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "sensitive_analog": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.3, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "clock_high_speed": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 },
-    "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25, "viaDiameterMm": 0.6, "viaDrillMm": 0.3 }
+    "signal": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25 },
+    "cpu_io": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.25, "clearanceMm": 0.25 },
+    "power": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25 },
+    "high_current": { "nominalWidthMm": 0.7, "minimumWidthMm": 0.5, "clearanceMm": 0.25 },
+    "ground": { "nominalWidthMm": 0.5, "minimumWidthMm": 0.4572, "clearanceMm": 0.25 },
+    "sensitive_analog": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.3 },
+    "clock_high_speed": { "nominalWidthMm": 0.3, "minimumWidthMm": 0.25, "clearanceMm": 0.25 },
+    "differential_pair": { "nominalWidthMm": 0.25, "minimumWidthMm": 0.2, "clearanceMm": 0.25 }
   },
   "nets": {
     "GND": {
@@ -75,11 +75,11 @@
     {
       "name": "J1_GND_ESCAPE_VIA",
       "net": "GND",
-      "xMm": -33.15,
+      "xMm": -33.2,
       "yMm": 11.75,
       "diameterMm": 0.4,
       "drillMm": 0.3,
-      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via tangent to the board-side edge of HC-FPC-05-09-8RLTAG J1 pin 2. The copper edges meet without placing the drilled via inside the paste pad, preserve the declared 0.15 mm clearance to adjacent 0.5 mm-pitch pads, and reach the top GND plane."
+      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via with 0.05 mm copper overlap at the board-side edge of HC-FPC-05-09-8RLTAG J1 pin 2. The drill remains outside the paste pad, adjacent 0.5 mm-pitch pad clearance is preserved, and the via reaches the top GND plane."
     }
   ],
   "keepouts": [
