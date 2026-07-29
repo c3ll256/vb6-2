@@ -39,7 +39,7 @@ export const keyBank = {
   side: sides.user,
   pitchMm: 19,
   keycap: { widthMm: 18, heightMm: 18 },
-  socketOrientation: "south" as const,
+  socketOrientation: "north" as const,
   keys: keyCenters.map((center, index) => ({
     id: `KEY${index + 1}`,
     net: `net.KEY${index + 1}`,

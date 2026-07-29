@@ -184,6 +184,14 @@ export default () => (
       <KeySwitch key={key.id} index={index} />
     ))}
 
+    {/* Keep the four hot-swap GND pads on one explicit copper backbone so the
+        bottom GND pour cannot leave socket-local filled regions isolated. */}
+    <trace from=".HS_KEY1 > .pin2" to=".HS_KEY2 > .pin2" thickness={0.25} />
+    <trace from=".HS_KEY2 > .pin2" to=".HS_KEY3 > .pin2" thickness={0.25} />
+    <trace from=".HS_KEY3 > .pin2" to=".HS_KEY4 > .pin2" thickness={0.25} />
+    <trace from=".HS_KEY3 > .pin2" to=".TP_GND > .pin1" thickness={0.25} />
+    <trace from=".HS_KEY4 > .pin2" to=".TP_GND > .pin1" thickness={0.25} />
+
     {/* Back-side-only SMT assembly policy requested by the user. */}
     <XiaoEsp32S3
       name="U1"

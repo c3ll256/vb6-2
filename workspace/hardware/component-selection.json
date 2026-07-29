@@ -36,7 +36,8 @@
         "model_id": "seeed_xiao_esp32s3_v2",
         "source_url": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources",
         "sha256": "870ad45c7af5d92324cec4c6ae65fbf86e3b049d5a97ab9ffd9039ebd73455dd"
-      }
+      },
+      "part_identity": "a2da4417fa076810"
     },
     {
       "id": "display_lt225c7_c08_03",
@@ -55,7 +56,6 @@
       "source": "user_provided_datasheet",
       "procurement_status": "external_procurement_required",
       "package": "17.9 x 62.5 x 2.36 mm LCD module with 8-pin 0.5 mm FPC tail",
-      "pin_count": 8,
       "assembly": {
         "method": "manual",
         "population": "mounted",
@@ -64,7 +64,9 @@
       "required_user_evidence": [
         "Procurement reminder only: preserve the exact seller/order link and panel revision."
       ],
-      "selection_reason": "Exact user-selected panel; supplied datasheet pages 4-8 establish dimensions, active area, pinout, 2.5-3.3 V logic supply and backlight limits."
+      "selection_reason": "Exact user-selected panel; the user-provided specification establishes dimensions, active area, pinout, 2.5-3.3 V logic supply and backlight limits.",
+      "part_identity": "0b15ab8e93e6aac1",
+      "pad_count": 0
     },
     {
       "id": "fpc_hctl_hc_fpc_05_09_8rltag",
@@ -83,7 +85,6 @@
       "jlc_smt_library": "extended",
       "package": "SMD, horizontal, 8P, P0.5 mm, dual-side contacts, 0.3 mm FPC, 1.0 mm board height",
       "footprint": "jlcpcb:C5213749",
-      "pin_count": 8,
       "stock": 58806,
       "unit_price_cny": 0.57,
       "source": "lcsc",
@@ -95,7 +96,7 @@
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
-        "pin1_position": "verify from the C5213749 supplier footprint preview after orienting the cable opening toward the left edge",
+        "pin1_position": "leftmost signal pad in the datasheet recommended PCB mounting pattern when viewed from the PCB mounting side with the contact row above the actuator/cover area; identified by the Pin 1 callout on datasheet page 1",
         "evidence_refs": [
           "user-selected exact MPN HC-FPC-05-09-8RLTAG",
           "references/suppliers/c5213749/c5213749-datasheet.pdf page 1 mechanical and recommended PCB layout drawing",
@@ -109,7 +110,9 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact user-selected HC-FPC-05-09-8RLTAG. C5213749 is an in-stock 8P/0.5 mm connector for 0.3 mm FPC; its dual-side contact construction accepts the confirmed front-contact display tail after the tail wraps around the left PCB edge. Extended is required because no Basic-library exact match exists."
+      "selection_reason": "Exact user-selected HC-FPC-05-09-8RLTAG. C5213749 is an in-stock 8P/0.5 mm connector for 0.3 mm FPC; its dual-side contact construction accepts the confirmed front-contact display tail after the tail wraps around the left PCB edge. Extended is required because no Basic-library exact match exists.",
+      "part_identity": "2dfd2766b811750d",
+      "pad_count": 10
     },
     {
       "id": "microphone_zts6216",
@@ -128,7 +131,6 @@
       "jlc_smt_library": "extended",
       "package": "SMD-4P, 2.75 x 1.85 mm, bottom acoustic port",
       "footprint": "MIC-SMD_4P-L2.75-W1.85-ZTS6216-bottom-port",
-      "pin_count": 4,
       "stock": 32897,
       "unit_price_cny": 4.44,
       "source": "lcsc",
@@ -142,7 +144,8 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
+      "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port.",
+      "part_identity": "e45d8bf16813d715"
     },
     {
       "id": "mic_preamp_tlv9061",
@@ -161,7 +164,6 @@
       "jlc_smt_library": "extended",
       "package": "SOT-23-5",
       "footprint": "SOT-23-5",
-      "pin_count": 5,
       "stock": 353404,
       "unit_price_cny": 0.594,
       "source": "lcsc",
@@ -174,7 +176,8 @@
         "side": "bottom",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
+      "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC.",
+      "part_identity": "b976b980693d79f8"
     },
     {
       "id": "switch_hanelectricity_mx_red",
@@ -206,7 +209,8 @@
         "population": "mounted",
         "side": "top"
       },
-      "selection_reason": "User explicitly changed the removable switches to MX. This in-stock 45 gf red linear MX candidate preserves the previously selected red-linear feel and matches the verified MX mechanical-hole pattern."
+      "selection_reason": "User explicitly changed the removable switches to MX. This in-stock 45 gf red linear MX candidate preserves the previously selected red-linear feel and matches the verified MX mechanical-hole pattern.",
+      "part_identity": "7c5f08a1a3d4a875"
     },
     {
       "id": "socket_hanelectricity_mx_hotswap",
@@ -240,7 +244,8 @@
         "side": "bottom",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "Exact user-selected CPG151101S11-16 identity. The supplier datasheet and reviewed local component bind its SMD pads, MX contact clearances, bottom-side placement, compatible-part evidence, and supplier 3D model."
+      "selection_reason": "Exact user-selected CPG151101S11-16 identity. The supplier datasheet and reviewed local component bind its SMD pads, MX contact clearances, bottom-side placement, compatible-part evidence, and supplier 3D model.",
+      "part_identity": "0ef2ee0d47de2a5a"
     },
     {
       "id": "keycap_1u_mx_black",
@@ -269,7 +274,8 @@
       "required_user_evidence": [
         "Procurement reminder: seller must confirm MX cruciform stem, maximum 18 x 18 mm face, and the installed height used by enclosure CAD."
       ],
-      "selection_reason": "Required by the user-selected MX switch system; legends remain on the display, so blank caps are acceptable."
+      "selection_reason": "Required by the user-selected MX switch system; legends remain on the display, so blank caps are acceptable.",
+      "part_identity": "e2088cb0befdfafc"
     },
     {
       "id": "cap_100nf_0402",
@@ -301,7 +307,8 @@
         "side": "bottom",
         "jlc_smt_library": "basic"
       },
-      "selection_reason": "Local microphone/op-amp bypass plus display and reset support; Basic library minimizes assembly cost."
+      "selection_reason": "Local microphone/op-amp bypass plus display and reset support; Basic library minimizes assembly cost.",
+      "part_identity": "baad1890198254f8"
     },
     {
       "id": "cap_1uf_0402_audio",
@@ -331,7 +338,8 @@
         "side": "bottom",
         "jlc_smt_library": "basic"
       },
-      "selection_reason": "Defines the low-frequency coupling and stabilizes the half-supply microphone bias node."
+      "selection_reason": "Defines the low-frequency coupling and stabilizes the half-supply microphone bias node.",
+      "part_identity": "4e012fcaabf68314"
     },
     {
       "id": "cap_10nf_0402_audio",
@@ -360,7 +368,8 @@
         "side": "bottom",
         "jlc_smt_library": "basic"
       },
-      "selection_reason": "Provides first-order voice-band anti-alias filtering before the XIAO ADC."
+      "selection_reason": "Provides first-order voice-band anti-alias filtering before the XIAO ADC.",
+      "part_identity": "d870d149c73618ec"
     },
     {
       "id": "res_100k_0402_audio",
@@ -392,7 +401,8 @@
         "side": "bottom",
         "jlc_smt_library": "basic"
       },
-      "selection_reason": "Creates 1.65 V bias and approximately 101 V/V non-inverting gain with the 1 kOhm gain resistor."
+      "selection_reason": "Creates 1.65 V bias and approximately 101 V/V non-inverting gain with the 1 kOhm gain resistor.",
+      "part_identity": "d6731cdd0549790a"
     },
     {
       "id": "res_1k_0402_audio",
@@ -422,7 +432,8 @@
         "side": "bottom",
         "jlc_smt_library": "basic"
       },
-      "selection_reason": "Sets the preamp gain and isolates the op-amp from the ADC filter capacitance."
+      "selection_reason": "Sets the preamp gain and isolates the op-amp from the ADC filter capacitance.",
+      "part_identity": "dad6ff12cded3425"
     },
     {
       "id": "res_10k_0402",
@@ -451,7 +462,8 @@
         "side": "bottom",
         "jlc_smt_library": "basic"
       },
-      "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO."
+      "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO.",
+      "part_identity": "4489083fb16d84c7"
     },
     {
       "id": "res_27r_1206_backlight",
@@ -480,7 +492,8 @@
       "required_user_evidence": [
         "Procurement reminder only: confirm an exact 27 Ohm, 1%, at least 0.25 W 1206 resistor before ordering."
       ],
-      "selection_reason": "Static always-on backlight avoids an unavailable AW9364 while remaining inside the panel's stated current limit; no brightness control is required."
+      "selection_reason": "Static always-on backlight avoids an unavailable AW9364 while remaining inside the panel's stated current limit; no brightness control is required.",
+      "part_identity": "424efa803f148f20"
     }
   ],
   "alternatives": [
