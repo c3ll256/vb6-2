@@ -96,10 +96,10 @@ export const debug = {
   // not collide. Keep 5 mm horizontal pitch and preserve the same center-left
   // debug region, clear of the FPC connector, analog block, and key sockets.
   points: [
-    { x: -15.0, y: 2.0 },
-    { x: -10.0, y: -2.0 },
-    { x: -5.0, y: 2.0 },
-    { x: 0.0, y: -2.0 },
+    { x: -15.0, y: 7.5 },
+    { x: -10.0, y: 4.5 },
+    { x: -5.0, y: 7.5 },
+    { x: 0.0, y: 4.5 },
   ],
 };
 
