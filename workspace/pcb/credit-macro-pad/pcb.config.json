@@ -75,11 +75,11 @@
     {
       "name": "J1_GND_ESCAPE_VIA",
       "net": "GND",
-      "xMm": -35.0,
-      "yMm": 14.25,
+      "xMm": -33.15,
+      "yMm": 11.75,
       "diameterMm": 0.4,
       "drillMm": 0.3,
-      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via at the inner end of J1 pin 2. Its annulus overlaps the GND pad and reaches continuous top-side GND copper; the 0.15 mm local escape clearance is required by the connector's 0.5 mm pitch."
+      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via tangent to the board-side edge of HC-FPC-05-09-8RLTAG J1 pin 2. The copper edges meet without placing the drilled via inside the paste pad, preserve the declared 0.15 mm clearance to adjacent 0.5 mm-pitch pads, and reach the top GND plane."
     }
   ],
   "keepouts": [
@@ -116,6 +116,7 @@
   "bomBindings": [
     { "designators": ["U1"], "bomItemId": "mcu_xiao_esp32s3", "populate": true },
     { "designators": ["DS1"], "bomItemId": "display_lt225c7_c08_03", "populate": false },
+    { "designators": ["J1"], "bomItemId": "fpc_hctl_hc_fpc_05_09_8rltag", "populate": true },
     { "designators": ["SW_KEY1", "SW_KEY2", "SW_KEY3", "SW_KEY4"], "bomItemId": "switch_hanelectricity_mx_red", "populate": true },
     { "designators": ["HS_KEY1", "HS_KEY2", "HS_KEY3", "HS_KEY4"], "bomItemId": "socket_hanelectricity_mx_hotswap", "footprintFamily": "mx_hotswap", "populate": true }
   ]

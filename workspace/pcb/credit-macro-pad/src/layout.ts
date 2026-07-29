@@ -16,7 +16,8 @@ export const display = {
   active: { widthMm: 55.2948, heightMm: 14.7972 },
   side: sides.user,
   // The seller confirmed a front-contact tail. It wraps around the left edge
-  // and mates on the back with a top-contact connector whose opening faces -X.
+  // and mates on the back with the dual-contact HC-FPC-05-09-8RLTAG; its cable
+  // opening faces -X.
   fpc: {
     x: -35.0,
     y: 13.0,

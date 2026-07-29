@@ -190,12 +190,6 @@
       "severity": "medium",
       "item": "MX switch and keycap stack supersedes the previous 18 mm enclosure-height target",
       "mitigation": "Use the revised 28 mm provisional outer-height limit and verify the exact installed CPG151101D05 plus chosen MX keycap stack during enclosure CAD."
-    },
-    {
-      "severity": "high",
-      "item": "The published PCB release still uses the superseded C2992524 J1 footprint",
-      "owner": "pcb_stage",
-      "mitigation": "Replace J1 with jlcpcb:C5213749, re-verify native footprint chirality, cable-opening direction and pin 1, then reroute, run KiCad DRC, inspect previews and publish a new release before fabrication."
     }
   ]
 }
