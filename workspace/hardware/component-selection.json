@@ -3,8 +3,7 @@
   "status": "review",
   "selected_components": [
     {
-"id": "mcu_xiao_esp32s3",
-      "part_identity": "a2da4417fa076810",
+      "id": "mcu_xiao_esp32s3",
       "role": "mcu_module",
       "name": "Seeed Studio XIAO ESP32S3",
       "description": "21 x 17.8 mm native-USB XIAO module; onboard USB-C is the product power/data port.",
@@ -40,8 +39,7 @@
       }
     },
     {
-"id": "display_lt225c7_c08_03",
-      "part_identity": "0b15ab8e93e6aac1",
+      "id": "display_lt225c7_c08_03",
       "role": "display_module",
       "name": "LT225C7-C08-03 2.25-inch color LCD",
       "description": "76RGB x 284, ST7789P3, 4-line SPI, 8-pin 0.5 mm FPC, 17.9 x 62.5 x 2.36 mm.",
@@ -55,11 +53,9 @@
       "mpn": "LT225C7-C08-03",
       "stock": 0,
       "source": "user_provided_datasheet",
-      "datasheet_url": "artifacts/pdfs/lt225c7-c08-03.pdf",
       "procurement_status": "external_procurement_required",
       "package": "17.9 x 62.5 x 2.36 mm LCD module with 8-pin 0.5 mm FPC tail",
       "pin_count": 8,
-      "pad_count": 0,
       "assembly": {
         "method": "manual",
         "population": "mounted",
@@ -71,8 +67,7 @@
       "selection_reason": "Exact user-selected panel; supplied datasheet pages 4-8 establish dimensions, active area, pinout, 2.5-3.3 V logic supply and backlight limits."
     },
     {
-"id": "fpc_hctl_hc_fpc_05_09_8rltag",
-      "part_identity": "2dfd2766b811750d",
+      "id": "fpc_hctl_hc_fpc_05_09_8rltag",
       "role": "display_fpc_connector",
       "name": "HCTL HC-FPC-05-09-8RLTAG",
       "description": "8-position 0.5 mm pitch horizontal flip-lock FPC connector with dual-side contacts for 0.3 mm FPC and 1.0 mm board height.",
@@ -89,7 +84,6 @@
       "package": "SMD, horizontal, 8P, P0.5 mm, dual-side contacts, 0.3 mm FPC, 1.0 mm board height",
       "footprint": "jlcpcb:C5213749",
       "pin_count": 8,
-      "pad_count": 10,
       "stock": 58806,
       "unit_price_cny": 0.57,
       "source": "lcsc",
@@ -101,6 +95,7 @@
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
+        "pin1_position": "verify from the C5213749 supplier footprint preview after orienting the cable opening toward the left edge",
         "evidence_refs": [
           "user-selected exact MPN HC-FPC-05-09-8RLTAG",
           "references/suppliers/c5213749/c5213749-datasheet.pdf page 1 mechanical and recommended PCB layout drawing",
@@ -117,8 +112,7 @@
       "selection_reason": "Exact user-selected HC-FPC-05-09-8RLTAG. C5213749 is an in-stock 8P/0.5 mm connector for 0.3 mm FPC; its dual-side contact construction accepts the confirmed front-contact display tail after the tail wraps around the left PCB edge. Extended is required because no Basic-library exact match exists."
     },
     {
-"id": "microphone_zts6216",
-      "part_identity": "e45d8bf16813d715",
+      "id": "microphone_zts6216",
       "role": "analog_microphone",
       "name": "ZILLTEK ZTS6216",
       "description": "User-specified bottom-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",
@@ -151,8 +145,7 @@
       "selection_reason": "Exact microphone mandated by the user; supplier and datasheet evidence confirm analog output, 65 dBA SNR, pins OUT/GND/GND/VDD and a 0.50 mm bottom acoustic port."
     },
     {
-"id": "mic_preamp_tlv9061",
-      "part_identity": "b976b980693d79f8",
+      "id": "mic_preamp_tlv9061",
       "role": "microphone_preamplifier",
       "name": "Texas Instruments TLV9061IDBVR",
       "description": "10 MHz rail-to-rail single op amp for approximately 101 V/V non-inverting ZTS6216 gain and ADC drive.",
@@ -184,8 +177,7 @@
       "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
     },
     {
-"id": "switch_hanelectricity_mx_red",
-      "part_identity": "7c5f08a1a3d4a875",
+      "id": "switch_hanelectricity_mx_red",
       "role": "mx_mechanical_switch",
       "name": "HanElectricity CPG151101D05 MX Red linear switch",
       "description": "MX-compatible red linear switch installed without solder into the paired CPG151101S11-16 hot-swap socket.",
@@ -217,8 +209,7 @@
       "selection_reason": "User explicitly changed the removable switches to MX. This in-stock 45 gf red linear MX candidate preserves the previously selected red-linear feel and matches the verified MX mechanical-hole pattern."
     },
     {
-"id": "socket_hanelectricity_mx_hotswap",
-      "part_identity": "0ef2ee0d47de2a5a",
+      "id": "socket_hanelectricity_mx_hotswap",
       "role": "keyboard_hotswap_socket",
       "name": "HanElectricity CPG151101S11-16 MX hot-swap socket",
       "description": "Bottom-side SMD hot-swap socket for MX-compatible switches.",
@@ -252,8 +243,7 @@
       "selection_reason": "Exact user-selected CPG151101S11-16 identity. The supplier datasheet and reviewed local component bind its SMD pads, MX contact clearances, bottom-side placement, compatible-part evidence, and supplier 3D model."
     },
     {
-"id": "keycap_1u_mx_black",
-      "part_identity": "e2088cb0befdfafc",
+      "id": "keycap_1u_mx_black",
       "role": "keycap",
       "name": "Blank black 1u MX-stem keycap",
       "description": "MX cruciform-stem 1u keycap, maximum 18 x 18 mm face; use the lowest practical profile compatible with the selected MX switch.",
@@ -282,8 +272,7 @@
       "selection_reason": "Required by the user-selected MX switch system; legends remain on the display, so blank caps are acceptable."
     },
     {
-"id": "cap_100nf_0402",
-      "part_identity": "baad1890198254f8",
+      "id": "cap_100nf_0402",
       "role": "decoupling_and_reset_capacitor",
       "name": "Samsung CL05B104KO5NNNC 100 nF 16 V X7R 0402",
       "description": "MIC1 and U2 VDD decoupling, display VDD decoupling and LCD reset RC capacitor.",
@@ -315,8 +304,7 @@
       "selection_reason": "Local microphone/op-amp bypass plus display and reset support; Basic library minimizes assembly cost."
     },
     {
-"id": "cap_1uf_0402_audio",
-      "part_identity": "4e012fcaabf68314",
+      "id": "cap_1uf_0402_audio",
       "role": "microphone_coupling_and_bias_capacitor",
       "name": "Samsung CL05A105KA5NQNC 1 uF 25 V 0402",
       "description": "ZTS6216 AC coupling and 1.65 V virtual-ground filtering.",
@@ -346,8 +334,7 @@
       "selection_reason": "Defines the low-frequency coupling and stabilizes the half-supply microphone bias node."
     },
     {
-"id": "cap_10nf_0402_audio",
-      "part_identity": "d870d149c73618ec",
+      "id": "cap_10nf_0402_audio",
       "role": "adc_antialias_capacitor",
       "name": "Samsung CL05B103KB5NNNC 10 nF 50 V 0402",
       "description": "With R8=1 kOhm forms an approximately 15.9 kHz ADC input low-pass filter.",
@@ -376,8 +363,7 @@
       "selection_reason": "Provides first-order voice-band anti-alias filtering before the XIAO ADC."
     },
     {
-"id": "res_100k_0402_audio",
-      "part_identity": "d6731cdd0549790a",
+      "id": "res_100k_0402_audio",
       "role": "microphone_bias_and_gain_resistor",
       "name": "UNI-ROYAL 0402WGF1003TCE 100 kOhm 1% 0402",
       "description": "Virtual-ground divider, AC-input bias and preamp feedback network.",
@@ -409,8 +395,7 @@
       "selection_reason": "Creates 1.65 V bias and approximately 101 V/V non-inverting gain with the 1 kOhm gain resistor."
     },
     {
-"id": "res_1k_0402_audio",
-      "part_identity": "dad6ff12cded3425",
+      "id": "res_1k_0402_audio",
       "role": "microphone_gain_and_adc_filter_resistor",
       "name": "UNI-ROYAL 0402WGF1001TCE 1 kOhm 1% 0402",
       "description": "Preamp gain leg and ADC low-pass series resistor.",
@@ -440,8 +425,7 @@
       "selection_reason": "Sets the preamp gain and isolates the op-amp from the ADC filter capacitance."
     },
     {
-"id": "res_10k_0402",
-      "part_identity": "4489083fb16d84c7",
+      "id": "res_10k_0402",
       "role": "lcd_reset_pullup",
       "name": "UNI-ROYAL 0402WGF1002TCE 10 kOhm 1% 0402",
       "description": "Pulls LCD RESET_N to 3.3 V; C3 creates power-on reset delay.",
@@ -470,8 +454,7 @@
       "selection_reason": "Hardware reset avoids consuming the final XIAO GPIO."
     },
     {
-"id": "res_27r_1206_backlight",
-      "part_identity": "424efa803f148f20",
+      "id": "res_27r_1206_backlight",
       "role": "lcd_backlight_current_limit",
       "name": "UNI-ROYAL 1206W4F270JT5E 27 Ohm 1% 250 mW 1206",
       "description": "Feeds LCD LEDA from USB VBUS; calculated current is about 57-91 mA over 4.75-5.25 V USB and 2.8-3.2 V LED range, below the 120 mA panel maximum.",
