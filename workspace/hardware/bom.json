@@ -58,7 +58,7 @@
       "source": "user_provided_datasheet",
       "procurement_status": "external_procurement_required",
       "package": "17.9 x 62.5 x 2.36 mm LCD module with 8-pin 0.5 mm FPC tail",
-      "pin_count": 8,
+      "pin_count": 0,
       "assembly": {
         "method": "manual",
         "population": "mounted",
@@ -87,7 +87,7 @@
       "jlc_smt_library": "extended",
       "package": "SMD, horizontal, 8P, P0.5 mm, dual-side contacts, 0.3 mm FPC, 1.0 mm board height",
       "footprint": "jlcpcb:C5213749",
-      "pin_count": 8,
+      "pin_count": 10,
       "stock": 58806,
       "unit_price_cny": 0.57,
       "source": "lcsc",
