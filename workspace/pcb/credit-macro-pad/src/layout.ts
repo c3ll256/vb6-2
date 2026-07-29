@@ -92,15 +92,14 @@ export const displaySupport = {
 };
 
 export const debug = {
-  // Keep the proven routable 5 mm service-pad row. Short TP reference names
-  // prevent the generated refs from colliding; explicit functional labels are
-  // staggered above and below the row for readability.
-  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
-  labels: [
-    { text: "VBUS", x: -15.0, y: 7.8 },
-    { text: "3V3", x: -10.0, y: 4.2 },
-    { text: "GND", x: -5.0, y: 7.8 },
-    { text: "MIC", x: 0.0, y: 4.2 },
+  // Stagger the service pads into two rows so the long TP reference labels do
+  // not collide. Keep 5 mm horizontal pitch and preserve the same center-left
+  // debug region, clear of the FPC connector, analog block, and key sockets.
+  points: [
+    { x: -15.0, y: 7.5 },
+    { x: -10.0, y: 4.5 },
+    { x: -5.0, y: 7.5 },
+    { x: 0.0, y: 4.5 },
   ],
 };
 

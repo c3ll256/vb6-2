@@ -288,8 +288,6 @@ export default () => (
     <C0402 name="C7" value="10nF" lcsc="C15195" x={analog.outputRow[0].x} y={analog.outputRow[0].y} a="net.MIC_ADC" b="net.GND" />
 
     <R0402 name="R1" value="10k" lcsc="C25744" x={displaySupport.resetRow[0].x} y={displaySupport.resetRow[0].y} a="net.V3V3" b="net.LCD_RESET_N" />
-    <trace from=".J1 > .pin7" to=".R1 > .pin1" />
-    <trace from=".J1 > .pin3" to=".R1 > .pin2" />
     <resistor
       name="R2"
       resistance="27ohm"
@@ -306,19 +304,9 @@ export default () => (
     <R0402 name="R7" value="100k" lcsc="C25741" x={analog.gainRow[2].x} y={analog.gainRow[2].y} a="net.MIC_AMP" b="net.MIC_FB" />
     <R0402 name="R8" value="1k" lcsc="C11702" x={analog.outputRow[1].x} y={analog.outputRow[1].y} a="net.MIC_AMP" b="net.MIC_ADC" />
 
-    <testpoint name="TP1" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
-    <testpoint name="TP2" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />
-    <testpoint name="TP3" layer={smtSide} pcbX={debug.points[2].x} pcbY={debug.points[2].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.GND" }} />
-    <testpoint name="TP4" layer={smtSide} pcbX={debug.points[3].x} pcbY={debug.points[3].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.MIC_ADC" }} />
-    {debug.labels.map((label) => (
-      <silkscreentext
-        key={`debug-${label.text}`}
-        layer={smtSide}
-        text={label.text}
-        pcbX={label.x}
-        pcbY={label.y}
-        fontSize="0.7mm"
-      />
-    ))}
+    <testpoint name="TP_VBUS" layer={smtSide} pcbX={debug.points[0].x} pcbY={debug.points[0].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.VBUS" }} />
+    <testpoint name="TP_3V3" layer={smtSide} pcbX={debug.points[1].x} pcbY={debug.points[1].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.V3V3" }} />
+    <testpoint name="TP_GND" layer={smtSide} pcbX={debug.points[2].x} pcbY={debug.points[2].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.GND" }} />
+    <testpoint name="TP_MIC" layer={smtSide} pcbX={debug.points[3].x} pcbY={debug.points[3].y} footprintVariant="pad" padShape="circle" padDiameter="1.2mm" connections={{ pin1: "net.MIC_ADC" }} />
   </board>
 );
