@@ -59,7 +59,7 @@ type SocketCadModel = {
 };
 
 type SwitchProfile = {
-  id: 'mx' | 'choc_v1';
+  id: 'mx' | 'choc_v1' | 'choc_v2' | 'choc_v1v2';
   label: string;
   mechanicalSide: 'top';
   mechanicalHoles: readonly HoleSpec[];
@@ -115,14 +115,17 @@ export const hotSwapKeySwitchTemplate = {
           kind: 'npth',
         },
       ],
+      // kiswitch SW_Hotswap_Kailh_MX_1.00u places these at (-3.81, -2.54) and
+      // (2.54, -5.08). That library is KiCad's Y-down frame; every coordinate
+      // in this file is a physical top view with Y up, so the Y sign flips.
       contactPins: [
         {
           name: '1',
-          at_mm: { x: -3.81, y: -2.54 },
+          at_mm: { x: -3.81, y: 2.54 },
         },
         {
           name: '2',
-          at_mm: { x: 2.54, y: -5.08 },
+          at_mm: { x: 2.54, y: 5.08 },
         },
       ],
       courtyard_mm: { x: 14, y: 14 },
@@ -131,23 +134,25 @@ export const hotSwapKeySwitchTemplate = {
       id: 'choc_v1',
       label: 'Kailh Choc v1 PCB switch',
       mechanicalSide: 'top',
+      // Choc v1 is retained by two pegs on the switch centre line. The contact
+      // clearance holes belong to the socket, as they do for MX.
       mechanicalHoles: [
         {
           id: 'center',
           at_mm: { x: 0, y: 0 },
-          diameter_mm: 3.4,
+          diameter_mm: 3.45,
           kind: 'npth',
         },
         {
-          id: 'contact_1_clearance',
-          at_mm: { x: 0, y: 5.9 },
-          diameter_mm: 3,
+          id: 'peg_left',
+          at_mm: { x: -5.5, y: 0 },
+          diameter_mm: 1.9,
           kind: 'npth',
         },
         {
-          id: 'contact_2_clearance',
-          at_mm: { x: -5, y: 3.8 },
-          diameter_mm: 3,
+          id: 'peg_right',
+          at_mm: { x: 5.5, y: 0 },
+          diameter_mm: 1.9,
           kind: 'npth',
         },
       ],
@@ -158,7 +163,82 @@ export const hotSwapKeySwitchTemplate = {
         },
         {
           name: '2',
-          at_mm: { x: -5, y: 3.8 },
+          at_mm: { x: 5, y: 3.8 },
+        },
+      ],
+      courtyard_mm: { x: 15, y: 15 },
+    },
+    choc_v2: {
+      id: 'choc_v2',
+      label: 'Kailh Choc v2 PCB switch',
+      mechanicalSide: 'top',
+      // v2 swaps the two centre-line pegs for one large centre bore and a
+      // single off-centre peg; the contact pins are unchanged from v1.
+      mechanicalHoles: [
+        {
+          id: 'center',
+          at_mm: { x: 0, y: 0 },
+          diameter_mm: 5.05,
+          kind: 'npth',
+        },
+        {
+          id: 'peg',
+          at_mm: { x: -5, y: -5.15 },
+          diameter_mm: 1.6,
+          kind: 'npth',
+        },
+      ],
+      contactPins: [
+        {
+          name: '1',
+          at_mm: { x: 0, y: 5.9 },
+        },
+        {
+          name: '2',
+          at_mm: { x: 5, y: 3.8 },
+        },
+      ],
+      courtyard_mm: { x: 15, y: 15 },
+    },
+    choc_v1v2: {
+      id: 'choc_v1v2',
+      label: 'Kailh Choc v1/v2 combined PCB switch',
+      mechanicalSide: 'top',
+      // Accepts either switch: the v2 centre bore plus both peg patterns.
+      mechanicalHoles: [
+        {
+          id: 'center',
+          at_mm: { x: 0, y: 0 },
+          diameter_mm: 5.05,
+          kind: 'npth',
+        },
+        {
+          id: 'peg_left',
+          at_mm: { x: -5.5, y: 0 },
+          diameter_mm: 1.9,
+          kind: 'npth',
+        },
+        {
+          id: 'peg_right',
+          at_mm: { x: 5.5, y: 0 },
+          diameter_mm: 1.9,
+          kind: 'npth',
+        },
+        {
+          id: 'peg_v2',
+          at_mm: { x: -5, y: -5.15 },
+          diameter_mm: 1.6,
+          kind: 'npth',
+        },
+      ],
+      contactPins: [
+        {
+          name: '1',
+          at_mm: { x: 0, y: 5.9 },
+        },
+        {
+          name: '2',
+          at_mm: { x: 5, y: 3.8 },
         },
       ],
       courtyard_mm: { x: 15, y: 15 },
@@ -184,41 +264,47 @@ export const hotSwapKeySwitchTemplate = {
         modelOriginPosition: { x: 0, y: 0, z: -0.0500024 },
       },
       compatibleSwitches: ['mx'],
+      // Socket-local, physical top view with Y up. Contact 1 sits 2.54mm below
+      // contact 2 so that after alignment the pair lands on the MX contact pins
+      // at (-3.81, 2.54) and (2.54, 5.08); the pad-to-contact spans of
+      // -3.54/+3.55mm are the C41430893 supplier dimensions.
       contactTargets: [
         {
           name: '1',
-          at_mm: { x: -3.18, y: 1.27 },
+          at_mm: { x: -3.18, y: -1.27 },
         },
         {
           name: '2',
-          at_mm: { x: 3.17, y: -1.27 },
+          at_mm: { x: 3.17, y: 1.27 },
         },
       ],
       smdPads: [
         {
           name: '1',
-          at_mm: { x: -6.72, y: 1.27 },
-          size_mm: { x: 2.5, y: 2.55 },
-          shape: 'rect',
+          at_mm: { x: -6.72, y: -1.27 },
+          size_mm: { x: 2.55, y: 2.5 },
+          shape: 'roundrect',
+          cornerRadius_mm: 0.25,
         },
         {
           name: '2',
-          at_mm: { x: 6.72, y: -1.27 },
-          size_mm: { x: 2.5, y: 2.55 },
-          shape: 'rect',
+          at_mm: { x: 6.72, y: 1.27 },
+          size_mm: { x: 2.55, y: 2.5 },
+          shape: 'roundrect',
+          cornerRadius_mm: 0.25,
         },
       ],
       holes: [
         {
           id: 'contact_1_clearance',
-          at_mm: { x: -3.18, y: 1.27 },
-          diameter_mm: 3,
+          at_mm: { x: -3.18, y: -1.27 },
+          diameter_mm: 3.05,
           kind: 'npth',
         },
         {
           id: 'contact_2_clearance',
-          at_mm: { x: 3.17, y: -1.27 },
-          diameter_mm: 3,
+          at_mm: { x: 3.17, y: 1.27 },
+          diameter_mm: 3.05,
           kind: 'npth',
         },
       ],
@@ -253,41 +339,46 @@ export const hotSwapKeySwitchTemplate = {
       footprintFamily: 'mx_hotswap',
       side: 'bottom',
       compatibleSwitches: ['mx'],
+      // Kailh's own geometry, taken from kiswitch SW_Hotswap_Kailh_MX_1.00u and
+      // re-origined onto the pad centroid: the -3.275/+3.302mm pad-to-contact
+      // spans there differ slightly from the C41430893 clone's.
       contactTargets: [
         {
           name: '1',
-          at_mm: { x: -3.18, y: 1.27 },
+          at_mm: { x: -3.1885, y: -1.27 },
         },
         {
           name: '2',
-          at_mm: { x: 3.17, y: -1.27 },
+          at_mm: { x: 3.1615, y: 1.27 },
         },
       ],
       smdPads: [
         {
           name: '1',
-          at_mm: { x: -6.72, y: 1.27 },
-          size_mm: { x: 2.5, y: 2.55 },
-          shape: 'rect',
+          at_mm: { x: -6.4635, y: -1.27 },
+          size_mm: { x: 2.55, y: 2.5 },
+          shape: 'roundrect',
+          cornerRadius_mm: 0.25,
         },
         {
           name: '2',
-          at_mm: { x: 6.72, y: -1.27 },
-          size_mm: { x: 2.5, y: 2.55 },
-          shape: 'rect',
+          at_mm: { x: 6.4635, y: 1.27 },
+          size_mm: { x: 2.55, y: 2.5 },
+          shape: 'roundrect',
+          cornerRadius_mm: 0.25,
         },
       ],
       holes: [
         {
           id: 'contact_1_clearance',
-          at_mm: { x: -3.18, y: 1.27 },
-          diameter_mm: 3,
+          at_mm: { x: -3.1885, y: -1.27 },
+          diameter_mm: 3.05,
           kind: 'npth',
         },
         {
           id: 'contact_2_clearance',
-          at_mm: { x: 3.17, y: -1.27 },
-          diameter_mm: 3,
+          at_mm: { x: 3.1615, y: 1.27 },
+          diameter_mm: 3.05,
           kind: 'npth',
         },
       ],
@@ -315,7 +406,11 @@ export const hotSwapKeySwitchTemplate = {
       label: 'Kailh CPG135001S30 Choc v1 hot-swap socket',
       footprintFamily: 'choc_v1_hotswap',
       side: 'bottom',
-      compatibleSwitches: ['choc_v1'],
+      compatibleSwitches: ['choc_v1', 'choc_v2', 'choc_v1v2'],
+      // One socket serves all three Choc plate patterns: kiswitch places the
+      // same pads and clearance holes in V1, V2 and V1V2, only the switch-side
+      // centre bore and pegs differ. Origin is the switch centre, so alignment
+      // resolves to a zero offset.
       contactTargets: [
         {
           name: '1',
@@ -323,36 +418,36 @@ export const hotSwapKeySwitchTemplate = {
         },
         {
           name: '2',
-          at_mm: { x: -5, y: 3.8 },
+          at_mm: { x: 5, y: 3.8 },
         },
       ],
       smdPads: [
         {
           name: '1',
-          at_mm: { x: 3.275, y: 5.9 },
-          size_mm: { x: 2.6, y: 2.6 },
+          at_mm: { x: -3.5, y: 6 },
+          size_mm: { x: 2.55, y: 2.5 },
           shape: 'roundrect',
-          cornerRadius_mm: 0.5,
+          cornerRadius_mm: 0.25,
         },
         {
           name: '2',
-          at_mm: { x: -8.275, y: 3.8 },
-          size_mm: { x: 2.6, y: 2.6 },
+          at_mm: { x: 8.5, y: 3.8 },
+          size_mm: { x: 2.55, y: 2.5 },
           shape: 'roundrect',
-          cornerRadius_mm: 0.5,
+          cornerRadius_mm: 0.25,
         },
       ],
       holes: [
         {
-          id: 'locator_left',
-          at_mm: { x: -5.5, y: 0 },
-          diameter_mm: 1.7,
+          id: 'contact_1_clearance',
+          at_mm: { x: 0, y: 5.9 },
+          diameter_mm: 3.05,
           kind: 'npth',
         },
         {
-          id: 'locator_right',
-          at_mm: { x: 5.5, y: 0 },
-          diameter_mm: 1.7,
+          id: 'contact_2_clearance',
+          at_mm: { x: 5, y: 3.8 },
+          diameter_mm: 3.05,
           kind: 'npth',
         },
       ],
@@ -385,13 +480,20 @@ export const hotSwapKeySwitchTemplate = {
     {
       type: 'reference_footprint',
       title:
-        'KiCad official Cherry MX PCB-mount footprint (SW_Cherry_MX_1.00u_PCB), pin/peg/center-hole coordinates converted to switch-center origin',
-      url: 'https://github.com/KiCad/kicad-footprints/blob/master/Button_Switch_Keyboard.pretty/SW_Cherry_MX_1.00u_PCB.kicad_mod',
+        'kiswitch SW_Hotswap_Kailh_MX_1.00u — pin, peg, centre-bore and socket-pad coordinates, Y negated from KiCad Y-down into this file physical top view',
+      url: 'https://github.com/kiswitch/kiswitch/blob/main/library/footprints/Switch_Keyboard_Hotswap_Kailh.pretty/SW_Hotswap_Kailh_MX_1.00u.kicad_mod',
+    },
+    {
+      type: 'reference_footprint',
+      title:
+        'kiswitch SW_Hotswap_Kailh_Choc_V1/V2/V1V2_1.00u — the three Choc plate patterns behind the choc_v1, choc_v2 and choc_v1v2 switch profiles',
+      url: 'https://github.com/kiswitch/kiswitch/tree/main/library/footprints/Switch_Keyboard_Hotswap_Kailh.pretty',
     },
   ],
   examples: [
     '<HotSwapKeySwitch name="KEY1" switch="mx" socket="c41430893" connections={{ "1": "net.ROW0", "2": "net.COL0" }} />',
     '<HotSwapKeySwitch name="KEY1" switch="choc_v1" socket="kailh_choc_v1" connections={{ "1": "net.ROW0", "2": "net.COL0" }} />',
+    '<HotSwapKeySwitch name="KEY1" switch="choc_v1v2" socket="kailh_choc_v1" connections={{ "1": "net.ROW0", "2": "net.COL0" }} />',
   ],
 } as const;
 
@@ -399,7 +501,7 @@ export const keySwitchFootprintFamilies = [
   {
     id: 'mx_hotswap',
     label: 'MX hot-swap socket',
-    geometryStatus: 'community_verified',
+    geometryStatus: 'reference_library_verified',
     origin: 'switch_center',
     variants: ['default'],
     orientations: ['south', 'north'],
@@ -430,17 +532,25 @@ export const keySwitchFootprintFamilies = [
   },
   {
     id: 'choc_v1_hotswap',
-    label: 'Kailh Choc v1 hot-swap socket',
-    geometryStatus: 'community_verified',
+    label: 'Kailh Choc hot-swap socket',
+    geometryStatus: 'reference_library_verified',
     origin: 'switch_center',
-    variants: ['default'],
+    variants: ['choc_v1', 'choc_v2', 'choc_v1v2'],
     orientations: ['south', 'north'],
     mechanical: {
       side: 'top',
       variants: {
-        default: {
+        choc_v1: {
           holes: hotSwapKeySwitchTemplate.switches.choc_v1.mechanicalHoles,
           courtyard_mm: hotSwapKeySwitchTemplate.switches.choc_v1.courtyard_mm,
+        },
+        choc_v2: {
+          holes: hotSwapKeySwitchTemplate.switches.choc_v2.mechanicalHoles,
+          courtyard_mm: hotSwapKeySwitchTemplate.switches.choc_v2.courtyard_mm,
+        },
+        choc_v1v2: {
+          holes: hotSwapKeySwitchTemplate.switches.choc_v1v2.mechanicalHoles,
+          courtyard_mm: hotSwapKeySwitchTemplate.switches.choc_v1v2.courtyard_mm,
         },
       },
     },
@@ -474,14 +584,14 @@ export type HotSwapKeySwitchProps = CommonProps &
         socket: 'c41430893' | 'kailh_mx';
       }
     | {
-        switch: 'choc_v1';
+        switch: 'choc_v1' | 'choc_v2' | 'choc_v1v2';
         socket: 'kailh_choc_v1';
       }
   );
 
 export type KeySwitchProps = CommonProps & {
   family: 'mx_hotswap' | 'choc_v1_hotswap';
-  variant?: 'default' | '3pin' | '5pin';
+  variant?: 'default' | 'choc_v1' | 'choc_v2' | 'choc_v1v2';
   socketOrientation?: Orientation;
 };
 
@@ -498,6 +608,11 @@ function toLayerLocalPoint(point: PointMm, layer: Side): PointMm {
   // tscircuit mirrors footprint-local X when a chip is placed on the bottom
   // layer. Library coordinates are physical top-view coordinates, so
   // pre-compensate X here to preserve the reviewed geometry after export.
+  //
+  // Both primitive kinds get the same treatment, and the round trip is a net
+  // identity: measured against the 2026-07-29 mechanical_integration release,
+  // every bottom-side pad and hole came out of the Gerber and drill files at
+  // exactly the coordinates written here.
   return layer === 'bottom' ? { x: -point.x, y: point.y } : point;
 }
 
@@ -761,7 +876,11 @@ export function KeySwitch(props: KeySwitchProps) {
         }
       : {
           ...props,
-          switch: 'choc_v1',
+          // The Choc variant names the plate pattern the switch needs; the
+          // socket is the same part in every case.
+          switch: props.variant === 'default' || props.variant === undefined
+            ? 'choc_v1'
+            : props.variant,
           socket: 'kailh_choc_v1',
           orientation: props.socketOrientation ?? props.orientation,
         };

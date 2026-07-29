@@ -28,16 +28,17 @@ export const display = {
 
 // Exact MX hot-swap components use the switch shaft as their origin. The
 // user-facing 1u keycap envelopes remain on a straight 19 mm row with 3.3 mm
-// side and 4 mm bottom margins. The socket bodies are rotated toward the board
-// center so their pads escape into the open service-side routing channel rather
-// than toward the bottom edge.
+// side and 4 mm bottom margins. The socket bodies escape into the open
+// service-side routing channel rather than toward the bottom edge; that is the
+// library's own orientation, because a Cherry MX contact pair already sits on
+// the +Y side of the shaft.
 const keyCenters = row({ x: -28.5, y: -12.0 }, 19, 4);
 
 export const keyBank = {
   side: sides.user,
   pitchMm: 19,
   keycap: { widthMm: 18, heightMm: 18 },
-  socketOrientation: "north" as const,
+  socketOrientation: "south" as const,
   keys: keyCenters.map((center, index) => ({
     id: `KEY${index + 1}`,
     net: `net.KEY${index + 1}`,
