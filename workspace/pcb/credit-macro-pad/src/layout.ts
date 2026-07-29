@@ -92,9 +92,15 @@ export const displaySupport = {
 };
 
 export const debug = {
-  // Deliberate, widely spaced service row in the otherwise open center-left
-  // region, clear of the FPC connector, analog block, and key sockets.
-  points: row({ x: -15.0, y: 6.0 }, 5.0, 4),
+  // Stagger the service pads into two rows so the long TP reference labels do
+  // not collide. Keep 5 mm horizontal pitch and preserve the same center-left
+  // debug region, clear of the FPC connector, analog block, and key sockets.
+  points: [
+    { x: -15.0, y: 7.5 },
+    { x: -10.0, y: 4.5 },
+    { x: -5.0, y: 7.5 },
+    { x: 0.0, y: 4.5 },
+  ],
 };
 
 export const OPENING_ROTATION_DEG = {
