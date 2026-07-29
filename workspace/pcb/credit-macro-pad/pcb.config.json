@@ -4,6 +4,7 @@
   "manufacturing": {
     "name": "ordinary-2layer-fr4-1oz",
     "layers": 2,
+    "boardThicknessMm": 1.0,
     "copperThicknessOz": 1,
     "defaultTraceWidthMm": 0.3,
     "absoluteMinimumTraceWidthMm": 0.2,
