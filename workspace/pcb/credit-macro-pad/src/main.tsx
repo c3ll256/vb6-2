@@ -212,10 +212,10 @@ export default () => (
 
     <chip
       name="J1"
-      displayName="HCTL HC-FPC-05-09-8RLTAG dual-contact FPC"
-      manufacturerPartNumber="HC-FPC-05-09-8RLTAG"
-      supplierPartNumbers={{ jlcpcb: ["C5213749"] }}
-      footprint="jlcpcb:C5213749"
+      displayName="Amphenol SFV8R-2STE1HLF top-contact FPC"
+      manufacturerPartNumber="SFV8R-2STE1HLF"
+      supplierPartNumbers={{ jlcpcb: ["C2992524"] }}
+      footprint="jlcpcb:C2992524"
       layer={smtSide}
       pcbX={display.fpc.x}
       pcbY={display.fpc.y}

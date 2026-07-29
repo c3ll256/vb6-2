@@ -16,12 +16,9 @@ export const display = {
   active: { widthMm: 55.2948, heightMm: 14.7972 },
   side: sides.user,
   // The seller confirmed a front-contact tail. It wraps around the left edge
-  // and mates on the back with the dual-contact HC-FPC-05-09-8RLTAG whose
-  // cable opening faces -X.
+  // and mates on the back with a top-contact connector whose opening faces -X.
   fpc: {
-    // Keep the body near the left cable-wrap edge while leaving enough copper
-    // on its board-facing side for the narrow GND pad and eight signal escapes.
-    x: -33.5,
+    x: -35.0,
     y: 13.0,
     side: sides.smtAssembly,
     cableExits: "left" as const,
@@ -54,7 +51,7 @@ export const xiao = {
   x: 30.5,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
-  y: 8.0,
+  y: 7.5,
   side: sides.smtAssembly,
   usbFaces: "right" as const,
   rotationDeg: 270,

@@ -501,7 +501,7 @@ export const keySwitchFootprintFamilies = [
   {
     id: 'mx_hotswap',
     label: 'MX hot-swap socket',
-    geometryStatus: 'community_verified',
+    geometryStatus: 'reference_library_verified',
     origin: 'switch_center',
     variants: ['default'],
     orientations: ['south', 'north'],
@@ -533,7 +533,7 @@ export const keySwitchFootprintFamilies = [
   {
     id: 'choc_v1_hotswap',
     label: 'Kailh Choc hot-swap socket',
-    geometryStatus: 'community_verified',
+    geometryStatus: 'reference_library_verified',
     origin: 'switch_center',
     variants: ['choc_v1', 'choc_v2', 'choc_v1v2'],
     orientations: ['south', 'north'],
