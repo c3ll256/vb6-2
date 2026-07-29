@@ -107,8 +107,8 @@
   ],
   "display_interface": {
     "panel_pin_count": 8,
-    "connector_bom_id": "fpc_sfv8r_2ste1hlf",
-    "connector": "Amphenol SFV8R-2STE1HLF / C2992524, top contact, 0.5 mm pitch, 0.3 mm FPC, bottom-side placement at left edge",
+    "connector_bom_id": "fpc_hctl_hc_fpc_05_09_8rltag",
+    "connector": "HCTL HC-FPC-05-09-8RLTAG / C5213749, dual-side contacts, 0.5 mm pitch, 0.3 mm FPC, 1.0 mm board height, bottom-side placement at left edge",
     "signals": [
       "LEDA",
       "GND",
@@ -162,7 +162,7 @@
     "Keep the XIAO antenna end free of carrier-PCB copper and enclosure metal according to vendor guidance.",
     "Keep LCD/backlight and USB current paths away from MIC1, U2, the 1.65 V bias node and the analog ADC trace.",
     "Place J1 on the bottom-left edge with its cable opening facing left; the display tail wraps around the left PCB edge without a sharp fold.",
-    "Use top-contact J1 (C2992524) because the display seller confirmed a front-contact FPC tail.",
+    "Use dual-side-contact J1 (HC-FPC-05-09-8RLTAG / C5213749); it accepts the confirmed front-contact display tail after the tail wraps around the left PCB edge.",
     "Place the XIAO ESP32S3 on the bottom-right with its onboard USB-C receptacle facing the right edge; do not add a second host USB connector.",
     "Place MIC1 at the top edge directly over the PCB sound cutout and use a sealed short path to the enclosure opening.",
     "Use four centered 19 mm-pitch MX-compatible CPG151101D05 red switches with bottom-side CPG151101S11-16 / C41430893 hot-swap sockets.",
@@ -190,6 +190,12 @@
       "severity": "medium",
       "item": "MX switch and keycap stack supersedes the previous 18 mm enclosure-height target",
       "mitigation": "Use the revised 28 mm provisional outer-height limit and verify the exact installed CPG151101D05 plus chosen MX keycap stack during enclosure CAD."
+    },
+    {
+      "severity": "high",
+      "item": "The published PCB release still uses the superseded C2992524 J1 footprint",
+      "owner": "pcb_stage",
+      "mitigation": "Replace J1 with jlcpcb:C5213749, re-verify native footprint chirality, cable-opening direction and pin 1, then reroute, run KiCad DRC, inspect previews and publish a new release before fabrication."
     }
   ]
 }

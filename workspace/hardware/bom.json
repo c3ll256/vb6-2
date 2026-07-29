@@ -68,39 +68,39 @@
       "selection_reason": "Exact user-selected panel; supplied datasheet pages 4-8 establish dimensions, active area, pinout, 2.5-3.3 V logic supply and backlight limits."
     },
     {
-      "id": "fpc_sfv8r_2ste1hlf",
+      "id": "fpc_hctl_hc_fpc_05_09_8rltag",
       "role": "display_fpc_connector",
-      "name": "Amphenol SFV8R-2STE1HLF",
-      "description": "8-position 0.5 mm pitch horizontal flip-lock top-contact FPC connector for 0.3 mm FPC, 1.8 mm board height.",
+      "name": "HCTL HC-FPC-05-09-8RLTAG",
+      "description": "8-position 0.5 mm pitch horizontal flip-lock FPC connector with dual-side contacts for 0.3 mm FPC and 1.0 mm board height.",
       "designators": [
         "J1"
       ],
       "quantity": 1,
       "supplier": "LCSC / JLCPCB",
-      "manufacturer": "Amphenol",
-      "part_number": "C2992524",
-      "mpn": "SFV8R-2STE1HLF",
-      "lcsc_code": "C2992524",
+      "manufacturer": "HCTL(华灿天禄)",
+      "part_number": "C5213749",
+      "mpn": "HC-FPC-05-09-8RLTAG",
+      "lcsc_code": "C5213749",
       "jlc_smt_library": "extended",
-      "package": "SMD, 8P, P0.5 mm, horizontal top contact",
-      "footprint": "jlcpcb:C2992524",
+      "package": "SMD, horizontal, 8P, P0.5 mm, dual-side contacts, 0.3 mm FPC, 1.0 mm board height",
+      "footprint": "jlcpcb:C5213749",
       "pin_count": 8,
-      "stock": 3316,
-      "unit_price_cny": 3.21,
+      "stock": 58806,
+      "unit_price_cny": 0.57,
       "source": "lcsc",
-      "product_url": "https://item.szlcsc.com/3457383.html",
-      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20220517/0023932E89903C3A71108B012FDBB80B.pdf",
-      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230105/22FE91342E375328AAB35586A4CF29AE.jpg",
+      "product_url": "https://item.szlcsc.com/5909041.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20221026/52A26161A88FCE07A06989F8D4399614.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20230105/067BC98CCE62498266A5E0E37A5B8F07.jpg",
       "physical_interface": {
         "kind": "fpc_connector",
         "pin_count": 8,
         "pitch_mm": 0.5,
         "cable_contacts_face_when_mounted_on_top": "away_from_pcb",
-        "pin1_position": "verify from the supplier footprint preview after orienting the cable opening toward the left edge",
+        "pin1_position": "verify from the C5213749 supplier footprint preview after orienting the cable opening toward the left edge",
         "evidence_refs": [
-          "user statement: display tail is front-contact",
-          "references/suppliers/c2992524/c2992524-datasheet.pdf page 3 (upper-contact ordering code 2)",
-          "LCSC C2992524 parameters: 8P, 0.5 mm, top contact, 0.3 mm FPC"
+          "user-selected exact MPN HC-FPC-05-09-8RLTAG",
+          "references/suppliers/c5213749/c5213749-datasheet.pdf page 1 mechanical and recommended PCB layout drawing",
+          "LCSC C5213749 parameters: 8P, 0.5 mm, dual-side contacts, 0.3 mm FPC, 1.0 mm board height"
         ]
       },
       "assembly": {
@@ -110,7 +110,7 @@
         "risk_class": "mechanical_smt",
         "jlc_smt_library": "extended"
       },
-      "selection_reason": "The display seller confirmed a front-contact tail. Wrapping the tail around the left PCB edge onto the back makes its exposed contacts face away from the carrier PCB, so a bottom-side top-contact connector is required. C2992524 is an exact in-stock 8P/0.5 mm/0.3 mm top-contact match; Extended is used because no credible Basic-library match was found."
+      "selection_reason": "Exact user-selected HC-FPC-05-09-8RLTAG. C5213749 is an in-stock 8P/0.5 mm connector for 0.3 mm FPC; its dual-side contact construction accepts the confirmed front-contact display tail after the tail wraps around the left PCB edge. Extended is required because no Basic-library exact match exists."
     },
     {
       "id": "microphone_zts6216",
@@ -524,7 +524,7 @@
     },
     {
       "severity": "medium",
-      "item": "ZTS6216, TLV9061, Amphenol top-contact FPC connector and C41430893 MX sockets are JLC Extended parts",
+      "item": "ZTS6216, TLV9061, HCTL HC-FPC-05-09-8RLTAG connector and C41430893 MX sockets are JLC Extended parts",
       "mitigation": "Accept Extended placement cost; do not substitute Basic lookalikes without footprint, pinout and mechanical revalidation."
     },
     {
