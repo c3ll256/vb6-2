@@ -54,12 +54,11 @@
     },
     {
       "id": "microphone_acoustic_port",
-      "face": "top",
-      "owner": "ZTS6216 bottom port through carrier PCB",
-      "pcb_hole_diameter_mm": 0.5,
+      "face": "bottom",
+      "owner": "ZTS6216 package-top acoustic port facing outward from the bottom-mounted microphone",
       "enclosure_hole_diameter_target_mm": 1.5,
       "clearance_mm": 2.0,
-      "validation": "Seal the short PCB-to-enclosure acoustic path; keep solder paste out of the sound hole."
+      "validation": "Provide an unobstructed enclosure acoustic path to the microphone package-top port. No carrier-PCB acoustic drill is required; keep enclosure foam, adhesive, and walls clear of the package port."
     }
   ],
   "interactive_elements": [
@@ -133,7 +132,7 @@
     "preamplifier": "AC-coupled non-inverting TLV9061 biased at 1.65 V, nominal gain 101 V/V using 100 kOhm feedback and 1 kOhm gain leg",
     "antialias_filter": "1 kOhm series plus 10 nF to ground at ADC input, nominal 15.9 kHz pole",
     "decoupling": "100 nF X7R at ZTS6216 and TLV9061 VDD pins; 1 uF on the 1.65 V virtual-ground node",
-    "land_pattern": "1:1 to 2.75 x 1.85 mm package pads; 0.50 mm bottom acoustic port; no solder paste over port",
+    "land_pattern": "Use the exact jlcpcb:C481302 land pattern for the 2.75 x 1.85 mm package. The Ø0.50 mm acoustic port is on the package top, outside the PCB land pattern; no carrier-PCB acoustic drill is required.",
     "pins": [
       "1 OUT",
       "2 GND",
