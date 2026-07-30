@@ -3,6 +3,8 @@ export const board = {
   heightMm: 49.98,
   width: "81.6mm",
   height: "49.98mm",
+  cornerRadiusMm: 3,
+  cornerRadius: "3mm",
 };
 
 export const sides = {

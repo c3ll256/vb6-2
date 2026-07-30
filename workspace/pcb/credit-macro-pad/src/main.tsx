@@ -171,6 +171,7 @@ export default () => (
   <board
     width={board.width}
     height={board.height}
+    borderRadius={board.cornerRadius}
 
     center_x={0}
     center_y={0}
