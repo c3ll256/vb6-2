@@ -87,7 +87,12 @@ export const displaySupport = {
   // Keep the RESET pull-up and capacitor directly inside the FPC connector's
   // board-facing side. This gives J1 pins 7 (V3V3) and 3 (RESET_N) short,
   // uncrossed escapes before the display nets join the wider board routes.
-  resetRow: row({ x: -29.0, y: 13.75 }, 4.0, 2),
+  resetRow: [
+    { x: -29.0, y: 13.75 },
+    // Offset C3 slightly above its original row to open the local pour neck
+    // while preserving the previously clean, short RESET_N escape from J1.
+    { x: -25.0, y: 14.0 },
+  ],
   backlightResistor: { x: -21.5, y: 20.0 },
 };
 
