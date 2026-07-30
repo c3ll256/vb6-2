@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "pcb-release-review",
+  "reviewId": "credit-macro-pad-mechanical_integration-5101de844f17",
+  "designId": "credit-macro-pad",
+  "target": "mechanical_integration",
+  "candidateId": "5101de844f17d8bcb893c70373c7190794f3da20558d2867cc15ac1498475e92",
+  "buildId": "a8949d878ef0dee7a48ee8e5b280e517cdec49fe823a841601ff90b00ad36fd1",
+  "sourceRevision": "8fe44ec38fc6ee1413468d01edc8d956213f0041df3719b02a1cfa420acd4c9b",
+  "read": {
+    "editableSource": "pcb/credit-macro-pad/src",
+    "manufacturingRules": "pcb/credit-macro-pad/pcb.config.json",
+    "reports": "pcb/credit-macro-pad/reports",
+    "bom": "hardware/bom.json",
+    "constraints": "hardware/constraints.json"
+  },
+  "measure": {
+    "tool": "pcb.measure",
+    "designId": "credit-macro-pad",
+    "note": "Board-frame values with placement rotation and side already applied."
+  },
+  "reportPath": "pcb-reviews/credit-macro-pad-mechanical_integration-5101de844f17/report.md"
+}

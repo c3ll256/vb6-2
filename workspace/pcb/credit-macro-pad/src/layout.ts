@@ -88,6 +88,9 @@ export const displaySupport = {
   // board-facing side. This gives J1 pins 7 (V3V3) and 3 (RESET_N) short,
   // uncrossed escapes before the display nets join the wider board routes.
   resetRow: row({ x: -29.0, y: 13.75 }, 4.0, 2),
+  // Lift C3 out of the narrow J1/R1 routing throat so the bottom GND pour can
+  // remain continuous while keeping the reset capacitor close to J1 pin 3.
+  resetCapacitor: { x: -25.0, y: 17.0 },
   backlightResistor: { x: -21.5, y: 20.0 },
 };
 
