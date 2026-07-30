@@ -171,6 +171,7 @@ export default () => (
   <board
     width={board.width}
     height={board.height}
+
     center_x={0}
     center_y={0}
     {...boardPropsFromRules()}

@@ -11,7 +11,8 @@
   "pcb_bbox_mm": {
     "w_max": 81.6,
     "d_max": 49.98,
-    "thickness_target": 1.0
+    "thickness_target": 1.0,
+    "outline_interpretation": "The 81.6 x 49.98 mm limit applies to the Edge.Cuts centerline/cut path. Plot stroke width must not be added to the finished routed-board dimensions."
   },
   "pcb_component_height_mm": {
     "top_max_target": 20.0,

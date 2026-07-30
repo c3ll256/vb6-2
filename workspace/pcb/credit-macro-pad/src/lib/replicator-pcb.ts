@@ -32,6 +32,7 @@ export function boardPropsFromRules() {
   const manufacturing = pcbRules.manufacturing;
   const absoluteClearance = manufacturing.absoluteMinimumCopperClearanceMm;
   return {
+    thickness: "1.6mm",
     routingDisabled: true,
     defaultTraceWidth: mm(manufacturing.defaultTraceWidthMm),
     nominalTraceWidth: mm(manufacturing.defaultTraceWidthMm),
