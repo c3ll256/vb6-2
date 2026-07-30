@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "canonical-review-completion-rejection",
+  "reviewKind": "pcb-release-review",
+  "attempt": 3,
+  "recordedAt": "2026-07-30T10:13:56.558Z",
+  "validationError": "completion_evidence_missing",
+  "missing": [
+    "read the exact review input pcb-reviews/credit-macro-pad-mechanical_integration-3e6f81f93374/input.json"
+  ],
+  "assistantTextLength": 1795,
+  "assistantText": "PCB Release Review\n\nSummary: Release is blocked by a missing microphone acoustic opening and board geometry that contradicts the mechanical constraints. The routed backlight trace also violates its declared net-class minimum.\n\nP0: The required 0.50 mm acoustic opening for the bottom-ported ZTS6216 microphone is absent. `hardware/constraints.json` specifies a 0.50 mm PCB sound hole, identifies the microphone as bottom-ported, and requires MIC1 directly over the cutout. `pcb.measure` reports only 0.30, 1.75, 3.05, and 4.00 mm drill diameters, with no 0.50 mm opening. The editable source instead describes the microphone as top-ported and explicitly omits the drill. The specified microphone therefore lacks its required acoustic path.\n\nP0: The produced board contradicts the declared mechanical envelope. `hardware/constraints.json` limits the PCB to 81.6 × 49.98 mm and specifies a 1.0 mm thickness target, while `pcb.measure` reports 81.7 × 50.08 mm and 1.6 mm finished thickness. The board exceeds both maximum planar dimensions by 0.10 mm and is 0.60 mm thicker than specified.\n\nP1: The LCD backlight power trace violates its declared routing policy. `pcb.config.json` assigns `LCD_LEDA` to the power class with a 0.4572 mm minimum width and contains no applicable rule exception. `routing-actuals.json` reports an actual width of 0.30 mm and marks the route as relaxed.\n\nDeferred: Enclosure integration remains unresolved for the right-edge USB-C cutout and plug envelope, the display-tail wrap and bend path at the left-edge FPC connector, installed component heights, and rail or clip retention. The required enclosure CAD has not been started; an enclosure assembly using the verified XIAO and display models, cable geometry, and final fabrication STEP would answer these questions."
+}
