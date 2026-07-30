@@ -75,11 +75,11 @@
     {
       "name": "J1_GND_ESCAPE_VIA",
       "net": "GND",
-      "xMm": -33.2,
+      "xMm": -33.15,
       "yMm": 11.75,
       "diameterMm": 0.4,
       "drillMm": 0.3,
-      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via overlapping the board-side edge of HC-FPC-05-09-8RLTAG J1 pin 2 by 0.05 mm in copper while keeping the drill outside the paste pad. The 0.05 mm inward shift from the prior location increases clearance to the adjacent LCD_RESET_N escape and still reaches the top GND plane."
+      "rationale": "Targeted 0.4/0.3 mm density-driven dogbone via tangent to the board-side edge of HC-FPC-05-09-8RLTAG J1 pin 2. The copper edges meet without placing the drilled via inside the paste pad, preserve the declared 0.15 mm clearance to adjacent 0.5 mm-pitch pads, and reach the top GND plane."
     }
   ],
   "keepouts": [
