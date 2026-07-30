@@ -281,7 +281,7 @@ export default () => (
 
     <C0402 name="C1" value="100nF" lcsc="C1525" x={analog.micDecoupling.x} y={analog.micDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C2" value="100nF" lcsc="C1525" x={analog.opampDecoupling.x} y={analog.opampDecoupling.y} a="net.V3V3" b="net.GND" />
-    <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetCapacitor.x} y={displaySupport.resetCapacitor.y} a="net.LCD_RESET_N" b="net.GND" />
+    <C0402 name="C3" value="100nF" lcsc="C1525" x={displaySupport.resetRow[1].x} y={displaySupport.resetRow[1].y} a="net.LCD_RESET_N" b="net.GND" />
     <C0402 name="C4" value="100nF" lcsc="C1525" x={analog.xiaoDecoupling.x} y={analog.xiaoDecoupling.y} a="net.V3V3" b="net.GND" />
     <C0402 name="C5" value="1uF" lcsc="C52923" x={analog.biasRow[2].x} y={analog.biasRow[2].y} a="net.VBIAS" b="net.GND" />
     <C0402 name="C6" value="1uF" lcsc="C52923" x={analog.micCoupling.x} y={analog.micCoupling.y} a="net.MIC_RAW" b="net.MIC_AC" />
