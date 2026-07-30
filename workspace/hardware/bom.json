@@ -25,9 +25,8 @@
       "package": "XIAO castellated module, 21 x 17.8 mm",
       "footprint": "Seeed_XIAO_ESP32S3_castellated",
       "assembly": {
-        "method": "module_mount",
-        "population": "mounted",
-        "side": "bottom"
+        "method": "not_assembled",
+        "population": "not_mounted"
       },
       "required_user_evidence": [
         "Procurement reminder only: record distributor and order number when purchased."
@@ -111,7 +110,14 @@
         "population": "mounted",
         "side": "bottom",
         "risk_class": "mechanical_smt",
-        "jlc_smt_library": "extended"
+        "jlc_smt_library": "extended",
+        "jlc_smt_verified": true,
+        "verification_evidence": [
+          "Exact JLC/LCSC identity C5213749 and MPN HC-FPC-05-09-8RLTAG verified by supplier detail lookup.",
+          "Datasheet page 1 recommended PCB pattern verified: 8 signal pads at 0.5 mm pitch plus 2 mounting pegs, Pin 1 at the marked end.",
+          "Datasheet page 2 carrier-tape orientation inspected for SMT feeding.",
+          "PCB intent verified: native supplier footprint, bottom side, connector opening/cable exit toward the left edge; user confirmed J1 is SMT populated."
+        ]
       },
       "selection_reason": "Exact user-selected HC-FPC-05-09-8RLTAG. C5213749 is an in-stock 8P/0.5 mm connector for 0.3 mm FPC; its dual-side contact construction accepts the confirmed front-contact display tail after the tail wraps around the left PCB edge. Extended is required because no Basic-library exact match exists."
     },
@@ -145,7 +151,14 @@
         "population": "mounted",
         "side": "bottom",
         "risk_class": "mechanical_smt",
-        "jlc_smt_library": "extended"
+        "jlc_smt_library": "extended",
+        "jlc_smt_verified": true,
+        "verification_evidence": [
+          "Exact JLC/LCSC identity C481302 and MPN ZTS6216 verified by supplier detail lookup.",
+          "ZTS6216 datasheet package and land pattern verified as SMD-4P with OUT/GND/GND/VDD pin order and a top acoustic port.",
+          "Native jlcpcb:C481302 footprint is used on the bottom side; exporter owns bottom mirroring and CPL rotation.",
+          "No mating cable or carrier-PCB acoustic drill applies; current PCBA order intent populates all declared JLC SMT parts except the explicitly DNP XIAO module."
+        ]
       },
       "selection_reason": "Exact microphone mandated by the user; the ZILLTEK ZTS6216 datasheet explicitly identifies it as a top-ported analog MEMS microphone. The package-top acoustic port is Ø0.50 mm; it is not a carrier-PCB drill requirement. Supplier and datasheet evidence also confirm 65 dBA SNR and pins OUT/GND/GND/VDD."
     },
@@ -178,7 +191,13 @@
         "method": "jlc_smt",
         "population": "mounted",
         "side": "bottom",
-        "jlc_smt_library": "extended"
+        "jlc_smt_library": "extended",
+        "jlc_smt_verified": true,
+        "verification_evidence": [
+          "Exact JLC/LCSC identity C41430893 and MPN CPG151101S11-16 verified by supplier detail lookup.",
+          "Supplier datasheet and the verified mx_hotswap local footprint family establish the two SMD contacts, MX mechanical clearances, origin and bottom-side orientation.",
+          "All four instances use the same reviewed footprint orientation; exporter owns bottom mirroring and CPL rotation."
+        ]
       },
       "selection_reason": "1.8-5.5 V operation, 10 MHz GBW, rail-to-rail I/O and 10 nV/sqrtHz input noise provide sufficient voice-band gain from the analog MEMS microphone into the ESP32-S3 ADC."
     },

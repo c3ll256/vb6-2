@@ -225,7 +225,7 @@
       "designators": [
         "U1"
       ],
-      "populate": true
+      "populate": false
     },
     {
       "bomItemId": "display_lt225c7_c08_03",
@@ -260,6 +260,46 @@
         "HS_KEY4"
       ],
       "footprintFamily": "mx_hotswap",
+      "populate": true
+    },
+    {
+      "bomItemId": "microphone_zts6216",
+      "designators": ["MIC1"],
+      "populate": true
+    },
+    {
+      "bomItemId": "mic_preamp_tlv9061",
+      "designators": ["U2"],
+      "populate": true
+    },
+    {
+      "bomItemId": "cap_100nf_0402",
+      "designators": ["C1", "C2", "C3", "C4"],
+      "populate": true
+    },
+    {
+      "bomItemId": "cap_1uf_0402_audio",
+      "designators": ["C5", "C6"],
+      "populate": true
+    },
+    {
+      "bomItemId": "cap_10nf_0402_audio",
+      "designators": ["C7"],
+      "populate": true
+    },
+    {
+      "bomItemId": "res_100k_0402_audio",
+      "designators": ["R3", "R4", "R5", "R7"],
+      "populate": true
+    },
+    {
+      "bomItemId": "res_1k_0402_audio",
+      "designators": ["R6", "R8"],
+      "populate": true
+    },
+    {
+      "bomItemId": "res_10k_0402",
+      "designators": ["R1"],
       "populate": true
     }
   ]
