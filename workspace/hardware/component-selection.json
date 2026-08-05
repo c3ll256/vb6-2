@@ -488,33 +488,35 @@
     },
     {
       "id": "res_27r_1206_backlight",
-      "part_identity": "424efa803f148f20",
+      "part_identity": "d070525abd83eee9",
       "role": "lcd_backlight_current_limit",
       "name": "UNI-ROYAL 1206W4F270JT5E 27 Ohm 1% 250 mW 1206",
-      "description": "Feeds LCD LEDA from USB VBUS; calculated current is about 57-91 mA over 4.75-5.25 V USB and 2.8-3.2 V LED range, below the 120 mA panel maximum.",
+      "description": "C17946 is a 27 Ohm ±1% 0.25 W thick-film 1206 resistor; it feeds LCD LEDA from USB VBUS within the panel backlight current limit.",
       "designators": [
         "R2"
       ],
       "quantity": 1,
       "supplier": "LCSC / JLCPCB",
       "manufacturer": "UNI-ROYAL",
-      "part_number": "1206W4F270JT5E",
+      "part_number": "C17946",
       "mpn": "1206W4F270JT5E",
-      "jlc_smt_library": "unknown",
-      "procurement_status": "supplier_confirmation_required",
+      "lcsc_code": "C17946",
+      "jlc_smt_library": "extended",
       "package": "1206",
       "footprint": "R_1206_3216Metric",
-      "stock": 0,
-      "source": "manufacturer_part_number",
+      "stock": 108166,
+      "unit_price_cny": 0.0476,
+      "source": "lcsc",
+      "product_url": "https://item.szlcsc.com/18634.html",
+      "datasheet_url": "https://atta.szlcsc.com//upload/public/pdf/source/20200306/C422600_1E6D84923E4A46A82E41ADD87F860B5C.pdf",
+      "image_url": "https://alimg.szlcsc.com/upload/public/product/source/20250812/A65FC74AD0A0C3BC9C1D158249FC24C2.jpg",
       "assembly": {
-        "method": "manual",
+        "method": "jlc_smt",
         "population": "mounted",
-        "side": "bottom"
+        "side": "bottom",
+        "jlc_smt_library": "extended"
       },
-      "required_user_evidence": [
-        "Procurement reminder only: confirm an exact 27 Ohm, 1%, at least 0.25 W 1206 resistor before ordering."
-      ],
-      "selection_reason": "Static always-on backlight avoids an unavailable AW9364 while remaining inside the panel's stated current limit; no brightness control is required."
+      "selection_reason": "Exact in-stock C17946 matches 27 Ohm, 1%, 0.25 W and 1206 requirements. JLC Extended is used because no compatible Basic-library exact match was found; this allows R2 to be machine-placed with the rest of the bottom-side PCBA."
     }
   ],
   "alternatives": [

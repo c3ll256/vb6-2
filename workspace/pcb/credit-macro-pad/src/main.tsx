@@ -294,6 +294,7 @@ export default () => (
       name="R2"
       resistance="27ohm"
       footprint="1206"
+      supplierPartNumbers={{ jlcpcb: ["C17946"] }}
       layer={smtSide}
       pcbX={displaySupport.backlightResistor.x}
       pcbY={displaySupport.backlightResistor.y}
