@@ -301,6 +301,11 @@
       "bomItemId": "res_10k_0402",
       "designators": ["R1"],
       "populate": true
+    },
+    {
+      "bomItemId": "res_27r_1206_backlight",
+      "designators": ["R2"],
+      "populate": true
     }
   ]
 }
