@@ -24,3 +24,20 @@ export {
   type EspressifEsp32ModuleVariant,
   type Esp32ModuleConvenienceProps,
 } from "./EspressifEsp32Modules";
+export {
+  ArduinoNanoRev3,
+  ARDUINO_NANO_REV3_METADATA,
+  listDevelopmentBoardFootprintTemplates,
+  RaspberryPi4ModelB,
+  RASPBERRY_PI_4_MODEL_B_METADATA,
+  RaspberryPiPicoR3,
+  RASPBERRY_PI_PICO_R3_METADATA,
+  XiaoRp2040,
+  XIAO_RP2040_METADATA,
+  type ArduinoNanoRev3Props,
+  type RaspberryPi4ModelBProps,
+  type RaspberryPiPicoMounting,
+  type RaspberryPiPicoR3Props,
+  type XiaoRp2040Mounting,
+  type XiaoRp2040Props,
+} from "./DevelopmentBoards";

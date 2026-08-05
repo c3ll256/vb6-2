@@ -45,7 +45,9 @@ function isBuiltinCoreBoardModel(value: unknown): value is BuiltinCoreBoardModel
   return typeof row.id === 'string' && row.pcb?.status === 'bound';
 }
 
-export const BUILTIN_CORE_BOARD_MODELS = boardModelRegistry.filter(isBuiltinCoreBoardModel);
+export const BUILTIN_CORE_BOARD_MODELS = (boardModelRegistry as unknown[]).filter(
+  isBuiltinCoreBoardModel,
+);
 
 export function requireBuiltinCoreBoardModel(id: string): BuiltinCoreBoardModel {
   const model = BUILTIN_CORE_BOARD_MODELS.find((row) => row.id === id);

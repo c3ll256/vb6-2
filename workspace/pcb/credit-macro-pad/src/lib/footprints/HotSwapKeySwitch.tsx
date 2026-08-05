@@ -406,11 +406,22 @@ export const hotSwapKeySwitchTemplate = {
       label: 'Kailh CPG135001S30 Choc v1 hot-swap socket',
       footprintFamily: 'choc_v1_hotswap',
       side: 'bottom',
+      supplierPartNumber: 'C5333465',
+      // C5333465 is the exact CPG135001S30 supplier identity. Its local copper
+      // and clearance-hole geometry follows Kailh's current product drawing
+      // and the matching supplier footprint; tscircuit centers the separately
+      // bound model on those local footprint bounds.
+      cadModel: {
+        objUrl: 'https://modules.easyeda.com/3dmodel/4430eee05ea74b1ba8a282402b8cf3af',
+        stepUrl:
+          'https://modules.easyeda.com/qAxj6KHrDKw4blvCG8QJPs7Y/4430eee05ea74b1ba8a282402b8cf3af',
+        modelOriginPosition: { x: 0, y: 0.00007540000014061299, z: -0.9500024 },
+      },
       compatibleSwitches: ['choc_v1', 'choc_v2', 'choc_v1v2'],
-      // One socket serves all three Choc plate patterns: kiswitch places the
-      // same pads and clearance holes in V1, V2 and V1V2, only the switch-side
-      // centre bore and pegs differ. Origin is the switch centre, so alignment
-      // resolves to a zero offset.
+      // One socket serves all three Choc plate patterns. These targets describe
+      // the switch contact pins used to place the socket at the switch origin.
+      // Kailh's recommended 3mm clearance holes below have a 2.20mm Y pitch,
+      // leaving 0.10mm of clearance around the switch's 2.10mm pin pitch.
       contactTargets: [
         {
           name: '1',
@@ -424,17 +435,15 @@ export const hotSwapKeySwitchTemplate = {
       smdPads: [
         {
           name: '1',
-          at_mm: { x: -3.5, y: 6 },
-          size_mm: { x: 2.55, y: 2.5 },
-          shape: 'roundrect',
-          cornerRadius_mm: 0.25,
+          at_mm: { x: -3.275, y: 5.9 },
+          size_mm: { x: 2.6, y: 2.6 },
+          shape: 'rect',
         },
         {
           name: '2',
-          at_mm: { x: 8.5, y: 3.8 },
-          size_mm: { x: 2.55, y: 2.5 },
-          shape: 'roundrect',
-          cornerRadius_mm: 0.25,
+          at_mm: { x: 8.275, y: 3.7 },
+          size_mm: { x: 2.6, y: 2.6 },
+          shape: 'rect',
         },
       ],
       holes: [
@@ -446,26 +455,33 @@ export const hotSwapKeySwitchTemplate = {
         },
         {
           id: 'contact_2_clearance',
-          at_mm: { x: 5, y: 3.8 },
+          at_mm: { x: 5, y: 3.7 },
           diameter_mm: 3.05,
           kind: 'npth',
         },
       ],
-      body_mm: { x: 17.5, y: 6.5 },
+      body_mm: { x: 13.15, y: 6.85 },
       compatibleParts: [
         {
-          lcscCode: 'C965556',
+          lcscCode: 'C5333465',
           manufacturer: 'Kailh / Kaihua',
           mpn: 'CPG135001S30',
-          evidenceUrl: 'https://cdn-shop.adafruit.com/product-files/5118/5118-Choc-Socket.pdf',
-          notes: 'Primary Kailh Choc v1 hot-swap socket reference geometry.',
+          evidenceUrl:
+            'https://www.lcsc.com/product-detail/Mechanical-Keyboard-Shaft_Kailh-CPG135001S30_C5333465.html',
+          notes:
+            'Exact Kailh CPG135001S30 catalog identity. Local pads, holes and body dimensions follow the current Kailh product specification and matching C5333465 supplier footprint.',
         },
       ],
       sources: [
         {
           type: 'datasheet',
           title: 'Kailh CPG135001S30 Choc v1 hot-swap socket product specification',
-          url: 'https://cdn-shop.adafruit.com/product-files/5118/5118-Choc-Socket.pdf',
+          url: 'https://www.kailhswitch.com/uploads/15927/files/CPG135001S30.pdf?rnd=101',
+        },
+        {
+          type: 'vendor_page',
+          title: 'LCSC C5333465 Kailh CPG135001S30',
+          url: 'https://www.lcsc.com/product-detail/Mechanical-Keyboard-Shaft_Kailh-CPG135001S30_C5333465.html',
         },
       ],
     },
@@ -878,9 +894,8 @@ export function KeySwitch(props: KeySwitchProps) {
           ...props,
           // The Choc variant names the plate pattern the switch needs; the
           // socket is the same part in every case.
-          switch: props.variant === 'default' || props.variant === undefined
-            ? 'choc_v1'
-            : props.variant,
+          switch:
+            props.variant === 'default' || props.variant === undefined ? 'choc_v1' : props.variant,
           socket: 'kailh_choc_v1',
           orientation: props.socketOrientation ?? props.orientation,
         };

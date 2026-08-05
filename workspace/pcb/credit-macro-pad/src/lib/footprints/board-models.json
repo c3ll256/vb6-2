@@ -273,6 +273,327 @@
     ]
   },
   {
+    "id": "seeed_xiao_rp2040_v26",
+    "boardSpecId": "seeed_xiao_rp2040",
+    "name": "Seeed Studio XIAO RP2040",
+    "kind": "development_board",
+    "vendor": "Seeed Studio",
+    "family": "XIAO / RP2040",
+    "aliases": [
+      "xiao rp2040",
+      "seeed xiao rp2040",
+      "seeed studio xiao rp2040"
+    ],
+    "revision": "vendor model v26, retrieved 2026-08-01",
+    "assetPath": "board-models/seeed-xiao-rp2040-v26.step",
+    "sourceUrl": "https://wiki.seeedstudio.com/SeeedStudio_XIAO_Series_Introduction/",
+    "sourceArchiveUrl": "https://files.seeedstudio.com/wiki/XIAO-RP2040/res/seeed-studio-xiao-rp2040-3d-model.zip",
+    "licenseSpdx": "LicenseRef-Seeed-Vendor-Resource",
+    "sha256": "e4e8be7d793a141ecb5a0c4efb710af97a47fc62cde28882b470a610396b48b9",
+    "verified": true,
+    "appearance": {
+      "status": "source_materials",
+      "minimumMaterialCount": 6,
+      "evidence": "The complete vendor STEP contains styled board, connector, package and metal solids across six source colors; preserve those source materials."
+    },
+    "pcb": {
+      "status": "bound",
+      "componentExport": "XiaoRp2040",
+      "componentSource": "development-boards/DevelopmentBoards.tsx",
+      "footprintId": "replicator:xiao_rp2040",
+      "sourceIdentity": {
+        "displayName": "Seeed Studio XIAO RP2040",
+        "manufacturerPartNumber": "Seeed Studio XIAO RP2040"
+      },
+      "model": {
+        "assetPath": "board-models/seeed-xiao-rp2040-v26.step",
+        "sha256": "e4e8be7d793a141ecb5a0c4efb710af97a47fc62cde28882b470a610396b48b9",
+        "transform": {
+          "modelOriginPositionMm": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotationOffsetDeg": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "modelUnitToMmScale": 1,
+          "modelBoardNormalDirection": "z+"
+        }
+      },
+      "interfaces": [
+        {
+          "id": "usb_c",
+          "kind": "usb_c",
+          "connectorEdge": "+Y",
+          "verifiedModelBboxMm": {
+            "min": {
+              "x": -4.47,
+              "y": 4.2,
+              "z": 0.205
+            },
+            "max": {
+              "x": 4.47,
+              "y": 11.5,
+              "z": 4.405
+            }
+          },
+          "evidence": "USB-C subassembly bbox measured from the pinned vendor v26 STEP; the connector exterior faces +Y.",
+          "notes": [
+            "This is source-model geometry for orientation and fit checks, not an enclosure cutout prescription."
+          ]
+        }
+      ]
+    },
+    "notes": [
+      "Complete official vendor model paired with the official XIAO-RP2040-DIP and XIAO-RP2040-SMD carrier geometries.",
+      "The SMD variant exposes BAT, SWDIO, SWDCLK, reset and auxiliary ground pads that are absent from the 14-pin DIP variant."
+    ]
+  },
+  {
+    "id": "raspberry_pi_pico_r3",
+    "boardSpecId": "raspberry_pi_pico",
+    "name": "Raspberry Pi Pico R3",
+    "kind": "development_board",
+    "vendor": "Raspberry Pi",
+    "family": "Pico / RP2040",
+    "aliases": [
+      "raspberry pi pico",
+      "rpi pico",
+      "pico rp2040",
+      "rp2040 pico"
+    ],
+    "revision": "Pico R3, official STEP archive RP-008311-DS-1",
+    "assetPath": "board-models/raspberry-pi-pico-r3.step",
+    "sourceUrl": "https://pip.raspberrypi.com/categories/610-raspberry-pi-pico",
+    "sourceArchiveUrl": "https://pip-assets.raspberrypi.com/categories/610-raspberry-pi-pico/documents/RP-008311-DS-1-Pico-R3-step.zip",
+    "licenseSpdx": "LicenseRef-RaspberryPi-Design-Files",
+    "sha256": "ea5c693afee3de73e9fcaab1892a5ed44bf789438b9b1e5906e9c4f9859cab8b",
+    "verified": true,
+    "appearance": {
+      "status": "pending",
+      "reason": "The official AP203 STEP has no colors. The exact geometry is PCB-bound, while appearance remains neutral until redistributable R3 board artwork is prepared."
+    },
+    "pcb": {
+      "status": "bound",
+      "componentExport": "RaspberryPiPicoR3",
+      "componentSource": "development-boards/DevelopmentBoards.tsx",
+      "footprintId": "replicator:raspberry_pi_pico_r3",
+      "sourceIdentity": {
+        "displayName": "Raspberry Pi Pico R3",
+        "manufacturerPartNumber": "SC0915"
+      },
+      "model": {
+        "assetPath": "board-models/raspberry-pi-pico-r3.step",
+        "sha256": "ea5c693afee3de73e9fcaab1892a5ed44bf789438b9b1e5906e9c4f9859cab8b",
+        "transform": {
+          "modelOriginPositionMm": {
+            "x": 10.5,
+            "y": -0.5,
+            "z": -25.5
+          },
+          "rotationOffsetDeg": {
+            "x": 0,
+            "y": 0,
+            "z": 180
+          },
+          "modelUnitToMmScale": 1,
+          "modelBoardNormalDirection": "y+"
+        }
+      },
+      "interfaces": [
+        {
+          "id": "micro_usb",
+          "kind": "micro_usb",
+          "connectorEdge": "+Y",
+          "verifiedModelBboxMm": {
+            "min": {
+              "x": 6.5,
+              "y": 0.29,
+              "z": -52.3
+            },
+            "max": {
+              "x": 14.5,
+              "y": 3.23,
+              "z": -46.7
+            }
+          },
+          "evidence": "Micro-USB subassembly bbox measured from the official Pico R3 STEP; the pinned 180 degree board-plane rotation aligns the connector exterior with the local footprint's +Y edge.",
+          "notes": [
+            "This bbox records source-model geometry and orientation only."
+          ]
+        }
+      ]
+    },
+    "notes": [
+      "Official Raspberry Pi STEP model with local through-hole, reflow SMD and hand-solder SMD carrier variants derived from KiCad geometry pinned at 3e7accd769f920dd03d911a1f65631490d4f2fdf.",
+      "Do not use this model for Pico W, Pico 2, or header-populated H/WH variants."
+    ]
+  },
+  {
+    "id": "arduino_nano_rev3",
+    "boardSpecId": "arduino_nano",
+    "name": "Arduino Nano Rev3",
+    "kind": "development_board",
+    "vendor": "Arduino",
+    "family": "Nano",
+    "aliases": [
+      "arduino nano",
+      "arduino nano rev3",
+      "arduino nano v3",
+      "nano atmega328p"
+    ],
+    "revision": "FreeCAD Parts Library pinned at be5e71491051cef75da46831b6fd77c6313cb497",
+    "assetPath": "board-models/arduino-nano-rev3.step",
+    "sourceUrl": "https://github.com/FreeCAD/FreeCAD-library/blob/be5e71491051cef75da46831b6fd77c6313cb497/Electronics%20Parts/Boards/Arduino/Nano-Rev3_0.step",
+    "licenseSpdx": "CC-BY-3.0",
+    "sha256": "233e6040c4067e5555a36c9d4006c7b23378829868e69d5e339683c035b9bb45",
+    "verified": true,
+    "appearance": {
+      "status": "source_materials",
+      "minimumMaterialCount": 1,
+      "evidence": "The pinned complete-board STEP carries a source color; retain it while preserving all modeled board, connector and package solids."
+    },
+    "pcb": {
+      "status": "bound",
+      "componentExport": "ArduinoNanoRev3",
+      "componentSource": "development-boards/DevelopmentBoards.tsx",
+      "footprintId": "kicad:Module/Arduino_Nano",
+      "sourceIdentity": {
+        "displayName": "Arduino Nano Rev3",
+        "manufacturerPartNumber": "A000005"
+      },
+      "model": {
+        "assetPath": "board-models/arduino-nano-rev3.step",
+        "sha256": "233e6040c4067e5555a36c9d4006c7b23378829868e69d5e339683c035b9bb45",
+        "transform": {
+          "modelOriginPositionMm": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotationOffsetDeg": {
+            "x": 0,
+            "y": 0,
+            "z": 90
+          },
+          "modelUnitToMmScale": 1,
+          "modelBoardNormalDirection": "z+"
+        }
+      },
+      "interfaces": [
+        {
+          "id": "mini_usb",
+          "kind": "mini_usb",
+          "connectorEdge": "-Y",
+          "verifiedModelBboxMm": {
+            "min": {
+              "x": 15,
+              "y": -3.75,
+              "z": 1.5
+            },
+            "max": {
+              "x": 24,
+              "y": 3.75,
+              "z": 4.5
+            }
+          },
+          "evidence": "Mini-USB connector bbox measured in the pinned source STEP; the +90 degree board-plane rotation aligns the exterior with the KiCad footprint's -Y edge.",
+          "notes": [
+            "This bbox records source-model geometry and orientation only."
+          ]
+        }
+      ]
+    },
+    "notes": [
+      "Model authored by BERSERK and distributed by the FreeCAD Parts Library under CC BY 3.0; license text is bundled as board-models/LICENSE-FreeCAD-Library-Assets.txt.",
+      "This binding targets the classic Nano Rev3 / A000005 geometry and must not be reused for Nano Every, Nano 33, or Nano ESP32 boards."
+    ]
+  },
+  {
+    "id": "raspberry_pi_4_model_b",
+    "boardSpecId": "rpi_4b",
+    "name": "Raspberry Pi 4 Model B",
+    "kind": "development_board",
+    "vendor": "Raspberry Pi",
+    "family": "Raspberry Pi",
+    "aliases": [
+      "raspberry pi 4",
+      "raspberry pi 4b",
+      "rpi 4b",
+      "pi 4 model b"
+    ],
+    "revision": "FreeCAD Parts Library pinned at be5e71491051cef75da46831b6fd77c6313cb497",
+    "assetPath": "board-models/raspberry-pi-4b.step",
+    "sourceUrl": "https://github.com/FreeCAD/FreeCAD-library/blob/be5e71491051cef75da46831b6fd77c6313cb497/Electronics%20Parts/Boards/Raspberry/Raspberry%20Pi%204B/Raspberry%20Pi%204B.step",
+    "licenseSpdx": "CC-BY-3.0",
+    "sha256": "82c055acbed781e623d8c32acfdec2254400104f2cfa21ddbc2ba0e8b80797da",
+    "verified": true,
+    "appearance": {
+      "status": "source_materials",
+      "minimumMaterialCount": 2,
+      "evidence": "The complete-board STEP contains styled board and assembly solids in two source colors; preserve those materials and the full connector geometry."
+    },
+    "pcb": {
+      "status": "bound",
+      "componentExport": "RaspberryPi4ModelB",
+      "componentSource": "development-boards/DevelopmentBoards.tsx",
+      "footprintId": "replicator:raspberry_pi_4_model_b_carrier",
+      "sourceIdentity": {
+        "displayName": "Raspberry Pi 4 Model B",
+        "manufacturerPartNumber": "Raspberry Pi 4 Model B"
+      },
+      "model": {
+        "assetPath": "board-models/raspberry-pi-4b.step",
+        "sha256": "82c055acbed781e623d8c32acfdec2254400104f2cfa21ddbc2ba0e8b80797da",
+        "transform": {
+          "modelOriginPositionMm": {
+            "x": 42.5,
+            "y": -1.7,
+            "z": -28
+          },
+          "rotationOffsetDeg": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "modelUnitToMmScale": 1,
+          "modelBoardNormalDirection": "y+"
+        }
+      },
+      "interfaces": [
+        {
+          "id": "usb_c",
+          "kind": "usb_c",
+          "connectorEdge": "+Y",
+          "verifiedModelBboxMm": {
+            "min": {
+              "x": 6.73,
+              "y": -0.8,
+              "z": -6.7
+            },
+            "max": {
+              "x": 15.67,
+              "y": 3.16,
+              "z": 1.2
+            }
+          },
+          "evidence": "USB-C connector bbox measured in the pinned source STEP; after centering, the connector exterior faces the component's +Y edge.",
+          "notes": [
+            "Use the official mechanical drawing for enclosure cutout tolerances."
+          ]
+        }
+      ]
+    },
+    "notes": [
+      "Model authored by integrated-circuit and distributed by the FreeCAD Parts Library under CC BY 3.0; license text is bundled as board-models/LICENSE-FreeCAD-Library-Assets.txt.",
+      "Carrier footprint mounting holes and 40-pin GPIO coordinates are derived from the official Raspberry Pi 4 Model B mechanical drawing.",
+      "Memory capacity is not mechanically distinguished by this board-level model."
+    ]
+  },
+  {
     "id": "espressif_esp32_s3_wroom_1",
     "name": "Espressif ESP32-S3-WROOM-1",
     "kind": "module",
