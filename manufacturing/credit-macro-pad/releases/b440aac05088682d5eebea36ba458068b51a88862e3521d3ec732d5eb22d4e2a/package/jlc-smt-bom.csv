@@ -1,0 +1,12 @@
+﻿Comment,Description,Designator,Footprint,LibRef,Pins,Quantity,编号
+HC-FPC-05-09-8RLTAG,8-position 0.5 mm pitch horizontal flip-lock FPC connector with dual-side contacts for 0.3 mm FPC and 1.0 mm board height.,J1,HC-FPC-05-09-8RLTAG,,,1,C5213749
+CPG151101S11-16,Bottom-side SMD hot-swap socket for MX-compatible switches.,"HS_KEY1, HS_KEY2, HS_KEY3, HS_KEY4",CPG151101S11-16,,,4,C41430893
+ZTS6216,"User-specified top-port omnidirectional analog MEMS microphone, 1.5-3.6 V, 65 dBA SNR, -38 dBV/Pa, 2.75 x 1.85 x 1.0 mm.",MIC1,ZTS6216,,,1,C481302
+TLV9061IDBVR,10 MHz rail-to-rail single op amp for approximately 101 V/V non-inverting ZTS6216 gain and ADC drive.,U2,TLV9061IDBVR,,,1,C398358
+CL05B104KO5NNNC,"MIC1 and U2 VDD decoupling, display VDD decoupling and LCD reset RC capacitor.","C1, C2, C3, C4",CL05B104KO5NNNC,,,4,C1525
+CL05A105KA5NQNC,ZTS6216 AC coupling and 1.65 V virtual-ground filtering.,"C5, C6",CL05A105KA5NQNC,,,2,C52923
+CL05B103KB5NNNC,With R8=1 kOhm forms an approximately 15.9 kHz ADC input low-pass filter.,C7,CL05B103KB5NNNC,,,1,C15195
+0402WGF1003TCE,"Virtual-ground divider, AC-input bias and preamp feedback network.","R3, R4, R5, R7",0402WGF1003TCE,,,4,C25741
+0402WGF1001TCE,Preamp gain leg and ADC low-pass series resistor.,"R6, R8",0402WGF1001TCE,,,2,C11702
+0402WGF1002TCE,Pulls LCD RESET_N to 3.3 V; C3 creates power-on reset delay.,R1,0402WGF1002TCE,,,1,C25744
+1206W4F270JT5E,"Feeds LCD LEDA from USB VBUS; calculated current is about 57-91 mA over 4.75-5.25 V USB and 2.8-3.2 V LED range, below the 120 mA panel maximum.",R2,1206W4F270JT5E,,,1,C17946

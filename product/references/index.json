@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "file": "lt225c7-c08-03.pdf",
+      "sha256": "2923e358c23c87c35f270121261f7e8037358331dd25c4f52487a4d21f9a35e0",
+      "bytes": 728465,
+      "addedAt": "2026-09-06T15:06:58.622Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c17946/c17946-datasheet.pdf",
+      "sha256": "11cd644d5d8a34a6d12775afb80bf58d8fc11f0c3b700dbd0f7a59942ceaa5ef",
+      "bytes": 467557,
+      "addedAt": "2026-09-06T15:06:58.623Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c2992524/c2992524-datasheet.pdf",
+      "sha256": "6e8276c47d2c87d183627d54503d398ff6a1926de1b1c6b873f9e7640ab79e0f",
+      "bytes": 478944,
+      "addedAt": "2026-09-06T15:06:58.627Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c398358/c398358-datasheet.pdf",
+      "sha256": "f4e5fdeef7a79a7a149097621228d9c1bea51c70ea4a9c0ad82d32b351aa184a",
+      "bytes": 7447790,
+      "addedAt": "2026-09-06T15:06:58.634Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c41430893/c41430893-datasheet.pdf",
+      "sha256": "4f82ef07666bd72b49e8c3f638033623121cb528c95065edeaefbf4c87970173",
+      "bytes": 1338643,
+      "addedAt": "2026-09-06T15:06:58.639Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c481302/c481302-datasheet.pdf",
+      "sha256": "6182ab4592edea6b49ec6a94b8d31d5d1efcdc11904bd572796a105ff9f68eb1",
+      "bytes": 737301,
+      "addedAt": "2026-09-06T15:06:58.640Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c49234236/c49234236-datasheet.pdf",
+      "sha256": "e3ca6c6dc6df6d7e3737b7e9b37a33e526dd05795d3debb2b5891ef325e2379f",
+      "bytes": 3514503,
+      "addedAt": "2026-09-06T15:06:58.651Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c5213749/c5213749-datasheet.pdf",
+      "sha256": "9ccb81876c30c55008dbf018b88306d452d906e1c1f1fee19d486ba8a52085bf",
+      "bytes": 332227,
+      "addedAt": "2026-09-06T15:06:58.652Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c5656610/c5656610-datasheet.pdf",
+      "sha256": "6f87312bec5078aef44866f4e765137aad0a085b144f3a4f27d697f28f68b0c8",
+      "bytes": 1132567,
+      "addedAt": "2026-09-06T15:06:58.653Z",
+      "share": false
+    },
+    {
+      "file": "suppliers/c597995/c597995-datasheet.pdf",
+      "sha256": "ed14d17173fac1340292e511e9ad725c3e0240441751d8031f894178b1c65f99",
+      "bytes": 865179,
+      "addedAt": "2026-09-06T15:06:58.656Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260724T112448905Z-1-drawing-2026-07-24t11-24-36-682z.png",
+      "sha256": "58eece4b60ec2c1fa9bf4426fe2e7fbd4a44991bf1ac7822bcd45a91a95abfc4",
+      "bytes": 24082,
+      "addedAt": "2026-09-06T15:06:58.656Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260724T161051022Z-1-drawing-2026-07-24t16-10-41-669z.png",
+      "sha256": "298d142f98ce7f071da43e8391c9194e1c4ae609af261e912b1429fe6c2f101a",
+      "bytes": 21701,
+      "addedAt": "2026-09-06T15:06:58.657Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260804T030026846Z-1-cleanshot-2026-08-04-at-10-57-16-2x.png",
+      "sha256": "1b8f559d54ffb74ed12710eba236eebed5cab790f559057d1f53368192a3c791",
+      "bytes": 67929,
+      "addedAt": "2026-09-06T15:06:58.657Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260804T031201608Z-1-model-reference-1.png",
+      "sha256": "a7ec440b1cceeeb987aa066bbfd88ab212bc6d2560e0f09e1ce300eb5a6a4074",
+      "bytes": 161023,
+      "addedAt": "2026-09-06T15:06:58.658Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260804T032033317Z-1-model-reference-1.png",
+      "sha256": "5b30a2c9d1b191cb1f1e088470bdb2094ac269f7dd147ada515326b76b21402a",
+      "bytes": 97114,
+      "addedAt": "2026-09-06T15:06:58.658Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260804T054507180Z-1-cleanshot-2026-08-04-at-13-44-21-2x.png",
+      "sha256": "8c362918916bf72ea9e318d598f49b1d2912ac09d2ee971e85bd8e6e5c4c080b",
+      "bytes": 23500,
+      "addedAt": "2026-09-06T15:06:58.658Z",
+      "share": false
+    },
+    {
+      "file": "uploads/20260804T061638767Z-1-cleanshot-2026-08-04-at-14-15-03-2x.png",
+      "sha256": "dd2758ac8763b8f24c452d7869c841bd43ab59c706c99a0386786363f6f97a8b",
+      "bytes": 73532,
+      "addedAt": "2026-09-06T15:06:58.659Z",
+      "share": false
+    }
+  ]
+}
