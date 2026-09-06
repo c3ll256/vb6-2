@@ -35,7 +35,7 @@ export type BuiltinCoreBoardModel = {
   id: string;
   name: string;
   kind: 'development_board' | 'module';
-  revision: string;
+  sourceVersion: string;
   pcb: BoundPcbModel;
 };
 
@@ -58,7 +58,7 @@ export function requireBuiltinCoreBoardModel(id: string): BuiltinCoreBoardModel 
 export function projectModelPath(model: BuiltinCoreBoardModel): string {
   const filename = model.pcb.model.assetPath.split(/[\\/]/).pop();
   if (!filename) throw new Error(`builtin_core_board_model_filename_missing:${model.id}`);
-  return `./src/lib/footprints/models/${filename}`;
+  return `./source/lib/footprints/models/${filename}`;
 }
 
 export function cadModelProps(model: BuiltinCoreBoardModel) {

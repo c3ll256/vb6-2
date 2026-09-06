@@ -1,5 +1,13 @@
-/cache/
-/logs/
+# Replicator — managed block, edited by the app. Your own rules go above.
+/.work/
+/.replicator/
 .history/
-workspace/.tool-output/
-workspace/cache/
+.DS_Store
+*.tmp-*
+*.old-*
+
+manufacturing/**
+!manufacturing/**/
+!manufacturing/**/*.json
+!manufacturing/**/*.md
+# Replicator — end managed block

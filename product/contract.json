@@ -82,7 +82,7 @@
     "documents": [
       {
         "role": "enclosure",
-        "document_id": "main",
+        "design_id": "main",
         "description": "Thin serviceable enclosure assembly around the finalized credit-card-size PCB, display, low-profile keys, microphone port, and USB-C connector.",
         "delivery_target": "manufacturing_handoff",
         "required_formats": [

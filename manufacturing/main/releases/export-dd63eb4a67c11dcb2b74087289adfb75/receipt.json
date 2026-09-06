@@ -1,0 +1,122 @@
+{
+  "documentId": "main",
+  "revision": 47,
+  "revisionId": "revision-47-6a630381-9431-4139-891f-d4fb4ede454a",
+  "schemaVersion": 2,
+  "exportId": "export-dd63eb4a67c11dcb2b74087289adfb75",
+  "generatedAt": "2026-08-06T10:46:31.551Z",
+  "documentSha256": "e580382129f22c552fa8e5dde8f8299f8537244578990f7d5996342bb4755647",
+  "role": "enclosure",
+  "stateRevision": "6b1af8530ce0cc7f03e292e7e5a6d76f13ba9717282ec73515d6442d826f6d50",
+  "stateManifest": {
+    "schemaVersion": 1,
+    "documentId": "main",
+    "role": "enclosure",
+    "geometry": {
+      "revision": 47,
+      "revisionId": "revision-47-6a630381-9431-4139-891f-d4fb4ede454a",
+      "documentSha256": "cdd8995bbb092feec263113fbb630235f72bf34cb234c063296e5ed9c17a41e8",
+      "manifestSha256": "7bc972c72bc43b1d47c961abf84074deb3a539531da4ea6c1542e922fa46a572",
+      "stepSha256": "f6334cc80653861294ae0bf6c12af96e74fac9bce59d912458e537ed19bf8d1d"
+    },
+    "brief": {
+      "path": "workspace/cad-workbench/documents/main/brief.md",
+      "sha256": "afc4c70606c00ef050d980238a966e0167a32f12ae96b813d4ad4ae8e547cf1e"
+    },
+    "requirement": {
+      "artifactContractPath": "workspace/product/artifact-contract.json",
+      "artifactContractSha256": "9682e239c414b0ed5bdbbce89fe487c958a3dfb26915338c4ae607e4b8b8df1a",
+      "documentRequirementSha256": "c758a70d473d841653e3637a5ff8d38f697f5213401e60a4b3826371e1ffb49d",
+      "inputs": [
+        {
+          "role": "external-reference",
+          "id": "concept_sketch",
+          "path": "workspace/references/uploads/20260724T161051022Z-1-drawing-2026-07-24t16-10-41-669z.png",
+          "sha256": "298d142f98ce7f071da43e8391c9194e1c4ae609af261e912b1429fe6c2f101a",
+          "sizeBytes": 21701
+        },
+        {
+          "role": "external-reference",
+          "id": "display_datasheet",
+          "path": "artifacts/pdfs/lt225c7-c08-03.pdf",
+          "sha256": "2923e358c23c87c35f270121261f7e8037358331dd25c4f52487a4d21f9a35e0",
+          "sizeBytes": 728465
+        }
+      ]
+    },
+    "delivery": {
+      "target": "manufacturing_handoff",
+      "formats": [
+        "step"
+      ]
+    },
+    "pcbReleases": [
+      {
+        "designId": "credit-macro-pad",
+        "releaseId": "fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473",
+        "sourceRevision": "934d8cb643f49d963002a4ed07d3e0ff895fda0ff73d671d94bcffff2c27cb3a",
+        "buildId": "70d2ba9c6ffb654557f32da83d39231607aabea784bf7627db2b487e723b35e6",
+        "target": "mechanical_integration",
+        "manifestPath": "artifacts/pcb/credit-macro-pad/releases/fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473/release-manifest.json",
+        "assemblyStepPath": "artifacts/pcb/credit-macro-pad/releases/fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473/package/assembly.step",
+        "assemblyStepSha256": "e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba"
+      }
+    ],
+    "stateRevision": "6b1af8530ce0cc7f03e292e7e5a6d76f13ba9717282ec73515d6442d826f6d50"
+  },
+  "revisionArtifacts": {
+    "manifestSha256": "7bc972c72bc43b1d47c961abf84074deb3a539531da4ea6c1542e922fa46a572",
+    "stepSha256": "f6334cc80653861294ae0bf6c12af96e74fac9bce59d912458e537ed19bf8d1d"
+  },
+  "exportAlgorithm": {
+    "version": 1,
+    "bootstrapSha256": "f9a42549162dbc45bb8d34fc8cd3fcee856f1f6958b1c5feb8575796bab18d25"
+  },
+  "sourceHashes": {
+    "enclosure_base/base_edge_chamfers": "1ac2d6934cb715daa6bcf6549573686ef19877dbb07f05b4bdda7e47f643f22c",
+    "enclosure_base/base_shell": "912adea80750b5cc7060d80a6757bdebdd924c27e7ebf6dfc379f4d1c1810d69",
+    "enclosure_base/mic_outlet_relocation": "873972224e3bb7dbf9608c63ca9d9e1f2c6307ebe476cba8b70215a29b3d6a0c",
+    "enclosure_lid/lid_edge_chamfers": "b2b9b51d72054e868f6468f0ac6292e06900c4032bebe61e10798a55927a83e0",
+    "enclosure_lid/lid_shell": "423bc1a0ff26b04eeb7a226c577ce2942643386a55a39fe57e222232985a695e",
+    "imports/pcb_assembly": "8531aef6c408f61d28228b5b3e7076f685322dba87202e34b6657de8de75e1fc"
+  },
+  "assetHashes": {
+    "pcb_assembly": "e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba"
+  },
+  "shapeHashes": {
+    "base": "efa5f94c9a9830aed902ffe6dfbcba086543b841761be11e5d57df0a12eaac30",
+    "lid": "a04876e15c87b12e3e96c77713a6281ae282d0095285842e78f7d2fbc1b691da",
+    "pcb_assembly": "88c4f0263edd8a9d98b9fa2bae236171a280f38e8157c9f4a00a89727d222e89"
+  },
+  "runtime": {
+    "manifestHash": "6f32c39b4879b87125efe76a5af86d1199cd262713ae595f50b7e052a30b861b",
+    "pythonVersion": "3.12.13",
+    "build123dVersion": "0.10.0",
+    "ocpVersion": "7.8.1.1.post1",
+    "cadpyRevision": "50d78db682edfc69f5188d838e410ae79c107f3c5c698718cbceee1196299eed"
+  },
+  "assertions": [],
+  "artifacts": [
+    {
+      "path": "artifacts/cad-workbench/documents/main/exports/export-dd63eb4a67c11dcb2b74087289adfb75/model.step",
+      "role": "model/step",
+      "sha256": "f6334cc80653861294ae0bf6c12af96e74fac9bce59d912458e537ed19bf8d1d",
+      "sizeBytes": 14545075
+    }
+  ],
+  "authority": {
+    "version": 1,
+    "algorithm": "hmac-sha256",
+    "keyId": "ecf9344ea16d909fd8db609423c15930",
+    "projectId": "fa64d851-2d06-45d5-aa66-d7c3f287b3b5",
+    "receiptPath": "artifacts/cad-workbench/documents/main/exports/export-dd63eb4a67c11dcb2b74087289adfb75/receipt.json",
+    "payloadSha256": "10cc469667325ae331e92e4c4e961e12de4e15ce2072b2a33c7f1c992d8af161",
+    "mac": "444f48beded865591f88988d4206a9ca3e79fa393667efa859021fc92d8ef375"
+  },
+  "status": "reviewed",
+  "review": {
+    "reviewId": "review-47-8403a558-1e08-4f36-bbf4-fe476462971c",
+    "path": "workspace/cad-workbench/documents/main/reviews/review-47-8403a558-1e08-4f36-bbf4-fe476462971c/receipt.json",
+    "sha256": "37913befccc7030fc5e24272bef7dfc630d2b3ecc5121ac2bf582566b5315d13"
+  }
+}

@@ -1,0 +1,1 @@
+publish("pcb_assembly", asset("design/main/source/assets/e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba.step"), "PCB assembly")

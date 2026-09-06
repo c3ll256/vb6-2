@@ -243,7 +243,7 @@ export const XIAO_RP2040_METADATA = {
   cadModel: {
     id: XIAO_RP2040_MODEL.id,
     path: projectModelPath(XIAO_RP2040_MODEL),
-    revision: XIAO_RP2040_MODEL.revision,
+    sourceVersion: XIAO_RP2040_MODEL.sourceVersion,
     sha256: XIAO_RP2040_MODEL.pcb.model.sha256,
   },
 } as const;
@@ -473,7 +473,7 @@ export const RASPBERRY_PI_PICO_R3_METADATA = {
   cadModel: {
     id: PICO_R3_MODEL.id,
     path: projectModelPath(PICO_R3_MODEL),
-    revision: PICO_R3_MODEL.revision,
+    sourceVersion: PICO_R3_MODEL.sourceVersion,
     sha256: PICO_R3_MODEL.pcb.model.sha256,
   },
 } as const;
@@ -545,7 +545,7 @@ export const ARDUINO_NANO_REV3_METADATA = {
   cadModel: {
     id: ARDUINO_NANO_MODEL.id,
     path: projectModelPath(ARDUINO_NANO_MODEL),
-    revision: ARDUINO_NANO_MODEL.revision,
+    sourceVersion: ARDUINO_NANO_MODEL.sourceVersion,
     sha256: ARDUINO_NANO_MODEL.pcb.model.sha256,
   },
 } as const;
@@ -687,7 +687,7 @@ export const RASPBERRY_PI_4_MODEL_B_METADATA = {
   cadModel: {
     id: RASPBERRY_PI_4B_MODEL.id,
     path: projectModelPath(RASPBERRY_PI_4B_MODEL),
-    revision: RASPBERRY_PI_4B_MODEL.revision,
+    sourceVersion: RASPBERRY_PI_4B_MODEL.sourceVersion,
     sha256: RASPBERRY_PI_4B_MODEL.pcb.model.sha256,
   },
 } as const;

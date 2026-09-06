@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "buildNumber": 0,
+  "sourceHash": "root",
+  "units": "mm",
+  "coordinateFrame": "replicator-world-z-up",
+  "targets": [],
+  "objects": [],
+  "assets": [],
+  "updatedAt": "2026-08-03T10:30:49.103Z",
+  "parameters": {}
+}

@@ -1,7 +1,22 @@
-import pcbConfig from "../../pcb.config.json";
+import pcbConfig from "../pcb.config.json";
 
 const mm = (value: number) => `${value}mm`;
 const pcbRules = pcbConfig;
+
+export const silkscreenRules = {
+  minTextHeightMm: 1,
+  minLineWidthMm: 0.15,
+  minPadClearanceMm: 0.15,
+  sourceTextFontSizeMm: 1.5,
+} as const;
+
+export function silkscreenTextProps() {
+  return { fontSize: mm(silkscreenRules.sourceTextFontSizeMm) };
+}
+
+export function silkscreenGraphicProps() {
+  return { strokeWidth: mm(silkscreenRules.minLineWidthMm) };
+}
 
 export type PcbNetClass = keyof typeof pcbRules.netClasses;
 export type PcbNetRule = {
@@ -32,8 +47,12 @@ export function boardPropsFromRules() {
   const manufacturing = pcbRules.manufacturing;
   const absoluteClearance = manufacturing.absoluteMinimumCopperClearanceMm;
   return {
-    thickness: "1.6mm",
     routingDisabled: true,
+    // Layer count reaches the board here and nowhere else: tscircuit turns it
+    // into pcb_board.num_layers, which is what gives the generated KiCad file
+    // its layer table and its vias the right layer span.
+    layers: manufacturing.layers,
+    thickness: mm(manufacturing.finishedThicknessMm),
     defaultTraceWidth: mm(manufacturing.defaultTraceWidthMm),
     nominalTraceWidth: mm(manufacturing.defaultTraceWidthMm),
     minTraceWidth: mm(
@@ -57,6 +76,7 @@ export function boardPropsFromRules() {
     pcbStyle: {
       viaPadDiameter: mm(manufacturing.via.diameterMm),
       viaHoleDiameter: mm(manufacturing.via.drillMm),
+      silkscreenFontSize: mm(silkscreenRules.sourceTextFontSizeMm),
     },
   };
 }

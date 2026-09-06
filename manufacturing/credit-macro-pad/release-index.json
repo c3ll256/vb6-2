@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "releases": [
+    {
+      "releaseId": "b440aac05088682d5eebea36ba458068b51a88862e3521d3ec732d5eb22d4e2a",
+      "designId": "credit-macro-pad",
+      "sourceHash": "285e047a8f1dd3f92886967af32d5a17056f4e6d976bf462a32e3a2f5ed22dfa",
+      "buildNumber": 0,
+      "candidateId": "2a516644e7934ddf179edd468633e45d9ede4deeb1021abf301e763c24bef8e9",
+      "approvedAt": "2026-08-05T14:08:43.477Z"
+    }
+  ]
+}

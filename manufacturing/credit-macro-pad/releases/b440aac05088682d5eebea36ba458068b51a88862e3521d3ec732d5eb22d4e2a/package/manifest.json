@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 3,
+  "backend": "tscircuit-kicad",
+  "designId": "credit-macro-pad",
+  "designRevision": "285e047a8f1dd3f92886967af32d5a17056f4e6d976bf462a32e3a2f5ed22dfa",
+  "candidateId": "519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076",
+  "exportId": "519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076",
+  "status": "ready",
+  "readyForFabrication": true,
+  "sections": [
+    {
+      "id": "fabrication",
+      "status": "ready",
+      "files": [
+        "manufacturing/drill/board-NPTH.drl",
+        "manufacturing/drill/board-PTH.drl",
+        "manufacturing/drill/credit-macro-pad-drill-report.txt",
+        "manufacturing/gerbers/board-B_Cu.gbl",
+        "manufacturing/gerbers/board-B_Mask.gbs",
+        "manufacturing/gerbers/board-B_Paste.gbp",
+        "manufacturing/gerbers/board-B_Silkscreen.gbo",
+        "manufacturing/gerbers/board-Edge_Cuts.gm1",
+        "manufacturing/gerbers/board-F_Cu.gtl",
+        "manufacturing/gerbers/board-F_Mask.gts",
+        "manufacturing/gerbers/board-F_Paste.gtp",
+        "manufacturing/gerbers/board-F_Silkscreen.gto",
+        "manufacturing/gerbers/board-job.gbrjob"
+      ],
+      "blockingCodes": []
+    },
+    {
+      "id": "assembly",
+      "status": "ready",
+      "files": [
+        "manufacturing/jlc-smt-bom.csv",
+        "manufacturing/jlc-smt-placement.csv"
+      ],
+      "blockingCodes": []
+    },
+    {
+      "id": "mechanical",
+      "status": "ready",
+      "files": [
+        "manufacturing/3dmodels/credit-macro-pad.3dshapes/seeed-xiao-esp32s3-v2-pcb.step",
+        "manufacturing/3dmodels/tscircuit_builtin.3dshapes/0402.step",
+        "manufacturing/3dmodels/tscircuit_builtin.3dshapes/res0402.step",
+        "manufacturing/3dmodels/tscircuit_builtin.3dshapes/res1206.step",
+        "manufacturing/assembly.glb",
+        "manufacturing/assembly.step"
+      ],
+      "blockingCodes": []
+    }
+  ],
+  "generatedAt": "2026-08-05T14:07:39.613Z",
+  "files": [
+    {
+      "type": "step",
+      "path": "manufacturing/3dmodels/credit-macro-pad.3dshapes/seeed-xiao-esp32s3-v2-pcb.step",
+      "sha256": "8e9f9082816a7a9d2a89b471bf3a7494bb0d3a085bb1f9e9991c5bc9d857e73d",
+      "sizeBytes": 3512334
+    },
+    {
+      "type": "step",
+      "path": "manufacturing/3dmodels/tscircuit_builtin.3dshapes/0402.step",
+      "sha256": "8843024eec76cc84cceda1800552e805aa92eb255f071c382775d626897313d9",
+      "sizeBytes": 17466
+    },
+    {
+      "type": "step",
+      "path": "manufacturing/3dmodels/tscircuit_builtin.3dshapes/res0402.step",
+      "sha256": "8843024eec76cc84cceda1800552e805aa92eb255f071c382775d626897313d9",
+      "sizeBytes": 17466
+    },
+    {
+      "type": "step",
+      "path": "manufacturing/3dmodels/tscircuit_builtin.3dshapes/res1206.step",
+      "sha256": "f554b2a84e1617e4937dbe7039701e20d09f9037f7fb8c41a09653cc8120a14c",
+      "sizeBytes": 17200
+    },
+    {
+      "type": "glb",
+      "path": "manufacturing/assembly.glb",
+      "sha256": "83c773e93c49aae4046350751679e6a5cb2cd552718a4375db2a30c878d29489",
+      "sizeBytes": 15309520
+    },
+    {
+      "type": "step",
+      "path": "manufacturing/assembly.step",
+      "sha256": "58a166634e30106f66a705d60a3499b7ec32c1083ad7526b09fd8e9245fe56d9",
+      "sizeBytes": 6791917
+    },
+    {
+      "type": "drill",
+      "path": "manufacturing/drill/board-NPTH.drl",
+      "sha256": "0d80f5458b48d69058b4aac3bd299141dd949ec178ab74842cccb59233c05b6e",
+      "sizeBytes": 750
+    },
+    {
+      "type": "drill",
+      "path": "manufacturing/drill/board-PTH.drl",
+      "sha256": "f2660d5d583bd088814938bcfc7f8f534a8cd2a6b27233c5ec66c26897bc6bf7",
+      "sizeBytes": 734
+    },
+    {
+      "type": "drill",
+      "path": "manufacturing/drill/credit-macro-pad-drill-report.txt",
+      "sha256": "5d7e15b6ed08056a90ce596a5ead935252ed187a5baabb975fb3a61d8590d546",
+      "sizeBytes": 716
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-B_Cu.gbl",
+      "sha256": "f10edcba43ef639d51f59f95db4584c6370f227ea6bc39c1753c75f39706e401",
+      "sizeBytes": 111735
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-B_Mask.gbs",
+      "sha256": "627243e02b21dbed80ed11c83ea34dddecb76c69cac5eb574ec62c4a52cae9fc",
+      "sizeBytes": 4620
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-B_Paste.gbp",
+      "sha256": "40f1bebe03ee9cd257e23345a62916380eb525124e8d992fd9e1b613f50b4e4e",
+      "sizeBytes": 3890
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-B_Silkscreen.gbo",
+      "sha256": "761a79871b224b6716d9a87aa2c7cf3ad0c66a3ef9486357cebe796d671fdf35",
+      "sizeBytes": 31058
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-Edge_Cuts.gm1",
+      "sha256": "c7807d0fd32ecd5c894b5703117bc4950c83902244d72491b82080c5160a710a",
+      "sizeBytes": 10280
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-F_Cu.gtl",
+      "sha256": "c8ffea660d60f2422b04bbd05047cfcc3d57725c50214dfd622e41c0ccd8c0c2",
+      "sizeBytes": 59801
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-F_Mask.gts",
+      "sha256": "854d7e618d18c87e448eeb658ef065dcc3254e34a29a4c7c1ff1033fa726ff39",
+      "sizeBytes": 1248
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-F_Paste.gtp",
+      "sha256": "e180a3871eb1e8c62bf6863c888e48609b0f2ba0049fdc0aa453f5b72dde8678",
+      "sizeBytes": 450
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-F_Silkscreen.gto",
+      "sha256": "65e6413a96e951abb6f652e9e2bcc4241e88b58e342cdea6d6b003ed4b68f9e5",
+      "sizeBytes": 16620
+    },
+    {
+      "type": "gerber",
+      "path": "manufacturing/gerbers/board-job.gbrjob",
+      "sha256": "022015a436a8a29334b529abb0b1255ab3dcc7a2d9ba987b24e415a92b30f241",
+      "sizeBytes": 2658
+    },
+    {
+      "type": "bom",
+      "path": "manufacturing/jlc-smt-bom.csv",
+      "sha256": "eb9f95dfee6387b98a27bb4387d92a7ae2e6b6d24051b1e272631020ed2b0032",
+      "sizeBytes": 1585
+    },
+    {
+      "type": "pick-and-place",
+      "path": "manufacturing/jlc-smt-placement.csv",
+      "sha256": "9c9a4dc8d54c9f746d825d8c6de1c80a5b61d1a3c8bd6c3201c060fe51ab234c",
+      "sizeBytes": 1475
+    }
+  ],
+  "diagnostics": [
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"fpc_hctl_hc_fpc_05_09_8rltag\" uses an Extended library part.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/2/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 86,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"microphone_zts6216\" uses an Extended library part.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/3/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 139,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"mic_preamp_tlv9061\" uses an Extended library part.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/4/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 180,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"socket_hanelectricity_mx_hotswap\" uses an Extended library part.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/6/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 255,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"cap_100nf_0402\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/8",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 303
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"cap_1uf_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/9",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 336
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"cap_10nf_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/10",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 367
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"res_100k_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/11",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 397
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"res_1k_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/12",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 430
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"res_10k_0402\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/13",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 461
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"res_27r_1206_backlight\" uses an Extended library part.",
+      "file": "hardware/bom.json",
+      "jsonPointer": "/items/14/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 505,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"fpc_hctl_hc_fpc_05_09_8rltag\" uses an Extended library part.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/2/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 85,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"microphone_zts6216\" uses an Extended library part.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/3/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 138,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"mic_preamp_tlv9061\" uses an Extended library part.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/4/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 179,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.jlc_smt_extended_library",
+      "message": "JLC SMT BOM item \"socket_hanelectricity_mx_hotswap\" uses an Extended library part.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/6/jlc_smt_library",
+      "nextAction": "Search for a Basic JLC SMT substitute with matching electrical, package, footprint, and pinout constraints. Keep the Extended part only when no credible Basic substitute exists, or move the part to manual assembly when that is cheaper.",
+      "details": {
+        "line": 254,
+        "expected": "Prefer jlc_smt_library: \"basic\" when a compatible Basic library substitute exists."
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"cap_100nf_0402\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/8",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 302
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"cap_1uf_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/9",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 335
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"cap_10nf_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/10",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 366
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"res_100k_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/11",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 396
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"res_1k_0402_audio\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/12",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 429
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "hardware.bom.image_url_missing",
+      "message": "BOM item \"res_10k_0402\" has an LCSC/JLC supplier code but no image_url.",
+      "file": "hardware/component-selection.json",
+      "jsonPointer": "/selected_components/13",
+      "nextAction": "Preserve image_url from bom.query_components or supplier detail lookup when returned; do not drop it when writing component-selection.json or deriving hardware/bom.json.",
+      "details": {
+        "line": 460
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "command_output",
+      "message": "Plotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-F_Cu.gtl'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-B_Cu.gbl'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-F_Paste.gtp'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-B_Paste.gbp'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-F_Silkscreen.gto'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-B_Silkscreen.gbo'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-F_Mask.gts'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-B_Mask.gbs'.\nPlotted to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/gerbers/board-Edge_Cuts.gm1'.",
+      "file": "manufacturing/gerbers",
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "command_output",
+      "message": "Created file '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/drill/board-PTH.drl'\nCreated file '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/drill/board-NPTH.drl'\nDone.",
+      "file": "manufacturing/drill",
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "command_output",
+      "message": "Fontconfig error: Cannot load default config file: No such file: (null)\nWarning: schematic has annotation errors, please use the schematic editor to fix them\nWrote bill of materials to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/bom.csv'.",
+      "file": "manufacturing/bom.csv",
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "command_output",
+      "message": "Wrote position data to '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/placement.csv'.",
+      "file": "manufacturing/placement.csv",
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "command_output",
+      "message": "Could not add 3D model for TP_3V3.\nFile not found: ${KIPRJMOD}/3dmodels/tscircuit_builtin.3dshapes/smtpad_circle_d1.2.step\nCould not add 3D model for TP_GND.\nFile not found: ${KIPRJMOD}/3dmodels/tscircuit_builtin.3dshapes/smtpad_circle_d1.2.step\nCould not add 3D model for TP_VBUS.\nFile not found: ${KIPRJMOD}/3dmodels/tscircuit_builtin.3dshapes/smtpad_circle_d1.2.step\nCould not add 3D model for TP_MIC.\nFile not found: ${KIPRJMOD}/3dmodels/tscircuit_builtin.3dshapes/smtpad_circle_d1.2.step\nSTEP file '/Users/c3ll256/Desktop/vb6/artifacts/pcb/credit-macro-pad/exports/.staging/519a55526e6a148f450b9037629fa2fa0f369266b64364a0e0e87dfac6031076-99a8781a-522e-4354-b244-a07f81840674/assembly.step' created.\n\nExport time 1.938 s",
+      "file": "manufacturing/assembly.step",
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "assembly_step_required_models_verified",
+      "message": "Verified 9 required mounted assembly model occurrence(s) in the final KiCad STEP: HS_KEY1, HS_KEY2, HS_KEY3, HS_KEY4, J1, MIC1, R2, U1, U2.",
+      "file": "manufacturing/assembly.step",
+      "details": {
+        "checked_model_refs": [
+          "HS_KEY1",
+          "HS_KEY2",
+          "HS_KEY3",
+          "HS_KEY4",
+          "J1",
+          "MIC1",
+          "R2",
+          "U1",
+          "U2"
+        ]
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "assembly_surface_appearance_built",
+      "message": "Prepared deterministic board appearance for the main PCB and 1 mounted textured board surface(s), 1 component decal(s), and 3 component material override(s); 0 mounted model(s) retain verified native materials.",
+      "file": "manufacturing/assembly-appearance.json",
+      "details": {
+        "spec_sha256": "85df37a95b97d43c0a0286d9193685ba0f1b726bb17faa52906fa25191f35f7e",
+        "overlay_ids": [
+          "main-pcb:credit-macro-pad",
+          "board-model:seeed_xiao_esp32s3_v2:U1"
+        ],
+        "surface_decal_ids": [
+          "board-model:seeed_xiao_esp32s3_v2:U1:decal:rf-shield-top"
+        ],
+        "material_override_ids": [
+          "board-model:seeed_xiao_esp32s3_v2:U1:material:usb-shell",
+          "board-model:seeed_xiao_esp32s3_v2:U1:material:usb-insulator",
+          "board-model:seeed_xiao_esp32s3_v2:U1:material:rf-shield"
+        ],
+        "source_material_ids": []
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "info",
+      "tier": "advisory",
+      "code": "assembly_glb_derived_from_step",
+      "message": "assembly.glb was generated from the final KiCad assembly.step, so the fabrication preview and released solid share one geometry source.",
+      "file": "manufacturing/assembly.glb",
+      "details": {
+        "source": "assembly-step",
+        "source_path": "manufacturing/assembly.step",
+        "source_step_sha256": "58a166634e30106f66a705d60a3499b7ec32c1083ad7526b09fd8e9245fe56d9",
+        "preview_sha256": "83c773e93c49aae4046350751679e6a5cb2cd552718a4375db2a30c878d29489",
+        "appearance_spec_sha256": "85df37a95b97d43c0a0286d9193685ba0f1b726bb17faa52906fa25191f35f7e",
+        "surface_texture_overlay_ids": [
+          "main-pcb:credit-macro-pad",
+          "board-model:seeed_xiao_esp32s3_v2:U1"
+        ],
+        "surface_decal_ids": [
+          "board-model:seeed_xiao_esp32s3_v2:U1:decal:rf-shield-top"
+        ],
+        "material_override_ids": [
+          "board-model:seeed_xiao_esp32s3_v2:U1:material:usb-shell",
+          "board-model:seeed_xiao_esp32s3_v2:U1:material:usb-insulator",
+          "board-model:seeed_xiao_esp32s3_v2:U1:material:rf-shield"
+        ],
+        "verified_source_material_ids": []
+      }
+    },
+    {
+      "stage": "fabrication-export",
+      "severity": "warning",
+      "tier": "advisory",
+      "code": "dfm_annular_ring_below_advisory_capability",
+      "message": "26 annular ring advisory finding(s) below JLC 2-layer capability (min observed 0.050 mm).",
+      "file": "../../../../../Repos/replicator/project-replicator/kicad/credit-macro-pad.kicad_pcb",
+      "nextAction": "Review the affected via annular rings and increase them where layout permits.",
+      "details": {
+        "count": 26,
+        "min_observed_mm": 0.05000000000000002,
+        "samples": [
+          "(via\n\t\t(at 129.2963 81.2025)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"MIC_RAW\")\n\t\t(uuid \"31ac4958-2500-4e41-8969-7c01d979dff9\")\n\t)",
+          "(via\n\t\t(at 136.6298 81.200899)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"MIC_RAW\")\n\t\t(uuid \"a5829c38-263a-4056-acad-58d61019c1c6\")\n\t)",
+          "(via\n\t\t(at 104.336 87.517)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"MIC_AC\")\n\t\t(uuid \"30943d4e-ee4a-4ed6-9e7d-f2261123a216\")\n\t)",
+          "(via\n\t\t(at 119.9277 87.1721)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"MIC_AC\")\n\t\t(uuid \"dc49ac3e-17e3-4d3c-a2ba-00b054c2f2e6\")\n\t)",
+          "(via\n\t\t(at 75.1352 87.3835)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_RESET_N\")\n\t\t(uuid \"22eea59f-9add-433d-a2eb-efe4eab55f2d\")\n\t)",
+          "(via\n\t\t(at 71.6235 87.3835)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_RESET_N\")\n\t\t(uuid \"47e6e54b-78b1-47ff-817a-c7badc9ba094\")\n\t)",
+          "(via\n\t\t(at 66.819999 88.25)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"057262fa-ed97-45a2-9436-ec293c066397\")\n\t)",
+          "(via\n\t\t(at 119.989545 78.1621)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"21d6eb9b-1e84-4e32-b157-6c83b42f1a24\")\n\t)",
+          "(via\n\t\t(at 61.8005 76.4105)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"770677e4-d4cf-4c41-a92c-484f0537ee58\")\n\t)",
+          "(via\n\t\t(at 117.0405 78.1621)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(net \"GND\")\n\t\t(uuid \"c919069d-e4fc-4f46-a174-c6c1007d47ec\")\n\t)",
+          "(via\n\t\t(at 130.1782 81.989899)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"MIC_AMP\")\n\t\t(uuid \"c2377d36-846b-4374-a839-bf2fb750027a\")\n\t)",
+          "(via\n\t\t(at 119.3669 82.9875)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"MIC_AMP\")\n\t\t(uuid \"d4b9e6fc-6230-41d5-b13f-8072f0c08b04\")\n\t)",
+          "(via\n\t\t(at 68.5132 102.4602)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"KEY1\")\n\t\t(uuid \"25f1998c-5df3-4e21-ab18-af34fe12c12d\")\n\t)",
+          "(via\n\t\t(at 131.77 102.4602)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"KEY1\")\n\t\t(uuid \"a0688f73-c567-40af-9684-aeb04373fc61\")\n\t)",
+          "(via\n\t\t(at 88.2508 103.1154)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"KEY2\")\n\t\t(uuid \"38152f2c-8364-44af-883c-5fdddb972beb\")\n\t)",
+          "(via\n\t\t(at 133.919997 103.1138)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"KEY2\")\n\t\t(uuid \"c2d1096e-d24e-4147-bb25-29fc0d110a98\")\n\t)",
+          "(via\n\t\t(at 68.0154 86.479)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_MOSI\")\n\t\t(uuid \"5c5c6551-aa1a-4abd-8de4-67d417c1f43e\")\n\t)",
+          "(via\n\t\t(at 123.85 87.2669)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_MOSI\")\n\t\t(uuid \"72226deb-5eda-4fce-a6b7-86f0122e3d71\")\n\t)",
+          "(via\n\t\t(at 121.9488 89.3858)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_SCK\")\n\t\t(uuid \"606bb062-2c03-4df5-a7a2-6f0ba08f3f05\")\n\t)",
+          "(via\n\t\t(at 67.4481 86.3745)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_SCK\")\n\t\t(uuid \"e585de0c-15cb-440d-9a2f-75657e88e9d8\")\n\t)",
+          "(via\n\t\t(at 115.6959 88.4208)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_CS_N\")\n\t\t(uuid \"10bb4ae9-353d-445d-a306-dd3ac96bc683\")\n\t)",
+          "(via\n\t\t(at 75.0086 88.4208)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_CS_N\")\n\t\t(uuid \"2ac294f1-e5db-42cf-a989-701e6bb4a733\")\n\t)",
+          "(via\n\t\t(at 134.1086 91.2568)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"VBUS\")\n\t\t(uuid \"318ee8d7-7869-497a-bb96-08bc3258ac8e\")\n\t)",
+          "(via\n\t\t(at 86.1846 91.2568)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"VBUS\")\n\t\t(uuid \"59f97bcf-76b0-48b3-bf05-2619364cd411\")\n\t)",
+          "(via\n\t\t(at 70.0304 85.4523)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_D_C\")\n\t\t(uuid \"511a6f72-c9f1-492b-8503-8ed6f3c3df8d\")\n\t)",
+          "(via\n\t\t(at 121.657699 85.4523)\n\t\t(size 0.4)\n\t\t(drill 0.3)\n\t\t(layers \"F.Cu\" \"B.Cu\")\n\t\t(locked yes)\n\t\t(net \"LCD_D_C\")\n\t\t(uuid \"57de2aab-e0fe-49a2-9f8b-5256257c8710\")\n\t)"
+        ]
+      }
+    }
+  ],
+  "previews": [
+    {
+      "type": "gerber-preview-svg",
+      "path": "manufacturing/previews/gerber-top.svg",
+      "role": "fabrication",
+      "side": "top"
+    },
+    {
+      "type": "gerber-preview-png",
+      "path": "manufacturing/previews/gerber-top.png",
+      "role": "fabrication",
+      "side": "top"
+    },
+    {
+      "type": "gerber-preview-svg",
+      "path": "manufacturing/previews/gerber-bottom.svg",
+      "role": "fabrication",
+      "side": "bottom"
+    },
+    {
+      "type": "gerber-preview-png",
+      "path": "manufacturing/previews/gerber-bottom.png",
+      "role": "fabrication",
+      "side": "bottom"
+    },
+    {
+      "type": "three-d-glb",
+      "path": "manufacturing/assembly.glb",
+      "role": "assembly"
+    }
+  ],
+  "finishedThicknessMm": 1.6,
+  "validatedBoardSpec": {
+    "layers": 2,
+    "material": "FR4",
+    "materialNote": "FR4 is the only substrate this system fabricates designs for; pcb.config.json has no material field to override it.",
+    "copperThicknessOz": 1,
+    "capabilityProfileName": "jlcpcb-2layer-1oz",
+    "capabilityLimits": {
+      "minTrackWidthMm": 0.1,
+      "minViaDrillMm": 0.15,
+      "minViaDiameterMm": 0.25,
+      "minAnnularRingMm": 0.05,
+      "minPlatedHoleDrillMm": 0.15,
+      "minSilkLineWidthMm": 0.15,
+      "minSilkTextHeightMm": 1,
+      "minSilkPadClearanceMm": 0.15
+    },
+    "reorderWarning": "This design was DFM-validated for 1 oz outer copper (capability profile \"jlcpcb-2layer-1oz\", minimum trace width 0.1 mm). Ordering the board at a different copper weight invalidates this DFM check, because the real fabrication minimums (trace width, via drill/diameter, annular ring, plated-hole drill) change with copper weight. To change it, edit manufacturing.copperThicknessOz in pcb.config.json and re-run pcb.run(profile=\"check\")."
+  }
+}

@@ -12,7 +12,7 @@
       "seeed xiao esp32s3",
       "seeed studio xiao esp32s3"
     ],
-    "revision": "vendor model v2, published 2023-05-27",
+    "sourceVersion": "vendor model v2, published 2023-05-27",
     "assetPath": "board-models/seeed-xiao-esp32s3-v2.step",
     "sourceUrl": "https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/#resources",
     "sourceArchiveUrl": "https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/seeed-studio-xiao-esp32s3-3d_model.zip",
@@ -269,7 +269,7 @@
     },
     "notes": [
       "Official vendor resource model for the complete XIAO ESP32S3 development board, including the USB-C connector.",
-      "Use only for the XIAO ESP32S3 revision represented by the vendor v2 model; do not silently substitute it for other XIAO variants."
+      "Use only for the XIAO ESP32S3 source version represented by the vendor v2 model; do not silently substitute it for other XIAO variants."
     ]
   },
   {
@@ -284,7 +284,7 @@
       "seeed xiao rp2040",
       "seeed studio xiao rp2040"
     ],
-    "revision": "vendor model v26, retrieved 2026-08-01",
+    "sourceVersion": "vendor model v26, retrieved 2026-08-01",
     "assetPath": "board-models/seeed-xiao-rp2040-v26.step",
     "sourceUrl": "https://wiki.seeedstudio.com/SeeedStudio_XIAO_Series_Introduction/",
     "sourceArchiveUrl": "https://files.seeedstudio.com/wiki/XIAO-RP2040/res/seeed-studio-xiao-rp2040-3d-model.zip",
@@ -365,7 +365,7 @@
       "pico rp2040",
       "rp2040 pico"
     ],
-    "revision": "Pico R3, official STEP archive RP-008311-DS-1",
+    "sourceVersion": "Pico R3, official STEP archive RP-008311-DS-1",
     "assetPath": "board-models/raspberry-pi-pico-r3.step",
     "sourceUrl": "https://pip.raspberrypi.com/categories/610-raspberry-pi-pico",
     "sourceArchiveUrl": "https://pip-assets.raspberrypi.com/categories/610-raspberry-pi-pico/documents/RP-008311-DS-1-Pico-R3-step.zip",
@@ -445,7 +445,7 @@
       "arduino nano v3",
       "nano atmega328p"
     ],
-    "revision": "FreeCAD Parts Library pinned at be5e71491051cef75da46831b6fd77c6313cb497",
+    "sourceVersion": "FreeCAD Parts Library pinned at be5e71491051cef75da46831b6fd77c6313cb497",
     "assetPath": "board-models/arduino-nano-rev3.step",
     "sourceUrl": "https://github.com/FreeCAD/FreeCAD-library/blob/be5e71491051cef75da46831b6fd77c6313cb497/Electronics%20Parts/Boards/Arduino/Nano-Rev3_0.step",
     "licenseSpdx": "CC-BY-3.0",
@@ -525,7 +525,7 @@
       "rpi 4b",
       "pi 4 model b"
     ],
-    "revision": "FreeCAD Parts Library pinned at be5e71491051cef75da46831b6fd77c6313cb497",
+    "sourceVersion": "FreeCAD Parts Library pinned at be5e71491051cef75da46831b6fd77c6313cb497",
     "assetPath": "board-models/raspberry-pi-4b.step",
     "sourceUrl": "https://github.com/FreeCAD/FreeCAD-library/blob/be5e71491051cef75da46831b6fd77c6313cb497/Electronics%20Parts/Boards/Raspberry/Raspberry%20Pi%204B/Raspberry%20Pi%204B.step",
     "licenseSpdx": "CC-BY-3.0",
@@ -604,7 +604,7 @@
       "esp32-s3-wroom-1",
       "espressif esp32 s3 module"
     ],
-    "revision": "Espressif KiCad library main, retrieved 2026-07-11",
+    "sourceVersion": "Espressif KiCad library main, retrieved 2026-07-11",
     "assetPath": "board-models/espressif-esp32-s3-wroom-1.step",
     "sourceUrl": "https://github.com/espressif/kicad-libraries/blob/main/3dmodels/espressif.3dshapes/ESP32-S3-WROOM-1.STEP",
     "licenseSpdx": "CC-BY-SA-4.0",
@@ -660,7 +660,7 @@
       "esp32-wroom-32e",
       "espressif esp32 module"
     ],
-    "revision": "Espressif KiCad library main, retrieved 2026-07-11",
+    "sourceVersion": "Espressif KiCad library main, retrieved 2026-07-11",
     "assetPath": "board-models/espressif-esp32-wroom-32e.step",
     "sourceUrl": "https://github.com/espressif/kicad-libraries/blob/main/3dmodels/espressif.3dshapes/ESP32-WROOM-32E.STEP",
     "licenseSpdx": "CC-BY-SA-4.0",

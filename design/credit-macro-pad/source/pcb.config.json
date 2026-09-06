@@ -4,7 +4,9 @@
   "manufacturing": {
     "name": "ordinary-2layer-fr4-1oz",
     "layers": 2,
-    "copperThicknessOz": 1,
+    "copperThicknessOz": {
+      "outer": 1
+    },
     "finishedThicknessMm": 1.6,
     "defaultTraceWidthMm": 0.3,
     "absoluteMinimumTraceWidthMm": 0.2,
@@ -264,47 +266,73 @@
     },
     {
       "bomItemId": "microphone_zts6216",
-      "designators": ["MIC1"],
+      "designators": [
+        "MIC1"
+      ],
       "populate": true
     },
     {
       "bomItemId": "mic_preamp_tlv9061",
-      "designators": ["U2"],
+      "designators": [
+        "U2"
+      ],
       "populate": true
     },
     {
       "bomItemId": "cap_100nf_0402",
-      "designators": ["C1", "C2", "C3", "C4"],
+      "designators": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
       "populate": true
     },
     {
       "bomItemId": "cap_1uf_0402_audio",
-      "designators": ["C5", "C6"],
+      "designators": [
+        "C5",
+        "C6"
+      ],
       "populate": true
     },
     {
       "bomItemId": "cap_10nf_0402_audio",
-      "designators": ["C7"],
+      "designators": [
+        "C7"
+      ],
       "populate": true
     },
     {
       "bomItemId": "res_100k_0402_audio",
-      "designators": ["R3", "R4", "R5", "R7"],
+      "designators": [
+        "R3",
+        "R4",
+        "R5",
+        "R7"
+      ],
       "populate": true
     },
     {
       "bomItemId": "res_1k_0402_audio",
-      "designators": ["R6", "R8"],
+      "designators": [
+        "R6",
+        "R8"
+      ],
       "populate": true
     },
     {
       "bomItemId": "res_10k_0402",
-      "designators": ["R1"],
+      "designators": [
+        "R1"
+      ],
       "populate": true
     },
     {
       "bomItemId": "res_27r_1206_backlight",
-      "designators": ["R2"],
+      "designators": [
+        "R2"
+      ],
       "populate": true
     }
   ]

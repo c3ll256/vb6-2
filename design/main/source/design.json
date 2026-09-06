@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "buildNumber": 48,
+  "sourceHash": "4634ff3e6fd405781bf7f060aed6b766653571db20e933a2e2e24600bd5ba1fa",
+  "units": "mm",
+  "coordinateFrame": "replicator-world-z-up",
+  "targets": [
+    {
+      "id": "imports",
+      "label": "imports",
+      "cells": [
+        {
+          "id": "pcb_assembly",
+          "target": "imports",
+          "order": 0,
+          "path": "design/main/source/parts/imports/000-pcb_assembly.py",
+          "sha256": "40b83e563ddc4a141cdfcca079350b080f3307abc2cd9a5dcae340e9f14e15b0"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "enclosure_base",
+      "label": "enclosure_base",
+      "cells": [
+        {
+          "id": "base_shell",
+          "target": "enclosure_base",
+          "order": 0,
+          "path": "design/main/source/parts/enclosure_base/000-base_shell.py",
+          "sha256": "912adea80750b5cc7060d80a6757bdebdd924c27e7ebf6dfc379f4d1c1810d69"
+        },
+        {
+          "id": "mic_outlet_relocation",
+          "target": "enclosure_base",
+          "order": 1,
+          "path": "design/main/source/parts/enclosure_base/001-mic_outlet_relocation.py",
+          "sha256": "873972224e3bb7dbf9608c63ca9d9e1f2c6307ebe476cba8b70215a29b3d6a0c"
+        },
+        {
+          "id": "base_edge_chamfers",
+          "target": "enclosure_base",
+          "order": 2,
+          "path": "design/main/source/parts/enclosure_base/002-base_edge_chamfers.py",
+          "sha256": "1ac2d6934cb715daa6bcf6549573686ef19877dbb07f05b4bdda7e47f643f22c"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "enclosure_lid",
+      "label": "enclosure_lid",
+      "cells": [
+        {
+          "id": "lid_shell",
+          "target": "enclosure_lid",
+          "order": 0,
+          "path": "design/main/source/parts/enclosure_lid/000-lid_shell.py",
+          "sha256": "423bc1a0ff26b04eeb7a226c577ce2942643386a55a39fe57e222232985a695e"
+        },
+        {
+          "id": "lid_edge_chamfers",
+          "target": "enclosure_lid",
+          "order": 1,
+          "path": "design/main/source/parts/enclosure_lid/001-lid_edge_chamfers.py",
+          "sha256": "b2b9b51d72054e868f6468f0ac6292e06900c4032bebe61e10798a55927a83e0"
+        }
+      ],
+      "dependencies": []
+    }
+  ],
+  "objects": [
+    {
+      "id": "pcb_assembly",
+      "target": "imports",
+      "label": "PCB assembly",
+      "kind": "imported",
+      "shapeHash": "abf9f280f2b4b1dada3e9af33205ed8e134b3684162aa3e548c450786ff0ece9",
+      "transform": {
+        "positionMm": [
+          0,
+          0,
+          0
+        ],
+        "rotationDeg": [
+          0,
+          0,
+          0
+        ],
+        "rotationOrder": "XYZ",
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "datums": []
+    },
+    {
+      "id": "base",
+      "target": "enclosure_base",
+      "label": "Bottom shell",
+      "kind": "generated",
+      "shapeHash": "efa5f94c9a9830aed902ffe6dfbcba086543b841761be11e5d57df0a12eaac30",
+      "transform": {
+        "positionMm": [
+          0,
+          0,
+          0
+        ],
+        "rotationDeg": [
+          0,
+          0,
+          0
+        ],
+        "rotationOrder": "XYZ",
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "datums": []
+    },
+    {
+      "id": "lid",
+      "target": "enclosure_lid",
+      "label": "Upper shell",
+      "kind": "generated",
+      "shapeHash": "a04876e15c87b12e3e96c77713a6281ae282d0095285842e78f7d2fbc1b691da",
+      "transform": {
+        "positionMm": [
+          0,
+          0,
+          0
+        ],
+        "rotationDeg": [
+          0,
+          0,
+          0
+        ],
+        "rotationOrder": "XYZ",
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "datums": []
+    }
+  ],
+  "assets": [
+    {
+      "id": "pcb_assembly",
+      "kind": "step",
+      "path": "design/main/source/assets/e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba.step",
+      "sha256": "e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba",
+      "label": "PCB assembly",
+      "provenance": {
+        "sourcePath": "artifacts/pcb/credit-macro-pad/releases/fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473/package/assembly.step",
+        "provider": "Project PCB mechanical_integration Release",
+        "sourceVersion": "fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473",
+        "declaredSha256": "e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba",
+        "pcbRelease": {
+          "designId": "credit-macro-pad",
+          "releaseId": "fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473",
+          "sourceHash": "934d8cb643f49d963002a4ed07d3e0ff895fda0ff73d671d94bcffff2c27cb3a",
+          "buildNumber": 0,
+          "manifestPath": "artifacts/pcb/credit-macro-pad/releases/fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473/release-manifest.json",
+          "assemblyStepPath": "artifacts/pcb/credit-macro-pad/releases/fa32811f201909656260bb91946b9087b3d406bcba79f272330d28f2ed5b5473/package/assembly.step",
+          "assemblyStepSha256": "e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba"
+        }
+      }
+    }
+  ],
+  "updatedAt": "2026-08-17T17:34:52.535Z",
+  "parameters": {
+    "imports": {},
+    "enclosure_base": {
+      "base_center_x": 100,
+      "base_center_y": -100,
+      "base_width": 85.6,
+      "base_depth": 53.98,
+      "base_corner_radius": 6.5,
+      "base_bottom_z": -7.5,
+      "base_split_z": 2.2,
+      "base_floor_thickness": 0.5,
+      "base_wall_thickness": 0.5,
+      "board_relief_width": 82.1,
+      "board_relief_depth": 50.48,
+      "usb_opening_width": 5,
+      "usb_opening_depth": 10.4,
+      "usb_opening_height": 4.4,
+      "base_fpc_relief_width": 2.3,
+      "base_fpc_relief_depth": 8,
+      "base_fpc_relief_height": 4.1,
+      "pcb_support_thickness": 1.5,
+      "microphone_bore_diameter": 2,
+      "microphone_chimney_diameter": 4.8,
+      "lid_tongue_thickness": 1.1,
+      "base_detent_depth": 0.4,
+      "microphone_outlet_x": 135,
+      "microphone_outlet_y": -73.01,
+      "microphone_outlet_z": -1.2,
+      "microphone_outlet_diameter": 1.2,
+      "microphone_outlet_length": 4,
+      "microphone_outlet_funnel_diameter": 1.6,
+      "old_microphone_restore_diameter": 3.2,
+      "lid_tongue_side_inset": 0.3,
+      "usb_capsule_width": 9.5,
+      "usb_capsule_height": 3.8,
+      "usb_capsule_depth": 3,
+      "usb_center_y": -92.5,
+      "usb_center_z": -2.9,
+      "base_snap_width": 8,
+      "base_snap_depth": 0.45,
+      "base_snap_height": 0.65,
+      "base_snap_x_offset": 21,
+      "base_edge_chamfer": 0.18,
+      "base_outer_edge_chamfer": 0.38
+    },
+    "enclosure_lid": {
+      "lid_center_x": 100,
+      "lid_center_y": -100,
+      "lid_width": 85.6,
+      "lid_depth": 53.98,
+      "lid_corner_radius": 6.5,
+      "lid_split_z": 2.2,
+      "lid_roof_bottom_z": 7.8,
+      "lid_top_z": 8.3,
+      "lid_wall_thickness": 0.5,
+      "display_y_offset": 13,
+      "display_window_width": 56.7,
+      "display_window_depth": 16.2,
+      "display_adhesive_land_width": 63,
+      "display_adhesive_land_depth": 18.4,
+      "display_adhesive_land_thickness": 1,
+      "key_cutout_size": 14.2,
+      "key_counterbore_size": 16.2,
+      "key_plate_thickness": 1.25,
+      "fpc_channel_width": 14,
+      "fpc_channel_depth": 8,
+      "fpc_channel_height": 1.4,
+      "pcb_stop_bottom_z": 1.68,
+      "pcb_stop_thickness": 1.4,
+      "lid_detent_depth": 0.8,
+      "key_opening_x_offset": 0,
+      "lid_tongue_side_inset": 0.3,
+      "mating_tongue_thickness": 1.1,
+      "lid_groove_clearance_per_side": 0.25,
+      "display_seat_thickness": 0.5,
+      "lid_snap_pocket_width": 8.4,
+      "lid_snap_pocket_depth": 0.65,
+      "lid_snap_pocket_height": 0.85,
+      "lid_snap_x_offset": 21,
+      "lid_edge_chamfer": 0.18,
+      "lid_outer_edge_chamfer": 0.38
+    }
+  }
+}

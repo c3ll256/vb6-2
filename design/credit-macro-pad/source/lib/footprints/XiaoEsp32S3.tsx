@@ -130,7 +130,7 @@ export const XIAO_ESP32S3_METADATA = {
   cadModel: {
     id: XIAO_BOARD_MODEL.id,
     path: projectModelPath(XIAO_BOARD_MODEL),
-    revision: XIAO_BOARD_MODEL.revision,
+    sourceVersion: XIAO_BOARD_MODEL.sourceVersion,
     sha256: XIAO_BOARD_MODEL.pcb.model.sha256,
     transform: XIAO_BOARD_MODEL.pcb.model.transform,
     interfaces: XIAO_BOARD_MODEL.pcb.interfaces,
