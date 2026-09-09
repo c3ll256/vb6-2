@@ -3,5 +3,6 @@
   "name": "vb6",
   "title": "信用卡尺寸四键屏幕麦克风宏键盘",
   "summary": "基于 Seeed Studio XIAO 的信用卡尺寸 USB 复合设备，配有屏幕、四个可编程矮轴机械键和 USB 麦克风，用于桌面宏快捷键、麦克风静音与语音输入。",
+  "license": "MIT",
   "artifacts": "included"
 }
