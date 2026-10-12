@@ -1,0 +1,11 @@
+# User requested display envelope placeholder. Dimensions from recorded LT225C7-C08-03 constraints.
+W=param("display_bezel_width",62.5)
+D=param("display_bezel_depth",17.9)
+H=param("display_bezel_thickness",2.36)
+AW=param("display_bezel_active_width",55.2948)
+AD=param("display_bezel_active_depth",14.7972)
+RECESS=param("display_bezel_glass_recess",0.25)
+body=Box(W,D,H,align=(Align.CENTER,Align.CENTER,Align.MIN))
+body=body-Pos(0,0,H-RECESS)*Box(AW,AD,RECESS+0.1,align=(Align.CENTER,Align.CENTER,Align.MIN))
+body.color=srgb("#242629")
+publish("display_bezel",body,"LCD placeholder",material="abs")

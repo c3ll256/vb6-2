@@ -297,7 +297,8 @@
       "required_user_evidence": [
         "Procurement reminder: seller must confirm MX cruciform stem, maximum 18 x 18 mm face, and the installed height used by enclosure CAD."
       ],
-      "selection_reason": "Required by the user-selected MX switch system; legends remain on the display, so blank caps are acceptable."
+      "selection_reason": "Required by the user-selected MX switch system; legends remain on the display, so blank caps are acceptable.",
+      "cad_relevance": "Four custom parametric dimensional references in main, 18 x 18 x 7.5 mm, 19 mm pitch; not vendor STEP. Installed assembly height 27.6 mm; user requirement remains 18 mm pending user decision. Exact stem fit and full switch travel unverified."
     },
     {
       "id": "cap_100nf_0402",
@@ -580,5 +581,6 @@
       "mitigation": "Use a low-profile MX-stem keycap where possible and validate the final installed switch/keycap stack in enclosure CAD; the prior 18 mm enclosure-height target is superseded."
     }
   ],
-  "unresolved_items": []
+  "unresolved_items": [],
+  "requirements_digest": "ec85a27789244eafaf6b49ea5234e21b62ce605721c80bbf74872e7d2b381b9f"
 }

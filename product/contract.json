@@ -50,21 +50,21 @@
   "external_references": [
     {
       "id": "concept_sketch",
-      "source": "user_requested",
-      "description": "User-provided layout sketch showing the screen above four keys in a compact rectangular body.",
-      "path": "references/uploads/20260724T161051022Z-1-drawing-2026-07-24t16-10-41-669z.png"
+      "source": "existing_workspace",
+      "description": "Recovered recorded layout/dimensions only; original sketch/datasheet is missing. See provenance limitations in this note.",
+      "path": "product/references/recovered-mechanical-context.md"
     },
     {
       "id": "final_pcb_handoff",
       "source": "existing_workspace",
-      "description": "Final fabrication PCB STEP and current pcb-cad-handoff.json; required before enclosure modeling.",
-      "path": "artifacts/pcb"
+      "description": "Exact PCB STEP already bound into the current enclosure. Historical release manifest is missing; retained asset hash is documented in recovered mechanical context.",
+      "path": "design/main/source/assets/e6b2a97c2c37a28437cfc75195cde959cf87d6165746677271cec03f60fb9eba.step"
     },
     {
       "id": "display_datasheet",
-      "source": "user_requested",
-      "description": "LT225C7-C08-03 2.25-inch color LCD datasheet; page 4 specifies module size, active area, resolution, SPI interface, and driver IC.",
-      "path": "artifacts/pdfs/lt225c7-c08-03.pdf"
+      "source": "existing_workspace",
+      "description": "Recovered recorded layout/dimensions only; original sketch/datasheet is missing. See provenance limitations in this note.",
+      "path": "product/references/recovered-mechanical-context.md"
     }
   ],
   "assembly_story": {
