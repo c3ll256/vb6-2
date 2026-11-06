@@ -130,6 +130,7 @@ export function keepoutPropsFromRules() {
           pcbY: keepout.yMm,
           radius: mm(keepout.radiusMm),
           layers: [...keepout.layers],
+          allowPlacements: true,
         }
       : {
           key: keepout.name,
@@ -140,6 +141,7 @@ export function keepoutPropsFromRules() {
           width: mm(keepout.widthMm),
           height: mm(keepout.heightMm),
           layers: [...keepout.layers],
+          allowPlacements: true,
         },
   );
 }

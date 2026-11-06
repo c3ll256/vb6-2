@@ -172,7 +172,7 @@
     "clearanceMm": 0.3,
     "padMarginMm": 0.3,
     "traceMarginMm": 0.3,
-    "boardEdgeMarginMm": 1,
+    "boardEdgeMarginMm": 1.1,
     "cutoutMarginMm": 0.5,
     "removeIslands": true
   },
@@ -261,7 +261,6 @@
         "HS_KEY3",
         "HS_KEY4"
       ],
-      "footprintFamily": "mx_hotswap",
       "populate": true
     },
     {

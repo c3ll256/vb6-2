@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "models": [
+    {
+      "file": "models/credit-macro-pad.glb",
+      "design": "credit-macro-pad"
+    },
+    {
+      "file": "models/main.glb",
+      "design": "main"
+    }
+  ]
+}

@@ -1,9 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildNumber": 0,
-  "sourceHash": "root",
   "units": "mm",
-  "coordinateFrame": "replicator-world-z-up",
+  "coordinateFrame": "makit-world-z-up",
   "targets": [],
   "objects": [],
   "assets": [],

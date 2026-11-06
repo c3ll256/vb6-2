@@ -51,7 +51,7 @@ export const keyBank = {
 };
 
 export const xiao = {
-  x: 30.5,
+  x: 29.1,
   // Right-side placement above the key contact holes; the USB shell reaches
   // the +X edge while the XIAO antenna end points toward board center.
   y: 7.5,

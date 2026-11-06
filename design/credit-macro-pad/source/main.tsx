@@ -31,6 +31,20 @@ const PcbRuleElements = () => (
     {keepoutPropsFromRules().map((keepout) => (
       <keepout key={keepout.name} {...keepout} />
     ))}
+    {/* One ordinary 0.6/0.3 mm source-owned via ties the top GND pour to the
+        bottom plane before routing. The pour cannot materialize on the top
+        layer without a top-side GND anchor, because every top-side GND pad is
+        a plated switch hole rather than a connected copper land. */}
+    <via
+      name="GND_TOP_BOTTOM_STITCH"
+      fromLayer="top"
+      toLayer="bottom"
+      holeDiameter="0.3mm"
+      outerDiameter="0.6mm"
+      pcbX={-34}
+      pcbY={20}
+      connectsTo="net.GND"
+    />
   </>
 );
 

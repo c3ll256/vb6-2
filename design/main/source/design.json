@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "units": "mm",
-  "coordinateFrame": "replicator-world-z-up",
+  "coordinateFrame": "makit-world-z-up",
   "targets": [
     {
       "id": "imports",
@@ -227,7 +227,7 @@
       "target": "imports",
       "label": "PCB assembly",
       "kind": "imported",
-      "shapeHash": "88c4f0263edd8a9d98b9fa2bae236171a280f38e8157c9f4a00a89727d222e89",
+      "shapeHash": "223a52ef122a5d255d06718bca2bb272b1af3a78c19ce9bcca3978a5d902104a",
       "transform": {
         "positionMm": [
           0,
@@ -253,7 +253,7 @@
       "target": "enclosure_base",
       "label": "Bottom shell",
       "kind": "generated",
-      "shapeHash": "efa5f94c9a9830aed902ffe6dfbcba086543b841761be11e5d57df0a12eaac30",
+      "shapeHash": "bf7196dd9cd6aa95e0d33d58db705c181801c4b2a06e26a6054fd44664caa617",
       "transform": {
         "positionMm": [
           0,
@@ -279,7 +279,7 @@
       "target": "enclosure_lid",
       "label": "Upper shell",
       "kind": "generated",
-      "shapeHash": "a04876e15c87b12e3e96c77713a6281ae282d0095285842e78f7d2fbc1b691da",
+      "shapeHash": "e9f04f2867a01a6fb27610e77222a3b44297d1a4f9d5babfb5f30d871575d1df",
       "transform": {
         "positionMm": [
           0,
@@ -306,7 +306,7 @@
       "label": "Keycap 1",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "3cc004f554f50252d75d0254a310ff529f9d0438bd13b09538657f8a5df1b43d",
+      "shapeHash": "e35c1857c5f5c10fcfaa4c973d1b0ad195ac8afaab46262b8580ffee54b90889",
       "transform": {
         "positionMm": [
           71.5,
@@ -333,7 +333,7 @@
       "label": "Keycap 2",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "d3bc4bf7adfcbe28cc3ac541512b76bd7873c4cdb364d36bd04369e197d506d0",
+      "shapeHash": "5b87788aad7a0a524bbb3a03c67d3380426a367c373d78510edc39fe5e58357e",
       "transform": {
         "positionMm": [
           90.5,
@@ -360,7 +360,7 @@
       "label": "Keycap 3",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "6c9acc2b4c69a72cc07e231341f58375fb00da0e192454ea23ed369da0031f1b",
+      "shapeHash": "a04d79a401b47c18270d4be28469b94dcf938aeb799742250ae2d35d89335d49",
       "transform": {
         "positionMm": [
           109.5,
@@ -387,7 +387,7 @@
       "label": "Keycap 4",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "b9002c92280ec0507145b5fc23c398edc573702d85a20b74e782fcb353edb3ec",
+      "shapeHash": "883f642501eb1e2505afdd6ff63e314879481444d764434de4046ab511481867",
       "transform": {
         "positionMm": [
           128.5,
@@ -414,7 +414,7 @@
       "label": "MX 1 placeholder",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "d5929d29808f02413f9103cb27ced6c617455910d067f1410a4ed55a8c61b129",
+      "shapeHash": "378b7afbd0b05d6d661671d011db465563df147a700b52ad949d211569811c1e",
       "transform": {
         "positionMm": [
           71.5,
@@ -441,7 +441,7 @@
       "label": "MX 2 placeholder",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "08d7b847d3c626d7cbd7c12f8b511722d692605819b0e7f7de07be40d2001781",
+      "shapeHash": "e3957cd51eea9c8e38b7833ddc41de009b79cc0f4ce68c0a6a1fce3b2898cd10",
       "transform": {
         "positionMm": [
           90.5,
@@ -468,7 +468,7 @@
       "label": "MX 3 placeholder",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "c4e67c6284f8a7aa732be138074518fd494e0ce205f2ec69e74b4cf18e4b68d1",
+      "shapeHash": "2f54fcbdc3f5029520b45b344bd08c4bb775ed020783138af82f42a2bfde7a4d",
       "transform": {
         "positionMm": [
           109.5,
@@ -495,7 +495,7 @@
       "label": "MX 4 placeholder",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "ecdf946beeddad8958c174545a313fe067f71b51d15eb275433ec53f20aa4203",
+      "shapeHash": "7fd5d33b48908cb685dfb2d6c9d4769c2276f61e297f86408b75f221b34d93a0",
       "transform": {
         "positionMm": [
           128.5,
@@ -522,7 +522,7 @@
       "label": "LCD placeholder",
       "material": "abs",
       "kind": "generated",
-      "shapeHash": "d0a6ada268d9bc227bbb76a88d64f416d17394dc9804c3307cec74853b0d0173",
+      "shapeHash": "77cd08aa6597fb8d43a91d821f146621c0e5b1ea58331507582bdb179d09658e",
       "transform": {
         "positionMm": [
           100,
@@ -549,7 +549,7 @@
       "label": "LCD active face",
       "material": "glass",
       "kind": "generated",
-      "shapeHash": "839e1bffb596584a79a3fc72ce3c205d5f38219eabc5d1b5d6eaf676951eba84",
+      "shapeHash": "30315291adb685ab829917cc64b6adaaba8177ab7f89a2f568e273caaaf7ceb4",
       "transform": {
         "positionMm": [
           100,
@@ -576,7 +576,7 @@
       "label": "FPC placeholder",
       "material": "nylon",
       "kind": "generated",
-      "shapeHash": "55bd22d4ea8a0b9728da0d6e4bbc66e257a490489f56266999e27830baffbcc6",
+      "shapeHash": "3cf1b602b5724165675954ea6b69cae29a5c0107c460f9cccfab8fa03f1ee5cb",
       "transform": {
         "positionMm": [
           65.75,
@@ -622,7 +622,7 @@
     }
   ],
   "fits": [],
-  "updatedAt": "2026-10-12T09:05:36.865Z",
+  "updatedAt": "2026-11-04T15:42:11.424Z",
   "parameters": {
     "imports": {},
     "enclosure_base": {

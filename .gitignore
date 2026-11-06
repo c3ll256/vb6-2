@@ -3,9 +3,9 @@
 __pycache__/
 *.pyc
 
-# Replicator — managed block, edited by the app. Your own rules go above.
+# Makit — managed block, edited by the app. Your own rules go above.
 /.work/
-/.replicator/
+/.makit/
 .history/
 .DS_Store
 *.tmp-*
@@ -29,5 +29,7 @@ __pycache__/
 !/artifacts/**/*.json
 !/artifacts/**/*.md
 
-/product/references/recovered-mechanical-context.md
-# Replicator — end managed block
+/product/references/**
+!/product/references/**/
+!/product/references/index.json
+# Makit — end managed block
